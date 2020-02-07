@@ -1,0 +1,1801 @@
+/* lg */ 
+@media (min-width: 1400px) {
+
+	.home-banner.banner .home-content {
+	    padding-bottom: 200px;
+	    padding-top: 250px;
+	}	
+}
+
+/* md */
+@media (min-width: 992px) and (max-width: 1199px) {
+	
+	#navigation .navbar-brand {
+		margin-right: 30px;
+		padding-left: 0;
+	}	
+
+	#navigation .navbar-nav>li>a {
+		padding: 0 10px;
+	}
+
+	#navigation .btn.btn-primary {
+		margin-right: 30px;
+	}	
+
+	#audio-player .jp-playlist .jp-playlist-item.jp-playlist-current {
+		margin-left: -90px;
+	}
+
+	.home-banner .jp-progress{
+		width: 60%;
+	}
+
+	.festival-image {
+		margin-right: 20px;
+	}
+
+	.festival-info .text-right {
+		padding-right: 30px;
+		padding-top: 60px;
+		overflow: hidden;
+	}
+
+	.post-content {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+
+	.about-info {
+		padding-top: 10px;
+		padding-bottom: 20px;
+	}
+
+	.video-content {
+		max-height: 260px;
+	}
+
+	.gallery-section .nav > li > a {
+		padding: 0 1px;
+	}
+
+	.festival-info {
+		margin-bottom: 13px;
+	}
+
+	.artists-info a {
+		font-size: 26px;
+		line-height: 24px;
+	}
+
+	.artist-info address .menu.sub {
+		margin-left: 0;
+	}
+
+	.artist-info address .menu {
+		float: none;
+		min-width: 100%;
+	}
+
+	.schedule-menu li:nth-child(2) {
+		margin-right: 55px;
+	}
+
+	.schedule-menu li:nth-child(4) {
+		margin-left: 55px;
+		margin-right: 45px;
+	}
+
+	.schedule-section .festival-image {
+		margin-right: 15px;
+	}
+
+	.festival-info h2 {
+		font-size: 22px;
+	}
+	.photos-filckr li {
+		width: 47%;
+	}	
+	.about-info {
+		padding-left: 30px;
+		padding-right: 0;
+	}
+
+	.schedule-slider .owl-prev {
+		left: -10px;
+	}
+
+	.schedule-slider .owl-next {
+		right: -10px;
+	}
+
+	#jplayer-container .jp-controls {
+		width: 85px;
+	}
+
+	#jplayer-container #playing {
+		left: 105px;
+		line-height: 17px;
+	}
+
+	#jplayer-container #playing .artist-name {
+		top: 50px;
+	}
+
+	.video-content .video.video-icons {
+	    margin-left: -75px;
+	    margin-top: -60px;
+	}
+
+	.schedule-slider h4 {
+		padding-top: 20px;
+	}
+
+	.gallery-info .title a {
+		font-size: 30px;
+	}	
+
+	.discography .menu.sub {
+		margin-left: 20px;
+	}
+
+	.photos-filckr li:nth-child(4) {
+		margin-left: 10px;
+	}
+
+	.photos-filckr li:nth-child(3),
+	.photos-filckr li:nth-child(5) {
+		margin-left: 0;
+	}
+
+	.audio-album .quantity h3 {
+		margin-right: 10px;
+	}
+
+	.audio-album .quantity .input-text {
+	    max-width: 135px;
+	}
+
+	.featured-video .right-content {
+		padding-bottom: 25px;
+		padding-left: 30px;
+	}
+
+	.jp-progress {
+		margin-left: 0;
+	}	
+
+	.festival-info .audio-list .controls {
+		margin-right: 8px;
+	}	
+
+	.products.item .products-icons {
+		margin-top: -120px;
+	}	
+	.entry-title a{
+		font-size: 28px;
+		line-height: 30px;
+	}
+	.artist-info {
+		padding-top: 0;
+	}
+	.promotion h2 {
+		font-size: 100px;
+	}
+
+}
+
+/* sm */
+@media (max-width: 991px) {
+
+	.navbar-expand-lg > .container, .navbar-expand-lg > .container-fluid {
+		position: relative;
+		display: block;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	#navigation .btn.btn-primary {
+		position: absolute;
+		top: 7px;
+		right: 70px;
+		margin-top: 10px;
+	}
+	#navigation .navbar:before {
+		height: 40px;
+	}
+	#navigation .navbar:after {
+		top: 40px;
+	}
+	#navigation .navbar-brand {
+		margin-top: 15px;
+	}
+	.navbar-toggler-icon {
+		width: inherit;
+		height: inherit;
+		line-height: inherit;
+	}
+	.about-info {
+		margin-top: 30px;
+		padding: 0;
+	}
+	#navigation .navbar-collapse {
+		float: none;
+		margin-top: 10px;
+		border-top: 1px solid #ed145b;
+		background-color: #fff;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+	#navigation .navbar-nav > li > a {
+		line-height: 35px;
+	}
+	.equalizer {
+		display: none;
+	}
+
+	ul.sub-menu {
+		left: 20px;
+		top: 25px;
+	}
+
+	#navigation .navbar-nav li ul.sub-menu li a {
+		padding: 5px 0 5px 20px;
+	}	
+
+	.logo-intro span {
+		font-size: 30px;
+	}
+
+	.logo-intro img {
+		width: 20%;
+		margin: 0;
+		margin-top: -4px;
+	}
+	.artist-detail-content .artist-image {
+		margin-bottom: 30px;
+	}
+	.about-section.about .about-info {
+		padding: 30px;
+		margin-top: 0;
+	}
+	.career-image, 
+	.earning-image, 
+	.discography-image, 
+	.vocal-image {
+		margin-bottom: 20px;
+	}
+	.schedule-slider h4 {
+		margin-top: 0;
+	}	
+	.clients-section .client {
+		margin-left: 15px;
+		margin-right: 15px;
+	}
+	.artist-detail .artist-image {
+		margin-bottom: 20px;
+	}
+	.audio-album .track-name {
+		font-size: 16px;
+	}	
+	.album-item {
+		margin-bottom: 20px;
+	}
+	.album-item h3 {
+		font-size: 20px;
+	}
+	.related-album h1 {
+		font-size: 30px;
+	}
+	.cbp-item h3 {
+		font-size: 20px;
+	}	
+	.album-image {
+		max-width: 100%;
+	}
+}
+
+/* sm */
+@media (min-width: 768px) and (max-width: 991px) {
+	.home-content h2 {
+		font-size: 85px;
+	}
+	#jplayer-container .jp-progress {
+		width: 35%;
+	}
+	#audio-player .jp-playlist .jp-playlist-item.jp-playlist-current {
+		margin-left: -55px;
+	}
+	.home-banner .jp-progress {
+		width: 43%;
+	}
+	.home-banner .jp-controls {
+		margin-left: 35px;
+	}
+	.audio-list .audio-info h5 {
+		max-width: 145px;
+	}
+	.artists {
+		margin-top: 10px;
+	}
+	.artists-info {
+		padding: 25px 10px;
+	}
+	.artists-info ul {
+		margin-bottom: 10px;
+	}
+	.artists-info a {
+		font-size: 25px;
+		line-height: 20px;
+	}
+	.video-content {
+		max-height: 195px;
+	}
+
+	.section-title h2 {
+		font-size: 36px;
+	}
+
+	.festival-image {
+		margin-right: 15px;
+	}
+
+	.festival-info .text-left {
+		float: none;
+	}
+
+	.festival-info .text-right {
+		text-align: left !important;
+		padding: 0;
+	}
+
+	.shop-section .products {
+		min-height: 345px;
+	}
+
+	.entry-title h1, 
+	.entry-title a {
+		font-size: 24px;
+		line-height: 30px;
+	}
+
+	.entry-title {
+		margin-bottom: 0;
+		line-height: 30px;
+	}
+
+	.promotion h2 {
+		font-size: 85px;
+	}
+
+	.about-content .no-padding {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	.gallery-section .nav-tabs {
+		padding-left: 30px;
+	}
+
+	.festival-info .time {
+		margin-left: -40px;
+	}
+
+	.festival-info .time h1 {
+		font-size: 30px;
+	}
+
+	.product-menu.sub {
+		margin-left: 0;
+	}
+
+	.product-menu {
+		float: none;
+	}
+
+	.add-buttons .button {
+		margin-bottom: 10px;
+	}
+
+	.artist-info address .menu.sub {
+		margin-left: 0;
+	}
+
+	.artist-info address .menu {
+		float: none;
+		min-width: 100%;
+	}
+
+	.artist-detail h1 {
+		font-size: 28px;
+		line-height: 26px;
+	}
+
+	.entry-title {
+		margin: 20px 0;
+	}
+
+	.entry-title h1, 
+	.entry-title a {
+		font-size: 26px;
+		line-height: 20px;
+	}
+
+	.schedule-section .festival-image {
+		margin-right: 10px;
+	}
+
+	.festival-info h2 {
+		font-size: 18px;
+	}
+
+	.festival-info h5 {
+		display: block;
+	}
+
+	.festival-info .rock-roll {
+		padding: 0;
+		margin-top: 35px;
+	}
+
+	.schedule-menu li + li {
+		margin: 0;
+	}
+
+	.schedule-menu li:nth-child(2) {
+		margin-left: 30px;
+		margin-right: 35px;
+	}
+
+	.schedule-menu li:nth-child(4) {
+		margin-left: 60px;
+	}
+
+	.schedule-menu li:nth-child(5)  {
+		margin: 0;
+	}
+
+	.schedule-slider .owl-prev {
+		left: 0;
+	}
+
+	.schedule-slider .owl-next {
+		right: 0;
+	}
+	.photos-filckr li {
+		width: 30%;
+	}
+
+	.photos-filckr li + li {
+		margin-left: 15px;
+	}	
+
+	.ucoming-events .festival-image {
+		margin-right: 10px;
+	}	
+
+	.ucoming-events .festival-info h2 {
+		font-size: 20px;
+		margin-top: 10px;
+	}
+
+	.ucoming-events .address {
+		padding-top: 20px;
+	}
+
+	.ucoming-events .button {
+		text-align: inherit;
+	}
+
+	.ucoming-events .btn.btn-primary {
+		padding-left: 25px;
+		padding-right: 50px;
+	}
+
+	.ucoming-events .schedule-menu li:nth-child(2) {
+		margin-right: 80px;
+	}
+
+	.featured-video .right-content {
+		padding-left: 20px;
+	}
+
+	#jplayer-container .jp-controls {
+		width: 65px;
+	}
+
+	#jplayer-container #playing {
+		left: 80px;
+		line-height: 17px;
+		padding-right: 10px;
+	}
+
+	#jplayer-container #playing .artist-name {
+		display: none;
+	}
+
+	.video-content .video.video-icons {
+	    margin-left: -55px;
+	    margin-top: -50px;
+	}
+
+	.band-banner .home-content h1 {
+		font-size: 65px;
+	}
+
+	.band-banner .home-content h2 {
+		font-size: 60px;
+		line-height: 10px;
+	}
+
+	.band-banner .home-content {
+	    padding-bottom: 80px;
+	    padding-top: 175px;
+	}	
+
+	.albums-slider.slider-band {
+		background-position: 0 100px;
+	}
+
+	.products.item .products-icons {
+		width: 80px;
+		height: 80px;
+		line-height: 80px;
+		margin-left: -45px;
+		margin-top: -100px;
+	}
+
+	.products.item .products-icons i {
+		font-size: 30px;
+	}
+
+	.about-section .about-image img {
+		width: 100%;
+	}	
+
+	.gallery-info .title a {
+		font-size: 26px;
+		line-height: 28px;
+	}	
+
+	.gallery-info .title i {
+		font-size: 65px;
+	}
+
+	.discography-image,
+	.vocal-image {
+		margin-top: 20px;
+	}
+
+	.biography-image img,
+	.discography-image img,
+	.earning-image img,
+	.vocal-image img,
+	.artist-image img,
+	.career-image img {
+		width: 100%;
+	}
+
+	.photos-filckr li:nth-child(4) {
+		margin-left: 0;
+	}
+
+	.audio-album .jp-progress {
+		width: 50%;
+		margin-top: 75px;
+	}
+
+	.audio-album .quantity h3 {
+		margin-right: 10px;
+	}
+
+	.audio-album .quantity .input-text {
+	    max-width: 135px;
+	}
+
+	.add-buttons .button {
+		padding-left: 30px;
+		padding-right: 10px;
+		font-size: 14px;
+	}
+
+	.add-buttons i {
+		left: 5px;
+	}
+
+	.video.video-icons img {
+		width: 70%;
+	}
+
+	#countdown li + li {
+		margin-left: 10px;
+	}
+
+	.audio-content {
+		max-height: 605px;
+	}
+
+	.featured-video .right-content {
+		padding-bottom: 45px;
+	}	
+
+	.career-content,
+	.earnings-content {
+		padding-top: 50px;
+	}
+
+	.discography-content,
+	.vocal-content {
+		padding-top: 0;
+	}
+
+	.jp-progress {
+		margin-left: 0;
+	}
+	.home-banner.banner .home-content {
+	    padding-bottom: 140px;
+	    padding-top: 250px;
+	}	
+	.gallery-section .nav-tabs li{
+		width: 50%;
+	}
+	.post-content {
+		padding-bottom: 20px;
+		padding: 20px;
+	}
+	.entry-title h1, .entry-title a {
+	    font-size: 18px;
+	}
+	.artist-info {
+		padding-top: 0;
+	}
+}
+
+
+/* xs */
+@media (max-width: 767px) {
+	
+	#navigation .navbar:after {
+		left: 50%;
+		margin-left: -47%;
+		width: 94%;
+		border-right: 25px solid transparent;
+		border-left: 25px solid transparent;
+		border-top: 20px solid #fff;
+	}
+
+	.before:before {
+		border-left: 15px solid transparent;
+		border-right: 15px solid transparent;
+		border-top: 15px solid #fff;
+	}
+
+	.before-after:before, .before-after:after, 
+	.about-section.about.before-after:before, 
+	.about-section.about.before-after:after {
+	    top: -12px;
+	    width: 8%;
+	    height:13px;
+	}
+
+	#navigation .navbar:before {
+		height: 50px;
+	}		
+
+	.btn.btn-primary {
+	    font-size: 13px;
+	    padding-top: 6px;
+	    padding-bottom: 10px;
+	    padding-left: 15px;
+	    padding-right: 45px;
+	}
+
+	.btn.btn-primary i {
+	    right: 17px;
+	    top: 10px;
+	    font-size:15px;
+	}
+
+	.btn.btn-primary:hover i{
+		right:14px;	
+	} 
+
+	#navigation .btn.btn-primary {
+		position: absolute;
+		top: 4px;
+		right: 75px;
+		font-size: 11px;
+		padding: 3px 10px 6px;
+	}
+
+	.navbar-brand {
+		padding-left: 10px;
+		padding-top: 12px;
+	}
+
+	.navbar-toggle {
+		margin-top: 8px;
+	}
+	
+	.home-banner.banner .home-content,
+	.home-content {
+		padding-top: 110px;
+		padding-bottom: 45px;
+	}	
+
+	.home-banner.banner .home-content h3 {
+		font-size: 20px;
+	}
+
+	.home-content h2 {
+		font-size: 36px;
+		line-height: 45px;
+	}
+
+	#countdown li span {
+		font-size: 30px;
+		width: 30px;
+	}
+
+	#countdown li {
+		width: 115px;
+	}
+
+	#countdown li p {
+		font-size: 12px;
+		margin-top: 22px;
+	}
+
+	#countdown li + li {
+		margin-left: 0;
+	}
+
+	.jp-controls {
+		margin-left: 23%;
+	}	
+
+	.audio-album .jp-controls {
+		margin-left: 0;
+	}
+
+	.audio-album .jp-progress {
+		width: 55%;
+	}
+
+	.audio-album .track-name {
+		font-size: 16px;
+	}
+
+	.related-album h1 {
+		font-size: 24px;
+		margin-bottom: 15px;
+	}
+
+	.related-album {
+		padding-top: 0;
+	}
+
+	.jp-progress {
+		width: 70%;
+		margin-left: 0;
+		margin-bottom: 30px;
+	}
+
+	.home-banner #audio-player .jp-playlist-current,
+	.home-banner .album-cover,
+	.jp-volume-controls {
+		display: none;
+	}
+
+	.section-padding {
+		padding-top: 30px;
+		padding-bottom: 40px;
+	}
+	
+	.artists-section .section-title,
+	.gallery-section .section-title,
+	.twitter-feed .section-title,
+	.gallery-section .section-title,
+	.section-title {
+		margin-bottom: 30px;
+	}
+
+	.section-title h2 {
+		font-size: 30px;
+	}
+	.artists {
+		margin-top: 0;
+		margin-bottom: 15px;
+	}
+
+	.artists-section .btn.btn-primary {
+		margin-bottom: 0;
+	}
+
+	.festival-schedule .section-title {
+		margin-top: 10px;
+		padding-top: 0;
+		overflow: hidden;
+	}
+
+	.festival-info h2 {
+		font-size: 24px;
+		margin-bottom: 10px;
+	}
+
+	.entry-title h1, 
+	.entry-title a {
+		font-size: 24px;
+		line-height: 26px;
+	}
+	
+	.blog-section.blog .entry-post,
+	.entry-post {
+		margin-bottom: 15px;
+	}
+
+	.entry-post img {
+		width: 100%;
+	}
+
+	.promotion h2 {
+		font-size: 60px;
+	}
+
+	.festival-info {
+		margin-bottom: 15px;
+	}
+
+	.video-content {
+		max-height: 255px;
+	}
+
+	.twitter-feed h4 {
+		margin-top: 0;
+	}
+
+	.promotion-content {
+		padding-top: 50px;
+		padding-bottom: 0;
+	}
+
+	.gallery-section .nav-tabs li{
+		width: 25%;
+	}
+
+	.about-content .no-padding {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	.artists-info a {
+		font-size: 24px;
+		line-height: 20px;
+	}
+
+	.btn.btn-default {
+		font-size: 14px;
+	}
+
+	.festival-info .text-right {
+		text-align: left;
+		overflow: hidden;
+		padding-top: 0;
+		padding-right: 0;
+	}
+
+	.festival-info .time {
+		margin-left: -38px;
+	}
+
+	.festival-info .time h1 {
+		font-size: 28px;
+	}
+
+	#gmap {
+		min-height: 480px;
+	}
+
+	.footer-memu li a {
+		font-size: 14px;
+	}
+
+	.page-title h2 {
+		font-size: 30px;
+	}
+
+	.vocal-content,
+	.earnings-content,
+	.discography-content,
+	.career-content,
+	.artist-detail-content,
+	.musical-awards.section-padding {
+		padding: 0;
+	}
+
+	.earnings-content,
+	.career-content,
+	.musical-awards.section-padding {
+		padding-top: 30px;
+	}
+
+	.discography .menu.sub {
+		margin-left: 15px;
+	}
+
+	.discography-image {
+		margin-top: 20px;
+	}
+
+	.panel-left::after {
+		height: 380px;
+	}
+
+	.photo-galery .photo {
+		max-height: 350px;
+		max-width: 100%;
+		margin-bottom: 15px;
+	}
+
+	.artist-image img,
+	.photo-galery .photo img,
+	.album-image img {
+		width: 100%;
+	}
+
+	.artist-info address .menu.sub,
+	.product-menu.sub {
+		margin-left: 0;
+	}
+
+	.artist-info address .menu,
+	.product-menu {
+		float: none;
+	}
+
+	.artist-detail h1 {
+		font-size: 26px;
+		line-height: 24px;
+	}
+
+	.artist-detail h4 {
+		margin-bottom: 10px;
+	}
+
+	.artist-info {
+		padding-top: 20px;
+	}
+	.showcase-section .section-title h2 {
+		font-size: 26px;
+	}
+
+	.showcase-section .section-title i {
+		font-size: 50px;
+	}
+
+	.products-description .nav-tabs li + li {
+		margin-left: 10px;
+		padding-left: 8px;
+	}
+
+	.products-details h2 {
+		font-size: 26px;
+	}
+
+	.products-slider .owl-nav i {
+		font-size: 40px;
+	}
+
+	.sponsors-title img {
+		width: 50%;
+		margin-top: 0;
+	}
+
+	.sponsors-title {
+		padding: 50px 0;
+	}
+
+	.sponsors-section .client li + li {
+		margin-left: 0;
+	}
+
+	.sponsors-section {
+		padding-top: 30px;
+	}
+
+	.blog-social {
+		margin-top: 25px;
+		margin-bottom: 50px;
+	}
+	.comments-area h1,
+	.replay-box h1, 
+	.feedback h1 {
+		font-size: 30px;
+	}
+
+	.comments-area li {
+		padding-bottom: 30px;
+	}	
+
+	.comments-area li:last-child {
+		padding-left: 55px;
+	}
+
+	.blog-details .post-content {
+		padding-left: 20px;
+		padding-bottom: 20px;
+		padding-right: 20px;
+	}
+
+	.entry-post .entry-meta a {
+		font-size: 14px;
+	}	
+
+	.entry-post .entry-meta li + li {
+		margin-left: 5px;
+	}
+
+	.feedback .feedback-content {
+		padding-bottom: 0;
+	}
+
+	.schedule-menu {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	.schedule-menu li + li {
+		margin-left: 20px;
+	}	
+
+	.schedule-menu li:nth-child(2),
+	.schedule-menu li:nth-child(5),
+	.schedule-menu li:nth-child(4) {
+		margin: 0;
+		margin-left: 30px;
+	}
+
+	.schedule-section .festival-image {
+		margin-right: 15px;
+		max-height: 105px;
+	}
+
+	.schedule-section .rock-roll {
+		padding: 0;
+		margin-top: 30px;
+	}
+
+	.festival-info .text-left {
+		float: none;
+	}
+
+	.festival-info h5 {
+		text-align: left !important;
+		float: none !important;
+		overflow: hidden;
+		display: block;
+		margin-top: 0;
+	}
+
+	.festival-info .audio-list {
+		padding-top: 15px;
+		padding-bottom: 25px;
+		padding-left: 10px;
+	}
+
+	.audio-list .audio-info h5 {
+		display: inherit;
+		float: none;
+		padding-top: 0;
+	}
+
+	.schedule-section .section-title {
+	    margin-bottom: 10px;
+	    padding-top: 10px;
+	}	
+
+	.footer-top {
+		padding-top: 0;
+	}
+
+	.footer-widget {
+		margin-bottom: 0;
+	}
+
+	.photos-filckr li:nth-child(4) {
+		margin-left: 10px;
+	}
+
+	.footer-widget h3 {
+		margin-bottom: 25px;
+		margin-top: 20px;
+	}
+
+	.schedule-slider .schedule {
+		margin-left: 60px;
+	}
+
+	.ucoming-events .festival-info .time h1 {
+	    font-size: 40px;
+	    margin-top: 20px;
+	}	
+
+	.ucoming-events .festival-image {
+		margin-left: 15px;
+		margin-top: 15px;
+		float: none;
+
+	}
+
+	.festival-info .events-title {
+		overflow: hidden;
+		padding-left: 15px;
+	}
+
+	.ucoming-events .address {
+		padding-top: 15px;
+		margin-left: 15px;
+	}
+	.ucoming-events .festival-info {
+		padding-bottom: 5px;
+	}
+	.ucoming-events .festival-info h2 {
+		font-size: 22px;
+	}
+	.no-padding {
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+
+	.ucoming-events .button {
+		padding-top: 15px;
+		padding-bottom: 15px;
+		text-align: left;
+		margin-left: 15px;
+	}	
+
+	.ucoming-events .schedule-menu li:nth-child(2) {
+		margin: 0;
+	}
+
+	.blog-section.blog .pagination {
+		margin-top: 10px;
+		margin-bottom: 0;
+	}
+
+	.pagination li a {
+		padding: 5px 10px;
+		font-size: 14px;
+	}
+
+	.band-banner .home-content h2,
+	.home-banner.biography .home-content h2 {
+		font-size: 36px;
+		margin-bottom: 10px;
+	}
+
+	.band-banner .home-content h1,
+	.home-banner.biography .home-content h1 {
+		font-size: 45px;
+		line-height: 18px;
+	}
+
+	.band-banner .home-content h1 {
+		line-height: 30px;
+	}
+
+	.band-banner .home-content,
+	.home-banner.biography .home-content {
+		padding-top: 90px;
+		padding-bottom: 30px;
+		text-align: center;
+	}	
+
+	.albums-slider.slider-band {
+		background-image: inherit;
+	}
+
+	.promotion.contact h1 {
+		font-size: 28px;
+		margin-bottom: 0;
+	}	
+
+	.promotion.contact {
+	    font-size: 18px;
+	    line-height: 27px;
+	}	
+
+	.promotion-content {
+		padding-top: 20px;
+	}
+
+	.promotion.contact .social {
+		margin-top: 0;
+	}
+
+	.gallery-section .section-title {
+		padding-top: 0;
+	}
+
+	.band.vocalist .vocalist-content, 
+	.band.vocalist .vocalist-content {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	.vocalist-content {
+		padding-top: 20px;
+		padding-bottom: 0;
+	}
+
+	.vocalist h1 {
+		font-size: 24px;
+		line-height: 25px;
+	}
+
+	.vocalist h2 {
+		margin-top: 5px;
+		margin-bottom: 10px;
+	}
+
+	.vocalist-overlya .social a {
+		font-size: 18px;
+	}
+
+	.about.about-biography .social a i {
+		font-size: 16px;
+	}
+
+	.about.about-biography .social a {
+		margin: 0;
+	}
+
+	.gallery-info .title a {
+		font-size: 24px;
+		margin-bottom: 0;
+		margin-top: 10px;
+	}
+
+	.gallery-info .title i {
+		font-size: 40px;
+	}
+
+	.gallery-item {
+		margin-bottom: 15px;
+	}
+
+	.biography-info h1 {
+		font-size: 24px;
+	}
+
+	.biography-section .social a {
+		margin: 0;
+	}
+
+	.page-title {
+		padding-bottom: 25px;
+		padding-top: 80px;
+	}	
+
+	.artist-detail.our-band h4 {
+		margin-bottom: 10px;
+	}
+
+	.footer-logo img {
+		width: 30%;
+	}
+
+	.album-image {
+		max-width: 100%;
+	}
+
+	.album-menu li.pull-right {
+		font-size: 14px;
+		margin-top: 10px;
+	}
+
+	.album-menu li + li {
+		margin-left:8px;
+	}
+
+	.album-menu {
+		margin-bottom: 25px;
+		margin-top: 0;
+	}
+
+	.cbp-item h3 {
+		font-size: 18px;
+	}
+
+	.album-section .pagination {
+		margin-top:20px;
+	}
+
+	.artist-section .artist-detail,
+	.showcase-section .pagination {
+		padding-top: 0;
+		margin-bottom: 0;
+	}
+
+	.artist-section .artist-detail {
+		padding-bottom: 0;
+	}
+
+	.products-section .pagination {
+		margin-bottom: 20px;
+	}
+	
+	.featured-video .video-gallery {
+		padding-right: 0;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+
+	.featured-video .right-content {
+		padding-left: 0;
+		padding-bottom: 20px;
+		padding-top: 10px;
+	}
+
+	.featured-video .jp-controls {
+		margin-left: 0;
+	}
+
+	#jplayer-container .jp-progress {
+		width: 34%;
+	}
+
+	#jplayer-container #playing .artist-name {
+		display: none;
+	}
+
+	.right-content.bg-transparent::after {
+		right: 100%;
+	}
+
+	.video.video-icons img {
+		width: 50%;
+	}
+
+	.products-content {
+		margin-bottom: 0;
+	}	
+
+	.ferformers .pagination {
+		margin-top: 0;
+	}
+
+	.video-content .video.video-icons {
+		margin-left: -30px;
+		margin-top: -32px;
+	}
+
+	.festival-info .audio-list .controls {
+		margin-left: 10px;
+	}
+	.artist-info address .menu h5 {
+		min-width: 105px;
+	}
+	.copyright, .footer-memu {
+		float: none;;
+		text-align: center;
+	}
+	.footer-memu li + li {
+		margin-left: 15px;
+	}
+	.footer-memu li {
+		float: none;
+		display: inline-block;
+	}
+	.festival-image {
+		margin-right: 30px;
+	}
+	.about-section .about-content {
+	    padding-bottom: 10px;
+	}	
+	#navigation .navbar-brand {
+		margin-top: 3px;
+		padding-left: 0;
+	}
+	.navbar-toggler {
+		top: 14px;
+	}
+	#navigation .btn.btn-primary {
+		top: 7px;
+		right: 65px;
+	}
+	.photos-filckr li {
+		width: inherit;
+		margin-right: 15px;
+		margin-left: 0;
+	}
+	.photos-filckr li+li,
+	.photos-filckr li:nth-child(4) {
+		margin-left: 0;
+	}
+	.vocalist-image{
+		margin-bottom: 30px;
+	}
+	.related-album h1 {
+		font-size: 26px;
+	}
+
+}
+
+/* XS Portrait */
+@media (max-width: 575px) { 
+
+	.showcase {
+		margin-bottom: 15px;
+	}
+	.showcase-icons a {
+		font-size: 50px;
+	}
+	#navigation .navbar::after {
+	    margin-left: -49%;
+	    width: 98%;
+	}
+	.schedule-section .rock-roll {
+		margin-left: 20px;
+	}
+	.panel-left::after {
+		height: 260px;
+	}
+	.blog-details .entry-post{
+		max-height: inherit;
+		margin-top: 50px;
+	}
+	.related-album h1 {
+		font-size: 22px;
+	}
+	.audio-album .quantity .input-text {
+		max-width: 170px;
+	}	
+	.audio-album .left-content h2,
+	.audio-album .left-content h4 {
+		font-size: 20px;
+	}	
+
+}
+
+
+/* XS Portrait */
+@media (max-width: 475px) {
+
+	.logo-intro img {
+		width: 30%;
+		margin: 0;
+	}
+
+	.logo-intro span {
+		font-size: 24px;
+	}
+
+	.home-content h2 {
+		margin-top: 10px;
+	}	
+
+	.page-title h2 {
+		font-size: 26px;
+	}
+	.vocalist h1 {
+		font-size: 20px;
+	}
+
+	.promotion h2 {
+		font-size: 40px;
+	}
+
+	.video-content {
+		max-height: 165px;
+	}
+	#navigation .navbar:after {
+		left: 50%;
+		margin-left: -50%;
+		width: 100%;
+		border-right: 25px solid transparent;
+		border-left: 25px solid transparent;
+	}
+	.navbar-toggle {
+		margin-top: 12px;
+	}
+	.navbar-brand {
+		padding-top: 15px;
+	}
+
+	.clients-section .section-title {
+		margin-bottom: 20px;
+	}	
+
+	.festival-info .text-left {
+		float: none;
+	}
+
+	.festival-info .text-right {
+		text-align: inherit;
+		display: inline;
+	}
+
+	.festival-image {
+		margin-right: 15px;
+	}	
+
+	.gallery-section .nav-tabs {
+		padding-left: 15px;
+	}	
+
+	.gallery-section .nav > li > a {
+		padding: 0 10px;
+	}
+
+	.section-title h2 {
+		font-size: 24px;
+	}	
+
+	.artists-info a {
+		font-size: 20px;
+		line-height: 18px;
+	}	
+
+	.contact-info {
+		padding: 0 20px;
+		padding-top: 25px;
+		padding-bottom: 50px;
+		margin-left: 25px;
+		margin-top: -180px;
+		right: 9%;
+	}
+
+	.footer {
+		text-align: center;
+	}
+
+	.footer-memu,
+	.copyright {
+		float: none;
+		display: inline-block;
+	}
+
+	.discography .menu.sub {
+		margin-left: 0;
+	}
+
+	.discography .menu {
+		display: inherit;
+	}
+
+	.photo-galery .photo {
+		max-height: 245px;
+	}	
+
+	.products-description .nav-tabs li {
+		float: none;
+		margin-bottom: 15px;
+		width: 100%;
+	}
+
+	.products-description .nav-tabs li + li {
+		margin-left: 0;
+		padding-left: 0;
+		border: none;
+	}	
+
+	.add-buttons .button {
+		margin-bottom: 10px;
+	}
+
+	.become-sponsors h1, 
+	.sponsors h1 {
+		margin-bottom: 10px;
+	}
+
+	.sponsors-section .client li {
+		margin-bottom: 15px;
+	}
+
+	.become-sponsors {
+		padding-top: 70px;
+		padding-bottom: 40px;
+	}
+
+	.become-sponsors .btn.btn-primary {
+		margin-top: 10px;
+	}
+
+	.blog-details .post-content {
+		padding-left: 20px;
+		padding-bottom: 20px;
+	}
+
+	.blog-details .entry-post .entry-meta a {
+		font-size: 13px;
+	}
+
+	.entry-post .entry-meta li + li {
+		margin-left: 0;
+	}
+
+	.blog-details .entry-title {
+		margin-top: 5px;
+		margin-bottom: 0;
+	}
+
+	.entry-title h1 {
+		font-size: 18px;
+		line-height: 20px;
+		margin-bottom: 0;
+		margin-top: 15px;
+	}
+
+	.comments-area h1, 
+	.replay-box h1, 
+	.feedback h1 {
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
+
+	.replay-box .contact-form {
+		padding: 0;
+	}
+
+	.replay-box {
+		padding-bottom: 0;
+	}
+
+	.contact-form .btn.btn-primary {
+		margin-top: 0;
+	}
+
+	.comments-area li:last-child {
+		padding-left: 0;
+	}
+
+	.schedule-menu li:nth-child(2), 
+	.schedule-menu li:nth-child(5), 
+	.schedule-menu li:nth-child(4),
+	.schedule-menu li + li {
+		margin: 0;
+	}
+
+	.festival-info h2 {
+		font-size: 18px;
+		margin-top: 15px;
+	}
+
+	.schedule-slider .schedule {
+		margin-left: 0;
+		margin: 0;
+	}
+
+	.schedule-slider h4 {
+		padding-top: 10px;
+	}
+
+	.ucoming-events .festival-image {
+		float: none;
+	}
+
+	.pagination li a {
+		font-size: 14px;
+		margin: 2px;
+	}
+
+	.band-banner .home-content {
+		padding-top: 70px;
+		padding-bottom: 20px;
+	}
+
+	.products.item .products-icons {
+		width: 80px;
+		height: 80px;
+		line-height: 80px;
+		margin-left: -45px;
+		margin-top: -100px;
+	}
+
+	.products.item .products-icons i {
+		font-size: 30px;
+	}
+
+	.artist-detail.our-band {
+		padding-top: 25px;
+	}
+
+	.artist-detail.our-band.section-padding {
+		padding-bottom: 10px;
+	}
+
+	.gallery-info .title a {
+		line-height: 26px;
+	}
+
+	.festival-info h5 {
+		display: block;
+		overflow: hidden;
+	}
+
+	.festival-info .pull-left {
+		float: none !important;
+	}
+
+	.festival-info .pull-right {
+		float: none !important;
+		text-align: left;
+	}
+
+	.festival-info .audio-list {
+		padding-top: 20px;
+	}
+
+	.audio-album .jp-controls {
+		width: 100px;
+	}
+
+	.audio-album .jp-progress {
+		width: 33%;
+	}
+
+	.audio-album .jp-interface {
+		padding-bottom: 28px;
+	}
+
+	.audio-album #playing {
+		left: 130px;
+	}
+
+	.audio-album .info-wrapper .time,
+	.audio-album .artist-name {
+		display: none;
+	}
+
+	.timeline-panel {
+		margin-bottom: 45px;
+	}
+	.audio-content {
+	    max-height: 555px;
+	}	
+
+	.products.item {
+		min-height: 410px;
+	}
+
+	.ucoming-events .button {
+		text-align: left;
+	}
+
+	.schedule-slider .time {
+		margin-right: 15px;
+	}
+
+	.photos-filckr li:nth-child(4) {
+		margin-left: 0;
+	}
+	.festival-info .text-right {
+	    padding-top: 0;
+	    padding-right: 0px;
+	}
+	.festival-image {
+		max-height: initial;
+	}
+	.festival-info {
+		padding-bottom: 10px;
+	}
+	.video-content .video a{
+		font-size: 50px;
+	}
+	.video-content .video {
+		margin-top: -35px;
+	}
+	.about-info {
+		margin-top: 20px;
+	}
+	#jplayer-container #playing {
+		line-height: 16px;
+	}
+	#jplayer-container .jp-progress {
+		width: 30%;
+	}	
+	
+
+
+}
+
