@@ -1,7 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="889101de-dc7b-4c92-8271-f0a71d8626e2" name="Default Changelist" comment="" />
+    <list default="true" id="889101de-dc7b-4c92-8271-f0a71d8626e2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/.sass-cache/03465f23f19c9b31771cc8acec61089cccc1845c/_fonts.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/.sass-cache/03465f23f19c9b31771cc8acec61089cccc1845c/_mixin.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/.sass-cache/03465f23f19c9b31771cc8acec61089cccc1845c/_responsive.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/.sass-cache/03465f23f19c9b31771cc8acec61089cccc1845c/_theme_color.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/.sass-cache/03465f23f19c9b31771cc8acec61089cccc1845c/style.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/.sass-cache/9568d30ed5d2cebc2ad5df4154c8df8099b75c0b/_mixin.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/.sass-cache/9568d30ed5d2cebc2ad5df4154c8df8099b75c0b/_responsive.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/.sass-cache/9568d30ed5d2cebc2ad5df4154c8df8099b75c0b/_theme_color.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/.sass-cache/9568d30ed5d2cebc2ad5df4154c8df8099b75c0b/_variables.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/.sass-cache/9568d30ed5d2cebc2ad5df4154c8df8099b75c0b/style.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/.sass-cache/b687762b7660b1f71ae40e600add14c590cfdbc7/_mixin.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/.sass-cache/b687762b7660b1f71ae40e600add14c590cfdbc7/_responsive.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/.sass-cache/b687762b7660b1f71ae40e600add14c590cfdbc7/_theme_color.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/.sass-cache/b687762b7660b1f71ae40e600add14c590cfdbc7/_variables.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/.sass-cache/b687762b7660b1f71ae40e600add14c590cfdbc7/style.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/about-us.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/audio/dummy-audio.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/blog.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/concert-tours.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/contact.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/css/animate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/css/audioplayer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/css/classy-nav.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/css/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/css/magnific-popup.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/css/owl.carousel.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/elements.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/fonts/FontAwesome.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/fonts/classy.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/fonts/classy.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/fonts/classy.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/fonts/classy.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/fonts/fontawesome-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/fonts/fontawesome-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/fonts/fontawesome-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/fonts/fontawesome-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/bg-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/bg-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/bg-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/bg-4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/bg-5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/bg-6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/bg-7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/bg-8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/bg-9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/breadcumb.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/breadcumb2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/breadcumb3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/breadcumb4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/breadcumb5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/d1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/d2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/d3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/d4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/d5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/d6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/fs1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/fs2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/fs3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/fs4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/man.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/microphone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/mp1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/mp2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/mp3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/mp4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/s1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/s2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/s3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/bg-img/s4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/blog-img/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/blog-img/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/blog-img/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/blog-img/4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/core-img/calendar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/core-img/check.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/core-img/compact-disc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/core-img/controls.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/core-img/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/core-img/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/core-img/logo2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/core-img/logo3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/core-img/message.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/core-img/microphone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/core-img/placeholder.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/core-img/signature.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/img/core-img/smartphone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/js/active.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/js/bootstrap/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/js/bootstrap/popper.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/js/jquery/jquery-2.2.4.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/js/plugins/plugins.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/scss/_fonts.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/scss/_mixin.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/scss/_responsive.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/scss/_theme_color.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/scss/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Template/musica/style.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/symfony_requirements" beforeDir="false" afterPath="$PROJECT_DIR$/bin/symfony_requirements" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/SymfonyRequirements.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/SymfonyRequirements.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/web/config.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,6 +121,9 @@
     <execution>
       <phar pharPath="$PROJECT_DIR$/composer.phar" interpreterId="3e44f8cd-a8a5-42bc-bfdd-1e0e9b2fb625" />
     </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -59,8 +170,20 @@
   </component>
   <component name="ProjectId" id="1XTPBfImdu1dDJsko9GfQhiIqy2" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PHP$/php.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pathVariables" />
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="dump autoload" />
+      <command value="php bin/console generate:crud" />
+      <command value="server run" />
+      <command value="server:run" />
+      <command value="php bin/console server:run" />
+    </option>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -85,7 +208,27 @@
       <option name="presentableId" value="Default" />
       <updated>1581066976218</updated>
       <workItem from="1581067803957" duration="32000" />
+      <workItem from="1581070328622" duration="1680000" />
+      <workItem from="1581072111560" duration="1501000" />
+      <workItem from="1581185252645" duration="2351000" />
     </task>
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
 </project>
