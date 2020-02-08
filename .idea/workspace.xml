@@ -1,7 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="889101de-dc7b-4c92-8271-f0a71d8626e2" name="Default Changelist" comment="" />
+    <list default="true" id="889101de-dc7b-4c92-8271-f0a71d8626e2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/web/assets/.sass-cache/03465f23f19c9b31771cc8acec61089cccc1845c/_fonts.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/.sass-cache/03465f23f19c9b31771cc8acec61089cccc1845c/_mixin.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/.sass-cache/03465f23f19c9b31771cc8acec61089cccc1845c/_responsive.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/.sass-cache/03465f23f19c9b31771cc8acec61089cccc1845c/_theme_color.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/.sass-cache/03465f23f19c9b31771cc8acec61089cccc1845c/style.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/.sass-cache/9568d30ed5d2cebc2ad5df4154c8df8099b75c0b/_mixin.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/.sass-cache/9568d30ed5d2cebc2ad5df4154c8df8099b75c0b/_responsive.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/.sass-cache/9568d30ed5d2cebc2ad5df4154c8df8099b75c0b/_theme_color.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/.sass-cache/9568d30ed5d2cebc2ad5df4154c8df8099b75c0b/_variables.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/.sass-cache/9568d30ed5d2cebc2ad5df4154c8df8099b75c0b/style.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/.sass-cache/b687762b7660b1f71ae40e600add14c590cfdbc7/_mixin.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/.sass-cache/b687762b7660b1f71ae40e600add14c590cfdbc7/_responsive.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/.sass-cache/b687762b7660b1f71ae40e600add14c590cfdbc7/_theme_color.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/.sass-cache/b687762b7660b1f71ae40e600add14c590cfdbc7/_variables.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/.sass-cache/b687762b7660b1f71ae40e600add14c590cfdbc7/style.scssc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/audio/dummy-audio.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/css/animate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/css/audioplayer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/css/classy-nav.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/css/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/css/magnific-popup.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/css/owl.carousel.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/fonts/FontAwesome.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/fonts/classy.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/fonts/classy.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/fonts/classy.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/fonts/classy.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/fonts/fontawesome-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/fonts/fontawesome-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/fonts/fontawesome-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/fonts/fontawesome-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/bg-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/bg-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/bg-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/bg-4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/bg-5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/bg-6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/bg-7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/bg-8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/bg-9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/breadcumb.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/breadcumb2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/breadcumb3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/breadcumb4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/breadcumb5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/d1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/d2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/d3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/d4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/d5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/d6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/fs1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/fs2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/fs3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/fs4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/man.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/microphone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/mp1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/mp2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/mp3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/mp4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/s1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/s2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/s3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/bg-img/s4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/blog-img/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/blog-img/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/blog-img/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/blog-img/4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/core-img/calendar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/core-img/check.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/core-img/compact-disc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/core-img/controls.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/core-img/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/core-img/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/core-img/logo2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/core-img/logo3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/core-img/message.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/core-img/microphone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/core-img/placeholder.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/core-img/signature.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/img/core-img/smartphone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/js/active.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/js/bootstrap/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/js/bootstrap/popper.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/js/jquery/jquery-2.2.4.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/js/plugins/plugins.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/scss/_fonts.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/scss/_mixin.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/scss/_responsive.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/scss/_theme_color.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/scss/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/assets/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,9 +163,14 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/assets" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pathVariables" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\PIDev\web\assets" />
+    </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
@@ -102,7 +206,7 @@
       <workItem from="1581067803957" duration="32000" />
       <workItem from="1581070328622" duration="1680000" />
       <workItem from="1581072111560" duration="1501000" />
-      <workItem from="1581185252645" duration="2961000" />
+      <workItem from="1581185252645" duration="5536000" />
     </task>
     <servers />
   </component>
