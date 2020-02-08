@@ -1,0 +1,210 @@
+
+.equalizer {
+	overflow: hidden;
+	height: 20px;
+	width: 30px;
+	margin: 0 auto;
+	position: absolute;
+	bottom:0;
+	left:50%;
+	margin-left:-15px;
+	opacity:0;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;	
+}
+
+#navigation .navbar-nav>li>a:focus .equalizer, 
+#navigation .navbar-nav>li.active>a .equalizer, 
+#navigation .navbar-nav>li>a:hover .equalizer,
+#navigation .navbar-nav>.active>a .equalizer, 
+#navigation .navbar-nav>.active>a:focus .equalizer, 
+#navigation .navbar-nav>.active>a:hover .equalizer {
+	opacity:1;
+}
+
+.bar {
+	height: 1px;
+	width: 2px;
+	display: inline-block;
+	background-color: #ed145b;
+	bottom: 0;
+	position: absolute;
+	animation-duration: 500ms;
+	-webkit-animation-duration: 500ms;
+	animation-play-state: running;
+	-webkit-animation-play-state: running;
+	animation-direction: alternate;
+	-webkit-animation-direction: alternate;
+	animation-timing-function: linear;
+	-webkit-animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+} 
+  
+.bar-1 { 
+	left: 0; 
+	animation-name: musicBeat1;
+	-webkit-animation-name: musicBeat1;
+	animation-delay: 0ms;
+	-webkit-animation-delay: 0ms;
+}
+.bar-2 { 
+	left: 3px; 
+	-webkit-animation-name: musicBeat2; 
+	animation-name: musicBeat2; 
+	-webkit-animation-delay: 300ms;
+	animation-delay: 300ms;
+}
+.bar-3 { 
+    left: 6px;
+    -webkit-animation-name: musicBeat3;
+	animation-name: musicBeat3;
+    -webkit-animation-delay: 600ms;
+	animation-delay: 600ms;
+}
+.bar-4 { 
+    left: 9px;
+    -webkit-animation-name: musicBeat4;
+	animation-name: musicBeat4;
+    -webkit-animation-delay: 900ms;
+	animation-delay: 900ms;
+}
+.bar-5 { 
+    left: 12px;
+    -webkit-animation-name: musicBeat5;
+	animation-name: musicBeat5;
+    -webkit-animation-delay: 1200ms;
+	animation-delay: 1200ms;
+}
+.bar-6 { 
+    left: 15px;
+    -webkit-animation-name: musicBeat6;
+	animation-name: musicBeat6;
+    -webkit-animation-delay: 1500ms;
+	animation-delay: 1500ms;
+}
+
+.bar-7 { 
+    left: 18px;
+    -webkit-animation-name: musicBeat7;
+	animation-name: musicBeat7;
+    -webkit-animation-delay: 1800ms;
+	animation-delay: 1800ms;
+}
+   
+.bar-8 { 
+    left: 21px;
+    -webkit-animation-name: musicBeat8;
+	animation-name: musicBeat8;
+    -webkit-animation-delay: 2100ms;
+	animation-delay: 2100ms;
+}
+
+.bar-9 { 
+    left: 24px;
+    -webkit-animation-name: musicBeat9;
+	animation-name: musicBeat9;
+    -webkit-animation-delay: 2400ms;
+	animation-delay: 2400ms;
+}
+
+.bar-10 { 
+    left: 27px;
+    -webkit-animation-name: musicBeat10;
+	animation-name: musicBeat10;
+    -webkit-animation-delay: 2700ms;
+	animation-delay: 2700ms;
+}
+
+@keyframes musicBeat1 {
+  from { height: 1px; }
+  to { height: 7px; }
+}
+
+@-webkit-keyframes musicBeat1 {
+  from { height: 1px; }
+  to { height: 7px; }
+}
+
+@keyframes musicBeat2 {
+  from { height: 1px; }
+  to { height: 15px; }
+}
+@-webkit-keyframes musicBeat2 {
+  from { height: 1px; }
+  to { height: 15px; }
+}
+
+@keyframes musicBeat3 {
+  from { height: 1px; }
+  to { height: 12px; }
+}
+@-webkit-keyframes musicBeat3 {
+  from { height: 1px; }
+  to { height: 12px; }
+}
+
+@keyframes musicBeat4 {
+  from { height: 1px; }
+  to { height: 17px; }
+}
+@-webkit-keyframes musicBeat4 {
+  from { height: 1px; }
+  to { height: 17px; }
+}
+
+@keyframes musicBeat5 {
+  from { height: 1px; }
+  to { height: 20px; }
+}
+@-webkit-keyframes musicBeat5 {
+  from { height: 1px; }
+  to { height: 20px; }
+}
+
+@keyframes musicBeat6 {
+  from { height: 1px; }
+  to { height: 20px; }
+}
+@-webkit-keyframes musicBeat6 {
+  from { height: 1px; }
+  to { height: 20px; }
+}
+
+@keyframes musicBeat7 {
+  from { height: 1px; }
+  to { height: 17px; }
+}
+@-webkit-keyframes musicBeat7 {
+  from { height: 1px; }
+  to { height: 17px; }
+}
+
+@keyframes musicBeat8 {
+  from { height: 1px; }
+  to { height: 12px; }
+}
+@-webkit-keyframes musicBeat8 {
+  from { height: 1px; }
+  to { height: 12px; }
+}
+
+@keyframes musicBeat9 {
+  from { height: 1px; }
+  to { height: 15px; }
+}
+@-webkit-keyframes musicBeat9 {
+  from { height: 1px; }
+  to { height: 15px; }
+}
+@keyframes musicBeat10 {
+  from { height: 1px; }
+  to { height: 7px; }
+}
+@-webkit-keyframes musicBeat10 {
+  from { height: 1px; }
+  to { height: 7px; }
+}
