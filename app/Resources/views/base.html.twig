@@ -13,14 +13,14 @@
         <title>{% block title %}Musica - Music Template{% endblock %}</title>
 
         <!-- Favicon -->
-        <link rel="icon" href="/assets/img/core-img/favicon.ico">
+        <link rel="icon" href="{{asset('assets/img/core-img/favicon.ico')}}">
 
         <!-- Core Stylesheet -->
 
         <meta charset="UTF-8" />
 
-        {% block stylesheets %}<link rel="stylesheet" href="/assets/style.css">
-            <link rel="stylesheet" href="/assets/beat.css">{% endblock %}
+        {% block stylesheets %}<link rel="stylesheet" href="{{asset('assets/style.css')}}">
+            <link rel="stylesheet" href="{{asset('assets/beat.css')}}">{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
@@ -28,7 +28,7 @@
             <!-- ##### Preloader ##### -->
             <div class="preloader d-flex align-items-center justify-content-center">
                 <div class="circle-preloader">
-                    <img src="assets/img/core-img/compact-disc.png" alt="">
+                    <img src="{{asset('assets/img/core-img/compact-disc.png')}}" alt="">
                 </div>
             </div>
 
@@ -141,6 +141,9 @@
                                         <a  href="{{ path('fos_user_security_login') }}"  class="btn musica-btn btn-3 m-2 log"   >Log in!</a>
                                         <a href="{{ path('fos_user_registration_register') }}"  class="btn musica-btn m-2 log">Register now!</a>
                                         {% else %}
+                                        {% if  app.user.roles[0] is same as ('ROLE_ADMIN') %}
+                                            <a  href="{{ path('admin') }}"  class="btn musica-btn btn-3 m-2"   >Dashboard</a>
+                                            {% endif %}
                                             <a  href="{{ path('fos_user_security_logout') }}"  class="btn musica-btn btn-3 m-2"   >Log Out!</a>
                                         {% endif %}
                                     </div>
@@ -165,7 +168,7 @@
                         <!-- Footer Widget Area -->
                         <div class="col-12 col-md-6 col-xl-3">
                             <div class="footer-widget-area mb-100">
-                                <a href="#"><img src="assets/img/core-img/logo2.png" alt=""></a>
+                                <a href="#"><img src="{{asset('assets/img/core-img/logo2.png')}}" alt=""></a>
 
                             </div>
                         </div>
@@ -240,7 +243,7 @@
             <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog form-dark" role="document">
-                    <div class="modal-content card card-image" style="background-image: url('assets/img/bg-img/log.jpg');">
+                    <div class="modal-content card card-image" style="background-image: url({{asset('assets/img/bg-img/log.jpg')}}">
                     </div>
                 </div>
             </div>
@@ -248,15 +251,15 @@
 
             <!-- ##### All Javascript Script ##### -->
             <!-- jQuery-2.2.4 js -->
-            <script src="assets/js/jquery/jquery-2.2.4.min.js"></script>
+            <script src="{{asset('assets/js/jquery/jquery-2.2.4.min.js')}}"></script>
             <!-- Popper js -->
-            <script src="assets/js/bootstrap/popper.min.js"></script>
+            <script src="{{asset('assets/js/bootstrap/popper.min.js')}}"></script>
             <!-- Bootstrap js -->
-            <script src="assets/js/bootstrap/bootstrap.min.js"></script>
+            <script src="{{asset('assets/js/bootstrap/bootstrap.min.js')}}"></script>
             <!-- All Plugins js -->
-            <script src="assets/js/plugins/plugins.js"></script>
+            <script src="{{asset('assets/js/plugins/plugins.js')}}"></script>
             <!-- Active js -->
-            <script src="assets/js/active.js"></script>
+            <script src="{{asset('assets/js/active.js')}}"></script>
 
 
 
