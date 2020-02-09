@@ -1,0 +1,64 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+
+
+<!-- Modal -->
+
+<!--Content-->
+
+<div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+    <!--Header-->
+    <div class="modal-header text-center pb-4">
+        <h3 class="modal-title w-100 text-white font-weight-bold" id="myModalLabel"><strong>Register</strong> </h3>
+
+
+    </div>
+    <!--Body-->
+    <div class="modal-body">
+        <!--Body-->
+
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+            <div class="form-group mb-3">
+                {{ form_row(form.email,{'attr': {'class': 'form-control validate white-text'} }) }}
+
+            </div>
+
+            <div class="form-group mb-3">
+                {{ form_row(form.username,{'attr': {'class': 'form-control validate white-text'} }) }}
+            </div>
+                <div class="form-group mb-3" style="position: relative">
+                    {{ form_row(form.plainPassword.first,{'attr': {'class': 'form-control validate white-text'} }) }}
+
+                </div>
+                <div class="form-group mb-5" style="position: relative">
+                    {{ form_row(form.plainPassword.second,{'attr': {'class': 'form-control validate white-text'} }) }}
+                </div>
+
+
+            <!--Grid row-->
+            <div class="row d-flex align-items-center mb-4">
+
+                <!--Grid column-->
+                <div class="text-center mb-3 col-md-12">
+
+                    <input type="submit" id="_submit" name="_submit"  class="btn btn-success btn-block btn-rounded z-depth-1" value="{{ 'registration.submit'|trans }}"/>
+                </div>
+
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+        {{ form_end(form) }}
+            <!--Grid row-->
+
+            <!--Grid row-->
+
+    </div>
+</div>
+
+<!--/.Content-->
+
+<!-- Modal -->
