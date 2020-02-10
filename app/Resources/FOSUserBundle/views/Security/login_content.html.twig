@@ -58,7 +58,7 @@
 
                             <!--Grid column-->
                             <div class="col-md-12">
-                                <p class="font-small white-text d-flex justify-content-end">Don't have an account? <a href="{{ path('fos_user_registration_register') }}" class="text-white ml-1 font-weight-bold">
+                                <p class="font-small white-text d-flex justify-content-end">Don't have an account? <a href="{{ path('fos_user_registration_register') }}" class="text-white ml-1 font-weight-bold log2">
                                        Sign Up</a></p>
                             </div>
                             <!--Grid column-->
@@ -72,3 +72,9 @@
         <!--/.Content-->
 
 <!-- Modal -->
+<script>
+    $('.log2').on('click', function(e){
+        e.preventDefault();
+        $('#darkModalForm').modal('show').find('.modal-content').load($(this).attr('href'));
+    });
+</script>
