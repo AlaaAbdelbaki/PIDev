@@ -1,0 +1,74 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+<!-- Modal -->
+
+        <!--Content-->
+
+            <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+                <!--Header-->
+                <div class="modal-header text-center pb-4">
+                    <h3 class="modal-title w-100 text-white font-weight-bold" id="myModalLabel"><strong>SIGN IN</strong> </h3>
+
+
+                </div>
+                <!--Body-->
+                <div class="modal-body">
+                    <!--Body-->
+                    <form action="{{ path("fos_user_security_check") }}" method="post">
+                        {% if csrf_token %}
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        {% endif %}
+
+
+                        <div class="md-form mb-5">
+                            <label for="username">{{ 'security.login.username'|trans }}</label>
+                            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control validate white-text" required="required" autocomplete="username" />
+
+                        </div>
+
+                        <div class="md-form pb-3">
+                            <label for="password">{{ 'security.login.password'|trans }}</label>
+                            <input type="password" id="Form-pass5" name="_password" required="required" class="form-control validate white-text" autocomplete="current-password" />
+
+                            <div class="form-group mt-4" style="position: relative">
+                                <input type="checkbox" style="display: none" id="remember_me" name="_remember_me" value="on" />
+                                <label for="remember_me" style="padding-left: 20px">{{ 'security.login.remember_me'|trans }}</label>
+
+                            </div>
+                        </div>
+
+                        <!--Grid row-->
+                        <div class="row d-flex align-items-center mb-4">
+
+                            <!--Grid column-->
+                            <div class="text-center mb-3 col-md-12">
+
+                                <input type="submit" id="_submit" name="_submit"  class="btn btn-success btn-block btn-rounded z-depth-1"value="{{ 'security.login.submit'|trans }}" />
+                            </div>
+                            <!--Grid column-->
+
+                        </div>
+                        <!--Grid row-->
+
+                        <!--Grid row-->
+                        <div class="row">
+
+                            <!--Grid column-->
+                            <div class="col-md-12">
+                                <p class="font-small white-text d-flex justify-content-end">Don't have an account? <a href="{{ path('fos_user_registration_register') }}" class="text-white ml-1 font-weight-bold">
+                                       Sign Up</a></p>
+                            </div>
+                            <!--Grid column-->
+
+                        </div>
+                        <!--Grid row-->
+                    </form>
+                </div>
+            </div>
+
+        <!--/.Content-->
+
+<!-- Modal -->
