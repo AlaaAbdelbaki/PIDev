@@ -1,0 +1,3 @@
+talent_homepage:
+    path:     /talent
+    defaults: { _controller: TalentBundle:Default:index }
