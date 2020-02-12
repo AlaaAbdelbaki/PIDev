@@ -1,13 +1,15 @@
 
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html >
+<html lang="en"  itemscope itemtype="http://schema.org/Article">
     <head>
 
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" >
         <meta name="description" content="">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
         <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
         <!-- Title -->
@@ -56,6 +58,7 @@
 
                                     <!-- Nav Start -->
                                     <div class="classynav">
+
                                         <ul>
                                             <li><a href="{{ path('homepage') }}" class="show">Home
                                                     <div class="equalizer">
@@ -124,7 +127,7 @@
                                                         <span class="bar bar-9"></span>
                                                         <span class="bar bar-10"></span>
                                                     </div></a></li>
-                                            <li><a href="#" class="show">News & Blog
+                                            <li><a href="#" class="show">News
                                                     <div class="equalizer">
                                                         <span class="bar bar-1"></span>
                                                         <span class="bar bar-2"></span>
@@ -139,7 +142,21 @@
                                                     </div></a>
 
                                             </li>
+                                            <li><a href="#" class="show">Blog
+                                                    <div class="equalizer">
+                                                        <span class="bar bar-1"></span>
+                                                        <span class="bar bar-2"></span>
+                                                        <span class="bar bar-3"></span>
+                                                        <span class="bar bar-4"></span>
+                                                        <span class="bar bar-5"></span>
+                                                        <span class="bar bar-6"></span>
+                                                        <span class="bar bar-7"></span>
+                                                        <span class="bar bar-8"></span>
+                                                        <span class="bar bar-9"></span>
+                                                        <span class="bar bar-10"></span>
+                                                    </div></a>
 
+                                            </li>
                                             <li><a href="" class="show">Gallery
                                                     <div class="equalizer">
                                                         <span class="bar bar-1"></span>
@@ -266,7 +283,10 @@
                  aria-hidden="true">
                 <div class="modal-dialog form-dark" role="document">
                     <div class="modal-content card card-image" style="background-image: url({{asset('assets/img/bg-img/log.jpg')}}">
+
                     </div>
+
+
                 </div>
             </div>
             <!-- ##### Footer Area Start ##### -->
@@ -304,5 +324,6 @@
                 $('#darkModalForm').modal('show').find('.modal-content').load($(this).attr('href'));
             });
         </script>
+
     </body>
 </html>
