@@ -66,7 +66,7 @@ class event_participant
      */
     private $event;
     /**
-     * @ORM\ManyToOne(targetEntity="user", inversedBy="event_participants")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="event_participants")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;

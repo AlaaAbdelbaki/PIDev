@@ -84,7 +84,7 @@ class complaint
         return $this;
     }
     /**
-     * @ORM\ManyToOne(targetEntity="user", inversedBy="complaint")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="complaint")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;

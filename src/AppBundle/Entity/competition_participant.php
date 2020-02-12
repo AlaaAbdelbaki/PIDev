@@ -57,7 +57,7 @@ class competition_participant
      */
     private $competition;
     /**
-     * @ORM\ManyToOne(targetEntity="user", inversedBy="competition_participant")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="competition_participant")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;

@@ -43,7 +43,7 @@ class vote
         $this->video = $video;
     }
     /**
-     * @ORM\ManyToOne(targetEntity="user", inversedBy="voters")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="voters")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;

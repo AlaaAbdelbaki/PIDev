@@ -64,7 +64,7 @@ class comment
      */
     private $article;
     /**
-     * @ORM\ManyToOne(targetEntity="user", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;

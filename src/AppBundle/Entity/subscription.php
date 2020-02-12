@@ -29,12 +29,12 @@ class subscription
     private $subscriptionDate;
 
     /**
-     * @ORM\ManyToOne(targetEntity="user", inversedBy="subs")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="subs")
      * @ORM\JoinColumn(name="subetto_id", referencedColumnName="id")
      */
     private $subedto;
     /**
-     * @ORM\ManyToOne(targetEntity="user", inversedBy="subedtos")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="subedtos")
      * @ORM\JoinColumn(name="sub_id", referencedColumnName="id")
      */
     private $sub;
