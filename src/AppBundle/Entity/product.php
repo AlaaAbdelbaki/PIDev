@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -33,6 +34,31 @@ class product
      * @ORM\Column(name="img", type="string", length=500)
      */
     private $img;
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getOrderLine()
+    {
+        return $this->order_line;
+    }
+
+    /**
+     * @param ArrayCollection $order_line
+     */
+    public function setOrderLine($order_line)
+    {
+        $this->order_line = $order_line;
+    }
+    /**
+     * @ORM\OneToMany(targetEntity="order_line", mappedBy="product" , orphanRemoval=true)
+     */
+    private $order_line;
+
+    public function __construct()
+    {
+        $this->order_line = new ArrayCollection();
+    }
 
     /**
      * @return string
