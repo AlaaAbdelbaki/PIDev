@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="889101de-dc7b-4c92-8271-f0a71d8626e2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/web/assets/img/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Resources/views/modal.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login_content.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login_content.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/admin_base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/admin_base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/layout.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/default/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/default/home.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/security.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/security.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,14 +82,15 @@
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.zend.framework.tool" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Projects\PIDev\app\Resources\FOSUserBundle\views\Registration" />
-      <recent name="D:\Projects\PIDev\app\Resources\FOSUserBundle\views" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Projects\PIDev\app\Resources\FOSUserBundle\views\Registration" />
       <recent name="D:\Projects\PIDev\app\Resources\FOSUserBundle\Security" />
       <recent name="D:\Projects\PIDev\web\assets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\PIDev\app\Resources\views" />
+      <recent name="D:\Projects\PIDev\app\Resources\FOSUserBundle\views\Registration" />
+      <recent name="D:\Projects\PIDev\app\Resources\FOSUserBundle\views" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -106,6 +108,7 @@
       <command value="clear cache" />
       <command value="s cache:clear" />
       <command value="php bin/console server:run" />
+      <command value="s debug:router" />
     </option>
   </component>
   <component name="RunDashboard">
@@ -136,6 +139,7 @@
       <workItem from="1581185252645" duration="15785000" />
       <workItem from="1581253167448" duration="23177000" />
       <workItem from="1581345606594" duration="10834000" />
+      <workItem from="1581447677529" duration="11408000" />
     </task>
     <servers />
   </component>

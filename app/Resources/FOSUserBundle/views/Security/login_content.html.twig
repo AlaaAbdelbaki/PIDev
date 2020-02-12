@@ -1,13 +1,9 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-    {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-<!-- Modal -->
+{% if error %}
 
-        <!--Content-->
 
-            <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+{% endif %}
                 <!--Header-->
                 <div class="modal-header text-center pb-4">
                     <h3 class="modal-title w-100 text-white font-weight-bold" id="myModalLabel"><strong>SIGN IN</strong> </h3>
@@ -17,6 +13,7 @@
                 <!--Body-->
                 <div class="modal-body">
                     <!--Body-->
+
                     <form action="{{ path("fos_user_security_check") }}" method="post">
                         {% if csrf_token %}
                             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
@@ -46,7 +43,7 @@
                             <!--Grid column-->
                             <div class="text-center mb-3 col-md-12">
 
-                                <input type="submit" id="_submit" name="_submit"  class="btn btn-success btn-block btn-rounded z-depth-1"value="{{ 'security.login.submit'|trans }}" />
+                                <input type="submit" id="_submit" name="_submit"  class="btn btn-success btn-block btn-rounded z-depth-1 "value="{{ 'security.login.submit'|trans }}" />
                             </div>
                             <!--Grid column-->
 
@@ -67,14 +64,13 @@
                         <!--Grid row-->
                     </form>
                 </div>
-            </div>
 
-        <!--/.Content-->
 
-<!-- Modal -->
 <script>
     $('.log2').on('click', function(e){
         e.preventDefault();
         $('#darkModalForm').modal('show').find('.modal-content').load($(this).attr('href'));
     });
 </script>
+
+
