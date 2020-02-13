@@ -37,28 +37,6 @@ class orders
      */
     private $id;
     /**
-     * @var string
-     *
-     * @ORM\Column(name="address", type="string", length=255)
-     */
-    private $address;
-
-    /**
-     * @return string
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * @param string $address
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-    }
-    /**
      * @ORM\OneToMany(targetEntity="order_line", mappedBy="orders" , orphanRemoval=true)
      */
     private $order_line;
