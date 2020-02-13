@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+<div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({{ asset('assets/img/bg-img/breadcumb2.jpg')}}">
+    <div class="bradcumbContent">
+        <h2>Competitions</h2>
+    </div>
+</div>
+<div class="upcoming-shows-area section-padding-100">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12">
+                <!-- Upcoming Shows Content -->
+                <div class="upcoming-shows-content">
+                    {% for competition in competitions %}
+                    <!-- Single Upcoming Shows -->
+                    <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
+                        <div class="shows-date">
+                            <h2> <span>{% if competition.competitionDate %}{{ competition.competitionDate|date('Y-m-d') }}{% endif %}</span></h2>
+                        </div>
+                        <div class="shows-date">
+                            <h2><span>{% if competition.competitionEndDate %}{{ competition.competitionEndDate|date('Y-m-d') }}{% endif %}</span></h2>
+                        </div>
+                        <div class="shows-desc d-flex align-items-center">
+
+                            <div class="shows-name">
+                                <h6>{{ competition.subject }}</h6>
+
+                            </div>
+                        </div>
+
+                        <div class="shows-time">
+                            <p>20:30</p>
+                        </div>
+                        <div class="buy-tickets">
+                            <a href="#" class="btn musica-btn">Participate</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

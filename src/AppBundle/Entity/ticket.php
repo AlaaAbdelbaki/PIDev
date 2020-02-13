@@ -38,7 +38,27 @@ class ticket
     {
         return $this->id;
     }
+    /**
+     * @ORM\ManyToOne(targetEntity="event", inversedBy="ticket")
+     * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
+     */
+    private $event;
 
+    /**
+     * @return mixed
+     */
+    public function getEvent()
+    {
+        return $this->event;
+    }
+
+    /**
+     * @param mixed $event
+     */
+    public function setEvent($event)
+    {
+        $this->event = $event;
+    }
     /**
      * Set price
      *
