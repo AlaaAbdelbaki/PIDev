@@ -1,3 +1,15 @@
 talent_homepage:
-    path:     /talent
+    path:     /
     defaults: { _controller: TalentBundle:Default:index }
+list_video:
+    path: /admin/list_video
+    defaults: {_controller: TalentBundle:Video:viewVideo}
+add_video:
+    path: /admin/add_video
+    defaults: {_controller: TalentBundle:Video:addVideo}
+delete_video:
+    path: /admin/delete/{id}
+    defaults : { _controller: TalentBundle:Video:delete}
+update_video:
+    path: /admin/update/{id}
+    defaults: { _controller: TalentBundle:Video:update}
