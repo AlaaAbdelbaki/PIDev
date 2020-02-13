@@ -1,0 +1,15 @@
+events_homepage:
+    path:     /Events
+    defaults: { _controller: EventsBundle:Default:index }
+add:
+    path:     /add
+    defaults: { _controller: EventsBundle:Events:add }
+affiche:
+    path:     /affiche
+    defaults: { _controller: EventsBundle:Events:affiche }
+delete:
+    path:     /delete/{id}
+    defaults: { _controller: EventsBundle:Events:delete }
+modifier:
+    path:     /modifier/{id}
+    defaults: { _controller: EventsBundle:Events:modifier }
