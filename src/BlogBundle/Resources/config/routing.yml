@@ -1,0 +1,12 @@
+blog_homepage:
+    path:     /add
+    defaults: { _controller: BlogBundle:Blog:add }
+afficher:
+    path:     /afficher
+    defaults: { _controller: BlogBundle:Blog:afficher }
+edit:
+    path:     /edit/{id}
+    defaults: { _controller: BlogBundle:Blog:edit }
+delete:
+    path: /delete/{id}
+    defaults: { _controller: BlogBundle:Blog:delete }
