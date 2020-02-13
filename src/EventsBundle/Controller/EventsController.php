@@ -32,10 +32,15 @@ class EventsController extends Controller
      $form->handleRequest($request);
      if($form->isSubmitted() && $form->isValid())
      {
+         $file = $event->getImg();
+         $fileName = md5(uniqid()).'.'.$file->guessExtension();
+         $file->move($this->getParameter('photos_directory'), $fileName);
+         $event->setImg($fileName);
          $em = $this->getDoctrine()->getManager();
          $em->persist($event);
          $em->flush();
 
+         return $this->redirect($this->generateUrl('affiche'));
      }
      return($this->render("@Events/event/event_add.html.twig",['f'=>$form->createView()]));
 
@@ -78,6 +83,11 @@ class EventsController extends Controller
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
+
+            $file = $event->getImg();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('photos_directory'), $fileName);
+            $event->setImg($fileName);
             $conn = $this->getDoctrine()->getManager();
             $conn->persist($event);
             $conn->flush();

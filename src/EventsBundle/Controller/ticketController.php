@@ -28,6 +28,7 @@ public function ajoutAction(Request $request)
         $em=$this->getDoctrine()->getManager();
         $em->persist($ticket);
         $em->flush();
+        return $this->redirectToRoute('list');
     }
     return($this->render("@Events/ticket/ticket_add.html.twig",['t'=>$form->createView()]));
 }

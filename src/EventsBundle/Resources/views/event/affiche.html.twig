@@ -24,6 +24,7 @@
                     <th>nbr_places</th>
                     <th>description</th>
                     <th>type</th>
+                    <th>img</th>
                     </thead>
                     <tbody>
                     {% for i in t %}
@@ -36,6 +37,7 @@
                             <td>{{ i.nbPlaces }}</td>
                             <td>{{ i.description}}</td>
                             <td>{{ i.type}}</td>
+                            <td><img src="{{ asset('assets/img/shop-img/' ~ i.img) }}" height="50px" width="50px"></td>
                             <td><a href="{{path('delete',{'id': i.id })}}"> <button class="btn btn-primary btn-block">delete</button></a> <br></td>
                             <td><a href="{{path('modifier',{'id': i.id })}}"> <button class="btn btn-primary btn-block">edit</button></a> <br></td>
 
