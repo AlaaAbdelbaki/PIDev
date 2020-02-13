@@ -1,6 +1,7 @@
 {% extends 'admin_base.html.twig' %}
 {% block admin_content %}
     {{ form_start(f) }}
+    <div class="content">
     <div class="col-md-12">
     <div class="card">
     <div class="card-header card-header-primary">
@@ -24,7 +25,7 @@
                 event_date:
             </th>
             <th>
-{#                {{ form_widget(f.event) }}#}
+             {{ form_widget(f.event) }}
             </th>
         </tr>
         </thead>
@@ -34,5 +35,10 @@
         </tr>
         </tbody>
     </table>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
     {{ form_end(f) }}
 {% endblock %}

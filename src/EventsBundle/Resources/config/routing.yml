@@ -25,3 +25,6 @@ supp:
 edit:
     path:     /edit/{id}
     defaults: { _controller: EventsBundle:ticket:edit }
+show_events:
+    path:     /show_events
+    defaults: { _controller: EventsBundle:Default:affiche }
