@@ -1,0 +1,70 @@
+{%  extends 'admin_base.html.twig' %}
+{% block admin_content %}
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">Articles table</h4>
+                <a href="{{ path('blog_homepage') }}">Ajouter updates</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Title
+                        </th>
+                        <th>
+                            Image
+                        </th>
+                        <th>
+                            Content
+                        </th>
+                        <th>
+                            categorie
+                        </th>
+                        <th>
+                            Publish_date
+                        </th>
+                        <th>
+                            Action
+                        </th>
+
+                        </thead>
+                        <tbody>
+                        {% for a in updatess %}
+                            <tr>
+                                <td>
+                                    {{ a.id }}
+                                </td>
+                                <td>
+                                    {{a.title}}
+                                </td>
+                                <td>
+                                    <img src="{{ asset( a.img) }}" width="200px" height="300px"/>
+                                </td>
+                                <td>
+                                    {{a.content}}
+                                </td>
+                                <td>
+                                    {{a.category}}
+                                </td>
+
+
+
+                                <td>
+                                    <a href="{{ path('supprimer',{'id':a.id}) }}">Supprimer</a>
+                                    <a href="{{ path('modifier',{'id':a.id}) }}">Modifier</a>
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

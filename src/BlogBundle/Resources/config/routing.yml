@@ -10,3 +10,17 @@ edit:
 delete:
     path: /delete/{id}
     defaults: { _controller: BlogBundle:Blog:delete }
+ajouter:
+    path: /ajouter
+    defaults: { _controller: BlogBundle:Updates:ajouter }
+affiche:
+    path: /affiche
+    defaults: { _controller: BlogBundle:Updates:affiche }
+modifier:
+    path:     /modifier/{id}
+    defaults: { _controller: BlogBundle:Updates:modifier }
+supprimer:
+    path: /supprimer/{id}
+    defaults: { _controller: BlogBundle:Updates:supprimer }
+
+

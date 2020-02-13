@@ -5,8 +5,8 @@ namespace BlogBundle\Controller;
 use AppBundle\Entity\article;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
 use Symfony\Component\Form\BlogType;
+
 use Symfony\Component\HttpFoundation\Response;
 
 class BlogController extends Controller
@@ -39,7 +39,7 @@ class BlogController extends Controller
     public function editAction(Request $request, $id)
     {
         $a = $this->getDoctrine()->getRepository(article::class)->find($id);
-        $form = $this->createForm(BlogType::class, $a);
+        $form = $this->createForm(\BlogBundle\Form\BlogType::class, $a);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             $em = $this->getDoctrine()->getManager();
