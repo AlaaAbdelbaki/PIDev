@@ -1,0 +1,47 @@
+{% extends 'admin_base.html.twig' %}
+{% block admin_content %}
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">Reviews</h4>
+                <p class="card-category"> Here is a subtitle for this table</p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="text-primary">
+                        <th>ID:</th>
+                        <th>Rating:</th>
+                             <th>Title:</th>
+                            <th>Content:</th>
+                            <th>Actions</th>
+                        </thead>
+                        {% for s in formulaire %}
+                        <tbody>
+
+                        <tr>
+
+                            <td>{{ s.id }}</td>
+
+
+                            <td>{{ s.rating }} </td>
+
+
+
+                            <td>{{ s.title }}</td>
+
+
+
+                            <td>{{ s.content }}</td>
+                            <td> <a href="{{ path('edit',{'id':s.id}) }}'"> Edit</a></td>
+                            <td><a href="{{ path('delete',{'id':s.id}) }}'">Delete</a></td>
+                        </tr>
+
+                        </tbody>
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+review_homepage:
+    path:     /review
+    defaults: { _controller: ReviewBundle:reviews:AddReview }
+affiche:
+        path:     /affiche
+        defaults: { _controller: ReviewBundle:reviews:affiche }
+delete:
+         path:     /delete/{id}
+         defaults: { _controller: ReviewBundle:reviews:delete }
+edit:
+  path:     /edit/{id}
+  defaults: { _controller: ReviewBundle:reviews:edit }
+AddReclam:
+  path:     /AddReclam
+  defaults: { _controller: ReviewBundle:complaints:AddReclam }
+affiche_reclam:
+  path:     /affiche_reclam
+  defaults: { _controller: ReviewBundle:complaints:affiche_reclam }
+delete_reclam:
+  path:     /delete_reclam/{id}
+  defaults: { _controller: ReviewBundle:complaints:delete_reclam }
+edit_reclam:
+    path:     /edit_reclam/{id}
+    defaults: { _controller: ReviewBundle:complaints:edit_reclam }
