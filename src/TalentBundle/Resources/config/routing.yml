@@ -13,3 +13,9 @@ delete_video:
 update_video:
     path: /admin/update/{id}
     defaults: { _controller: TalentBundle:Video:update}
+user_profile:
+    path: /profile
+    defaults: { _controller: TalentBundle:Talent:viewProfile}
+update_profile:
+    path: /profile/edit{id}
+    defaults: {_controller: TalentBundle:Talent:updateProfile}

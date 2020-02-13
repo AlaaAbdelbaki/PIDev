@@ -1,4 +1,76 @@
-{% extends "admin_base.html.twig" %}
-{% block admin_content %}
+{% extends "base.html.twig" %}
 
+{% block content %}
+
+
+<div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({{ asset('assets/img/bg-img/bg-1.jpg') }});">
+    <div class="bradcumbContent">
+        <h2>Bienvenue {{ app.user.username }} !!</h2>
+    </div>
+</div>
+<!-- bg gradients -->
+<div class="bg-gradients"></div>
+<!-- ##### Breadcumb Area End ##### -->
+
+<!-- ##### Elements Area Start ##### -->
+<section class="elements-area mt-30 section-padding-100-0 ">
+    <div class="container">
+        <div class="row">
+                <!-- Buttons -->
+                <div class="musica-buttons-area mb-100 ">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table" >
+                                <thead class=" text-primary">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>{{app.user.id}}</th>
+                                </tr>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>{{ app.user.username }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Nom: </th>
+                                    <th>{{ app.user.firstName }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Prénom:</th>
+                                    <th>{{ app.user.name }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Date de naissance: </th>
+                                    <th>{{app.user.birthday|date("d M Y")}}</th>
+                                </tr>
+                                <tr>
+                                    <th>Email: </th>
+                                    <th>{{ app.user.email }}</th>
+                                </tr>
+
+                                <tr>
+                                    <th>Numéro de téléphone: </th>
+                                    <th>{{ app.user.telephoneNumber }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Sexe: </th>
+                                    {% if app.user.sexe == "male" %}
+                                    <th>Homme</th>
+                                    {% else %}
+                                        <th>Femme</th>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <th>Bio</th>
+                                    <th>{{ app.user.bio }}</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <a href="{{ path('update_profile',{id:app.user.id}) }}" class="btn musica-btn m-2">Mettre à jour votre profil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
