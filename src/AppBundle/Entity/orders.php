@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +14,21 @@ use Doctrine\ORM\Mapping as ORM;
 class orders
 {
     /**
+     * @return ArrayCollection
+     */
+    public function getOrderLine()
+    {
+        return $this->order_line;
+    }
+
+    /**
+     * @param ArrayCollection $order_line
+     */
+    public function setOrderLine($order_line)
+    {
+        $this->order_line = $order_line;
+    }
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -20,7 +36,15 @@ class orders
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    /**
+     * @ORM\OneToMany(targetEntity="order_line", mappedBy="orders" , orphanRemoval=true)
+     */
+    private $order_line;
 
+    public function __construct()
+    {
+        $this->order_line = new ArrayCollection();
+    }
     /**
      * @var \DateTime
      *
