@@ -1,16 +1,61 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.html.twig' %}
 
-{% block body %}
-    <h1>Competition creation</h1>
+{% block admin_content %}
+    <div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-primary ">
+                        <h4 class="card-title ">Add Competition</h4>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+                    </div>
+                    <div class="card-body">
+                        {{ form_start(form) }}
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class="bmd-label-floating">Start Date</label>
+                                    <div class="form-group bmd-form-group">
+                                        {{ form_widget(form.competitionDate,{'attr': {'class': 'form-control'} }) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('competition_index') }}">Back to the list</a>
-        </li>
-    </ul>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="bmd-label-floating fa fa-calendar"> End Date</label>
+                                    <div class="form-group bmd-form-group ">
+                                        {{ form_widget(form.competitionEndDate,{'attr': {'class': 'form-control'} }) }}
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+
+                                        <div class="form-group bmd-form-group">
+                                            <label class="bmd-label-floating">Subject</label>
+                                            {{ form_widget(form.subject,{'attr': {'class': 'form-control'} }) }}
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary pull-right">Publish</button>
+                            <div class="clearfix"></div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+
+        </div>
+    </div>
+    </div>
+
 {% endblock %}
