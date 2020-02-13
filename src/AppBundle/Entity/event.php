@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -48,6 +49,52 @@ class event
      */
     private $img;
 
+    /**
+     * @return ArrayCollection
+     */
+    public function getEventParticipants()
+    {
+        return $this->event_participants;
+    }
+
+    /**
+     * @param ArrayCollection $event_participants
+     */
+    public function setEventParticipants($event_participants)
+    {
+        $this->event_participants = $event_participants;
+    }
+
+    /**
+     * @ORM\OneToMany(targetEntity="event_participant", mappedBy="event" , orphanRemoval=true)
+     */
+    private $event_participants;
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getTicket()
+    {
+        return $this->ticket;
+    }
+
+    /**
+     * @param ArrayCollection $ticket
+     */
+    public function setTicket($ticket)
+    {
+        $this->ticket = $ticket;
+    }
+
+    /**
+     * @ORM\OneToMany(targetEntity="ticket", mappedBy="event" , orphanRemoval=true)
+     */
+    private $ticket;
+    public function __construct()
+    {
+        $this->event_participants = new ArrayCollection();
+        $this->ticket = new ArrayCollection();
+    }
     /**
      * @return string
      */
