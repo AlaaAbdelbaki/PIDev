@@ -28,23 +28,15 @@
                         <h3>${{ product.price }}</h3>
 
                         <form class="cart" method="post">
-                            <div class="color">
-                                <h3>Color</h3>
-                                <input type="radio" name="sellType" value="color1" id="color1"><label for="color1"></label>
-                                <input type="radio" name="sellType" value="color2" id="color2"><label for="color2"></label>
-                                <input type="radio" name="sellType" value="color3" id="color3"><label for="color3"></label>
-                                <input type="radio" name="sellType" value="color4" id="color4"><label for="color4"></label>
-                                <input type="radio" name="sellType" value="color5" id="color5"><label for="color5"></label>
-                            </div>
+
                             <div class="quantity" data-trigger="spinner">
                                 <h3>Quantity:</h3>
-                                <input type="text" name="quantity" value="1" title="quantity" class="input-text">
-                                <a class="btn btn-default" href="javascript:;" data-spin="up"><i class="fa fa-angle-up"></i></a>
-                                <a class="btn btn-default" href="javascript:;" data-spin="down"><i class="fa fa-angle-down"></i></a>
+                                <input type="number" name="quantity" value="1" title="quantity" class="input-text" min="1" max="{{ product.stock }}">
+
                             </div>
                             <div class="add-buttons">
                                 <button type="submit" class="cart-button button"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-
+                                <button type="submit" class="cart-button button"><i class="fa fa-shopping-cart"></i>Buy Product</button>
                             </div>
                         </form>
 
