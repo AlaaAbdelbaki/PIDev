@@ -1,26 +1,33 @@
 {% extends 'admin_base.html.twig' %}
 {% block admin_content %}
-    {{ form_start(f) }}
-    <table>
-        <tr>
-            <td>{{ form_label(f.productName,'Product Name') }}</td>
-            <td>{{ form_widget(f.productName) }}</td>
-        </tr>
-        <tr>
-            <td>{{ form_label(f.img,'Product Image') }}</td>
-            <td>{{ form_widget(f.img) }}</td>
-        </tr>
-        <tr>
-            <td>{{ form_label(f.stock,'Product Stock') }}</td>
-            <td>{{ form_widget(f.stock) }}</td>
-        </tr>
-        <tr>
-            <td>{{ form_label(f.price,'Product price') }}</td>
-            <td>{{ form_widget(f.price) }}</td>
-        </tr>
+
+    <div class="col-md-8">
+    <div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title">Edit Product</h4>
+        <p class="card-category">Complete Product infos</p>
+    </div>
+    <div class="card-body">
+
+            {{ form_start(f)}}
 
 
-    </table>
 
-    {{ form_end(f) }}
+                        {{ form_label(f.productName,'Product Name',{'attr':{'class':'bmd-label-floating'}}) }}
+                        {{ form_widget(f.productName,{'attr':{'class':'form-control'}}) }}
+
+
+                        {{ form_label(f.img,'Product Image',{'attr':{'class':'bmd-label-floating'}}) }}
+                        {{ form_widget(f.img,{'attr':{'class':'form-control'}}) }}
+
+                        {{ form_label(f.stock,'Product Stock',{'attr':{'class':'bmd-label-floating'}}) }}
+                        {{ form_widget(f.stock,{'attr':{'class':'form-control'}}) }}
+
+                        {{ form_label(f.price,'Product Price',{'attr':{'class':'bmd-label-floating'}}) }}
+                        {{ form_widget(f.price,{'attr':{'class':'form-control'}}) }}
+
+                        {{ form_widget(f.Modifier) }}
+                        {{ form_end(f) }}
+
+    </div>
 {% endblock %}

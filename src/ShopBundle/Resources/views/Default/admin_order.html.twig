@@ -5,8 +5,10 @@
             <div class="card-header card-header-primary">
                 <h4 class="card-title ">Products List</h4>
                 <p class="card-category">Here you can find all products</p>
-                <a href="{{ path('shop_adminajouter') }}">Add Product || </a>
-                <a href="{{ path('shop_adminorder') }}">Orders Manager</a>
+
+                <a href="{{ path('shop_adminorder') }}">Orders Manager || </a>
+                <a href="{{ path('shop_adminorderajouter') }}">Add Order || </a>
+                <a href="{{ path('shop_admin') }}">Product Manager</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -14,16 +16,16 @@
                         <thead class=" text-primary">
 
                         <th>
-                            Product ID
+                            Order ID
                         </th>
                         <th>
-                            Product Name
+                            Order Date
                         </th>
                         <th>
-                            Stock
+                            Total
                         </th>
                         <th>
-                            price
+                            Address
                         </th>
                         <th>
                             Actions
@@ -31,24 +33,24 @@
 
                         </thead>
                         <tbody>
-                        {% for p in products %}
+                        {% for p in orders %}
                         <tr>
 
                             <td>
                                 {{ p.id }}
                             </td>
                             <td>
-                                {{ p.productName }}
+                                {{ p.orderDate|date("Y/m/d") }}
                             </td>
                             <td>
-                                {{ p.stock }}
+                                {{ p.total }}
                             </td>
                             <td class="text-primary">
-                                {{ p.price }}
+                                {{ p.address }}
                             </td>
                             <td>
-                                <a href="{{ path('shop_adminsupprimer',{'_id':p.id}) }}">Delete</a>
-                                <a href="{{ path('shop_adminmodifier',{'_id':p.id}) }}">Update</a>
+                                <a href="{{ path('shop_adminorderdel',{'id':p.id}) }}">Delete</a>
+                                <a href="{{ path('shop_adminorderupdate',{'id':p.id}) }}">Update</a>
 
                             </td>
                         </tr>
@@ -59,5 +61,4 @@
             </div>
         </div>
     </div>
-
 {% endblock %}

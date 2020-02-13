@@ -34,7 +34,7 @@ class ProduitController extends Controller
             ->add('img',FileType::class,array('data_class'=>null ,'required'=>false))
             ->add('stock',TextType::class)
             ->add('price',TextType::class)
-            ->add('Modifer',SubmitType::class)
+            ->add('Modifier',SubmitType::class)
             ->getForm();
         $form->handleRequest($request);
 
