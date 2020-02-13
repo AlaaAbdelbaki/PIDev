@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Competition</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ competition.id }}</td>
+            </tr>
+            <tr>
+                <th>Subject</th>
+                <td>{{ competition.subject }}</td>
+            </tr>
+            <tr>
+                <th>Competitiondate</th>
+                <td>{% if competition.competitionDate %}{{ competition.competitionDate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Competitionenddate</th>
+                <td>{% if competition.competitionEndDate %}{{ competition.competitionEndDate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('competition_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
