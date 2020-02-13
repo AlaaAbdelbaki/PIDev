@@ -3,7 +3,7 @@
 namespace EventsBundle\Controller;
 
 use AppBundle\Entity\event;
-use EventsBundle\form\eventType;
+//use EventsBundle\form\eventType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;

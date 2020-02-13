@@ -13,3 +13,15 @@ delete:
 modifier:
     path:     /modifier/{id}
     defaults: { _controller: EventsBundle:Events:modifier }
+ajout:
+    path:     /ajout
+    defaults: { _controller: EventsBundle:ticket:ajout }
+list:
+    path:     /list
+    defaults: { _controller: EventsBundle:ticket:list }
+supp:
+    path:     /supp/{id}
+    defaults: { _controller: EventsBundle:ticket:supp }
+edit:
+    path:     /edit/{id}
+    defaults: { _controller: EventsBundle:ticket:edit }
