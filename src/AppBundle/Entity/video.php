@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -14,21 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class video
 {
     /**
-     * @return ArrayCollection
-     */
-    public function getVotes()
-    {
-        return $this->votes;
-    }
-
-    /**
-     * @param ArrayCollection $votes
-     */
-    public function setVotes($votes)
-    {
-        $this->votes = $votes;
-    }
-    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -36,15 +20,7 @@ class video
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    /**
-     * @ORM\OneToMany(targetEntity="vote", mappedBy="video" , orphanRemoval=true)
-     */
-    private $votes;
 
-    public function __construct()
-    {
-        $this->votes = new ArrayCollection();
-    }
     /**
      * @var string
      *
