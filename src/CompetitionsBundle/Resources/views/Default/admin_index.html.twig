@@ -1,0 +1,67 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block dash_title %}Competitions{% endblock %}
+{% block admin_content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary row ">
+                            <h2 class="card-title  col-10">Competitions List:</h2>
+                            <button class="btn btn-success float-right col"><a href="">Add</a></button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class=" text-primary">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Subject
+                                    </th>
+                                    <th>
+                                        Start Date
+                                    </th>
+                                    <th>
+                                        End Date
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                    </thead>
+                                    <tbody>
+                                    {% for competition in competitions %}
+                                    <tr>
+                                        <td>
+                                            {{ competition.id }}
+                                        </td>
+                                        <td>
+                                            {{ competition.subject }}
+                                        </td>
+                                        <td>
+                                            {% if competition.competitionDate %}{{ competition.competitionDate|date('Y-m-d') }}{% endif %}
+                                        </td>
+                                        <td>
+                                            {% if competition.competitionEndDate %}{{ competition.competitionEndDate|date('Y-m-d') }}{% endif %}
+                                        </td>
+
+    <td class="content-center">
+        <button class="btn btn-dark"><a href="">edit</a></button>
+        <button class="btn btn-danger"><a href="">delete</a></button>
+    </td>
+                                    </tr>
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
