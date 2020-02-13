@@ -18,7 +18,7 @@ class TalentController extends Controller
 {
     public function viewProfileAction()
     {
-        return $this->render("@Talent/Frontend/profile.html.twig");
+        return $this->render("@Talent/Main/profile.html.twig");
     }
     public function updateProfileAction(Request $request,$id)
     {
@@ -47,6 +47,6 @@ class TalentController extends Controller
             $em->flush();
             return $this->redirectToRoute('user_profile');
         }
-        return $this->render('@Talent/Frontend/edit_profile.html.twig',["f"=>$form->createView()]);
+        return $this->render('@Talent/Main/edit_profile.html.twig',["f"=>$form->createView()]);
     }
 }
