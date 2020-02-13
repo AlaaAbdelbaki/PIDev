@@ -4,6 +4,7 @@ namespace ReviewBundle\Controller;
 
 use AppBundle\Entity\complaint;
 use AppBundle\Entity\review;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -17,6 +18,8 @@ class complaintsController extends Controller
         $form = $this->createFormBuilder($complaint)
             ->add('subject',TextType::class)
             ->add('content',TextType::class)
+            ->add('User',EntityType::class,array('class'=>'AppBundle:User',
+                'choice_label'=>'id'))
             ->add('submit',SubmitType::class)
             ->getForm();
         $form->handleRequest($request);
@@ -49,6 +52,8 @@ class complaintsController extends Controller
         $form = $this->createFormBuilder($d)
             ->add('subject',TextType::class)
             ->add('content',TextType::class)
+            ->add('user',EntityType::class,array('class'=>'AppBundle:User',
+                'choice_label'=>'id'))
             ->add('submit',SubmitType::class)
             ->getForm();
 

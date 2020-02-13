@@ -4,6 +4,8 @@ namespace ReviewBundle\Controller;
 
 use AppBundle\Entity\review;
 
+use http\Client\Curl\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -18,6 +20,8 @@ class reviewsController extends Controller
             ->add('rating',ChoiceType::class,["choices"=>["1"=>1,"2"=>2,"3"=>3,"4"=>4,"5"=>5   ]])
             ->add('title',TextType::class)
             ->add('content',TextType::class)
+            ->add('User',EntityType::class,array('class'=>'AppBundle:User',
+                'choice_label'=>'id'))
             ->add('submit',SubmitType::class)
             ->getForm();
         $form->handleRequest($request);
@@ -52,6 +56,7 @@ class reviewsController extends Controller
             ->add('rating',ChoiceType::class,["choices"=>["1"=>1,"2"=>2,"3"=>3,"4"=>4,"5"=>5   ]])
             ->add('title',TextType::class)
             ->add('content',TextType::class)
+
             ->add('submit',SubmitType::class)
             ->getForm();
 
