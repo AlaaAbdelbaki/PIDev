@@ -1,6 +1,3 @@
-Competition:
-    resource: "@CompetitionBundle/Controller/DefaultController.php"
-    type:     annotation
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
