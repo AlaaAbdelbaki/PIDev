@@ -23,7 +23,7 @@
         <link rel="icon" type="image/png" href="{{asset('assets/img/icon.png')}}">
     </head>
     <body>
-        {% block body %}
+        {% block header %}
             <!-- ##### Preloader ##### -->
             <div class="preloader d-flex align-items-center justify-content-center">
                 <div class="circle-preloader">
@@ -212,11 +212,13 @@
                 </div>
             </header>
             <!-- ##### Header Area End ##### -->
-
-
+        {% endblock %}
+        <section >
 {% block content %}
     <!-- ##### content Area  ##### -->
 {% endblock %}
+        </section>
+        {% block footer %}
             <!-- ##### Footer Area Start ##### -->
             <footer class="footer-area section-padding-100-0">
                 <div class="container-fluid">
@@ -289,6 +291,7 @@
 
                 </div>
             </div>
+
             <!-- ##### Footer Area Start ##### -->
 
             <!-- ##### All Javascript Script ##### -->
