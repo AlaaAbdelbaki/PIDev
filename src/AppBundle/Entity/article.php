@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -56,34 +55,6 @@ class article
      * @ORM\Column(name="content", type="text")
      */
     private $content;
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getComments()
-    {
-        return $this->comments;
-    }
-
-    /**
-     * @param ArrayCollection $comments
-     */
-    public function setComments($comments)
-    {
-        $this->comments = $comments;
-    }
-
-
-
-    /**
-     * @ORM\OneToMany(targetEntity="comment", mappedBy="article" , orphanRemoval=true)
-     */
-    private $comments;
-
-    public function __construct()
-    {
-        $this->comments = new ArrayCollection();
-    }
 
 
     /**

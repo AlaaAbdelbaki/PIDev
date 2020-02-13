@@ -28,48 +28,7 @@ class subscription
      */
     private $subscriptionDate;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="subs")
-     * @ORM\JoinColumn(name="subetto_id", referencedColumnName="id")
-     */
-    private $subedto;
-    /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="subedtos")
-     * @ORM\JoinColumn(name="sub_id", referencedColumnName="id")
-     */
-    private $sub;
 
-    /**
-     * @return mixed
-     */
-    public function getSubedto()
-    {
-        return $this->subedto;
-    }
-
-    /**
-     * @param mixed $subedto
-     */
-    public function setSubedto($subedto)
-    {
-        $this->subedto = $subedto;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSub()
-    {
-        return $this->sub;
-    }
-
-    /**
-     * @param mixed $sub
-     */
-    public function setSub($sub)
-    {
-        $this->sub = $sub;
-    }
     /**
      * Get id
      *
