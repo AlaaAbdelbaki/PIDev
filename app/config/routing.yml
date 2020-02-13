@@ -2,9 +2,7 @@ shop:
     resource: "@ShopBundle/Resources/config/routing.yml"
     prefix:   /
 
-Competition:
-    resource: "@CompetitionBundle/Controller/DefaultController.php"
-    type:     annotation
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
