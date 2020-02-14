@@ -16,21 +16,24 @@
             <div class="contact-content mb-100">
                 <!-- Contact Form Area -->
                 <div class="contact-form-area">
-                    <form action="#" method="post">
+                    {{ form_start(form) }}
+                    <label ><h3 class=" font-weight-bold text-white">Title</h3></label>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="name" placeholder="Video Title">
+                            {{ form_widget(form.title,{'attr': {'class': 'form-control text-dark'} }) }}
                         </div>
                         <div class="form-group">
-                            <input type="date" class="form-control" id="email" placeholder="Date">
+                            <label ><h3 class=" font-weight-bold text-white">Publish Date</h3></label>
+                            {{ form_widget(form.publishDate,{'attr': {'class': 'form-control text-dark '} }) }}
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="subject" placeholder="Url">
+                            <label ><h3 class=" font-weight-bold text-white" >Url</h3></label>
+                            {{ form_widget(form.url,{'attr': {'class': 'form-control text-dark'} }) }}
                         </div>
                         <iframe width="540" height="315"  allowfullscreen frameborder="0"
                                 src="{{video.url}}">
                         </iframe>
                         <button class="btn musica-btn mt-30 col" type="submit">Publish Your Video</button>
-                    </form>
+                    {{ form_end(form) }}
 
                 </div>
             </div>
@@ -51,11 +54,11 @@
                 : null;
         }
 
-        $( "#subject" )
+        $( "#appbundle_video_url" )
             .focusout(function() {
 
                 let str ='//www.youtube.com/embed/'
-                    + getId($("#subject").val());
+                    + getId($("#appbundle_video_url").val());
 
                 let $iframe = $('iframe');
                 if ( $iframe.length ) {

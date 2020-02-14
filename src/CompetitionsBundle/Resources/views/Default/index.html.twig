@@ -41,16 +41,14 @@
 
                             </div>
                         </div>
-                        <div class="shows-time">
 
+
+                        <div class="buy-tickets "><a href="{{ path('competition_show', {'id': competition.id}) }}" class="btn musica-btn mr-3">View</a>
                         </div>
-                        <div class="shows-time">
-
-                        </div>
-
 
                         <div class="buy-tickets ">
                             <a href="{{ path('competition_participate', {'id': competition.id}) }}" class="btn musica-btn">Participate</a>
+
                         </div>
                     </div>
                     {% endfor %}

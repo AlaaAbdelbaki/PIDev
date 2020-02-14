@@ -19,7 +19,27 @@ class competition_participant
     {
         return $this->competition;
     }
+    /**
+     * @ORM\ManyToOne(targetEntity="video")
+     * @ORM\JoinColumn(name="video_id", referencedColumnName="id")
+     */
+    private $video;
 
+    /**
+     * @return mixed
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
+    /**
+     * @param mixed $video
+     */
+    public function setVideo($video)
+    {
+        $this->video = $video;
+    }
     /**
      * @param mixed $competition
      */

@@ -3,6 +3,7 @@
 namespace CompetitionsBundle\Controller;
 
 use AppBundle\Entity\competition;
+use AppBundle\Entity\competition_participant;
 use AppBundle\Entity\User;
 use AppBundle\Entity\video;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -148,6 +149,13 @@ class competitionController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($video);
+            $participation=new competition_participant();
+            $user=$this->getUser();
+            $participation->setCompetition($competition);
+            $participation->setParticipationDate($video->getPublishDate());
+            $participation->setUser($user);
+            $participation->setVideo($video);
+            $em->persist($participation);
             $em->flush();
 
             return $this->redirectToRoute('competition_index');
@@ -156,6 +164,70 @@ class competitionController extends Controller
         return $this->render('CompetitionsBundle:Default:participation.html.twig', array(
             'video' => $video,
             'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * @Route("/competition/{id}", name="competition_show")
+     * @param competition $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        $competition =$this->getDoctrine()->getRepository(competition::class)->find($id);
+        $participations =$this->getDoctrine()->getRepository(competition_participant::class)->findByCompetition($id);
+        return($this->render('@Competitions/Default/competition_show.html.twig',array('competition' =>$competition ,'participations'=>$participations)));
+    }
+    /**
+     * Deletes a competition entity.
+     *
+     * @Route("/competition/participation/delete/{id}", name="participation_delete")
+     * @Method("DELETE")
+     * @param Request $request
+     * @param competition_participant $id
+     * @return Response
+     */
+    public function participationDeleteAction(Request $request, competition_participant $id)
+    {
+        $participation =$this->getDoctrine()->getRepository(competition_participant::class)->find($id);
+        $video=$participation->getVideo();
+        $entityManager= $this->getDoctrine()->getManager();
+        $entityManager->remove($participation);
+        $entityManager->remove($video);
+        $entityManager->flush();
+
+        $response= new Response();
+        $response->send();
+
+        return $this->redirectToRoute('competition_show',['id'=>$participation->getcompetition()->getid()]);
+    }
+    /**
+     * Displays a form to edit an existing competition entity.
+     *
+     * @Route("admin/participation/{id}", name="participation_edit")
+     * @Method({"GET", "POST"})
+     * @param Request $request
+     * @param competition_participant $id
+     * @return RedirectResponse|Response
+     */
+    public function participationEditAction(Request $request, competition_participant $id)
+    {
+        $participation=new competition_participant();
+        $participation =$this->getDoctrine()->getRepository(competition_participant::class)->find($id);
+        $video=$participation->getVideo();
+        $editForm = $this->createForm('CompetitionsBundle\Form\videoType', $video);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('competition_show',['id'=>$participation->getcompetition()->getid()]);
+        }
+
+        return $this->render('CompetitionsBundle:Default:participation_edit.html.twig', array(
+
+            'form' => $editForm->createView(),'participation'=>$participation
+
         ));
     }
 }
