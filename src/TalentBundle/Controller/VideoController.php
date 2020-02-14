@@ -29,7 +29,7 @@ class VideoController extends Controller
             $em->flush();
             return $this->redirectToRoute('list_video');
         }
-        return $this->render("@Talent/Dashboard/add_video.html.twig",["f"=>$form->createView()]);
+        return $this->render("@Talent/Main/add_video.html.twig",["f"=>$form->createView()]);
     }
 
 
@@ -71,5 +71,11 @@ class VideoController extends Controller
 
         return $this->render('@Talent/Dashboard/update_video.html.twig',['videos'=>$video,'f'=>$form->createView()]);
 
+    }
+
+    public function viewAction()
+    {
+        $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findAll();
+        return $this->render("@Talent/Main/videos.html.twig",["videos"=>$video]);
     }
 }

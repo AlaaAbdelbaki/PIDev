@@ -6,7 +6,6 @@ use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -26,27 +25,78 @@ class TalentController extends Controller
         $form = $this->createFormBuilder($user)
             ->add("email",EmailType::class)
             ->add("birthday",BirthdayType::class)
-//            ->add('profile_pic',FileType::class,array('labesl'=>'insert Image'))
+            ->add('profile_pic',FileType::class,['data_class'=>null,'required'=>false])
             ->add("sexe",ChoiceType::class,["choices"=>["Homme"=>"male","Femme"=>"female"]])
             ->add("telephoneNumber",NumberType::class)
             ->add("adresse",TextType::class)
             ->add("name",TextType::class)
             ->add("first_name",TextType::class)
             ->add("bio",TextType::class)
-            ->add("submit",SubmitType::class)
+            ->add("submit",SubmitType::class,["label"=>"Mettre à jour"])
             ->getForm();
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
-//            $file = $user->getImg();
-//            $fileName = md5(uniqid()).'.'.$file->guessExtension();
-//            $file->move($this->getParameter('photos_directory'), $fileName);
-//            $user->setImage($fileName);
+            $file = $user->getProfilePic();
+            if($file != null)
+            {
+                $fileName = md5(uniqid()).'.'.$file->guessExtension();
+                $file->move($this->getParameter('image_directory'), $fileName);
+                $user->setProfilePic($fileName);
+            }
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
             return $this->redirectToRoute('user_profile');
         }
         return $this->render('@Talent/Main/edit_profile.html.twig',["f"=>$form->createView()]);
+    }
+
+    public function listAction()
+    {
+        $user = $this->getDoctrine()->getManager()->getRepository(User::class)->findAll();
+        return $this->render('@Talent/Dashboard/list_users.html.twig',["users"=>$user]);
+    }
+
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user =$em->getRepository(User::class)->find($id);
+        $em->remove($user);
+        $em->flush();
+        return $this->redirectToRoute('list_profile');
+    }
+
+    public function addAction(Request $request)
+    {
+        $user = new User();
+        $form = $this->createFormBuilder($user)
+            ->add("email",EmailType::class)
+            ->add("birthday",BirthdayType::class)
+            ->add('profile_pic',FileType::class,['data_class'=>null,'required'=>false])
+            ->add("sexe",ChoiceType::class,["choices"=>["Homme"=>"male","Femme"=>"female"]])
+            ->add("telephoneNumber",NumberType::class)
+            ->add("adresse",TextType::class)
+            ->add("name",TextType::class)
+            ->add("first_name",TextType::class)
+            ->add("bio",TextType::class)
+            ->add("submit",SubmitType::class,["label"=>"Ajouter un utilisateur"])
+            ->getForm();
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $file = $user->getProfilePic();
+            if($file != null)
+            {
+                $fileName = md5(uniqid()).'.'.$file->guessExtension();
+                $file->move($this->getParameter('image_directory'), $fileName);
+                $user->setProfilePic($fileName);
+            }
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            return $this->redirectToRoute('list_profile');
+        }
+        return $this->render('@Talent/Dashboard/add_user.html.twig',["f"=>$form->createView()]);
     }
 }

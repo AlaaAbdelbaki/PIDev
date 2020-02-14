@@ -5,7 +5,7 @@ list_video:
     path: /admin/list_video
     defaults: {_controller: TalentBundle:Video:viewVideo}
 add_video:
-    path: /admin/add_video
+    path: /profile/add_video
     defaults: {_controller: TalentBundle:Video:addVideo}
 delete_video:
     path: /admin/delete/{id}
@@ -19,3 +19,15 @@ user_profile:
 update_profile:
     path: /profile/edit{id}
     defaults: {_controller: TalentBundle:Talent:updateProfile}
+list_profile:
+    path: /admin/list_profiles
+    defaults: {_controller: TalentBundle:Talent:list}
+delete_user:
+    path: /admin/delete_user/{id}
+    defaults: {_controller: TalentBundle:Talent:delete}
+view_videos:
+    path: /videos
+    defaults: {_controller: TalentBundle:Video:View}
+add_user:
+    path: /admin/add_user
+    defaults: {_controller: TalentBundle:Talent:add}

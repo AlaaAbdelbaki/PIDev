@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({{ asset('assets/img/bg-img/bg-1.jpg') }});">
+    <div class="bradcumbContent">
+        <h2>Bienvenue {{ app.user.username }} !!</h2>
+    </div>
+    </div>
+    <!-- bg gradients -->
+    <div class="bg-gradients"></div>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <!-- ##### Elements Area Start ##### -->
+    <section class="elements-area mt-30 section-padding-100-0 ">
+        <div class="container">
+            {% for video in videos %}
+                <h1 class="text-primary">{{ video.title }}</h1>
+                <iframe width="854" height="480" src="{{video.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h2 class="text-secondary">Uploaded by: TestUser</h2>
+                <br>
+                <br>
+                <br>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
