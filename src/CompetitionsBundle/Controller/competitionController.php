@@ -6,6 +6,7 @@ use AppBundle\Entity\competition;
 use AppBundle\Entity\competition_participant;
 use AppBundle\Entity\User;
 use AppBundle\Entity\video;
+use AppBundle\Entity\vote;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -229,5 +230,21 @@ class competitionController extends Controller
             'form' => $editForm->createView(),'participation'=>$participation
 
         ));
+    }
+
+    /**
+     * @Route("/vote/{id}", name="competition_vote")
+     *
+     */
+    public function voteAction($id)
+    {
+        $user=$this->getUser();
+        $video =$this->getDoctrine()->getRepository(video::class)->find($id);
+        $video->getVotes()->add($user);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($video);
+        $em->flush();
+        return new Response();
+
     }
 }

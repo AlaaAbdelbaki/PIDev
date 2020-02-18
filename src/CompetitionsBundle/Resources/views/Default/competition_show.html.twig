@@ -2,6 +2,8 @@
 
 {% block content %}
     <script src="{{asset('assets/js/jquery/jquery-2.2.4.min.js')}}"></script>
+
+
     <div class="content">
     <div class="musica-cta-area section-padding-100 bg-img bg-overlay2 "
          style="background-image: url({{ asset('assets/img/bg-img/bg-8.jpg') }})">
@@ -24,21 +26,24 @@
         </div>
     </div>
 
-
-
-        <div class="career-timeline-area section-padding-100">
+<div class="row " >
+<div class="col second-img " style="background-color: #0c0527 ;">
+    <p class="text-center" style=" font-size: 100px ;color: #ffffff; font-family: Allura,cursive"> Ranking: </p>
+        <img src="{{asset('assets/img/bg-img/man.png')}}" alt="">
+  </div>
+        <div class="career-timeline-area section-padding-100 col-8" style="border-left:4px solid white; margin-left: 2px">
             <div class="container">
                 {% set i = 0 %}
-    {% for participation in participations %}
 
-<div class="row mt-3">
+    {% for participation in participations %}
+      <div class="row mt-3">
     <img src="{{ asset('assets/uploads/'~ participation.user.profilePic) }}" width="80"  class="rounded-circle mb-3 col-1 align-self-center" >
     <div class="col align-self-center" >
         <h4 class="text-white " >{{ participation.user.username }}</h4>
         <h6 class="text-grey"> {{ participation.participationDate | date() }}</h6>
     </div>
 
-</div>
+       </div>
 
         <div class="featured-album-content d-flex flex-wrap " style="height: 315px">
 
@@ -60,8 +65,12 @@
                         <a href="#" class="btn musica-btn">Visit Profile</a>
                     </div>
                 </div>
-                <a class="btn btn-success "><i class="fa fa-thumbs-up"> <span class="text-white">Vote for {{ participation.user.username }}</span></i></a>
-                            {% if app.user is same as (participation.user) %}
+
+
+                        <a class="btn btn-info vote" href="{{path('competition_vote', {'id':participation.video.id})}}" ><span class="fa fa-heart">   Vote</span></a>
+
+
+                {% if app.user is same as (participation.user) %}
                                 <a class="btn btn-warning mx-3" href="{{ path('participation_edit', {'id': participation.id}) }}"><i class="fa fa-edit"> <span class="text-white">Edit my post</span></i></a>
                                 <a class="btn btn-danger" href="{{ path('participation_delete', {'id': participation.id}) }}"><i class="fa fa-remove"> <span class="text-white">Delete my post</span></i></a>
 
@@ -70,12 +79,10 @@
                     <h4 class="row m-4"><i class="fa fa-thumbs-o-up text-white big-text col">  Votes</i>
                         <i class="fa fa-sort-amount-desc text-white">  Rank</i></h4>
 
+
+
         </div>
         </div>
-
-
-
-
         <script>
 
             function getId(url) {
@@ -106,15 +113,36 @@
 
 
         </script>
+
         {% set i =i+1 %}
+
     {% endfor %}
             </div>
         </div>
+</div>
     </div>
 
     <div> </div>
 
+    <script>
+        $('.vote').click(function (e)
+        {e.preventDefault();
+          let  $t=$(this)
+            $.ajax({
+                url:$(this).attr('href'),
 
+                success: function ()
+                {
+
+                    $t.removeClass('btn-info')
+                        .addClass('btn-danger');
+
+                }
+            });
+            return false;
+
+        });
+    </script>
     <script>
         <!--
         var startTime = 0
@@ -125,11 +153,10 @@
         function chrono(){
             end = new Date('{{ competition.competitionEndDate |date }}')
             start= new Date()
-            console.log(start)
-            console.log(end)
+
             diff = end - start
 if (diff<0) diff=0;
-            console.log(diff)
+
 
             var msec = diff % 1000;
             var sec =   Math.floor((diff / 1000) % 60);
@@ -147,7 +174,8 @@ if (diff<0) diff=0;
             else if(msec < 100){
                 msec = "0" +msec
             }
-            document.getElementById("chronotime").innerHTML = hr + ":" + min + ":" + sec
+            if (diff === 0) document.getElementById("chronotime").innerHTML = "The Competition is Over , The Winner is:"
+            else document.getElementById("chronotime").innerHTML = hr + ":" + min + ":" + sec
             timerID = setTimeout("chrono()", 10)
         }
         chrono();
