@@ -3,6 +3,7 @@
 namespace TalentBundle\Controller;
 
 use AppBundle\Entity\User;
+use AppBundle\Entity\video;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -10,18 +11,20 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 
 class TalentController extends Controller
 {
-    public function viewProfileAction()
+    public function viewProfileDetailsAction()
     {
-        return $this->render("@Talent/Main/profile.html.twig");
+        return $this->render("@Talent/Main/profile_details.html.twig");
     }
     public function updateProfileAction(Request $request,$id)
     {
         $user = $this->getDoctrine()->getManager()->getRepository(User::class)->find($id);
+        $pp=$user->getProfilePic();
         $form = $this->createFormBuilder($user)
             ->add("email",EmailType::class)
             ->add("birthday",BirthdayType::class)
@@ -31,7 +34,7 @@ class TalentController extends Controller
             ->add("adresse",TextType::class)
             ->add("name",TextType::class)
             ->add("first_name",TextType::class)
-            ->add("bio",TextType::class)
+            ->add("bio",TextareaType::class)
             ->add("submit",SubmitType::class,["label"=>"Mettre à jour"])
             ->getForm();
         $form->handleRequest($request);
@@ -44,10 +47,14 @@ class TalentController extends Controller
                 $file->move($this->getParameter('image_directory'), $fileName);
                 $user->setProfilePic($fileName);
             }
+            else
+            {
+                $user->setProfilePic($pp);
+            }
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            return $this->redirectToRoute('user_profile');
+            return $this->redirectToRoute('view_profile');
         }
         return $this->render('@Talent/Main/edit_profile.html.twig',["f"=>$form->createView()]);
     }
@@ -99,4 +106,19 @@ class TalentController extends Controller
         }
         return $this->render('@Talent/Dashboard/add_user.html.twig',["f"=>$form->createView()]);
     }
+
+    public function viewProfileAction()
+    {
+        $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findAll();
+        return $this->render('@Talent/Main/profile.html.twig',["videos"=>$video]);
+    }
+
+    public function userProfileAction($username)
+    {
+        $user = $this->getDoctrine()->getManager()->getRepository(User::class)->findBy(["username"=>$username]);
+        $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findAll();
+        return $this->render("@Talent/Main/profile.html.twig",["users"=>$user,"videos"=>$video]);
+    }
+
+
 }

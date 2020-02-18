@@ -1,105 +1,64 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
+    {% for user in users %}
 
-
-<div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({{ asset('assets/img/bg-img/bg-1.jpg') }});">
-    <div class="bradcumbContent">
-        <h2>Bienvenue {{ app.user.username }} !!</h2>
+    <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({{ asset('assets/img/bg-img/bg-1.jpg') }});">
+        <div class="bradcumbContent">
+            <h2> Profil de {{ user.username }}</h2>
+        </div>
     </div>
-</div>
-<!-- bg gradients -->
-<div class="bg-gradients"></div>
-<!-- ##### Breadcumb Area End ##### -->
+    <!-- bg gradients -->
+    <div class="bg-gradients"></div>
+    <!-- ##### Breadcumb Area End ##### -->
 
-<!-- ##### Elements Area Start ##### -->
-<section class="elements-area mt-30 section-padding-100-0 ">
-    <div class="container">
-{#        Ajout video: #}
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6" style="text-align: center"><a class="btn musica-btn m-2" href="{{ path('add_video') }}">Ajouter une vidéo !</a></div>
-            <div class="col-md-3"></div>
-        </div>
-{#        Photo de profil#}
-        <div class="row">
-            <div class="col-md-3"></div>
-            {% if app.user.profilePic != null %}
-                <div class="col-md-6" style="text-align: center"><img src="{{ asset('assets/img/pics/' ~ app.user.profilePic) }}" style="width:250px; height: auto;"></div>
-                {% else %}
-                <h1 class="text-primary" style="text-align: center">Finalisez votre profil maintenant !!</h1>
-            {% endif %}
-            <div class="col-md-3"></div>
-        </div>
-{#        Informations#}
-        <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <!-- Buttons -->
-                    <div class="musica-buttons-area mb-100 ">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table" >
-                                    <thead class="text-primary">
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>{{app.user.id}}</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Username</th>
-                                        <th>{{ app.user.username }}</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Nom: </th>
-                                        <th>{{ app.user.firstName }}</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Prénom:</th>
-                                        <th>{{ app.user.name }}</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Date de naissance: </th>
-                                        <th>{{app.user.birthday|date("d M Y")}}</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Email: </th>
-                                        <th>{{ app.user.email }}</th>
-                                    </tr>
+    <!-- ##### Elements Area Start ##### -->
+    <section class="elements-area mt-30 section-padding-100-0 ">
+{#        Contenu de la page#}
+        <div class="container">
+            <div class="row">
+{#                Profile picture and basic info#}
+                <div class="col-md-4">
+                    <img src="{{ asset('assets/img/pics/' ~ user.profilePic) }}" style="width:250px; height: auto;clip-path: circle(120px at center);">
+                    <br>
+                    <br>
+                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;">Nom:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.Name }}</span></div>
+                    <br>
+                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold">Prénom:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.firstName }}</span></div>
+                    <br>
+                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;">Date de naissance:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.birthday|date("d M Y") }}</span></div>
+                    <br>
+                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;">Bio: <br> <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.bio }}</span></div>
+                    <br>
+                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;">Abonnés <br> <span class="text-secondary" style="font-size: medium;font-weight: normal">69</span></div>
+                    <br>
+                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;">Abonnements <br> <span class="text-secondary" style="font-size: medium;font-weight: normal">420</span></div>
+                    {% if app.user.username == user.username%}
+                    <br>
+                    <div style="margin-left: 30px;"><a class="btn musica-btn m-2" href="{{ path('update_profile',{id:app.user.id}) }}">Modifier vos informations</a></div>
+                    <br>
+                    <div style="margin-left: 30px;"><a class="btn musica-btn m-2" href="{{ path('add_video') }}">Ajouter une video</a></div>
+                    {% endif %}
 
-                                    <tr>
-                                        <th>Numéro de téléphone: </th>
-                                        <th>{{ app.user.telephoneNumber }}</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Sexe: </th>
-                                        {% if app.user.sexe == "male" %}
-                                            <th>Homme</th>
-                                        {% else %}
-                                            <th>Femme</th>
-                                        {% endif %}
-                                    </tr>
-                                    <tr>
-                                        <th>Bio</th>
-                                        <th>{{ app.user.bio }}</th>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" style="text-align: center"><a href="{{ path('update_profile',{id:app.user.id}) }}" class="btn musica-btn m-2">Mettre à jour votre profil</a></td>
-                                    </tr>
-                                    </thead>
-                                </table>
-
-                            </div>
-                        </div>
+            </div>
+{#                Profile feed#}
+                <div class="col-md-8">
+                    <div>
+                        <h1 class="text-primary">Vidéos ajoutés par {{ app.user.username }}</h1>
+                        <br>
+                        <br>
+                        {% for video in videos %}
+                            <h3 class="text-primary">{{ video.title }}</h3>
+                            <iframe width="854" height="480" src="{{video.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <h2 class="text-secondary" style="margin-left: 600px;">Rating: {{ video.id }} </h2>
+                            <br>
+                            <br>
+                            <br>
+                        {% endfor %}
                     </div>
                 </div>
-                <div class="col-md-3"></div>
         </div>
-{#        Videos#}
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6" style="text-align: center"><a class="btn musica-btn m-2" href="{{ path('view_videos') }}">Visionnez les vidéos ajoutés</a></div>
-            <div class="col-md-3"></div>
         </div>
-    </div>
-</section>
+    </section>
+    {% endfor %}
 {% endblock %}

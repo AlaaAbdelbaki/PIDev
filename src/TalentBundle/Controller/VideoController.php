@@ -27,7 +27,7 @@ class VideoController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($video);
             $em->flush();
-            return $this->redirectToRoute('list_video');
+            return $this->redirectToRoute('view_videos');
         }
         return $this->render("@Talent/Main/add_video.html.twig",["f"=>$form->createView()]);
     }

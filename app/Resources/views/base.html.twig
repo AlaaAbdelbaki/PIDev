@@ -21,6 +21,7 @@
         {% block stylesheets %}<link rel="stylesheet" href="{{asset('assets/style.css')}}">
             <link rel="stylesheet" href="{{asset('assets/beat.css')}}">{% endblock %}
         <link rel="icon" type="image/png" href="{{asset('assets/img/icon.png')}}">
+        <link href="{{ asset('assets/css/pp.css') }}" type="text/css" rel="stylesheet" />
     </head>
     <body>
         {% block body %}
@@ -74,7 +75,7 @@
                                                         <span class="bar bar-10"></span>
                                                     </div></a></li>
                                             {% if  app.user %}
-                                                <li><a href="{{ path('user_profile') }}" class="show">Profile
+                                                <li><a href="{{ path('user_profile',{username:app.user.username}) }}" class="show">Profile
                                                         <div class="equalizer">
                                                             <span class="bar bar-1"></span>
                                                             <span class="bar bar-2"></span>
