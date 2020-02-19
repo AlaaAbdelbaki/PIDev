@@ -34,3 +34,6 @@ add_user:
 user_profile:
     path: /profile/{username}
     defaults: {_controller: TalentBundle:Talent:userProfile}
+user_search:
+    path: /search
+    defaults: {_controller: TalentBundle:Talent:search}
