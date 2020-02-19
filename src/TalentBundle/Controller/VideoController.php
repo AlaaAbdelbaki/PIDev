@@ -3,6 +3,7 @@
 namespace TalentBundle\Controller;
 
 
+use AppBundle\Entity\User;
 use AppBundle\Entity\video;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -14,6 +15,9 @@ class VideoController extends Controller
 {
     public function addVideoAction(Request $request)
     {
+        $link = "https://www.youtube.com/embed/";
+        $user = $this->getUser()->getId();
+        $date = new \DateTime();
         $video = new video();
         $form = $this->createFormBuilder($video)
             ->add('url',TextType::class)
@@ -25,6 +29,11 @@ class VideoController extends Controller
         if($form->isSubmitted() && $form->isValid())
         {
             $em = $this->getDoctrine()->getManager();
+            $url = $video->getUrl();
+            $link = $link.substr($url,-11);
+            $video->setUrl($link);
+            $video->setPublishDate($date);
+            $video->setUser($user);
             $em->persist($video);
             $em->flush();
             return $this->redirectToRoute('view_videos');
@@ -76,6 +85,7 @@ class VideoController extends Controller
     public function viewAction()
     {
         $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findAll();
-        return $this->render("@Talent/Main/videos.html.twig",["videos"=>$video]);
+        $user = $this->getDoctrine()->getManager()->getRepository(User::class)->findAll();
+        return $this->render("@Talent/Main/videos.html.twig",["videos"=>$video,"users"=>$user]);
     }
 }

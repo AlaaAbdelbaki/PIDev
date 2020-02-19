@@ -31,9 +31,6 @@ view_videos:
 add_user:
     path: /admin/add_user
     defaults: {_controller: TalentBundle:Talent:add}
-view_profile:
-    path: /profile
-    defaults: {_controller: TalentBundle:Talent:viewProfile}
 user_profile:
     path: /profile/{username}
     defaults: {_controller: TalentBundle:Talent:userProfile}

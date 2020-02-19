@@ -44,12 +44,12 @@
 {#                Profile feed#}
                 <div class="col-md-8">
                     <div>
-                        <h1 class="text-primary">Vidéos ajoutés par {{ app.user.username }}</h1>
+                        <h1 class="text-primary">Vidéos ajoutés par {{ user.username }}</h1>
                         <br>
                         <br>
                         {% for video in videos %}
                             <h3 class="text-primary">{{ video.title }}</h3>
-                            <iframe width="854" height="480" src="{{video.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe src="{{ video.url }}" width="854" height="480" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
                             <h2 class="text-secondary" style="margin-left: 600px;">Rating: {{ video.id }} </h2>
                             <br>
                             <br>

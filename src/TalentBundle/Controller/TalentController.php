@@ -107,17 +107,23 @@ class TalentController extends Controller
         return $this->render('@Talent/Dashboard/add_user.html.twig',["f"=>$form->createView()]);
     }
 
-    public function viewProfileAction()
-    {
-        $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findAll();
-        return $this->render('@Talent/Main/profile.html.twig',["videos"=>$video]);
-    }
 
     public function userProfileAction($username)
     {
-        $user = $this->getDoctrine()->getManager()->getRepository(User::class)->findBy(["username"=>$username]);
-        $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findAll();
-        return $this->render("@Talent/Main/profile.html.twig",["users"=>$user,"videos"=>$video]);
+        $user = $this->getDoctrine()->getManager()->getRepository(User::class)->findOneBy(["username"=>$username]);
+        $users = $this->getDoctrine()->getManager()->getRepository(User::class)->findBy(["username"=>$username]);
+        if($user != null)
+        {
+            $id = $user->getId();
+    //        echo $id;
+    //        var_dump($id);
+            $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findBy(["user"=>$id]);
+            return $this->render("@Talent/Main/profile.html.twig",["users"=>$users,"videos"=>$video]);
+        }
+        else
+        {
+            return $this->render("@Talent/Default/error.html.twig");
+        }
     }
 
 
