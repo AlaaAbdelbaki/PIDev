@@ -4,6 +4,7 @@ namespace BlogBundle\Controller;
 
 use AppBundle\Entity\article;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\BlogType;
 
@@ -14,7 +15,8 @@ class BlogController extends Controller
     public function AddAction(Request $request)
     {
         $article = new article();
-        $form = $this->createForm(\BlogBundle\Form\BlogType::class, $article);
+        $form = $this->createForm(\BlogBundle\Form\BlogType::class, $article)
+            ->add('img', FileType::class, array('data_class'=>null, 'required'=>false));
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
         if ($form->isSubmitted()) {
@@ -35,7 +37,14 @@ class BlogController extends Controller
 
         return $this->render('@Blog/Default/afficherArticle.html.twig', ['articles' => $articles]);
     }
+    public function afficherfrontAction()
+    {
+        $em = $this->getDoctrine();
+        $rep = $em->getRepository(article::class);
+        $articles = $rep->findAll();
 
+        return $this->render('@Blog/Default/afficherfront.html.twig', ['articles' => $articles]);
+    }
     public function editAction(Request $request, $id)
     {
         $a = $this->getDoctrine()->getRepository(article::class)->find($id);

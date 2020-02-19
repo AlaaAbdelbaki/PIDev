@@ -24,7 +24,6 @@ class BlogType extends AbstractType
         $builder
             ->add('title')
             ->add('content', TextareaType::class)
-            ->add('img', FileType::class, array('data_class'=>null, 'required'=>false))
             ->add('Submit', SubmitType::class);
     }/**
  * {@inheritdoc}

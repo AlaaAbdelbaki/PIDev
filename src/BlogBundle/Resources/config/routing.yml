@@ -4,6 +4,9 @@ blog_homepage:
 afficher:
     path:     /afficher
     defaults: { _controller: BlogBundle:Blog:afficher }
+afficherfront:
+    path:     /afficherfront
+    defaults: { _controller: BlogBundle:Blog:afficherfront }
 edit:
     path:     /edit/{id}
     defaults: { _controller: BlogBundle:Blog:edit }
@@ -16,6 +19,9 @@ ajouter:
 affiche:
     path: /affiche
     defaults: { _controller: BlogBundle:Updates:affiche }
+affichefront:
+    path: /affichefront
+    defaults: { _controller: BlogBundle:Updates:affichefront }
 modifier:
     path:     /modifier/{id}
     defaults: { _controller: BlogBundle:Updates:modifier }

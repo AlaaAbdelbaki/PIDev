@@ -1,21 +1,22 @@
 {%  extends 'admin_base.html.twig' %}
 {% block admin_content %}
+
     <div class="col-md-12">
         <div class="card">
+
             <div class="card-header card-header-primary">
-                <h4 class="card-title ">Articles table</h4>
-                <a href="{{ path('blog_homepage') }}">Add Article</a>
+                <center>  <h4 class="card-title ">BLOG  </center> </h4>
+                <a href="{{ path('blog_homepage') }}"></a>
             </div>
+
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table">
-                        <thead class=" text-primary">
-                        <th>
-                            ID
-                        </th>
-                        <th>
-                            Title
-                        </th>
+
+                    <table class="table" id="myTable">
+
+
+
+                        <th >Title</th>
                         <th>
                             Image
                         </th>
@@ -26,13 +27,11 @@
                             Action
                         </th>
 
-                        </thead>
+
                         <tbody>
                         {% for a in articles %}
                         <tr>
-                            <td>
-                                {{ a.id }}
-                            </td>
+
                             <td>
                                 {{a.title}}
                             </td>

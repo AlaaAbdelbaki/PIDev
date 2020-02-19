@@ -24,8 +24,6 @@ class UpdatesController extends Controller
             $em->flush();
             return $this->redirectToRoute('affiche');
         }
-
-
         return $this->render('@Blog/Default/ajouterUpdates.html.twig', array('f' => $form->createView()));
     }
     public function afficheAction()
@@ -35,6 +33,14 @@ class UpdatesController extends Controller
         $updatess = $rep->findAll();
 
         return $this->render('@Blog/Default/afficherUpdates.html.twig', ['updatess' => $updatess]);
+    }
+    public function affichefrontAction()
+    {
+        $em = $this->getDoctrine();
+        $rep = $em->getRepository(updates::class);
+        $updatess = $rep->findAll();
+
+        return $this->render('@Blog/Default/afficherUpdatesFront.html.twig', ['updatess' => $updatess]);
     }
     public function modifierAction(Request $request, $id)
     {
