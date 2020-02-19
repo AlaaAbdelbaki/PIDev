@@ -10,4 +10,14 @@ namespace AppBundle\Repository;
  */
 class eventRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findEntitiesByString($str){
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p
+                FROM AppBundle:event p
+                WHERE p.type LIKE :str'
+            )
+            ->setParameter('str', '%'.$str.'%')
+            ->getResult();
+    }
 }

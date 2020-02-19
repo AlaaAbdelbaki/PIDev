@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class EventsController extends Controller
 {
@@ -97,5 +98,25 @@ class EventsController extends Controller
 
         return $this->render('@EventsBundle\Resources\views\event\modifier.html.twig',['event'=>$event,'f'=>$form->createView()]);
 
+    }
+
+    public function searchAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $requestString = $request->get('q');
+        $event =  $em->getRepository('AppBundle:event')->findEntitiesByString($requestString);
+        if(!$event) {
+            $result['event']['error'] = "event Not found :( ";
+        } else {
+            $result['event'] = $this->getRealEntities($event);
+        }
+        return new Response(json_encode($result));
+    }
+    public function getRealEntities($event){
+        foreach ($event as $event){
+            $realEntities[$event->getId()] = [$event->getImg(),$event->getTitle()];
+
+        }
+        return $realEntities;
     }
 }

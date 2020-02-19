@@ -28,3 +28,6 @@ edit:
 show_events:
     path:     /show_events
     defaults: { _controller: EventsBundle:Default:affiche }
+search:
+    path:     /search
+    defaults: { _controller: EventsBundle:Events:search }
