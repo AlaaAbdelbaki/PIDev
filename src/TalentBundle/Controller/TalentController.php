@@ -132,7 +132,7 @@ class TalentController extends Controller
         $requestString = $request->get('q');
         $user =  $em->getRepository('AppBundle:User')->findEntitiesByString($requestString);
         if(!$user) {
-            $result['user']['error'] = "User Not found :( ";
+            $result['user']['error'] = "Utilisateur inexistant :( ";
         } else {
             $result['user'] = $this->getRealEntities($user);
         }

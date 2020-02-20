@@ -3,14 +3,19 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\CommentBundle\Entity\Comment as BaseComment;
+
+
 
 /**
  * comment
  *
+ * @ORM\Entity
+ * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  * @ORM\Table(name="comment")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\commentRepository")
  */
-class comment
+class comment extends BaseComment
 {
     /**
      * @var int
@@ -19,7 +24,15 @@ class comment
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
+
+    /**
+     * Thread of this comment
+     *
+     * @var Thread
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thread")
+     */
+    protected $thread;
 
     /**
      * @var \DateTime
@@ -166,4 +179,3 @@ class comment
         return $this->content;
     }
 }
-

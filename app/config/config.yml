@@ -82,3 +82,14 @@ fos_user:
     from_email:
         address: "hello@aquanote.com"
         sender_name: "AquaNote Postman"
+
+
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: AppBundle\Entity\comment
+            thread: AppBundle\Entity\Thread
+
+assetic:
+    bundles: [ "FOSCommentBundle" ]

@@ -73,4 +73,3 @@ class vote
         return $this->id;
     }
 }
-
