@@ -66,5 +66,11 @@ class BlogController extends Controller
         $em->remove($a);
         $em->flush();
       return $this->redirectToRoute('afficher');
+}
+
+    public function affichetriAction()
+    {
+        $tab=$this->getDoctrine()->getRepository(article::class)->orderTitle();
+        return $this->render('@Blog/default/afficherfront.html.twig',array('articles'=>$tab));
     }
 }

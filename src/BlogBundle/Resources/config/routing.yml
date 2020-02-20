@@ -29,4 +29,6 @@ supprimer:
     path: /supprimer/{id}
     defaults: { _controller: BlogBundle:Updates:supprimer }
 
-
+tri:
+    path: /sort
+    defaults: {_controller:BlogBundle:Blog:affichetri }
