@@ -14,17 +14,22 @@ use AppBundle\Entity\video;
 class competition_participantRepository extends \Doctrine\ORM\EntityRepository
 {
 
-    public function findRanks()
+    public function findRanks($id)
     {
         $conn = $this->getEntityManager()->getConnection();
 
-        $sql = '
-        SELECT  video_id
-  FROM votes 
- GROUP by video_id
- ORDER by count(video_id) DESC
+        $sql = 'SELECT  v.video_id ,count(v.video_id)
+  FROM
+  votes v
+  WHERE v.video_id IN
+     ( SELECT video_id FROM competition_participant c WHERE c.competition_id = "'.$id.'"
+  ) 
+  
+ GROUP by v.video_id
+ ORDER by count(v.video_id) DESC
  LIMIT 3';
         $stmt = $conn->prepare($sql);
+
         $stmt->execute();
 
         // returns an array of arrays (i.e. a raw data set)

@@ -150,7 +150,8 @@ class competitionController extends Controller
     public function newVideoAction(Request $request,competition $id)
     {$competition =$this->getDoctrine()->getRepository(competition::class)->find($id);
         $participation=$this->getDoctrine()->getRepository(competition_participant::class)->findByUser($this->getUser());
-
+    $m=$participation=$this->getDoctrine()->getRepository(competition_participant::class)->findBy(['user'=>$this->getUser(),'competition'=>$competition]);
+       if($m != null) return $this->redirectToRoute('competition_index');
         $video = new video();
         $form = $this->createForm('CompetitionsBundle\Form\videoType', $video);
         $form->handleRequest($request);
@@ -187,7 +188,7 @@ class competitionController extends Controller
         $competition =$this->getDoctrine()->getRepository(competition::class)->find($id);
         $participations =$this->getDoctrine()->getRepository(competition_participant::class)->findByCompetition($id);
 
-        $ranks=$this->getDoctrine()->getRepository(competition_participant::class)->findRanks();
+        $ranks=$this->getDoctrine()->getRepository(competition_participant::class)->findRanks($id);
 
         $res=new ArrayCollection();
         foreach($ranks as $r)
@@ -227,7 +228,7 @@ class competitionController extends Controller
     /**
      * Displays a form to edit an existing competition entity.
      *
-     * @Route("admin/participation/{id}", name="participation_edit")
+     * @Route("/participation/{id}", name="participation_edit")
      * @Method({"GET", "POST"})
      * @param Request $request
      * @param competition_participant $id
@@ -294,7 +295,7 @@ class competitionController extends Controller
 
         $participations =$this->getDoctrine()->getRepository(competition_participant::class)->findByCompetition($id);
 
-        $ranks=$this->getDoctrine()->getRepository(competition_participant::class)->findRanks();
+        $ranks=$this->getDoctrine()->getRepository(competition_participant::class)->findRanks($id);
 
         $res=new ArrayCollection();
         foreach($ranks as $r)
