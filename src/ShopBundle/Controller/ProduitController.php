@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ProduitController extends Controller
 {
@@ -77,4 +78,27 @@ class ProduitController extends Controller
         }
         return $this->render('@Shop/Default/admin_shop_add.html.twig',['f'=>$form->createView()]);
     }
+    public function searchAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $requestString = $request->get('q');
+        $product =  $em->getRepository('AppBundle:product')->findEntitiesByString($requestString);
+        if(!$product) {
+            $result['product']['error'] = "User Not found :( ";
+        } else {
+            $result['product'] = $this->getRealEntities($product);
+        }
+        return new Response(json_encode($result));
+    }
+
+
+    function getRealEntities($product)
+    {
+        foreach ($product as $product){
+            $realEntities[$product->getId()] = [$product->getImg(),$product->getProductName()];
+
+        }
+        return $realEntities;
+    }
+
 }

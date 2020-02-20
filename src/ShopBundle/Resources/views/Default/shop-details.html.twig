@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block content %}
-    <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url(img/bg-img/breadcumb.jpg);">
+    <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({{ asset('assets/img/bg-img/breadcumb.jpg') }});">
         <div class="bradcumbContent">
             <h2>Shop Details</h2>
         </div>
@@ -34,14 +34,16 @@
                                 <input type="number" name="quantity" value="1" title="quantity" class="input-text" min="1" max="{{ product.stock }}">
 
                             </div>
+
                             <div class="add-buttons">
-                                <button type="submit" class="cart-button button"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                <button type="submit" class="cart-button button"><i class="fa fa-shopping-cart"></i>Buy Product</button>
+                                <a href="{{ path('panier_ajouter',{'id': product.id,}) }}" class="cart-button button"><i class="fa fa-shopping-cart"></i>
+                                    Add To Cart</a>
                             </div>
                         </form>
 
                     </div>
                 </div><!-- row -->
+
             </div><!-- container -->
         </div><!-- products content -->
     </div><!-- products details -->

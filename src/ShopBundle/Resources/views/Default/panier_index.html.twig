@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({{ asset('assets/img/bg-img/breadcumb.jpg') }});">
+
+        <div class="bradcumbContent">
+            <h2>Shopping Cart</h2>
+        </div>
+    </div>
+    <!-- bg gradients -->
+    <div class="bg-gradients"></div>
+    <!-- ##### Breadcumb Area End ##### -->
+    <div class="content">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        {% set total = 0 %}
+        {% if items | length > 0 %}
+
+        <div class="col-md-12">
+            <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <td>Product Image</td>
+                    <td>Product Name</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>supprimer</td>
+
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in items %}
+                    {% for i in item.product %}
+                        <tr>
+                            <td><img class="img-fluid" src="{{ asset('assets/img/shop-img/' ~ i.img) }}" height="50px" width="70px"></td>
+                            <td>{{ i.productName }}</td>
+                            <td>{{ i.price }}</td>
+
+                            <td>
+                                {{ item.quantity }}
+                            </td>
+
+
+                            <td>
+                                <a href="{{ path('panier_supprimer',{'id': i.id}) }}" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+
+                        </tr>
+
+                        {% set cost = item.quantity * i.price %}
+                        {% set total = total + cost%}
+                    {% endfor %}
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right">Total :</td>
+                    <td>{{ total }}</td>
+                </tr>
+                <tr>
+                    <form action="{{path('cart_add')}}" method="post" name="ajouter">
+                        <td colspan="3" class="text-right">Your Address: </td>
+                        <td>
+                            <input type="text" name="address">
+                            <input type="hidden" name="total" value="{{ total }}">
+                            <input type="submit" name="button">
+
+                        </td>
+
+                    </form>
+                </tr>
+                </tfoot>
+            </table>
+                    <div class="add-buttons">
+                        <a href="{{ path('panier_pdf') }}" class="cart-button button"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                            Download pdf</a>
+                    </div>
+
+            </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+        {% else %}
+            <p>panier est vide</p>
+        {% endif %}
+
+{% endblock %}
+
+

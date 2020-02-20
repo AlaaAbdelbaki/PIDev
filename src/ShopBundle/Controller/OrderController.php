@@ -52,26 +52,28 @@ class OrderController extends Controller
 
     }
 
+//    public function ajouterOrderAction(Request $request){
+//        $orders=new orders();
+//
+//        $form=$this->createFormBuilder($orders)
+//            ->add('orderDate',DateType::class)
+//            ->add('total',TextType::class)
+//            ->add('address',TextType::class)
+//            ->add('Add',SubmitType::class)
+//            ->getForm();
+//
+//        $form->handleRequest($request);
+//        if($form->isSubmitted() && $form->isValid()){
+//
+//            $conn = $this->getDoctrine()->getManager();
+//            $conn->persist($orders);
+//            $conn->flush();
+//
+//            return $this->redirect($this->generateUrl('shop_adminorder'));
+//        }
+//        return $this->render('@Shop/Default/admin_order_add.html.twig',['f'=>$form->createView()]);
+//    }
     public function ajouterOrderAction(Request $request){
-        $orders=new orders();
-
-        $form=$this->createFormBuilder($orders)
-            ->add('orderDate',DateType::class)
-            ->add('total',TextType::class)
-            ->add('address',TextType::class)
-            ->add('Add',SubmitType::class)
-            ->getForm();
-
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
-
-            $conn = $this->getDoctrine()->getManager();
-            $conn->persist($orders);
-            $conn->flush();
-
-            return $this->redirect($this->generateUrl('shop_adminorder'));
-        }
-        return $this->render('@Shop/Default/admin_order_add.html.twig',['f'=>$form->createView()]);
+        
     }
-
 }
