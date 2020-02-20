@@ -30,7 +30,7 @@ class video
      * @ManyToMany(targetEntity="User")
      * @JoinTable(name="votes",
      *      joinColumns={@JoinColumn(name="video_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="user_id", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@JoinColumn(name="user_id", referencedColumnName="id")}
      *      )
      */
     private $votes;

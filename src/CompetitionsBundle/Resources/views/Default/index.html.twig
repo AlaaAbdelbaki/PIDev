@@ -47,8 +47,12 @@
                         </div>
 
                         <div class="buy-tickets ">
-                            <a href="{{ path('competition_participate', {'id': competition.id}) }}" class="btn musica-btn">Participate</a>
+                        {% if competition in c %}
+                                <h6 class="text-white"> Already participated !</h6>
+{% else %}
 
+                                <a href="{{ path('competition_participate', {'id': competition.id}) }}" class="btn musica-btn">Participate</a>
+{% endif %}
                         </div>
                     </div>
                     {% endfor %}

@@ -7,6 +7,7 @@ use AppBundle\Entity\competition_participant;
 use AppBundle\Entity\User;
 use AppBundle\Entity\video;
 use AppBundle\Entity\vote;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -29,9 +30,14 @@ class competitionController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $competitions = $em->getRepository('AppBundle:competition')->findAll();
-
+        $part= $em->getRepository('AppBundle:competition_participant')->findByUser($this->getUser());
+        $c=new ArrayCollection();
+        foreach ($part as $p){
+           $c->add($p->getCompetition());
+        }
+        dump($c);
         return $this->render('CompetitionsBundle:Default:index.html.twig', array(
-            'competitions' => $competitions,
+            'competitions' => $competitions,'c' =>$c
         ));
     }
     /**
@@ -143,11 +149,14 @@ class competitionController extends Controller
      */
     public function newVideoAction(Request $request,competition $id)
     {$competition =$this->getDoctrine()->getRepository(competition::class)->find($id);
+        $participation=$this->getDoctrine()->getRepository(competition_participant::class)->findByUser($this->getUser());
+
         $video = new video();
         $form = $this->createForm('CompetitionsBundle\Form\videoType', $video);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $video->setOwner($this->getUser());
             $em = $this->getDoctrine()->getManager();
             $em->persist($video);
             $participation=new competition_participant();
@@ -163,7 +172,7 @@ class competitionController extends Controller
         }
 
         return $this->render('CompetitionsBundle:Default:participation.html.twig', array(
-            'video' => $video,
+            'video' => $video,'participant'=>$participation,
             'form' => $form->createView(),
         ));
     }
@@ -177,7 +186,20 @@ class competitionController extends Controller
     {
         $competition =$this->getDoctrine()->getRepository(competition::class)->find($id);
         $participations =$this->getDoctrine()->getRepository(competition_participant::class)->findByCompetition($id);
-        return($this->render('@Competitions/Default/competition_show.html.twig',array('competition' =>$competition ,'participations'=>$participations)));
+
+        $ranks=$this->getDoctrine()->getRepository(competition_participant::class)->findRanks();
+
+        $res=new ArrayCollection();
+        foreach($ranks as $r)
+        {
+            $vid = $this->getDoctrine()->getRepository(video::class)->findById($r['video_id']);
+
+            $res->add($vid);
+
+        }
+
+        return($this->render('@Competitions/Default/competition_show.html.twig',array('competition' =>$competition ,'participations'=>$participations,'ranks'=>$res))
+        );
     }
     /**
      * Deletes a competition entity.
@@ -246,5 +268,44 @@ class competitionController extends Controller
         $em->flush();
         return new Response();
 
+    }
+    /**
+     * @Route("/DownVote/{id}", name="competition_downVote")
+     *
+     */
+    public function downVoteAction($id)
+    {
+        $user=$this->getUser();
+        $video =$this->getDoctrine()->getRepository(video::class)->find($id);
+        $video->getVotes()->removeElement($user);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($video);
+        $em->flush();
+        return new Response();
+
+    }
+    /**
+     * @Route("/ranking/{id}", name="update_ranks")
+     * @param competition $id
+     * @return Response
+     */
+    public function updateRanksAction($id)
+    {
+
+        $participations =$this->getDoctrine()->getRepository(competition_participant::class)->findByCompetition($id);
+
+        $ranks=$this->getDoctrine()->getRepository(competition_participant::class)->findRanks();
+
+        $res=new ArrayCollection();
+        foreach($ranks as $r)
+        {
+            $vid = $this->getDoctrine()->getRepository(video::class)->findById($r['video_id']);
+
+            $res->add($vid);
+
+        }
+
+        return($this->render('@Competitions/Default/ranks.html.twig',array('ranks'=>$res))
+        );
     }
 }

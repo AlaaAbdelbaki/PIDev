@@ -2,6 +2,9 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\User;
+use AppBundle\Entity\video;
+
 /**
  * competition_participantRepository
  *
@@ -10,4 +13,24 @@ namespace AppBundle\Repository;
  */
 class competition_participantRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function findRanks()
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT  video_id
+  FROM votes 
+ GROUP by video_id
+ ORDER by count(video_id) DESC
+ LIMIT 3';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $stmt->fetchAll();
+
+
+    }
+
 }
