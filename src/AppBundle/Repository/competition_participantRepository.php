@@ -18,7 +18,7 @@ class competition_participantRepository extends \Doctrine\ORM\EntityRepository
     {
         $conn = $this->getEntityManager()->getConnection();
 
-        $sql = 'SELECT  v.video_id ,count(v.video_id)
+        $sql = 'SELECT  v.video_id 
   FROM
   votes v
   WHERE v.video_id IN

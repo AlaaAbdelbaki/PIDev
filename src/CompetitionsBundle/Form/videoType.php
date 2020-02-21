@@ -3,6 +3,7 @@
 namespace CompetitionsBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,8 +16,9 @@ class videoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('title')
-            ->add('publishDate', DateType::class, [
+            ->add('publishDate', DateTimeType::class, [
                 'widget' => 'single_text',
+                'disabled'=>'disabled'
             ])
             ->add('url');
     }/**

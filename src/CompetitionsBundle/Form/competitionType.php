@@ -3,6 +3,7 @@
 namespace CompetitionsBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,11 +17,14 @@ class competitionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('subject',TextareaType::class)
-            ->add('competitionDate', DateType::class, [
-                'widget' => 'single_text',
+            ->add('competitionDate', DateTimeType::class, [
+                'date_widget' => 'single_text',
+                'time_widget' => 'single_text',
+                'disabled'=>'disabled'
             ])
-            ->add('competitionEndDate', DateType::class, [
-                'widget' => 'single_text',
+            ->add('competitionEndDate', DateTimeType::class, [
+                'date_widget' => 'single_text',
+                'time_widget' => 'single_text'
             ]);
     }/**
      * {@inheritdoc}

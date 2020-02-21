@@ -15,17 +15,19 @@
                         {{ form_start(form) }}
                             <div class="row">
                                 <div class="col-md-5">
-                                    <label class="bmd-label-floating">Start Date</label>
-                                    <div class="form-group bmd-form-group">
-                                        {{ form_widget(form.competitionDate,{'attr': {'class': 'form-control'} }) }}
 
+                                    <label class="bmd-label-floating fa fa-calendar">Start Date</label>
+                                    <div class="form-group bmd-form-group">
+                                        {{ form_widget(form.competitionDate.date,{'attr': {'class': 'form-control'} }) }}
+                                        {{ form_widget(form.competitionDate.time,{'attr': {'class': 'form-control '} }) }}
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <label class="bmd-label-floating fa fa-calendar"> End Date</label>
                                     <div class="form-group bmd-form-group ">
-                                        {{ form_widget(form.competitionEndDate,{'attr': {'class': 'form-control'} }) }}
+                                        {{ form_widget(form.competitionEndDate.date,{'attr': {'class': 'form-control'} }) }}
+                                        {{ form_widget(form.competitionEndDate.time,{'attr': {'class': 'form-control'} }) }}
 
                                     </div>
                                 </div>

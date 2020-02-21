@@ -84,11 +84,14 @@ class competition_participant
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="participation_date", type="date")
+     * @ORM\Column(name="participation_date", type="datetime")
      */
-    private $participationDate;
+    private $participationDate ;
 
-
+    public function __construct()
+    {
+        $this->participationDate=new \DateTime();
+    }
     /**
      * Get id
      *

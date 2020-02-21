@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\JoinTable;
 use Doctrine\ORM\Mapping\ManyToMany;
 use Doctrine\ORM\Mapping\ManyToOne;
+use Symfony\Component\Validator\Constraints as Assert ;
 
 /**
  * video
@@ -58,6 +59,7 @@ class video
     }
     public function __construct()
     {$this->votes = new ArrayCollection();
+        $this->publishDate=new \DateTime();
 
     }
 
@@ -82,7 +84,7 @@ class video
 
     /**
      * @var string
-     *
+     *@Assert\Regex("/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*|/")
      * @ORM\Column(name="url", type="string", length=500)
      */
     private $url;
@@ -97,7 +99,7 @@ class video
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="publish_date", type="date")
+     * @ORM\Column(name="publish_date", type="datetime")
      */
     private $publishDate;
 

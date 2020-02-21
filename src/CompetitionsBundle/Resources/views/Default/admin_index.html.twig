@@ -2,6 +2,8 @@
 
 {% block dash_title %}Competitions{% endblock %}
 {% block admin_content %}
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -27,7 +29,7 @@
                                     <th>
                                         End Date
                                     </th>
-                                    <th>
+                                    <th class="text-center">
                                         Action
                                     </th>
                                     </thead>
@@ -47,7 +49,7 @@
                                             {% if competition.competitionEndDate %}{{ competition.competitionEndDate|date('Y-m-d') }}{% endif %}
                                         </td>
 
-    <td class="content-center">
+    <td class="text-center">
         <button class="btn btn-dark"><a href="{{ path('competition_edit', {'id': competition.id}) }}">edit</a></button>
         <button class="btn btn-danger"><a href="{{ path('competition_delete', {'id': competition.id}) }}">delete</a></button>
     </td>
@@ -61,7 +63,85 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary row " style="background: linear-gradient(60deg, #288c6c, #4ea752)" >
+                            <h2 class="card-title  col-10">Winners List:</h2>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class=" text-primary">
+                                    <th>
+                                         Competition Subject
+                                    </th>
+                                    <th>
+                                        End Date
+                                    </th>
+                                    <th>
+                                        Winner
+                                    </th>
+                                    <th class="text-center">
+                                        Action
+                                    </th>
+
+                                    </thead>
+                                    <tbody>
+                                    {% for competition in competitions %}
+                                        {% if competition.competitionEndDate |date <  "now"|date %}
+                                            {% if not competition.winner.hasRole('ROLE_TALENTED')%}
+                                        <tr>
+                                            <td>
+                                                {{ competition.subject }}
+                                            </td>
+                                            <td>
+                                                {% if competition.competitionEndDate %}{{ competition.competitionEndDate|date('Y-m-d') }}{% endif %}
+                                            </td>
+
+                                            <td>
+                                                {% if  competition.winner is not null%}
+                                                {{ competition.winner.username }} {% else %}
+                                           <h5>No Winner</h5> {% endif %}
+                                          </td>
+
+                                            <td class="text-center">
+                                                <a class="btn btn-primary promote" href="{{ path('promote_user', {'id': competition.winner.id}) }}"> Promote To Talented </a>
+                                                   </td>
+                                        </tr>
+                                                {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <script src="{{asset('assets/js/jquery/jquery-2.2.4.min.js')}}"></script>
+    <script>
+        $('.promote').click(function (e)
+        {e.preventDefault();
+            let  $t=$(this);
+
+            $.ajax({
+                url:$(this).attr('href'),
+
+                success: function ()
+                {
+
+
+                    $t.closest('tr').remove();
+                }
+            });
+            return false;
+
+        });
+    </script>
 {% endblock %}
 

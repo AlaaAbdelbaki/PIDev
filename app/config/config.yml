@@ -80,3 +80,6 @@ fos_user:
     from_email:
         address: "hello@aquanote.com"
         sender_name: "AquaNote Postman"
+knp_paginator:
+    template:
+        pagination: '@Competitions/Default/pagination.html.twig'

@@ -32,7 +32,7 @@
 <div class="col second-img " style=" background-image: linear-gradient(to right, #5722a9,#0c0527) ">
     <p class="text-center" style=" font-size: 100px ;color: #ffffff; font-family: Allura,cursive"> Ranking: </p>
     <div class="row"><div class="col"></div>
-    <img src="{{ asset('assets/img/crown.png') }}" style="width: 400px" ><div class="col"></div> </div>
+    <img src="{{ asset('assets/img/crown.png') }}" style="width: 400px; filter: invert(0%) opacity(20%)" ><div class="col"></div> </div>
     <div id="ranking" >
         {{ render(controller(
             'CompetitionsBundle:competition:updateRanks', {
@@ -44,7 +44,7 @@
         <img src="{{asset('assets/img/bg-img/man.png')}}" alt="">
   </div>
         <div class="career-timeline-area section-padding-50 col-8  " style="background-image: linear-gradient(to left, #5722a9,#0c0527)"  >
-            <p class="text-center win" style=" font-size: 100px ;color: #ffffff; font-family: Allura,cursive ;display: none"> THE    WINNER    IS  </p>
+            <p class="text-center win" style=" font-size: 100px ;color: #ffffff; font-family: Allura,cursive ; word-spacing:50px ;display: none"> THE            WINNER           IS  </p>
          <div class="postss text-center" style="display: none ; width:200px;margin-left: 40% ;margin-top: 10%"></div>
             <div class="container posts">
                 {% set i = 0 %}
@@ -54,7 +54,7 @@
     <img src="{{ asset('assets/uploads/'~ participation.user.profilePic) }}" style="width:70%  " class=" img-thumbnail rounded-circle mb-3 align-self-center" ></div>
     <div class="col align-self-center" >
         <h4 class="text-white " >{{ participation.user.username }}</h4>
-        <h6 class="text-grey"> {{ participation.participationDate | date() }}</h6>
+        <h6 class="text-white" style="opacity: 50%"> {{ participation.participationDate | date() }}</h6>
     </div>
 
        </div>
@@ -63,7 +63,7 @@
 
             <!-- Album Thumbnail -->
             <div class="album-thumbnail  " ><iframe width="540" height="315" id={{ i }} allowfullscreen frameborder="0"
-                                                               src="">
+                                                               src="{{ participation.video.url }}">
                 </iframe></div>
 
             <!-- Album Songs -->
@@ -137,9 +137,13 @@
         {% set i =i+1 %}
 
     {% endfor %}
-            </div>
-        </div>
+
+
 </div>
+        </div>
+
+</div>
+        <div class="row justify-content-center mt-5">  {{ knp_pagination_render(participations)}}</div>
     </div>
 
     <div> </div>
