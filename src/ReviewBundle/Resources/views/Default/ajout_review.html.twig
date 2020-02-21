@@ -1,7 +1,7 @@
 
 {% extends 'admin_base.html.twig' %}
 {% block admin_content %}
-    {{ form_start(form) }}
+    <div class="content">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-primary">
@@ -9,6 +9,7 @@
                 <p class="card-category"> Here is a subtitle for this table</p>
             </div>
             <div class="card-body">
+                {{ form_start(form) }}
                 <div class="table-responsive">
                     <table class="table">
                         <tr>
@@ -16,17 +17,18 @@
                             <td>{{ form_widget(form.rating,{attr: {'class':'form-control'}}) }}</td>
                         </tr>
                         <tr>
+                            <td>Category </td>
+                            <td>{{ form_widget(form.category,{attr: {'class':'form-control'}}) }}</td>
+                        </tr>
+                        <tr>
                             <td>Title </td>
                             <td>{{ form_widget(form.title,{attr: {'class':'form-control'}}) }}</td>
                         </tr>
                         <tr>
                             <td>Content </td>
-                            <td>{{ form_widget(form.content) }}</td>
+                            <td>{{ form_widget(form.content,{attr: {'class':'form-control'}}) }}</td>
                         </tr>
-                        <tr>
-                            <td>User</td>
-                            <td>{{ form_widget(form.User) }}</td>
-                        </tr>
+
                         <tr>
                             <td></td>
                             <td>{{ form_widget(form.submit,{attr: {'class':'btn btn-primary btn-block'}}) }}</td>
@@ -35,6 +37,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
     {{ form_end(form) }}
 

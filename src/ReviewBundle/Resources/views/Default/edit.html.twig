@@ -1,24 +1,35 @@
-{% extends 'admin_base.html.twig' %}
+{%  extends 'admin_base.html.twig' %}
+
 {% block admin_content %}
+    <div class="content">
+    <div class="col-md-8">
+    <div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title">Edit Review</h4>
+        <p class="card-category">Edit</p>
+    </div>
+    <div class="card-body">
 
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header card-header-primary">
-                <h4 class="card-title ">Reviews</h4>
-                <p class="card-category"> Edit</p>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table">
-                        <tr>
+        {{ form_start(f)}}
 
-                            <td>{{ form(formulaire) }}</td>
-                        </tr>
 
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
+
+        {{ form_label(f.rating,'Note',{'attr':{'class':'bmd-label-floating'}}) }}
+        {{ form_widget(f.rating,{'attr':{'class':'form-control'}}) }}
+
+
+        {{ form_label(f.category,'Category',{'attr':{'class':'bmd-label-floating'}}) }}
+        {{ form_widget(f.category,{'attr':{'class':'form-control'}}) }}
+
+        {{ form_label(f.title,'Title',{'attr':{'class':'bmd-label-floating'}}) }}
+        {{ form_widget(f.title,{'attr':{'class':'form-control'}}) }}
+
+        {{ form_label(f.content,'Product Price',{'attr':{'class':'bmd-label-floating'}}) }}
+        {{ form_widget(f.content,{'attr':{'class':'form-control'}}) }}
+
+        {{ form_widget(f.submit) }}
+        {{ form_end(f) }}
+
+    </div>
     </div>
 {% endblock %}

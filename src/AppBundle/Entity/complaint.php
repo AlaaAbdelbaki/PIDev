@@ -36,6 +36,7 @@ class complaint
     private $content;
 
 
+
     /**
      * Get id
      *

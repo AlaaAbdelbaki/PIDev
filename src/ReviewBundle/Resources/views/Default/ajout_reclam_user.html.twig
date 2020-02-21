@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block content %}
-    {{ form_start(f) }}
-    <div class="content">
+
+        <footer class="footer-area section-padding-100-0">
+            <div class="container-fluid">
+                <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header card-header-primary">
@@ -9,6 +11,7 @@
                     <p class="card-category"> Here is a subtitle for this table</p>
                 </div>
                 <div class="card-body">
+                    {{ form_start(f) }}
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
@@ -20,7 +23,7 @@
                                 <td>{{ form_widget(f.content,{attr: {'class':'form-control'}}) }}</td>
                             </tr>
                             <tr>
-                                <td></td>
+
                                 <td>{{ form_widget(f.submit,{attr: {'class':'btn btn-primary btn-block'}}) }}</td>
                             </tr>
                         </table>
@@ -28,6 +31,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    </div>
+    </footer>
     </div>
     {{ form_end(f) }}
 {% endblock %}

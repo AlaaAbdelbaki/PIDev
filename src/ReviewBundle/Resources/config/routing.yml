@@ -25,6 +25,12 @@ edit_reclam:
 AddReviewUser:
     path:     /AddReviewUser
     defaults: { _controller: ReviewBundle:ReviewUseer:AddReviewUser }
-AddReclamActionUser:
-    path:     /AddReclamActionUser
-    defaults: { _controller: ReviewBundle:ReviewUseer:AddReclamActionUser }
+AddReclamUser:
+    path:     /AddReclamUser
+    defaults: { _controller: ReviewBundle:ComplaintUser:AddReclamUser }
+Mail:
+    path:     /Mail/{id}
+    defaults: { _controller: ReviewBundle:complaints:sendMessage }
+affichetri:
+    path:     /affichetri
+    defaults: { _controller: ReviewBundle:reviews:tri }

@@ -4,13 +4,14 @@ namespace ReviewBundle\Controller;
 
 use AppBundle\Entity\complaint;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 
 class ComplaintUserController extends Controller
 {
-    public function AddReclamActionUser(Request $request){
+    public function AddReclamUserAction(Request $request){
         $complaint = new complaint();
         $form = $this->createFormBuilder($complaint)
             ->add('subject',TextType::class)
@@ -20,6 +21,7 @@ class ComplaintUserController extends Controller
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
+            $complaint->setUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
             $em->persist($complaint);
             $em->flush();

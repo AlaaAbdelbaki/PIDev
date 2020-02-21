@@ -2,9 +2,15 @@
 
 namespace ReviewBundle\Controller;
 
+use AppBundle\Entity\article;
+use AppBundle\Entity\competition;
+use AppBundle\Entity\event;
+use AppBundle\Entity\orders;
 use AppBundle\Entity\review;
 
+use AppBundle\Repository\reviewRepository;
 use http\Client\Curl\User;
+use ReviewBundle\ReviewBundle;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -18,10 +24,10 @@ class reviewsController extends Controller
         $review = new review();
         $form = $this->createFormBuilder($review)
             ->add('rating',ChoiceType::class,["choices"=>["1"=>1,"2"=>2,"3"=>3,"4"=>4,"5"=>5   ]])
+            ->add('category',ChoiceType::class,["choices"=>["Events"=>event::class,"Orders"=>orders::class
+                ,"Competition"=>competition::class,"Articles"=>article::class]])
             ->add('title',TextType::class)
             ->add('content',TextType::class)
-            ->add('User',EntityType::class,array('class'=>'AppBundle:User',
-                'choice_label'=>'id'))
             ->add('submit',SubmitType::class)
             ->getForm();
         $form->handleRequest($request);
@@ -54,9 +60,10 @@ class reviewsController extends Controller
         $c = $this->getDoctrine()->getRepository(review::class)->find($id);
         $form = $this->createFormBuilder($c)
             ->add('rating',ChoiceType::class,["choices"=>["1"=>1,"2"=>2,"3"=>3,"4"=>4,"5"=>5   ]])
+            ->add('category',ChoiceType::class,["choices"=>["Events"=>event,"Orders"=>orders
+                ,"Competition"=>competition,"Articles"=>article]])
             ->add('title',TextType::class)
             ->add('content',TextType::class)
-
             ->add('submit',SubmitType::class)
             ->getForm();
 
@@ -67,6 +74,8 @@ class reviewsController extends Controller
             $em->flush();
             return $this->redirectToRoute('affiche');
         }
-        return $this->render("@Review/Default/edit.html.twig", ["formulaire" => $form->createView()]);
+        return $this->render("@Review/Default/edit.html.twig", ["f" => $form->createView()]);
     }
+
+
 }

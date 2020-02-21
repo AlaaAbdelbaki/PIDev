@@ -8,6 +8,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    photos_directory: '%kernel.root_dir%/../web/assets/img/fich_img/'
 
 framework:
     #esi: ~
@@ -64,6 +65,8 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: '%mailer_transport%'
+    encryption: ssl
+    auth_mode: login
     host: '%mailer_host%'
     username: '%mailer_user%'
     password: '%mailer_password%'
@@ -79,3 +82,4 @@ fos_user:
     from_email:
         address: "hello@aquanote.com"
         sender_name: "AquaNote Postman"
+gregwar_captcha: ~

@@ -54,6 +54,12 @@ class review
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="category", type="string", length=255)
+     */
+    private $category;
 
     /**
      * @var string
@@ -95,6 +101,22 @@ class review
     public function getRating()
     {
         return $this->rating;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param string $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
     }
 
     /**
