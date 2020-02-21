@@ -23,16 +23,16 @@
 {#                        Voting on video#}
                         <div id="voting" class="row">
                             <div class="col"></div>
-{#                            Comments#}
-                            <div class="col">
-                                {% include '@FOSComment/Thread/async.html.twig' with {'id': 'foo'} %}
-                            </div>
+                            <div class="col"></div>
 {#                            Likes and dislikes#}
                             <div class="col" style="user-select: none;">
                                 <i id="up{{ video.id }}" class="fa fa-thumbs-up fa-3x" style="height: 50px;width: 50px; color: #e2f3f5;cursor: pointer;" ></i>
                                 <i id="down{{ video.id }}" class="fa fa-thumbs-down fa-3x fa-flip-horizontal" style="color: #e2f3f5;cursor: pointer;"></i>
                                 <i hidden id="color_ref" class="fa fa-thumbs-down fa-3x fa-flip-horizontal" style="color: #e2f3f5;cursor: pointer;"></i>
                             </div>
+                        </div>
+                        <div id="comments" class="row">
+                                {% include '@FOSComment/Thread/async.html.twig' with {'id': '31'} %}
                         </div>
                         <br>
                         <br>
