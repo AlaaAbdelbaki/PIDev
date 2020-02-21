@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+<!-- ##### Upcoming Shows Area Start ##### -->
+<div class="upcoming-shows-area section-padding-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading">
+                    <h2>Upcoming events</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <!-- Upcoming Shows Content -->
+                <div class="upcoming-shows-content">
+                    <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
+                        <div >
+                            <h2>Start_Date</h2>
+                        </div>
+
+                        <div >
+                            <h2>End_Date</h2>
+                        </div>
+
+                        <div >
+                            <h2> Image </h2>
+                        </div>
+
+                        <div >
+                            <h2> Title </h2>
+                        </div>
+
+                        <div >
+                           <h2> Location </h2>
+                        </div>
+
+                        <div>
+                           <h2> Nb_places </h2>
+                        </div>
+
+                        <div >
+                            <h2> Type </h2>
+                        </div>
+
+
+                    </div>
+
+
+                    {% for i in t %}
+                    <!-- Single Upcoming Shows -->
+
+                    <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
+                        <div class="shows-date">
+                            <h2>{{ i.startDate|date("d")}}<span>{{ i.startDate|date("M")}}</span></h2>
+                        </div>
+
+{#                        <div class="shows-date">#}
+{#                            <h2>{{ i.endDate|date("d")}}<span>{{ i.endDate|date("M")}}</span></h2>#}
+{#                        </div>#}
+
+                        <div class="shows-desc d-flex align-items-center flex-wrap">
+
+                            <div class="shows-img">
+                                <img src="{{ asset('assets/img/shop-img/' ~ i.img) }}"alt="">
+                            </div>
+
+                            <div class="shows-name">
+                                <h6>{{ i.title }}</h6>
+                                <p>{{ i.location}}</p>
+                            </div>
+                        </div>
+
+                        <div class="shows-location d-flex align-items-center flex-wrap">
+                            <p>{{ i.description}}</p>
+                        </div>
+
+                        <div class="shows-location d-flex align-items-center flex-wrap">
+                            <p>{{ i.nbPlaces }}</p>
+                        </div>
+
+                        <div class="shows-location d-flex align-items-center flex-wrap">
+                            <p>{{ i.type}}</p>
+                        </div>
+
+                        <div class="buy-tickets">
+                            <a href="#" class="btn musica-btn">Buy Tikets</a>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Upcoming Shows Area End ##### -->
+{% endblock %}

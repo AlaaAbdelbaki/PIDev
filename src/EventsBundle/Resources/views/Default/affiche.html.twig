@@ -16,12 +16,14 @@
                         <thead class=" text-primary">
                         <th>Image</th>
                         <th>title</th>
-                        <th>start_date</th>
-                        <th>end_date</th>
+                        <th><a href="{{path('affichetri')}}" style="color: inherit;text-decoration: inherit;">start_date</a></th>
+                        <th><a href="{{path('triEndD')}}" style="color: inherit;text-decoration: inherit;">end_date</th>
                         <th>location</th>
                         <th>nbr_places</th>
                         <th>description</th>
                         <th>type</th>
+                        <th>Partage facebook </th>
+                        <th>Partage instagram </th>
 
                         </thead>
                         <tbody>
@@ -35,7 +37,7 @@
                                 <td>{{ i.nbPlaces }}</td>
                                 <td>{{ i.description}}</td>
                                 <td>{{ i.type}}</td>
-
+                                <td> <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Flocalhost.dev%2F2a7_php5%2Fview%2Fafficher_wishlist.php&layout=button_count&size=small&width=83&height=20&appId" width="83" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe></td>
 
 
                             </tr>
@@ -45,7 +47,7 @@
                     </table>
 
 
-                    <h2>Search an event !!</h2>
+                    <h2 style="text-align:center">Search an event !!</h2>
                     <div class="sidebar-search">
                         <div class="input-group custom-search-form">
                             <input type="text" id="search" class="form-control" placeholder="Search here">
@@ -87,7 +89,7 @@
                                                         if (key === 'event') {
                                                             if (id !== 'error') {
                                                                 console.log(value[1]);
-                                                                entitySelector.append('<li><b>'+value[1]+'</b><a href="/show_events/'+id+'">'+'<img src="/web/assets/img/album/'+value[0]+'" style="width: 50px; height: 50px"/>'+'</a></li>');
+                                                                entitySelector.append('<li><b>'+value[1]+'</b><a href="/show_events/'+id+'">'+'<img src="/assets/img/shop-img/'+value[0]+'" style="width: 50px; height: 50px"/>'+'</a></li>');
                                                             } else {
                                                                 entitySelector.append('<li class="errorLi">'+value+'</li>');
                                                             }
@@ -109,7 +111,5 @@
            </div>
        </div>
    </footer>
-   </div>
-
-
+    <td><a href="{{path('statsUser')}}"> <button class="btn btn-primary btn-block">show event distribution </button></a> <br></td>
 {% endblock %}

@@ -16,6 +16,6 @@ class DefaultController extends Controller
     {
         $tab=$this->getDoctrine()->getRepository(event::class)->findAll();
 
-        return $this->render('@Events/default/affiche.html.twig',array('t'=>$tab));
+        return $this->render('@Events/Default/affiche.html.twig',array('t'=>$tab));
     }
 }

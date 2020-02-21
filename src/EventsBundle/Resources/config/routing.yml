@@ -31,3 +31,12 @@ show_events:
 search:
     path:     /search
     defaults: { _controller: EventsBundle:Events:search }
+affichetri:
+    path:     /affichetri
+    defaults: { _controller: EventsBundle:Events:affichetri }
+triEndD:
+    path:     /triEndD
+    defaults: { _controller: EventsBundle:Events:triEndD }
+statsUser:
+    path:     /statsUser
+    defaults: { _controller: EventsBundle:Events:statsUser }
