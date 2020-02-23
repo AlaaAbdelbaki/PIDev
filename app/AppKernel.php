@@ -34,6 +34,8 @@ class AppKernel extends Kernel
 
 
             new BlogBundle\BlogBundle(),
+            new ReviewBundle\ReviewBundle(),
+            new \Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
 
         ];
 

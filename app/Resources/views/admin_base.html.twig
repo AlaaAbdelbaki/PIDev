@@ -54,6 +54,11 @@
             switching = true;
             //Set the sorting direction to ascending:
             dir = "asc";
+    <script>
+        function sortTable() {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementById("myTable");
+            switching = true;
             /*Make a loop that will continue until
             no switching has been done:*/
             while (switching) {
@@ -83,6 +88,13 @@
                             shouldSwitch = true;
                             break;
                         }
+                    x = rows[i].getElementsByTagName("TD")[0];
+                    y = rows[i + 1].getElementsByTagName("TD")[0];
+                    //check if the two rows should switch place:
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
                     }
                 }
                 if (shouldSwitch) {
@@ -98,6 +110,25 @@
                     if (switchcount == 0 && dir == "asc") {
                         dir = "desc";
                         switching = true;
+                }
+            }
+        }
+    </script>
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
                     }
                 }
             }
@@ -161,7 +192,7 @@
                     </a>
                 </li>
                  <li class="nav-item ">
-                      <a class="nav-link" href="">
+                      <a class="nav-link" href="{{ path('affiche_reclam') }}">
                           <i class="material-icons">unarchive</i>
                           <p>Complaints</p>
                       </a>

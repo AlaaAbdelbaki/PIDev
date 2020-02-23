@@ -51,6 +51,9 @@
             }
         </script>
 
+        {% block stylesheets %}<link rel="stylesheet" href="{{asset('assets/style.css')}}">
+            <link rel="stylesheet" href="{{asset('assets/beat.css')}}">{% endblock %}
+        <link rel="icon" type="image/png" href="{{asset('assets/img/icon.png')}}">
 
     </head>
     <body>
@@ -252,6 +255,7 @@
         {% endblock %}
         <section >
 {% block content %}
+
     <!-- ##### content Area  ##### -->
 {% endblock %}
         </section>

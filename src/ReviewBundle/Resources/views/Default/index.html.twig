@@ -1,0 +1,54 @@
+{% extends 'admin_base.html.twig' %}
+{% block admin_content %}
+    <div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">Reviews</h4>
+                <p class="card-category"> Here is a subtitle for this table</p>
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for category.." title="Type in Rating">
+            </div>
+            <div class="card-body">
+                <p><button onclick="sortTable()">Sort</button></p>
+                <div class="table-responsive">
+                    <table class="table"  id="myTable" >
+                        <thead class="text-primary">
+                        <th>Rating</th>
+                        <th>User Name</th>
+                        <th>Category</th>
+                        <th >Title </th>
+                        <th>Content</th>
+                        <th>Actions</th>
+                        </thead>
+                        {% for s in formulaire %}
+                        <tbody>
+
+                        <tr>
+
+
+                            <td>  {{ s.rating }}</td>
+                            <td>{{ s.User.username }}</td>
+
+                            <td>{{ s.category }}</td>
+
+
+
+
+
+                            <td>{{ s.title }}</td>
+
+
+
+                            <td>{{ s.content }}</td>
+                            <td> <a href="{{ path('edit',{'id':s.id}) }}'"> Edit</a></td>
+                            <td><a href="{{ path('delete',{'id':s.id}) }}'">Delete</a></td>
+                        </tr>
+
+                        </tbody>
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
