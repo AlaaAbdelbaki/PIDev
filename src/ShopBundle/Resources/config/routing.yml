@@ -1,0 +1,52 @@
+shop_homepage:
+    path:     /shop
+    defaults: { _controller: ShopBundle:Shop:afficherShop }
+shop_details:
+    path: /shop-details/{id}
+    defaults: { _controller: ShopBundle:Shop:shopDetails}
+shop_admin:
+    path: /admin/shop
+    defaults: { _controller: ShopBundle:Produit:afficherProduit }
+shop_adminsupprimer:
+    path: /admin/shop/delete/{_id}
+    defaults: { _controller: ShopBundle:Produit:supprimerProduit }
+shop_adminmodifier:
+    path: /admin/shop/update/{_id}
+    defaults: { _controller: ShopBundle:Produit:modifierProduit}
+shop_adminajouter:
+    path: /admin/shop/add
+    defaults: { _controller: ShopBundle:Produit:ajouterProduit}
+shop_adminorder:
+    path: /admin/order
+    defaults: { _controller: ShopBundle:Order:afficherOrder}
+shop_adminorderdel:
+    path: /admin/order/delete/{id}
+    defaults: { _controller: ShopBundle:Order:supprimerOrder}
+shop_adminorderupdate:
+    path: /admin/order/update/{id}
+    defaults: { _controller: ShopBundle:Order:modifierOrder }
+shop_adminorderajouter:
+    path: /admin/order/add
+    defaults: { _controller: ShopBundle:Order:ajouterOrder }
+panier_afficher:
+    path: /shop/panier
+    defaults: { _controller: ShopBundle:Cart:afficherCart }
+panier_ajouter:
+    path: /shop/panier/add/{id}
+    defaults: { _controller: ShopBundle:Cart:ajouterCart }
+panier_supprimer:
+    path: /shop/panier/remove/{id}
+    defaults: { _controller: ShopBundle:Cart:supprimerCart }
+panier_pdf:
+    path: /shop/panier/pdf
+    defaults: { _controller: ShopBundle:Cart:savePdf }
+ajax_search:
+    path: /shop/search
+    defaults: { _controller: ShopBundle:Produit:search }
+
+panier_showpdf:
+    path: /shop/panier/showpdf
+    defaults: { _controller: ShopBundle:Cart:showPdf }
+cart_add:
+    path: /shop/cart/add
+    defaults: { _controller: ShopBundle:Cart:userAddCart }

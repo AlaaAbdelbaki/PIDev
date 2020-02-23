@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+
+    <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({{ asset('assets/img/bg-img/breadcumb.jpg') }});">
+
+        <div class="bradcumbContent">
+            <h2>Our Shop</h2>
+        </div>
+    </div>
+    <!-- bg gradients -->
+    <div class="bg-gradients"></div>
+    <!-- ##### Breadcumb Area End ##### -->
+
+
+    <!-- ##### Shop Area Start ##### -->
+
+
+    <div class="products-section before-after bg-white">
+        <div id="search_input">
+    <div class="container">
+    <div id="search_bar" style="text-align: center">
+
+        {#            Search Bar#}
+        <div id="search_input">
+            <h2 class="text-primary">Chercher un utilisateur</h2>
+
+            <div class="sidebar-search">
+
+                <div class="input-group custom-search-form">
+
+                    <input autocomplete="off" type="text" id="search" class="form-control" placeholder="Find Product ...">
+                </div>
+                <!-- /input-group -->
+            </div>
+            <ul class="nav" id="side-menu">
+                <li>
+                    {#                    <a href="#">Entities<span class="fa arrow"></span></a>#}
+                    <ul class="nav nav-second-level" id="entitiesNav">
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+            <script type="text/javascript">
+                jQuery(document).ready(function() {
+                    var searchRequest = null;
+                    $("#search").keyup(function() {
+                        var minlength = 1;
+                        var that = this;
+                        var value = $(this).val();
+                        var entitySelector = $("#entitiesNav").html('');
+                        if (value.length >= minlength ) {
+                            if (searchRequest != null)
+                                searchRequest.abort();
+                            searchRequest = $.ajax({
+                                type: "GET",
+                                url: "{{ path('ajax_search') }}",
+                                data: {
+                                    'q' : value
+                                },
+                                dataType: "text",
+                                success: function(msg){
+                                    //we need to check if the value is the same
+                                    if (value===$(that).val()) {
+                                        var result = JSON.parse(msg);
+                                        $.each(result, function(key, arr) {
+                                            $.each(arr, function(id, value) {
+                                                if (key === 'product') {
+                                                    if (id !== 'error') {
+                                                        console.log(value[1]);
+                                                        // console.log(value);
+                                                        entitySelector.append('<p class"text-secondary">'+value[1]+'</p><a href="/shop-details/'+id+'"><img style="width: 50px; height: 50px" src="/assets/img/shop-img/'+value[0]+'"></a></p>');
+                                                    } else {
+                                                        entitySelector.append('<li class="text-secondary">'+value+'</li>');
+                                                    }
+                                                }
+                                            });
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                });
+            </script>
+        </div>
+    </div>
+
+        <div class="col-md-6">
+            <div class="add-buttons">
+
+                <a href="{{ path('panier_afficher') }}" class="cart-button button"><i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                    Show Cart</a>
+            </div>
+        </div>
+        <div class="container text-center">
+            <div class="row">
+                {% for p in products %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="products">
+                        <a href="{{path('shop_details',{'id':p.id})}}">{{ p.productName }}</a>
+                        <h5>${{ p.price }}</h5>
+                        <a href="{{ path('panier_ajouter',{'id':p.id}) }}"><i class="fa fa-shopping-cart"></i></a>
+
+
+
+
+                        <a href="{{ path('shop_details',{'id':p.id}) }}"><img class="img-fluid" src="{{ asset('assets/img/shop-img/' ~ p.img) }}" alt="" ></a>
+
+
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
