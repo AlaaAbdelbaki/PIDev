@@ -1,0 +1,51 @@
+{% extends 'admin_base.html.twig' %}
+{% block admin_content %}
+    <div class="content">
+    {{ form_start(t) }}
+    <div class="col-md-12">
+    <div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title ">Simple Table</h4>
+        <p class="card-category"> Here is a subtitle for this table</p>
+    </div>
+    <div class="card-body">
+    <div class="table-responsive">
+    <table class="table">
+        <thead class=" text-primary">
+        <tr>
+            <th>
+                price:
+            </th>
+            <th>
+                {{ form_widget(t.price) }}
+            </th>
+        </tr>
+        <tr>
+           <th>
+                event_id:
+            </th>
+            <th>
+               {{ form_widget(t.event) }}
+            </th>
+        </tr>
+
+        <tr>
+            <th>
+            </th>
+            <th>
+                {{ form_widget(t.Submit,{attr:{'class':'btn btn-primary btn-block'}}) }}
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        </tr>
+        </tbody>
+    </table>
+    {{ form_end(t) }}
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@TalentBundle/Resources/config/services.yml" }
+    - { resource: "@EventsBundle/Resources/config/services.yml" }
 
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -11,6 +12,7 @@ parameters:
     locale: en
     image_directory: '%kernel.root_dir%/../web/assets/img/pics/'
 
+    photos_directory: '%kernel.root_dir%/../web/assets/img/shop-img/'
 
 framework:
     #esi: ~

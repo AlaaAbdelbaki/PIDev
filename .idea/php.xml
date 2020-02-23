@@ -56,6 +56,11 @@
       <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
       <path value="$PROJECT_DIR$/vendor/kriswallsmith/assetic" />
       <path value="$PROJECT_DIR$/vendor/symfony/assetic-bundle" />
+      <path value="$PROJECT_DIR$/vendor/ob/highcharts-bundle" />
+      <path value="$PROJECT_DIR$/vendor/zendframework/zend-json" />
+      <path value="$PROJECT_DIR$/vendor/cmen/google-charts-bundle" />
+      <path value="$PROJECT_DIR$/vendor/webeweb/core-library" />
+      <path value="$PROJECT_DIR$/vendor/webeweb/highcharts-bundle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.5.0" />
