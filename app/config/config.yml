@@ -4,6 +4,8 @@ imports:
     - { resource: services.yml }
     - { resource: "@TalentBundle/Resources/config/services.yml" }
     - { resource: "@EventsBundle/Resources/config/services.yml" }
+    - { resource: "@ShopBundle/Resources/config/services.yml" }
+    
 
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -99,3 +101,20 @@ assetic:
 knp_paginator:
     template:
         pagination: '@Competitions/Default/pagination.html.twig'
+# Windows configuration
+knp_snappy:
+    pdf:
+        enabled:    true
+        # If you have wkhtmltopdf as an environment variable you don't need to provide the
+        # full path to the executable, use it in the same way as you use in the console
+        #binary:  "wkhtmltopdf"
+        binary:     "\"D:\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
+        options:
+            no-outline: true
+            page-size: LETTER
+            encoding: UTF-8
+    image:
+        enabled:    true
+        binary:     "\"D:\\wkhtmltopdf\bin\\wkhtmltoimage.exe\""
+        options:    []
+        options:    []

@@ -1,0 +1,63 @@
+{% extends 'admin_base.html.twig' %}
+{% block admin_content %}
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">Products List</h4>
+                <p class="card-category">Here you can find all products</p>
+                <a href="{{ path('shop_adminajouter') }}">Add Product || </a>
+                <a href="{{ path('shop_adminorder') }}">Orders Manager</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+
+                        <th>
+                            Product ID
+                        </th>
+                        <th>
+                            Product Name
+                        </th>
+                        <th>
+                            Stock
+                        </th>
+                        <th>
+                            price
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+
+                        </thead>
+                        <tbody>
+                        {% for p in products %}
+                        <tr>
+
+                            <td>
+                                {{ p.id }}
+                            </td>
+                            <td>
+                                {{ p.productName }}
+                            </td>
+                            <td>
+                                {{ p.stock }}
+                            </td>
+                            <td class="text-primary">
+                                {{ p.price }}
+                            </td>
+                            <td>
+                                <a href="{{ path('shop_adminsupprimer',{'_id':p.id}) }}">Delete</a>
+                                <a href="{{ path('shop_adminmodifier',{'_id':p.id}) }}">Update</a>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

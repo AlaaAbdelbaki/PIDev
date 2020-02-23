@@ -5,6 +5,11 @@ events:
     resource: "@EventsBundle/Resources/config/routing.yml"
     prefix:   /
 
+shop:
+    resource: "@ShopBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation

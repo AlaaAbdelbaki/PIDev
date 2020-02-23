@@ -26,7 +26,7 @@
             <link href="{{ asset('assets/css/pp.css') }}" type="text/css" rel="stylesheet" />
     </head>
     <body>
-        {% block body %}
+        {% block header %}
             <!-- ##### Preloader ##### -->
             <div class="preloader d-flex align-items-center justify-content-center">
                 <div class="circle-preloader">
@@ -92,6 +92,7 @@
                                                             <span class="bar bar-10"></span>
                                                         </div></a></li>
                                                 <li><a href="{{ path('competition_index') }}" class="show">Competitions
+                                                
                                                         <div class="equalizer">
                                                             <span class="bar bar-1"></span>
                                                             <span class="bar bar-2"></span>
@@ -221,6 +222,13 @@
                     {% block content %}
                         <!-- ##### content Area  ##### -->
                     {% endblock %}
+        {% endblock %}
+        <section >
+{% block content %}
+    <!-- ##### content Area  ##### -->
+{% endblock %}
+        </section>
+        {% block footer %}
             <!-- ##### Footer Area Start ##### -->
             <footer class="footer-area section-padding-100-0">
                 <div class="container-fluid">
@@ -293,6 +301,7 @@
 
                 </div>
             </div>
+
             <!-- ##### Footer Area Start ##### -->
 
             <!-- ##### All Javascript Script ##### -->
