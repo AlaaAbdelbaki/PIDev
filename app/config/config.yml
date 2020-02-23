@@ -2,13 +2,15 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-
+    - { resource: "@TalentBundle/Resources/config/services.yml" }
 
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    image_directory: '%kernel.root_dir%/../web/assets/img/pics/'
+
 
 framework:
     #esi: ~
@@ -80,6 +82,18 @@ fos_user:
     from_email:
         address: "hello@aquanote.com"
         sender_name: "AquaNote Postman"
+
+
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: AppBundle\Entity\comment
+            thread: AppBundle\Entity\Thread
+
+assetic:
+    bundles: [ "FOSCommentBundle" ]
+    bundles: [ "FOSCommentBundle" ]
 knp_paginator:
     template:
         pagination: '@Competitions/Default/pagination.html.twig'

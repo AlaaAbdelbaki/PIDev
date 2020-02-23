@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({{ asset('assets/img/bg-img/bg-1.jpg') }});">
+        <div class="bradcumbContent">
+            <h2>Ajoutez une vidéo</h2>
+        </div>
+    </div>
+    <!-- bg gradients -->
+    <div class="bg-gradients"></div>
+
+    <section class="elements-area mt-30 section-padding-100-0 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <!-- Buttons -->
+                    <div class="musica-buttons-area mb-100 ">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                {{ form_start(f) }}
+                                <table class="table" >
+                                    <thead class=" text-primary">
+                                    <tr>
+                                        <th>Titre: </th>
+                                        <th>{{ form_widget(f.title,{attr: {'class':'form_control'}}) }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>URL:</th>
+                                        <th>{{ form_widget(f.url) }}</th>
+                                    </tr>
+                                    <tr hidden>
+                                        <th>Date de publication: </th>
+                                        <th>{{ form_widget(f.publishDate) }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="2">{{ form_widget(f.submit,{attr: {'class':'btn btn-primary btn-block'}}) }}</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+        </div>
+    </section>
+    {{ form_end(f) }}
+{% endblock %}

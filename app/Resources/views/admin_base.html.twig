@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{ path('list_profile') }}">
                         <i class="material-icons">person</i>
                         <p>User Profiles</p>
                     </a>
@@ -117,11 +117,12 @@
                 </div>
             </div>
         </nav>
+
         <!-- End Navbar -->
         {% block admin_content %}
-        <div class="content"></div>
-
+            <div class="content"></div>
         {% endblock %}
+
         <footer class="footer">
             <div class="container-fluid">
                 <nav class="float-left">

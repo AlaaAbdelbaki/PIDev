@@ -1,0 +1,81 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+
+
+    <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({{ asset('assets/img/bg-img/bg-1.jpg') }});">
+        <div class="bradcumbContent">
+            <h2>Bienvenue {{ app.user.username }} !!</h2>
+        </div>
+    </div>
+    <!-- bg gradients -->
+    <div class="bg-gradients"></div>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <!-- ##### Elements Area Start ##### -->
+    <section class="elements-area mt-30 section-padding-100-0 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <!-- Buttons -->
+                    <div class="musica-buttons-area mb-100 ">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                {{ form_start(f) }}
+                                <table class="table" >
+                                    <thead class=" text-primary">
+                                    <tr>
+                                        <th>Nom: </th>
+                                        <th>{{ form_widget(f.name) }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Prénom:</th>
+                                        <th>{{ form_widget(f.first_name) }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Photo de profil</th>
+                                        <th>{{ form_widget(f.profile_pic) }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Date de naissance: </th>
+                                        <th>{{ form_widget(f.birthday) }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Email: </th>
+                                        <th>{{ form_widget(f.email) }}</th>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Numéro de téléphone: </th>
+                                        <th>{{ form_widget(f.telephoneNumber) }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Adresse: </th>
+                                        <th>{{ form_widget(f.adresse) }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Sexe: </th>
+                                        <th>{{ form_widget(f.sexe) }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Bio</th>
+                                        <th>{{ form_widget(f.bio) }}</th>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="text-align: center">{{ form_widget(f.submit,{attr: {'class':'btn musica-btn m-2'}}) }}</td>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+        </div>
+    </section>
+    {{ form_end(f) }}
+{% endblock %}
