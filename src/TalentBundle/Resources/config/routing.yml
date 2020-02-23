@@ -1,6 +1,3 @@
-talent_homepage:
-    path:     /home
-    defaults: { _controller: TalentBundle:Default:index }
 list_video:
     path: /admin/list_video
     defaults: {_controller: TalentBundle:Video:viewVideo}

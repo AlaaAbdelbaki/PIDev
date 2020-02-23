@@ -39,50 +39,7 @@
                         </li>
                     </ul><br><br><br><br>
 
-                    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-                    <script type="text/javascript">
-                        jQuery(document).ready(function() {
-                            var searchRequest = null;
-                            $("#search").keyup(function() {
-                                var minlength = 1;
-                                var that = this;
-                                var value = $(this).val();
-                                var entitySelector = $("#entitiesNav").html('');
-                                if (value.length >= minlength ) {
-                                    if (searchRequest != null)
-                                        searchRequest.abort();
-                                    searchRequest = $.ajax({
-                                        type: "GET",
-                                        url: "{{ path('user_search') }}",
-                                        data: {
-                                            'q' : value
-                                        },
-                                        dataType: "text",
-                                        success: function(msg){
-                                            //we need to check if the value is the same
-                                            if (value===$(that).val()) {
-                                                var result = JSON.parse(msg);
-                                                $.each(result, function(key, arr) {
-                                                    $.each(arr, function(id, value) {
-                                                        if (key === 'user') {
-                                                            if (id !== 'error') {
-                                                                console.log(value[1]);
-                                                                // console.log(value);
-                                                                entitySelector.append('<p class"text-secondary">'+value[1]+'<a href="/profile/'+value[1]+'"><img style="width: 50px; height: 50px" src="/assets/img/pics/'+value[0]+'"></a></p>');
-                                                            } else {
-                                                                entitySelector.append('<li class="text-secondary">'+value+'</li>');
-                                                            }
-                                                        }
-                                                    });
-                                                });
-                                            }
-                                        }
-                                    });
-                                }
-                            });
-                        });
-                    </script>
                 </div>
             </div>
 {#            Profile#}
@@ -96,7 +53,7 @@
                         {% if subscribtion == true %}
                             <div id="subscribe" style="margin-left: 40px;" class="btn musica-btn m-2"><a href="{{ path('unsubscribe',{id: user.id }) }}"> Désabonner  </a></div>
                         {% else %}
-                            <div id="subscribe" style="margin-left: 40px;" class="btn musica-btn m-2"><a href="{{ path('subscribe',{id: user.id }) }}"> S'abonner  </a></div>
+                            <div id="unsubscribe" style="margin-left: 40px;" class="btn musica-btn m-2"><a href="{{ path('subscribe',{id: user.id }) }}"> S'abonner  </a></div>
                         {% endif %}
                     {% endif %}
                     <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;">Nom:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.Name }}</span></div>
@@ -141,15 +98,57 @@
         </div>
         </div>
     </section>
-    {% endfor %}
+
+    <script type="text/javascript" src="{{ asset('admin_assets/js/core/jquery.min.js') }}"></script>
+
     <script type="text/javascript">
-        $("document").ready(function(){
+        jQuery(document).ready(function() {
+            var searchRequest = null;
+            $("#search").keyup(function() {
+                var minlength = 1;
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $("#entitiesNav").html('');
+                if (value.length >= minlength ) {
+                    if (searchRequest != null)
+                        searchRequest.abort();
+                    searchRequest = $.ajax({
+                        type: "GET",
+                        url: "{{ path('user_search') }}",
+                        data: {
+                            'q' : value
+                        },
+                        dataType: "text",
+                        success: function(msg){
+                            //we need to check if the value is the same
+                            if (value===$(that).val()) {
+                                var result = JSON.parse(msg);
+                                $.each(result, function(key, arr) {
+                                    $.each(arr, function(id, value) {
+                                        if (key === 'user') {
+                                            if (id !== 'error') {
+                                                console.log(value[1]);
+                                                // console.log(value);
+                                                entitySelector.append('<p class"text-secondary">'+value[1]+'<a href="/profile/'+value[1]+'"><img style="width: 50px; height: 50px" src="/assets/img/pics/'+value[0]+'"></a></p>');
+                                            } else {
+                                                entitySelector.append('<li class="text-secondary">'+value+'</li>');
+                                            }
+                                        }
+                                    });
+                                });
+                            }
+                        }
+                    });
+                }
+            });
             $("#search_input").hide();
             $("#cacher").click(function () {
                 {
                     $("#search_input").slideToggle(500);
                 }
             })
-        })
+
+        });
     </script>
+    {% endfor %}
 {% endblock %}
