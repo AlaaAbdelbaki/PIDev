@@ -201,7 +201,7 @@ class User extends BaseUser
     private $bio;
 
     /**
-     * @ORM\OneToMany(targetEntity="comment", mappedBy="user" , orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="comment", mappedBy="author" , orphanRemoval=true)
      */
     private $comments;
     /**
