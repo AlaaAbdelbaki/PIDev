@@ -31,6 +31,10 @@ class AppKernel extends Kernel
             new EventsBundle\EventsBundle(),
             new ShopBundle\ShopBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+
+
+            new BlogBundle\BlogBundle(),
+
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

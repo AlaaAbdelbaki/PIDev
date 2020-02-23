@@ -1,0 +1,79 @@
+{%  extends 'base.html.twig' %}
+{% block content %}
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <h4 class="card-title "></h4>
+                <a href="{{ path('blog_homepage') }}"></a>
+            </div>
+            <div class="card-body">
+
+                <div class="table-responsive">
+
+
+                        <table class="table"     id="myTable">
+                        <thead class=" text-primary">
+                        <input type="text" value=""     id="myInput" onkeyup="myFunction()"  placeholder="Search...">
+
+                            <div class="upcoming-shows-area ">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="section-heading">
+                                                <h2>BLOG</h2>
+                                                <h6>Everything you need to know.</h6>
+
+
+
+                        <th>
+                            Title
+                        </th>
+                        <th>
+                            Image
+                        </th>
+                        <th>
+                            Content
+                        </th>
+                          <th> facebook share </th>
+                            <th> twitter share </th>
+
+
+                        </thead>
+                        <tbody>
+                        {% for a in articles %}
+                            <tr>
+
+                                <td>
+                                    {{a.title}}
+                                </td>
+                                <td>
+                                    <img src="{{ asset('images/' ~ a.img) }}" height="300px"/>
+                                </td>
+                                <td>
+                                    {{a.content}}
+                                </td>
+<td> <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Flocalhost.dev%2F2a7_php5%2Fview%2Fafficher_wishlist.php&layout=button_count&size=small&width=83&height=20&appId" width="83" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe></td>
+                          <td>
+                              <a href="https://twitter.com/share?ref_src=https://www.your-domain.com/your-page.html" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                          </td>
+                            </tr>
+
+
+                        {% endfor %}
+
+                        <th><a href="{{path('tri')}}" style="color: inherit;text-decoration: inherit;">title</a></th>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
