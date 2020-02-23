@@ -27,20 +27,22 @@ class competitionController extends Controller
      * @Method("GET")
      */
     public function indexAction()
-    {$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $em = $this->getDoctrine()->getManager();
 
         $competitions = $em->getRepository('AppBundle:competition')->findAll();
-        $part= $em->getRepository('AppBundle:competition_participant')->findByUser($this->getUser());
-        $c=new ArrayCollection();
-        foreach ($part as $p){
-           $c->add($p->getCompetition());
+        $part = $em->getRepository('AppBundle:competition_participant')->findByUser($this->getUser());
+        $c = new ArrayCollection();
+        foreach ($part as $p) {
+            $c->add($p->getCompetition());
         }
         dump($c);
         return $this->render('CompetitionsBundle:Default:index.html.twig', array(
-            'competitions' => $competitions,'c' =>$c
+            'competitions' => $competitions, 'c' => $c
         ));
     }
+
     /**
      * Lists all competition entities for the admin.
      *
@@ -54,13 +56,13 @@ class competitionController extends Controller
         $competitions = $em->getRepository('AppBundle:competition')->findAll();
         foreach ($competitions as $comp) {
             $ranks = $this->getDoctrine()->getRepository(competition_participant::class)->findRanks($comp->getId());
- if($ranks != null)
- {          $vid = $this->getDoctrine()->getRepository(video::class)->findById($ranks[0]['video_id']);
+            if ($ranks != null) {
+                $vid = $this->getDoctrine()->getRepository(video::class)->findById($ranks[0]['video_id']);
 
-            $winner=$vid[0]->getOwner();
-            $comp->setWinner($winner);
+                $winner = $vid[0]->getOwner();
+                $comp->setWinner($winner);
 
- }
+            }
         }
         return $this->render('CompetitionsBundle:Default:admin_index.html.twig', array(
             'competitions' => $competitions,
@@ -77,7 +79,8 @@ class competitionController extends Controller
      * @return RedirectResponse|Response
      */
     public function newAction(Request $request)
-    {$this->denyAccessUnlessGranted('ROLE_ADMIN');
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $competition = new Competition();
         $form = $this->createForm('CompetitionsBundle\Form\competitionType', $competition);
         $form->handleRequest($request);
@@ -106,9 +109,10 @@ class competitionController extends Controller
      * @return RedirectResponse|Response
      */
     public function editAction(Request $request, competition $id)
-    { $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        $competition=new competition();
-        $competition =$this->getDoctrine()->getRepository(competition::class)->find($id);
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        $competition = new competition();
+        $competition = $this->getDoctrine()->getRepository(competition::class)->find($id);
         $editForm = $this->createForm('CompetitionsBundle\Form\competitionType', $competition);
         $editForm->handleRequest($request);
 
@@ -137,17 +141,18 @@ class competitionController extends Controller
     public function deleteAction(Request $request, competition $id)
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        $competition =$this->getDoctrine()->getRepository(competition::class)->find($id);
+        $competition = $this->getDoctrine()->getRepository(competition::class)->find($id);
 
-        $entityManager= $this->getDoctrine()->getManager();
+        $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($competition);
         $entityManager->flush();
 
-        $response= new Response();
+        $response = new Response();
         $response->send();
 
         return $this->redirectToRoute('admin_competition_index');
     }
+
     /**
      * Creates a new competition entity.
      *
@@ -157,25 +162,26 @@ class competitionController extends Controller
      * @param competition $id
      * @return RedirectResponse|Response
      */
-    public function newVideoAction(Request $request,competition $id)
-    {$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-        $competition =$this->getDoctrine()->getRepository(competition::class)->find($id);
-        $participation=$this->getDoctrine()->getRepository(competition_participant::class)->findByUser($this->getUser());
-    $m=$participation=$this->getDoctrine()->getRepository(competition_participant::class)->findBy(['user'=>$this->getUser(),'competition'=>$competition]);
-       if(($m != null) ||  in_array('ROLE_TALENTED',$this->getUser()->getRoles()) ) return $this->redirectToRoute('competition_index');
+    public function newVideoAction(Request $request, competition $id)
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $competition = $this->getDoctrine()->getRepository(competition::class)->find($id);
+        $participation = $this->getDoctrine()->getRepository(competition_participant::class)->findByUser($this->getUser());
+        $m = $participation = $this->getDoctrine()->getRepository(competition_participant::class)->findBy(['user' => $this->getUser(), 'competition' => $competition]);
+        if (($m != null) || in_array('ROLE_TALENTED', $this->getUser()->getRoles())) return $this->redirectToRoute('competition_index');
         $video = new video();
         $form = $this->createForm('CompetitionsBundle\Form\videoType', $video);
         $form->handleRequest($request);
         $link = "https://www.youtube.com/embed/";
         if ($form->isSubmitted() && $form->isValid()) {
             $video->setOwner($this->getUser());
-            $url=$video->getUrl();
-            $link = $link.substr($url,-11);
+            $url = $video->getUrl();
+            $link = $link . substr($url, -11);
             $video->setUrl($link);
             $em = $this->getDoctrine()->getManager();
             $em->persist($video);
-            $participation=new competition_participant();
-            $user=$this->getUser();
+            $participation = new competition_participant();
+            $user = $this->getUser();
             $participation->setCompetition($competition);
             $participation->setParticipationDate($video->getPublishDate());
             $participation->setUser($user);
@@ -187,7 +193,7 @@ class competitionController extends Controller
         }
 
         return $this->render('CompetitionsBundle:Default:participation.html.twig', array(
-            'video' => $video,'participant'=>$participation,
+            'video' => $video, 'participant' => $participation,
             'form' => $form->createView(),
         ));
     }
@@ -197,26 +203,27 @@ class competitionController extends Controller
      * @param competition $id
      * @return Response
      */
-    public function show($id ,Request $request)
-    {$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-        $paginator=$this->get(PaginatorInterface::class);
-        $competition =$this->getDoctrine()->getRepository(competition::class)->find($id);
-        $participations =$this->getDoctrine()->getRepository(competition_participant::class)->findByCompetition($id);
-$pagination=$paginator->paginate($participations,$request->query->getInt('page',1),3);
-        $ranks=$this->getDoctrine()->getRepository(competition_participant::class)->findRanks($id);
+    public function show($id, Request $request)
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $paginator = $this->get(PaginatorInterface::class);
+        $competition = $this->getDoctrine()->getRepository(competition::class)->find($id);
+        $participations = $this->getDoctrine()->getRepository(competition_participant::class)->findByCompetition($id);
+        $pagination = $paginator->paginate($participations, $request->query->getInt('page', 1), 3);
+        $ranks = $this->getDoctrine()->getRepository(competition_participant::class)->findRanks($id);
 
-        $res=new ArrayCollection();
-        foreach($ranks as $r)
-        {
+        $res = new ArrayCollection();
+        foreach ($ranks as $r) {
             $vid = $this->getDoctrine()->getRepository(video::class)->findById($r['video_id']);
 
             $res->add($vid);
 
         }
 
-        return($this->render('@Competitions/Default/competition_show.html.twig',array('competition' =>$competition ,'participations'=>$pagination,'ranks'=>$res))
+        return ($this->render('@Competitions/Default/competition_show.html.twig', array('competition' => $competition, 'participations' => $pagination, 'ranks' => $res))
         );
     }
+
     /**
      * Deletes a competition entity.
      *
@@ -227,19 +234,21 @@ $pagination=$paginator->paginate($participations,$request->query->getInt('page',
      * @return Response
      */
     public function participationDeleteAction(Request $request, competition_participant $id)
-    {$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-        $participation =$this->getDoctrine()->getRepository(competition_participant::class)->find($id);
-        $video=$participation->getVideo();
-        $entityManager= $this->getDoctrine()->getManager();
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $participation = $this->getDoctrine()->getRepository(competition_participant::class)->find($id);
+        $video = $participation->getVideo();
+        $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($participation);
         $entityManager->remove($video);
         $entityManager->flush();
 
-        $response= new Response();
+        $response = new Response();
         $response->send();
 
-        return $this->redirectToRoute('competition_show',['id'=>$participation->getcompetition()->getid()]);
+        return $this->redirectToRoute('competition_show', ['id' => $participation->getcompetition()->getid()]);
     }
+
     /**
      * Displays a form to edit an existing competition entity.
      *
@@ -250,22 +259,23 @@ $pagination=$paginator->paginate($participations,$request->query->getInt('page',
      * @return RedirectResponse|Response
      */
     public function participationEditAction(Request $request, competition_participant $id)
-    {$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-        $participation=new competition_participant();
-        $participation =$this->getDoctrine()->getRepository(competition_participant::class)->find($id);
-        $video=$participation->getVideo();
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $participation = new competition_participant();
+        $participation = $this->getDoctrine()->getRepository(competition_participant::class)->find($id);
+        $video = $participation->getVideo();
         $editForm = $this->createForm('CompetitionsBundle\Form\videoType', $video);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('competition_show',['id'=>$participation->getcompetition()->getid()]);
+            return $this->redirectToRoute('competition_show', ['id' => $participation->getcompetition()->getid()]);
         }
 
         return $this->render('CompetitionsBundle:Default:participation_edit.html.twig', array(
 
-            'form' => $editForm->createView(),'participation'=>$participation
+            'form' => $editForm->createView(), 'participation' => $participation
 
         ));
     }
@@ -275,9 +285,10 @@ $pagination=$paginator->paginate($participations,$request->query->getInt('page',
      *
      */
     public function voteAction($id)
-    {$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-        $user=$this->getUser();
-        $video =$this->getDoctrine()->getRepository(video::class)->find($id);
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $this->getUser();
+        $video = $this->getDoctrine()->getRepository(video::class)->find($id);
         $video->getVotes()->add($user);
         $em = $this->getDoctrine()->getManager();
         $em->persist($video);
@@ -285,14 +296,16 @@ $pagination=$paginator->paginate($participations,$request->query->getInt('page',
         return new Response();
 
     }
+
     /**
      * @Route("/DownVote/{id}", name="competition_downVote")
      *
      */
     public function downVoteAction($id)
-    { $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-        $user=$this->getUser();
-        $video =$this->getDoctrine()->getRepository(video::class)->find($id);
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $this->getUser();
+        $video = $this->getDoctrine()->getRepository(video::class)->find($id);
         $video->getVotes()->removeElement($user);
         $em = $this->getDoctrine()->getManager();
         $em->persist($video);
@@ -300,6 +313,7 @@ $pagination=$paginator->paginate($participations,$request->query->getInt('page',
         return new Response();
 
     }
+
     /**
      * @Route("/ranking/{id}", name="update_ranks")
      * @param competition $id
@@ -308,22 +322,22 @@ $pagination=$paginator->paginate($participations,$request->query->getInt('page',
     public function updateRanksAction($id)
     {
 
-        $participations =$this->getDoctrine()->getRepository(competition_participant::class)->findByCompetition($id);
+        $participations = $this->getDoctrine()->getRepository(competition_participant::class)->findByCompetition($id);
 
-        $ranks=$this->getDoctrine()->getRepository(competition_participant::class)->findRanks($id);
+        $ranks = $this->getDoctrine()->getRepository(competition_participant::class)->findRanks($id);
 
-        $res=new ArrayCollection();
-        foreach($ranks as $r)
-        {
+        $res = new ArrayCollection();
+        foreach ($ranks as $r) {
             $vid = $this->getDoctrine()->getRepository(video::class)->findById($r['video_id']);
 
             $res->add($vid);
 
         }
 
-        return($this->render('@Competitions/Default/ranks.html.twig',array('ranks'=>$res))
+        return ($this->render('@Competitions/Default/ranks.html.twig', array('ranks' => $res))
         );
     }
+
     /**
      * @Route("admin/promote/{id}", name="promote_user")
      * @param User $id
@@ -333,7 +347,7 @@ $pagination=$paginator->paginate($participations,$request->query->getInt('page',
     public function promoteUserAction($id)
     {
 
-        $talented =$this->getDoctrine()->getRepository(User::class)->find($id);
+        $talented = $this->getDoctrine()->getRepository(User::class)->find($id);
         $talented->setRoles(['ROLE_TALENTED']);
         $em = $this->getDoctrine()->getManager();
         $em->persist($talented);

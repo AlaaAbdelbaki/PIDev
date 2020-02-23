@@ -1,76 +1,82 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-<div class="content">
-    <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({{asset('assets/img/bg-img/breadcumb2.jpg')}}">
-        <div class="bradcumbContent">
-            <h2>Competitions</h2>
+    <div class="content">
+        <div class="breadcumb-area bg-img bg-overlay2"
+             style="background-image: url({{ asset('assets/img/bg-img/breadcumb2.jpg') }}">
+            <div class="bradcumbContent">
+                <h2>Competitions</h2>
+            </div>
         </div>
-    </div>
-    <div class="upcoming-shows-area section-padding-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-heading">
-                        <h2>Participate in our competitions </h2>
-                        <h6>and Win a Premium Talented account</h6>
+        <div class="upcoming-shows-area section-padding-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-heading">
+                            <h2>Participate in our competitions </h2>
+                            <h6>and Win a Premium Talented account</h6>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        <div class="row">
-            <div class="col-12">
-                <!-- Upcoming Shows Content -->
-
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Upcoming Shows Content -->
 
 
-                <div class="upcoming-shows-content">
-                    <!-- Single Upcoming Shows -->
-                    {% for competition in competitions %}
-                    <div class="single-upcoming-shows d-flex  align-items-center flex-wrap">
-                        <div class="shows-date ">
-                            <h2><span> {% if competition.competitionDate %}{{ competition.competitionDate|date() }}{% endif %}</span></h2>
+                        <div class="upcoming-shows-content">
+                            <!-- Single Upcoming Shows -->
+                            {% for competition in competitions %}
+                                <div class="single-upcoming-shows d-flex  align-items-center flex-wrap">
+                                    <div class="shows-date ">
+                                        <h2>
+                                            <span> {% if competition.competitionDate %}{{ competition.competitionDate|date() }}{% endif %}</span>
+                                        </h2>
+                                    </div>
+                                    <div class="shows-date ">
+                                        <h2>
+                                            <span> {% if competition.competitionEndDate %}{{ competition.competitionEndDate|date() }}{% endif %}</span>
+                                        </h2>
+                                    </div>
+                                    <div class="shows-desc d-flex align-items-center">
+
+                                        <div class="shows-name ">
+                                            <h6>{{ competition.subject }}</h6>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="buy-tickets float-right"><a
+                                                href="{{ path('competition_show', {'id': competition.id}) }}"
+                                                class="btn musica-btn mr-3">View</a>
+                                    </div>
+
+                                    <div class="buy-tickets ">
+                                        {% if is_granted('ROLE_TALENTED') %} <h6 class="text-white"> Already A Talent
+                                            !</h6>
+                                        {% else %}
+                                            {% if competition in c %}
+
+                                                <h6 class="text-white"> Already participated !</h6>
+                                            {% else %}
+
+                                                <a href="{{ path('competition_participate', {'id': competition.id}) }}"
+                                                   class="btn musica-btn">Participate</a>
+                                            {% endif %}{% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
                         </div>
-                        <div class="shows-date ">
-                            <h2><span> {% if competition.competitionEndDate %}{{ competition.competitionEndDate|date() }}{% endif %}</span></h2>
-                        </div>
-                        <div class="shows-desc d-flex align-items-center">
-
-                            <div class="shows-name ">
-                                <h6 >{{ competition.subject }}</h6>
-
-                            </div>
-                        </div>
 
 
-                        <div class="buy-tickets float-right"><a href="{{ path('competition_show', {'id': competition.id}) }}" class="btn musica-btn mr-3">View</a>
-                        </div>
-
-                        <div class="buy-tickets ">
-                            {% if is_granted('ROLE_TALENTED') %} <h6 class="text-white"> Already A Talent !</h6>
-                    {% else %}
-                        {% if competition in c %}
-
-                                <h6 class="text-white"> Already participated !</h6>
-{% else %}
-
-                                <a href="{{ path('competition_participate', {'id': competition.id}) }}" class="btn musica-btn">Participate</a>
-{% endif %}{% endif %}
-                        </div>
                     </div>
-                    {% endfor %}
-                    </div>
-
-
-
-
                 </div>
+
             </div>
 
         </div>
-
     </div>
-</div>
 
 {% endblock %}
 

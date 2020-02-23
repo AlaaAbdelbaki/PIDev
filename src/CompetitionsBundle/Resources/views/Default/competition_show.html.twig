@@ -1,178 +1,209 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <script src="{{asset('assets/js/jquery/jquery-2.2.4.min.js')}}"></script>
+    <script src="{{ asset('assets/js/jquery/jquery-2.2.4.min.js') }}"></script>
 
 
     <div class="content">
-    <div class="musica-cta-area section-padding-100 bg-img bg-overlay2 "
-         style="background-image: url({{ asset('assets/img/bg-img/bg-8.jpg') }})">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="cta-content breadcumb-area">
-                        <div class="cta-text">
-                            <span>Share you talent !</span>
-                            <h2>Competition</h2>
-                            <h4>{{competition.subject}}</h4>
+        <div class="musica-cta-area section-padding-100 bg-img bg-overlay2 "
+             style="background-image: url({{ asset('assets/img/bg-img/bg-8.jpg') }})">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="cta-content breadcumb-area">
+                            <div class="cta-text">
+                                <span>Share you talent !</span>
+                                <h2>Competition</h2>
+                                <h4>{{ competition.subject }}</h4>
 
-                         <div class="row"> <div class="col "></div> <h2 id="chronotime" class="text-white"></h2>  <div class="col"></div> </div>
+                                <div class="row">
+                                    <div class="col "></div>
+                                    <h2 id="chronotime" class="text-white"></h2>
+                                    <div class="col"></div>
+                                </div>
+
+                            </div>
 
                         </div>
 
                     </div>
 
                 </div>
-
             </div>
         </div>
-    </div>
 
-<div class="row " >
-<div class="col second-img " style=" background-image: linear-gradient(to right, #5722a9,#0c0527) ">
-    <p class="text-center" style=" font-size: 100px ;color: #ffffff; font-family: Allura,cursive"> Ranking: </p>
-    <div class="row"><div class="col"></div>
-    <img src="{{ asset('assets/img/crown.png') }}" style="width: 400px; filter: invert(0%) opacity(20%)" ><div class="col"></div> </div>
-    <div id="ranking" >
-        {{ render(controller(
-            'CompetitionsBundle:competition:updateRanks', {
-                'id': competition.id
-            }
-
-        )) }}
-    </div>
-        <img src="{{asset('assets/img/bg-img/man.png')}}" alt="">
-  </div>
-        <div class="career-timeline-area section-padding-50 col-8  " style="background-image: linear-gradient(to left, #5722a9,#0c0527)"  >
-            <p class="text-center win" style=" font-size: 100px ;color: #ffffff; font-family: Allura,cursive ; word-spacing:50px ;display: none"> THE            WINNER           IS  </p>
-         <div class="postss text-center" style="display: none ; width:200px;margin-left: 40% ;margin-top: 10%"></div>
-            <div class="container posts">
-                {% set i = 0 %}
-                <p class="text-center" style=" font-size: 100px ;color: #ffffff; font-family: Allura,cursive "> Posts: </p>
-    {% for participation in participations %}
-      <div class="row mt-5"><div class="col-2">
-    <img src="{{ asset('assets/uploads/'~ participation.user.profilePic) }}" style="width:70%  " class=" img-thumbnail rounded-circle mb-3 align-self-center" ></div>
-    <div class="col align-self-center" >
-        <h4 class="text-white " >{{ participation.user.username }}</h4>
-        <h6 class="text-white" style="opacity: 50%"> {{ participation.participationDate | date() }}</h6>
-    </div>
-
-       </div>
-
-        <div class="featured-album-content d-flex flex-wrap " style="height: 315px">
-
-            <!-- Album Thumbnail -->
-            <div class="album-thumbnail  " ><iframe width="540" height="315" id={{ i }} allowfullscreen frameborder="0"
-                                                               src="{{ participation.video.url }}">
-                </iframe></div>
-
-            <!-- Album Songs -->
-            <div class="album-songs " style="padding-bottom: 1px">
-
-                <!-- Album Info -->
-                <div class="album-info mb-50 d-flex flex-wrap align-items-center justify-content-between pl-3">
-                    <div class="album-title">
-                        <h6>Help {{ participation.user.username }} reach fame !</h6>
-                        <h4>{{ participation.video.title }}</h4>
-                    </div>
-                    <div class="album-buy-now">
-                        <a href="#" class="btn musica-btn">Visit Profile</a>
-                    </div>
+        <div class="row ">
+            <div class="col second-img " style=" background-image: linear-gradient(to right, #5722a9,#0c0527) ">
+                <p class="text-center" style=" font-size: 100px ;color: #ffffff; font-family: Allura,cursive">
+                    Ranking: </p>
+                <div class="row">
+                    <div class="col"></div>
+                    <img src="{{ asset('assets/img/crown.png') }}"
+                         style="width: 400px; filter: invert(0%) opacity(20%)">
+                    <div class="col"></div>
                 </div>
+                <div id="ranking">
+                    {{ render(controller(
+                        'CompetitionsBundle:competition:updateRanks', {
+                            'id': competition.id
+                        }
 
-                {% if app.user in participation.video.votes %}
-                    <a class="btn musica-btn unvote ml-3" href="{{path('competition_downVote', {'id':participation.video.id})}}" ><span class="fa fa-heart">  Down Vote</span></a>
-                    <a class="btn musica-btn btn-3 vote ml-3" style="display: none" href="{{path('competition_vote', {'id':participation.video.id})}}" ><span class="fa fa-heart-o">  Up Vote</span></a>
+                    )) }}
+                </div>
+                <img src="{{ asset('assets/img/bg-img/man.png') }}" alt="">
+            </div>
+            <div class="career-timeline-area section-padding-50 col-8  "
+                 style="background-image: linear-gradient(to left, #5722a9,#0c0527)">
+                <p class="text-center win"
+                   style=" font-size: 100px ;color: #ffffff; font-family: Allura,cursive ; word-spacing:50px ;display: none">
+                    THE WINNER IS </p>
+                <div class="postss text-center"
+                     style="display: none ; width:200px;margin-left: 40% ;margin-top: 10%"></div>
+                <div class="container posts">
+                    {% set i = 0 %}
+                    <p class="text-center" style=" font-size: 100px ;color: #ffffff; font-family: Allura,cursive ">
+                        Posts: </p>
+                    {% for participation in participations %}
+                        <div class="row mt-5">
+                            <div class="col-2">
+                                <img src="{{ asset('assets/uploads/'~ participation.user.profilePic) }}"
+                                     style="width:70%  " class=" img-thumbnail rounded-circle mb-3 align-self-center">
+                            </div>
+                            <div class="col align-self-center">
+                                <h4 class="text-white ">{{ participation.user.username }}</h4>
+                                <h6 class="text-white"
+                                    style="opacity: 50%"> {{ participation.participationDate | date() }}</h6>
+                            </div>
 
-                {% else %}
-                    <a class="btn musica-btn unvote ml-3" style="display: none" href="{{path('competition_downVote', {'id':participation.video.id})}}" ><span class="fa fa-heart">  Down Vote</span></a>
+                        </div>
 
-                    <a class="btn musica-btn btn-3 vote ml-3" href="{{path('competition_vote', {'id':participation.video.id})}}" ><span class="fa fa-heart-o">  Up Vote</span></a>
-                {% endif %}
+                        <div class="featured-album-content d-flex flex-wrap " style="height: 315px">
 
-                {% if app.user is same as (participation.user) %}
-                                <a class="btn musica-btn btn-3 mx-3" href="{{ path('participation_edit', {'id': participation.id}) }}"><i class="fa fa-edit"> <span class="text-white">Edit my post</span></i></a>
-                                <a class="btn musica-btn btn-2" href="{{ path('participation_delete', {'id': participation.id}) }}"><i class="fa fa-remove"> <span class="text-white">Delete my post</span></i></a>
+                            <!-- Album Thumbnail -->
+                            <div class="album-thumbnail  ">
+                                <iframe width="540" height="315" id={{ i }} allowfullscreen frameborder="0"
+                                        src="{{ participation.video.url }}">
+                                </iframe>
+                            </div>
 
-                            {% endif %}
+                            <!-- Album Songs -->
+                            <div class="album-songs " style="padding-bottom: 1px">
 
-                <h4 class="row   float-right " style="margin-top: 50px"><i class="fa fa-thumbs-o-up text-white big-text col  "> <span class="num text-white big-text ">{{ participation.video.votes.count }}</span> Votes</i></h4>
+                                <!-- Album Info -->
+                                <div class="album-info mb-50 d-flex flex-wrap align-items-center justify-content-between pl-3">
+                                    <div class="album-title">
+                                        <h6>Help {{ participation.user.username }} reach fame !</h6>
+                                        <h4>{{ participation.video.title }}</h4>
+                                    </div>
+                                    <div class="album-buy-now">
+                                        <a href="#" class="btn musica-btn">Visit Profile</a>
+                                    </div>
+                                </div>
+
+                                {% if app.user in participation.video.votes %}
+                                    <a class="btn musica-btn unvote ml-3"
+                                       href="{{ path('competition_downVote', {'id':participation.video.id}) }}"><span
+                                                class="fa fa-heart">  Down Vote</span></a>
+                                    <a class="btn musica-btn btn-3 vote ml-3" style="display: none"
+                                       href="{{ path('competition_vote', {'id':participation.video.id}) }}"><span
+                                                class="fa fa-heart-o">  Up Vote</span></a>
+
+                                {% else %}
+                                    <a class="btn musica-btn unvote ml-3" style="display: none"
+                                       href="{{ path('competition_downVote', {'id':participation.video.id}) }}"><span
+                                                class="fa fa-heart">  Down Vote</span></a>
+
+                                    <a class="btn musica-btn btn-3 vote ml-3"
+                                       href="{{ path('competition_vote', {'id':participation.video.id}) }}"><span
+                                                class="fa fa-heart-o">  Up Vote</span></a>
+                                {% endif %}
+
+                                {% if app.user is same as (participation.user) %}
+                                    <a class="btn musica-btn btn-3 mx-3"
+                                       href="{{ path('participation_edit', {'id': participation.id}) }}"><i
+                                                class="fa fa-edit"> <span class="text-white">Edit my post</span></i></a>
+                                    <a class="btn musica-btn btn-2"
+                                       href="{{ path('participation_delete', {'id': participation.id}) }}"><i
+                                                class="fa fa-remove"> <span class="text-white">Delete my post</span></i></a>
+
+                                {% endif %}
+
+                                <h4 class="row   float-right " style="margin-top: 50px"><i
+                                            class="fa fa-thumbs-o-up text-white big-text col  "> <span
+                                                class="num text-white big-text ">{{ participation.video.votes.count }}</span>
+                                        Votes</i></h4>
 
 
+                            </div>
+                        </div>
+                        <script>
 
+                            function getId(url) {
+                                const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+                                const match = url.match(regExp);
+
+                                return (match && match[2].length === 11)
+                                    ? match[2]
+                                    : null;
+                            }
+
+                            $iy = '#' + {{ i }};
+
+                            (function () {
+
+
+                                let str = '//www.youtube.com/embed/'
+                                    + getId("{{- participation.video.url -}}");
+
+                                let $iframe = $($iy);
+                                if ($iframe.length) {
+                                    $iframe.attr('src', str);
+                                    return false;
+                                }
+                                return true;
+
+                            })();
+
+
+                        </script>
+
+                        {% set i =i+1 %}
+
+                    {% endfor %}
+
+
+                </div>
+            </div>
 
         </div>
-        </div>
-        <script>
-
-            function getId(url) {
-                const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-                const match = url.match(regExp);
-
-                return (match && match[2].length === 11)
-                    ? match[2]
-                    : null;
-            }
-             $iy = '#' + {{i}};
-
-            (function() {
-
-
-
-                let str ='//www.youtube.com/embed/'
-                    + getId("{{- participation.video.url -}}");
-
-                let $iframe = $($iy);
-                if ( $iframe.length ) {
-                    $iframe.attr('src',str);
-                    return false;
-                }
-                return true;
-
-            })();
-
-
-        </script>
-
-        {% set i =i+1 %}
-
-    {% endfor %}
-
-
-</div>
-        </div>
-
-</div>
-        <div class="row justify-content-center mt-5">  {{ knp_pagination_render(participations)}}</div>
+        <div class="row justify-content-center mt-5">  {{ knp_pagination_render(participations) }}</div>
     </div>
 
-    <div> </div>
+    <div></div>
 
     <script>
-        $('.vote').click(function (e)
-        {e.preventDefault();
-          let  $t=$(this);
-            let $n=parseInt($t.closest('.album-songs').find('.num').html());
+        $('.vote').click(function (e) {
+            e.preventDefault();
+            let $t = $(this);
+            let $n = parseInt($t.closest('.album-songs').find('.num').html());
 
             $.ajax({
-                url:$(this).attr('href'),
+                url: $(this).attr('href'),
 
-                success: function ()
-                {
+                success: function () {
 
                     $t.hide();
                     $t.prev().show();
-                    $t.closest('.album-songs').find('.num').text($n+1)
+                    $t.closest('.album-songs').find('.num').text($n + 1)
 
 
                 }
 
             });
             $.ajax({
-                url:'{{path('update_ranks', {'id': competition.id})|format}}',
+                url: '{{ path('update_ranks', {'id': competition.id})|format }}',
 
-                success: function (objResponse)
-                {
+                success: function (objResponse) {
 
 
                     $("#ranking").html(objResponse)
@@ -183,26 +214,24 @@
             return false;
 
         });
-        $('.unvote').click(function (e)
-        {e.preventDefault();
-            let  $t=$(this);
-            let $n=parseInt($t.closest('.album-songs').find('.num').html());
+        $('.unvote').click(function (e) {
+            e.preventDefault();
+            let $t = $(this);
+            let $n = parseInt($t.closest('.album-songs').find('.num').html());
             $.ajax({
-                url:$(this).attr('href'),
+                url: $(this).attr('href'),
 
-                success: function ()
-                {
+                success: function () {
 
                     $t.hide();
                     $t.next().show();
-                    $t.closest('.album-songs').find('.num').text($n-1)
+                    $t.closest('.album-songs').find('.num').text($n - 1)
                 }
             });
             $.ajax({
-                url:'{{path('update_ranks', {'id': competition.id})|format}}',
+                url: '{{ path('update_ranks', {'id': competition.id})|format }}',
 
-                success: function (objResponse)
-                {
+                success: function (objResponse) {
 
 
                     $("#ranking").html(objResponse)
@@ -215,34 +244,34 @@
     </script>
     <script>
         <!--
-        var startTime = 0
-        var start = 0
-        var end = 0
-        var diff = 0
-        var timerID = 0
-        function chrono(){
-            end = new Date('{{ competition.competitionEndDate |date }}')
-            start= new Date()
+        var startTime = 0;
+        var start = 0;
+        var end = 0;
+        var diff = 0;
+        var timerID = 0;
 
-            diff = end - start
-if (diff<0) diff=0;
+        function chrono() {
+            end = new Date('{{ competition.competitionEndDate |date }}');
+            start = new Date();
+
+            diff = end - start;
+            if (diff < 0) diff = 0;
 
 
             var msec = diff % 1000;
-            var sec =   Math.floor((diff / 1000) % 60);
-            var min =  Math.floor((diff / (60 * 1000)) % 60);
-            var hr =  Math.floor(diff / (60*60 * 1000));
-            if (min < 10){
+            var sec = Math.floor((diff / 1000) % 60);
+            var min = Math.floor((diff / (60 * 1000)) % 60);
+            var hr = Math.floor(diff / (60 * 60 * 1000));
+            if (min < 10) {
                 min = "0" + min
             }
-            if (sec < 10){
+            if (sec < 10) {
                 sec = "0" + sec
             }
-            if(msec < 10){
-                msec = "00" +msec
-            }
-            else if(msec < 100){
-                msec = "0" +msec
+            if (msec < 10) {
+                msec = "00" + msec
+            } else if (msec < 100) {
+                msec = "0" + msec
             }
 
 
@@ -250,12 +279,15 @@ if (diff<0) diff=0;
             else document.getElementById("chronotime").innerHTML = hr + ":" + min + ":" + sec;
             timerID = setTimeout("chrono()", 10)
         }
+
         chrono();
-          let $winner=$('.rank').first();
-          console.log($winner);
-        if (diff === 0)  { $('.posts').hide();
-            $(".postss").html($winner ).show();
-            $(".win").show();}
+        let $winner = $('.rank').first();
+        console.log($winner);
+        if (diff === 0) {
+            $('.posts').hide();
+            $(".postss").html($winner).show();
+            $(".win").show();
+        }
 
         //-->
     </script>
