@@ -10,4 +10,32 @@ namespace AppBundle\Repository;
  */
 class productRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByArray($array){
+        $qb= $this->createQueryBuilder('u')
+            ->select('u')
+            ->where('u.id in (:array)')
+            ->setParameter('array',$array);
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findById($id){
+
+
+       $qb=$this->getEntityManager()
+           ->createQuery("select p from AppBundle:product p where p.id=:id")
+           ->setParameter('id',$id);
+
+        return $qb->getResult();
+
+    }
+    public function findEntitiesByString($str){
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p
+                FROM AppBundle:product p
+                WHERE p.productName LIKE :str'
+            )
+            ->setParameter('str', '%'.$str.'%')
+            ->getResult();
+    }
 }

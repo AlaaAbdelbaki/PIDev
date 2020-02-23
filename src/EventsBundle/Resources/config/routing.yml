@@ -1,0 +1,42 @@
+events_homepage:
+    path:     /Events
+    defaults: { _controller: EventsBundle:Default:index }
+add:
+    path:     /add
+    defaults: { _controller: EventsBundle:Events:add }
+affiche:
+    path:     /affiche
+    defaults: { _controller: EventsBundle:Events:affiche }
+delete:
+    path:     /delete/{id}
+    defaults: { _controller: EventsBundle:Events:delete }
+modifier:
+    path:     /modifier/{id}
+    defaults: { _controller: EventsBundle:Events:modifier }
+ajout:
+    path:     /ajout
+    defaults: { _controller: EventsBundle:ticket:ajout }
+list:
+    path:     /list
+    defaults: { _controller: EventsBundle:ticket:list }
+supp:
+    path:     /supp/{id}
+    defaults: { _controller: EventsBundle:ticket:supp }
+edit:
+    path:     /edit/{id}
+    defaults: { _controller: EventsBundle:ticket:edit }
+show_events:
+    path:     /show_events
+    defaults: { _controller: EventsBundle:Default:affiche }
+search:
+    path:     /search
+    defaults: { _controller: EventsBundle:Events:search }
+affichetri:
+    path:     /affichetri
+    defaults: { _controller: EventsBundle:Events:affichetri }
+triEndD:
+    path:     /triEndD
+    defaults: { _controller: EventsBundle:Events:triEndD }
+statsUser:
+    path:     /statsUser
+    defaults: { _controller: EventsBundle:Events:statsUser }

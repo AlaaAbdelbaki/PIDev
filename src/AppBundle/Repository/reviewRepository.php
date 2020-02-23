@@ -10,4 +10,10 @@ namespace AppBundle\Repository;
  */
 class reviewRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function orderStartD()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM AppBundle:review p  ORDER BY p.rating  ASC')
+            ->getResult();
+    }
 }

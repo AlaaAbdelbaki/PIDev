@@ -2,6 +2,9 @@
 
 namespace AppBundle\Repository;
 
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
+
 /**
  * eventRepository
  *
@@ -10,4 +13,54 @@ namespace AppBundle\Repository;
  */
 class eventRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findEntitiesByString($str){
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p
+                FROM AppBundle:event p
+                WHERE p.type LIKE :str'
+            )
+            ->setParameter('str', '%'.$str.'%')
+            ->getResult();
+    }
+    public function orderStartD()
+    {
+            return $this->getEntityManager()
+                        ->createQuery('SELECT p FROM AppBundle:event p  ORDER BY p.startDate ASC')
+                        ->getResult();
+    }
+
+    public function orderEndD()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM AppBundle:event p  ORDER BY p.endDate ASC')
+            ->getResult();
+    }
+
+
+    public function findByCasting()
+    {
+        $Query= $this->getEntityManager()->createQuery('SELECT count(e.id) from AppBundle:event e where e.type LIKE :casting' )
+        ->setParameter('casting','casting');
+
+
+        try {
+            return $Query->getSingleScalarResult();
+        } catch (NoResultException $e) {
+        } catch (NonUniqueResultException $e) {
+        }
+    }
+    public function findById($val)
+    {
+        $Query= $this->getEntityManager()->createQuery('select count(e.id) from AppBundle:event e where e.event = :val' )
+        ->setParameter('val',$val);
+
+
+        try {
+            return $Query->getResult();
+        } catch (NoResultException $e) {
+        } catch (NonUniqueResultException $e) {
+        }
+    }
+
 }

@@ -1,0 +1,4 @@
+services:
+#    talent.example:
+#        class: TalentBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

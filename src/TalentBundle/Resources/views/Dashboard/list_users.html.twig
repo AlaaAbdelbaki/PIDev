@@ -1,0 +1,50 @@
+{% extends 'admin_base.html.twig' %}
+{% block admin_content %}
+    <div class="content">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">Simple Table</h4>
+                    <p class="card-category"> Here is a subtitle for this table</p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Date de naissance</th>
+                                <th>Email</th>
+                                <th>Numero de téléphone</th>
+                                <th>Sexe</th>
+                            </thead>
+                            <tbody>
+                            {% for user in users %}
+                                <tr>
+                                    <td>{{ user.id }}</td>
+                                    <td>{{ user.username }}</td>
+                                    <td>{{ user.name }}</td>
+                                    <td>{{ user.firstName }}</td>
+                                    <td>{{ user.birthday|date("d M Y") }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.telephoneNumber }}</td>
+                                    {% if user.sexe == "male" %}
+                                        <td>Homme</td>
+                                        {% else %}
+                                        <td>Femme</td>
+                                    {% endif %}
+{#                                    <td><button class="btn btn-primary btn-block" onclick="window.location.href=' {{ path('update_user',{id:user.id}) }}'">Modifier</button> </td>#}
+                                    <td><button class="btn btn-primary btn-block" onclick="window.location.href=' {{ path('delete_user',{id:user.id}) }}'">Supprimer</button> </td>
+                                    <td><button class="btn btn-primary btn-block" onclick="window.location.href=' {{ path('list_video') }}'">Gérer les vidéos</button> </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

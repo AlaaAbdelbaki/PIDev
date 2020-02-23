@@ -2,6 +2,9 @@
 
 namespace AppBundle\Repository;
 
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
+
 /**
  * ticketRepository
  *
@@ -10,4 +13,56 @@ namespace AppBundle\Repository;
  */
 class ticketRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByOffre()
+    {
+        $Query= $this->getEntityManager()->createQuery('select count(t.id) from AppBundle:ticket t inner join AppBundle:event e where t.event = e.id and e.type LIKE :casting' )
+            ->setParameter('casting','offre emploi');
+
+
+        try {
+            return $Query->getSingleScalarResult();
+        } catch (NoResultException $e) {
+        } catch (NonUniqueResultException $e) {
+        }
+    }
+    public function findByCasting()
+    {
+        $Query= $this->getEntityManager()->createQuery('select count(t.id) from AppBundle:ticket t inner join AppBundle:event e where t.event = e.id and e.type LIKE :casting' )
+            ->setParameter('casting','casting');
+
+
+        try {
+            return $Query->getSingleScalarResult();
+        } catch (NoResultException $e) {
+        } catch (NonUniqueResultException $e) {
+        }
+    }
+
+    public function findByconcert()
+    {
+        $Query= $this->getEntityManager()->createQuery('select count(t.id) from AppBundle:ticket t inner join AppBundle:event e where t.event = e.id and e.type LIKE :casting' )
+            ->setParameter('casting','concert');
+
+
+        try {
+            return $Query->getSingleScalarResult();
+        } catch (NoResultException $e) {
+        } catch (NonUniqueResultException $e) {
+        }
+    }
+
+    public function findByaudition()
+    {
+        $Query= $this->getEntityManager()->createQuery('select count(t.id) from AppBundle:ticket t inner join AppBundle:event e where t.event = e.id and e.type LIKE :casting' )
+            ->setParameter('casting','audition');
+
+
+        try {
+            return $Query->getSingleScalarResult();
+        } catch (NoResultException $e) {
+        } catch (NonUniqueResultException $e) {
+        }
+    }
+
+
 }

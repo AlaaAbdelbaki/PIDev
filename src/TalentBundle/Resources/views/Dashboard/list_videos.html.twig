@@ -1,0 +1,39 @@
+{% extends 'admin_base.html.twig' %}
+{% block admin_content %}
+    <div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">Simple Table</h4>
+                <p class="card-category"> Here is a subtitle for this table</p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>URL</th>
+                        <th>Publish Date</th>
+                        <th>Actions</th>
+                        <th></th>
+                        </thead>
+                        <tbody>
+                        {% for video in videos %}
+                        <tr>
+                            <td>{{ video.id }}</td>
+                            <td>{{ video.title }}</td>
+                            <td><a href="{{ video.url }}" target="_blank">{{ video.url }}</a></td>
+                            <td>{{ video.publishDate|date("Y/m/d") }}</td>
+                            <td><button class="btn btn-primary btn-block" onclick="window.location.href=' {{ path('update_video',{id:video.id}) }}'">Modifier</button> </td>
+                            <td><button class="btn btn-primary btn-block" onclick="window.location.href=' {{ path('delete_video',{id:video.id}) }}'">Supprimer</button> </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

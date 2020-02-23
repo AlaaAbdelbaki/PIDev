@@ -1,0 +1,30 @@
+{% extends 'admin_base.html.twig' %}
+{% block admin_content %}
+    <div class="col-md-8">
+    <div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title">Edit Order</h4>
+        <p class="card-category">Complete Order infos</p>
+    </div>
+    <div class="card-body">
+
+        {{ form_start(f)}}
+
+
+
+        {{ form_label(f.orderDate,'Order Date',{'attr':{'class':'bmd-label-floating'}}) }}
+        {{ form_widget(f.orderDate,{'attr':{'class':'form-control'}}) }}
+
+
+        {{ form_label(f.total,'Order Total',{'attr':{'class':'bmd-label-floating'}}) }}
+        {{ form_widget(f.total,{'attr':{'class':'form-control'}}) }}
+
+        {{ form_label(f.address,'Order Address',{'attr':{'class':'bmd-label-floating'}}) }}
+        {{ form_widget(f.address,{'attr':{'class':'form-control'}}) }}
+
+
+        {{ form_widget(f.modifier) }}
+        {{ form_end(f) }}
+
+    </div>
+{% endblock %}

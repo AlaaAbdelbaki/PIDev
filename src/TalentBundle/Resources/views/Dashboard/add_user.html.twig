@@ -1,0 +1,62 @@
+{% extends "admin_base.html.twig" %}
+{% block admin_content %}
+    <div class="content">
+    {{ form_start(f) }}
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">Simple Table</h4>
+                <p class="card-category"> Here is a subtitle for this table</p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <td>Prénom: </td>
+                            <td>{{ form_widget(f.name,{attr: {'class':'form-control'}}) }}</td>
+                        </tr>
+                        <tr>
+                            <td>Nom: </td>
+                            <td>{{ form_widget(f.first_name,{attr: {'class':'form-control'}}) }}</td>
+                        </tr>
+                        <tr>
+                            <td>Photo de profil: </td>
+                            <td>{{ form_widget(f.profile_pic,{attr: {'class':'form-control'}}) }}</td>
+                        </tr>
+                        <tr>
+                            <td>Date de naissance: </td>
+                            <td>{{ form_widget(f.birthday,{attr: {'class':'form-control'}}) }}</td>
+                        </tr>
+                        <tr>
+                        <tr>
+                            <td>Email: </td>
+                            <td>{{ form_widget(f.email,{attr: {'class':'form-control'}}) }}</td>
+                        </tr>
+                        <tr>
+                            <td>Numéro de téléphone: </td>
+                            <td>{{ form_widget(f.telephoneNumber,{attr: {'class':'form-control'}}) }}</td>
+                        </tr>
+                        <tr>
+                            <td>Adresse </td>
+                            <td>{{ form_widget(f.adresse,{attr: {'class':'form-control'}}) }}</td>
+                        </tr>
+                        <tr>
+                            <td>Sexe: </td>
+                            <td>{{ form_widget(f.sexe,{attr: {'class':'form-control'}}) }}</td>
+                        </tr>
+                        <tr>
+                            <td>Bio: </td>
+                            <td>{{ form_widget(f.bio,{attr: {'class':'form-control'}}) }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>{{ form_widget(f.submit,{attr: {'class':'btn btn-primary btn-block'}}) }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    {{ form_end(f) }}
+{% endblock %}

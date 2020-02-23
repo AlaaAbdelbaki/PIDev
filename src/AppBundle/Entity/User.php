@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\OneToMany;
 use FOS\UserBundle\Model\User as BaseUser;
 
 /**
@@ -208,10 +209,7 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="event_participant", mappedBy="user" , orphanRemoval=true)
      */
     private $event_participants;
-    /**
-     * @ORM\OneToMany(targetEntity="vote", mappedBy="user" , orphanRemoval=true)
-     */
-    private $voters;
+
     /**
      * @ORM\OneToMany(targetEntity="review", mappedBy="user" , orphanRemoval=true)
      */
@@ -275,22 +273,31 @@ class User extends BaseUser
     {
         $this->event_participants = $event_participants;
     }
+    /**
+
+     * @OneToMany(targetEntity="video", mappedBy="owner")
+     */
+    private $videos;
 
     /**
      * @return ArrayCollection
      */
-    public function getVoters()
+    public function getVideos()
     {
-        return $this->voters;
+        return $this->videos;
     }
 
     /**
-     * @param ArrayCollection $voters
+     * @param ArrayCollection $videos
      */
-    public function setVoters($voters)
+    public function setVideos($videos)
     {
-        $this->voters = $voters;
+        $this->videos = $videos;
     }
+
+
+
+
     /**
      * @ORM\OneToMany(targetEntity="competition_participant", mappedBy="user" , orphanRemoval=true)
      */
@@ -300,7 +307,7 @@ class User extends BaseUser
     { parent::__construct();
         $this->comments = new ArrayCollection();
         $this->event_participants = new ArrayCollection();
-        $this->voters = new ArrayCollection();
+        $this->videos = new ArrayCollection();
         $this->competition_participant = new ArrayCollection();
         $this->review = new ArrayCollection();
         $this->complaint = new ArrayCollection();

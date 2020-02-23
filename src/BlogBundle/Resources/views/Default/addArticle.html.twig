@@ -1,0 +1,40 @@
+{% extends 'admin_base.html.twig' %}
+{%  block admin_content %}
+    {{ form_start(f) }}
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <br>
+                <br>
+                <h4 class="card-title ">Blog</h4>
+                <p class="card-category"> </p>
+            </div>
+            <br>
+<br>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <td>Title: </td>
+                            <td>{{ form_widget(f.title,{attr: {'class':'form-control'}}) }}</td>
+                        </tr>
+                        <tr>
+                            <td>Insertion img: </td>
+                            <td>{{ form_widget(f.img,{attr: {'class':'form-control'}}) }}</td>
+                        </tr>
+                        <tr>
+                            <td>Content: </td>
+                            <td>{{ form_widget(f.content) }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>{{ form_widget(f.Submit,{'attr': {'class':'btn btn-primary btn-block'}}) }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{{ form_end(f) }}
+{% endblock %}
