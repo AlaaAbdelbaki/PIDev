@@ -45,7 +45,7 @@ class EventsController extends Controller
          $em->persist($event);
          $em->flush();
 
-         return $this->redirect($this->generateUrl('affiche'));
+         return $this->redirect($this->generateUrl('show_events_admin'));
      }
      return($this->render("@Events/event/event_add.html.twig",['f'=>$form->createView()]));
 
@@ -97,7 +97,7 @@ class EventsController extends Controller
             $conn->persist($event);
             $conn->flush();
 
-            return $this->redirect($this->generateUrl('affiche'));
+            return $this->redirect($this->generateUrl('show_events_admin'));
         }
 
         return $this->render('@EventsBundle\Resources\views\event\modifier.html.twig',['event'=>$event,'f'=>$form->createView()]);

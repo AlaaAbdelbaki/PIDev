@@ -22,9 +22,9 @@ class TalentController extends Controller
     {
         return $this->render("@Talent/Main/profile_details.html.twig");
     }
-    public function updateProfileAction(Request $request,$id)
+    public function updateProfileAction(Request $request)
     {
-        $user = $this->getDoctrine()->getManager()->getRepository(User::class)->find($id);
+        $user = $this->getUser();
         $pp=$user->getProfilePic();
         $form = $this->createFormBuilder($user)
             ->add("email",EmailType::class)
@@ -55,7 +55,7 @@ class TalentController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            return $this->redirectToRoute('view_profile');
+            return $this->redirectToRoute('profile_details');
         }
         return $this->render('@Talent/Main/edit_profile.html.twig',["f"=>$form->createView()]);
     }
@@ -118,7 +118,7 @@ class TalentController extends Controller
             $id = $user->getId();
     //        echo $id;
     //        var_dump($id);
-            $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findBy(["user"=>$id]);
+            $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findByOwner(["user"=>$id]);
             return $this->render("@Talent/Main/profile.html.twig",["users"=>$users,"videos"=>$video]);
         }
         else

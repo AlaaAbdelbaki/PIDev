@@ -102,33 +102,7 @@ class video
      * @ORM\Column(name="publish_date", type="datetime")
      */
     private $publishDate;
-//delete from here
-    /**
-     * @var integer
-     *
-     * @ORM\column(name="user",type="integer")
-     *
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="video")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
-    private $user;
 
-    /**
-     * @return int
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * @param int $user
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-    }
-//stop here
     /**
      * Get id
      *

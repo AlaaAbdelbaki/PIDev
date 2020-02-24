@@ -1,23 +1,26 @@
 {% extends 'base.html.twig' %}
 {% block content %}
 
-   <footer class="footer-area section-padding-100-6">
-       <div class="container-fluid">
+   <div class="content">
+       <div class="breadcumb-area bg-img bg-overlay2"
+            style="background-image: url({{ asset('assets/img/bg-img/breadcumb3.jpg') }}">
+           <div class="bradcumbContent">
+               <h2>Events</h2>
+           </div>
+       </div>
+       <div class="container-fluid upcoming-shows-area section-padding-100">
            <div class="row">
     <div class="col-md-12">
-        <div class="card">
-            <div class="card-header card-header-primary">
-                <h4 class="card-title ">Events list</h4>
-                <p class="card-category"> </p>
-            </div>
+        <div class="container ">
+
             <div class="card-body">
-                <div class="table-responsive">
+                <div class="table-responsive ">
                     <table class="table">
                         <thead class=" text-primary">
                         <th>Image</th>
                         <th>title</th>
                         <th><a href="{{path('affichetri')}}" style="color: inherit;text-decoration: inherit;">start_date</a></th>
-                        <th><a href="{{path('triEndD')}}" style="color: inherit;text-decoration: inherit;">end_date</th>
+                        <th><a href="{{path('triEndD')}}" style="color: inherit;text-decoration: inherit;">end_date</a></th>
                         <th>location</th>
                         <th>nbr_places</th>
                         <th>description</th>
@@ -47,7 +50,7 @@
                     </table>
 
 
-                    <h2 style="text-align:center">Search an event !!</h2>
+                    <h2 style="text-align:center; color: white">Search an event !!</h2>
                     <div class="sidebar-search">
                         <div class="input-group custom-search-form">
                             <input type="text" id="search" class="form-control" placeholder="Search here">
@@ -110,6 +113,6 @@
     </div>
            </div>
        </div>
-   </footer>
-    <td><a href="{{path('statsUser')}}"> <button class="btn btn-primary btn-block">show event distribution </button></a> <br></td>
+   </div>
+
 {% endblock %}

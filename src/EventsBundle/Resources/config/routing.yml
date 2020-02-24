@@ -1,29 +1,29 @@
 events_homepage:
     path:     /Events
     defaults: { _controller: EventsBundle:Default:index }
-add:
-    path:     /add
+event_add:
+    path:     admin/event/add
     defaults: { _controller: EventsBundle:Events:add }
-affiche:
-    path:     /affiche
+show_events_admin:
+    path:     admin/affiche
     defaults: { _controller: EventsBundle:Events:affiche }
 delete:
-    path:     /delete/{id}
+    path:     admin/delete/{id}
     defaults: { _controller: EventsBundle:Events:delete }
 modifier:
-    path:     /modifier/{id}
+    path:     admin/modifier/{id}
     defaults: { _controller: EventsBundle:Events:modifier }
 ajout:
-    path:     /ajout
+    path:     admin/ticket/new
     defaults: { _controller: EventsBundle:ticket:ajout }
 list:
-    path:     /list
+    path:     admin/ticket/list
     defaults: { _controller: EventsBundle:ticket:list }
 supp:
-    path:     /supp/{id}
+    path:     admin/ticket/supp/{id}
     defaults: { _controller: EventsBundle:ticket:supp }
 edit:
-    path:     /edit/{id}
+    path:     admin/ticket/edit/{id}
     defaults: { _controller: EventsBundle:ticket:edit }
 show_events:
     path:     /show_events

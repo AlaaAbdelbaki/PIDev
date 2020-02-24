@@ -1,11 +1,12 @@
 {%  extends 'admin_base.html.twig' %}
 {% block admin_content %}
-
+    <div class="content">
+    <div class="container-fluid">
     <div class="col-md-12">
         <div class="card">
 
             <div class="card-header card-header-primary">
-                <center>  <h4 class="card-title ">BLOG  </center> </h4>
+                  <h4 class="card-title ">BLOG   </h4>
                 <a href="{{ path('blog_homepage') }}"></a>
             </div>
 
@@ -42,8 +43,8 @@
                                 {{a.content}}
                             </td>
                             <td>
-                                <a href="{{ path('delete',{'id':a.id}) }}">Delete</a>
-                                <a href="{{ path('edit',{'id':a.id}) }}">Edit</a>
+                                <a href="{{ path('blog_delete',{'id':a.id}) }}">Delete</a>
+                                <a href="{{ path('blog_edit',{'id':a.id}) }}">Edit</a>
                             </td>
 
                         </tr>
@@ -53,5 +54,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div></div></div>
 {% endblock %}

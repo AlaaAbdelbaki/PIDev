@@ -1,32 +1,32 @@
 blog_homepage:
-    path:     /add
+    path:     admin/blog/add
     defaults: { _controller: BlogBundle:Blog:add }
-afficher:
-    path:     /afficher
+afficher_blog_admin:
+    path:     admin/blog/afficher
     defaults: { _controller: BlogBundle:Blog:afficher }
-afficherfront:
-    path:     /afficherfront
+afficher_blog:
+    path:     blog/afficher
     defaults: { _controller: BlogBundle:Blog:afficherfront }
-edit:
-    path:     /edit/{id}
+blog_edit:
+    path:     admin/blog/edit/{id}
     defaults: { _controller: BlogBundle:Blog:edit }
-delete:
-    path: /delete/{id}
+blog_delete:
+    path: admin/blog/delete/{id}
     defaults: { _controller: BlogBundle:Blog:delete }
-ajouter:
-    path: /ajouter
+updates_ajouter:
+    path: update/admin/ajouter
     defaults: { _controller: BlogBundle:Updates:ajouter }
-affiche:
-    path: /affiche
+afficher_update_admin:
+    path: admin/update/affiche
     defaults: { _controller: BlogBundle:Updates:affiche }
-affichefront:
-    path: /affichefront
+affiche_update:
+    path: update/affiche
     defaults: { _controller: BlogBundle:Updates:affichefront }
 modifier:
-    path:     /modifier/{id}
+    path:     admin/update/modifier/{id}
     defaults: { _controller: BlogBundle:Updates:modifier }
 supprimer:
-    path: /supprimer/{id}
+    path: admin/update/supprimer/{id}
     defaults: { _controller: BlogBundle:Updates:supprimer }
 
 tri:

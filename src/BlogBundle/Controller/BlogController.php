@@ -22,7 +22,7 @@ class BlogController extends Controller
         if ($form->isSubmitted()) {
             $em->persist($article);
             $em->flush();
-            return $this->redirectToRoute('afficher');
+            return $this->redirectToRoute('afficher_blog_admin');
         }
 
 
@@ -54,7 +54,7 @@ class BlogController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($a);
             $em->flush();
-             return $this->redirectToRoute('afficher');
+             return $this->redirectToRoute('afficher_blog_admin');
         }
         return $this->render("@Blog/Default/editArticle.html.twig", ["form" => $form->createView()]);
     }
@@ -65,7 +65,7 @@ class BlogController extends Controller
         $a = $em->getRepository(article::class)->find($id);
         $em->remove($a);
         $em->flush();
-      return $this->redirectToRoute('afficher');
+      return $this->redirectToRoute('afficher_blog_admin');
 }
 
     public function affichetriAction()

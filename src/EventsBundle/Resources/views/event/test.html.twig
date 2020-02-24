@@ -1,5 +1,8 @@
-
-<div id="Container"></div>
+{% extends 'admin_base.html.twig' %}
+{% block admin_content %}
+    <div class="content">
+<div id="Container" class="mx-3">
 {{ highchartsScript('highcharts') }}
     {{ highchartsScript('modules/exporting') }}
-    {{ highchartsChart('Container', chart) }}
+    {{ highchartsChart('Container', chart) }}</div></div>
+{% endblock %}

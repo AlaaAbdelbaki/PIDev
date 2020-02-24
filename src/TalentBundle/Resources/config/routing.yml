@@ -17,7 +17,7 @@ profile_details:
     path: /profile_details
     defaults: { _controller: TalentBundle:Talent:viewProfileDetails}
 update_profile:
-    path: /profile_details/edit{id}
+    path: /profile_details/edit
     defaults: {_controller: TalentBundle:Talent:updateProfile}
 list_profile:
     path: /admin/list_profiles

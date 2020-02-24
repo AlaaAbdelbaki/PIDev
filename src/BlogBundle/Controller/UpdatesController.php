@@ -22,7 +22,7 @@ class UpdatesController extends Controller
         if ($form->isSubmitted()) {
             $em->persist($updates);
             $em->flush();
-            return $this->redirectToRoute('affiche');
+            return $this->redirectToRoute('afficher_update_admin');
         }
         return $this->render('@Blog/Default/ajouterUpdates.html.twig', array('f' => $form->createView()));
     }
@@ -51,7 +51,7 @@ class UpdatesController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($a);
             $em->flush();
-            return $this->redirectToRoute('affiche');
+            return $this->redirectToRoute('afficher_update_admin');
         }
         return $this->render("@Blog/Default/modififerUpdates.html.twig", ["form" => $form->createView()]);
     }
@@ -62,7 +62,7 @@ class UpdatesController extends Controller
         $a = $em->getRepository(updates::class)->find($id);
         $em->remove($a);
         $em->flush();
-        return $this->redirectToRoute('affiche');
+        return $this->redirectToRoute('afficher_update_admin');
     }
 
 }

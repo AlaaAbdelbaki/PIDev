@@ -91,7 +91,9 @@
                                     <tbody>
                                     {% for competition in competitions %}
                                         {% if competition.competitionEndDate |date <  "now"|date %}
-                                            {% if not competition.winner.hasRole('ROLE_TALENTED')%}
+                                            {% if competition.winner is not null   %}
+                                                {% if not competition.winner.hasRole('ROLE_ADMIN')  %}
+                                            {% if not competition.winner.hasRole('ROLE_TALENTED') %}
                                         <tr>
                                             <td>
                                                 {{ competition.subject }}
@@ -111,6 +113,8 @@
                                                    </td>
                                         </tr>
                                                 {% endif %}
+                                        {% endif %}
+                                        {% endif %}
                                         {% endif %}
                                     {% endfor %}
 

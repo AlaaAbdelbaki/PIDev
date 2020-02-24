@@ -1,16 +1,14 @@
 {% extends 'admin_base.html.twig' %}
 {% block admin_content %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title> Events list </title>
-</head>
-<body>
+
+    <div class="content">
+    <div class="container-fluid">
+
 <div class="col-md-12">
     <div class="card">
         <div class="card-header card-header-primary">
             <h4 class="card-title ">Events list</h4>
-            <p class="card-category"> events :p </p>
+            <p class="card-category"> </p>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -46,11 +44,16 @@
                     {% endfor %}
                     </tbody>
                 </table>
-            </div>
-        </div>
-    </div>
-</div>
 
-</body>
-</html>
+            </div>
+
+        </div>
+
+    </div>
+    <a href="{{path('event_add')}}"> <button class=" btn btn-primary btn-block">Add New Event</button></a> <br>
+    <a href="{{path('statsUser')}}"> <button class=" btn btn-primary btn-block">show event distribution </button></a> <br>
+</div>
+    </div>
+    </div>
+
 {% endblock %}
