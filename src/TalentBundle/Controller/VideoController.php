@@ -42,11 +42,13 @@ class VideoController extends Controller
     }
 
 
-    public function viewVideoAction()
+    public function viewVideoAction($id)
     {
-        $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findAll();
+        $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findVideo($id);
         return $this->render("@Talent/Dashboard/list_videos.html.twig",["videos"=>$video]);
     }
+
+
     public function deleteAction($id)
     {
         $em = $this->getDoctrine()->getManager();

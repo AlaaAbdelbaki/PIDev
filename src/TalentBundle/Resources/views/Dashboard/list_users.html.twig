@@ -37,7 +37,7 @@
                                     {% endif %}
 {#                                    <td><button class="btn btn-primary btn-block" onclick="window.location.href=' {{ path('update_user',{id:user.id}) }}'">Modifier</button> </td>#}
                                     <td><button class="btn btn-primary btn-block" onclick="window.location.href=' {{ path('delete_user',{id:user.id}) }}'">Supprimer</button> </td>
-                                    <td><button class="btn btn-primary btn-block" onclick="window.location.href=' {{ path('list_video') }}'">Gérer les vidéos</button> </td>
+                                    <td><button class="btn btn-primary btn-block" onclick="window.location.href=' {{ path('list_video',{id:user.id })}}'">Gérer les vidéos</button> </td>
                                 </tr>
                             {% endfor %}
                             </tbody>

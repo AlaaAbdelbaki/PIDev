@@ -1,5 +1,5 @@
 list_video:
-    path: /admin/list_video
+    path: /admin/list_video/{id}
     defaults: {_controller: TalentBundle:Video:viewVideo}
 add_video:
     path: /profile/add_video
@@ -36,7 +36,7 @@ user_search:
     defaults: {_controller: TalentBundle:Talent:search}
 subscribe:
     path: /subscribe/{id}
-    defaults: {_controller: TalentBundle:Talent:subscribe }
+    defaults: {_controller: TalentBundle:Talent:subscribe}
 unsubscribe:
     path: /unsubscribe/{id}
     defaults: {_controller: TalentBundle:Talent:unsubscribe}

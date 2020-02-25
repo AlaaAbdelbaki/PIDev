@@ -10,4 +10,10 @@ namespace AppBundle\Repository;
  */
 class videoRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findVideo($id)
+    {
+        $qb = $this->getEntityManager()
+            ->createQuery('SELECT v FROM AppBundle:video v WHERE v.user =:id ')->setParameter('id',$id);
+        return $query = $qb->getResult();
+    }
 }
