@@ -20,6 +20,10 @@ class UpdatesController extends Controller
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
         if ($form->isSubmitted()) {
+            $file = $updates->getImg();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('photos_directory'), $fileName);
+            $updates->setImg($fileName);
             $em->persist($updates);
             $em->flush();
             return $this->redirectToRoute('afficher_update_admin');

@@ -23,6 +23,7 @@ class EventsController extends Controller
     public function addAction(Request $request)
     {
      $event=new event();
+
      $form=$this->createFormBuilder($event)
          ->add('title',TextType::class)
          ->add('startDate',DateType::class)
@@ -35,6 +36,7 @@ class EventsController extends Controller
          ->add('Submit', SubmitType::class)
          ->getForm();
      $form->handleRequest($request);
+     dump($event);
      if($form->isSubmitted() && $form->isValid())
      {
          $file = $event->getImg();
@@ -65,9 +67,10 @@ class EventsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $event =$em->getRepository(event::class)->find($id);
+
         $em->remove($event);
         $em->flush();
-        return $this->redirectToRoute('affiche');
+        return $this->redirectToRoute('show_events_admin');
     }
 
     public function modifierAction(Request $request,$id){
