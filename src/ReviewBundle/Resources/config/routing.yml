@@ -1,32 +1,32 @@
 review_homepage:
     path:     /review
     defaults: { _controller: ReviewBundle:reviews:AddReview }
-affiche:
-    path:     /affiche
+review_show:
+    path:     admin/review/show
     defaults: { _controller: ReviewBundle:reviews:affiche }
-delete:
-    path:     /delete/{id}
+review_delete:
+    path:     admin/review/delete/{id}
     defaults: { _controller: ReviewBundle:reviews:delete }
-edit:
-    path:     /edit/{id}
+review_edit:
+    path:     admin/review/edit/{id}
     defaults: { _controller: ReviewBundle:reviews:edit }
 AddReclam:
-    path:     /AddReclam
+    path:     /complaint/add
     defaults: { _controller: ReviewBundle:complaints:AddReclam }
 affiche_reclam:
-    path:     /affiche_reclam
+    path:     admin/complaint/show
     defaults: { _controller: ReviewBundle:complaints:affiche_reclam }
 delete_reclam:
-    path:     /delete_reclam/{id}
+    path:     admin/complaint/delete/{id}
     defaults: { _controller: ReviewBundle:complaints:delete_reclam }
 edit_reclam:
-    path:     /edit_reclam/{id}
+    path:     admin/complaint/edit/{id}
     defaults: { _controller: ReviewBundle:complaints:edit_reclam }
 AddReviewUser:
-    path:     /AddReviewUser
+    path:     /rate/new
     defaults: { _controller: ReviewBundle:ReviewUseer:AddReviewUser }
 AddReclamUser:
-    path:     /AddReclamUser
+    path:     /complaint/new
     defaults: { _controller: ReviewBundle:ComplaintUser:AddReclamUser }
 Mail:
     path:     /Mail/{id}

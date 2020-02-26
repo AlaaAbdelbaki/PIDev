@@ -14,10 +14,10 @@ blog_delete:
     path: admin/blog/delete/{id}
     defaults: { _controller: BlogBundle:Blog:delete }
 updates_ajouter:
-    path: update/admin/ajouter
+    path: admin/updates/ajouter
     defaults: { _controller: BlogBundle:Updates:ajouter }
 afficher_update_admin:
-    path: admin/update/affiche
+    path: admin/updates/affiche
     defaults: { _controller: BlogBundle:Updates:affiche }
 affiche_update:
     path: update/affiche

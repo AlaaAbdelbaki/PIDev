@@ -5,24 +5,24 @@ event_add:
     path:     admin/event/add
     defaults: { _controller: EventsBundle:Events:add }
 show_events_admin:
-    path:     admin/affiche
+    path:     admin/event/show
     defaults: { _controller: EventsBundle:Events:affiche }
-delete:
-    path:     admin/delete/{id}
+event_delete:
+    path:     admin/event/delete/{id}
     defaults: { _controller: EventsBundle:Events:delete }
-modifier:
-    path:     admin/modifier/{id}
+event_modifier:
+    path:     admin/event/modifier/{id}
     defaults: { _controller: EventsBundle:Events:modifier }
-ajout:
+ticket_ajout:
     path:     admin/ticket/new
     defaults: { _controller: EventsBundle:ticket:ajout }
-list:
+ticket_list:
     path:     admin/ticket/list
     defaults: { _controller: EventsBundle:ticket:list }
-supp:
+ticket_supp:
     path:     admin/ticket/supp/{id}
     defaults: { _controller: EventsBundle:ticket:supp }
-edit:
+ticket_edit:
     path:     admin/ticket/edit/{id}
     defaults: { _controller: EventsBundle:ticket:edit }
 show_events:

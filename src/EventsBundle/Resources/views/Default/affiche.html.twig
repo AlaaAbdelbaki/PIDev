@@ -1,118 +1,69 @@
 {% extends 'base.html.twig' %}
 {% block content %}
 
-   <div class="content">
-       <div class="breadcumb-area bg-img bg-overlay2"
-            style="background-image: url({{ asset('assets/img/bg-img/breadcumb3.jpg') }}">
-           <div class="bradcumbContent">
-               <h2>Events</h2>
-           </div>
-       </div>
-       <div class="container-fluid upcoming-shows-area section-padding-100">
-           <div class="row">
-    <div class="col-md-12">
-        <div class="container ">
-
-            <div class="card-body">
-                <div class="table-responsive ">
-                    <table class="table">
-                        <thead class=" text-primary">
-                        <th>Image</th>
-                        <th>title</th>
-                        <th><a href="{{path('affichetri')}}" style="color: inherit;text-decoration: inherit;">start_date</a></th>
-                        <th><a href="{{path('triEndD')}}" style="color: inherit;text-decoration: inherit;">end_date</a></th>
-                        <th>location</th>
-                        <th>nbr_places</th>
-                        <th>description</th>
-                        <th>type</th>
-                        <th>Partage facebook </th>
-                        <th>Partage instagram </th>
-
-                        </thead>
-                        <tbody>
-                        {% for i in t %}
-                            <tr>
-                                <td><img src="{{ asset('assets/img/shop-img/' ~ i.img) }}" height="50px" width="50px"></td>
-                                <td>{{ i.title }}</td>
-                                <td>{{ i.startDate|date("d/m/Y")}}</td>
-                                <td>{{ i.endDate|date("d/m/Y") }}</td>
-                                <td>{{ i.location}}</td>
-                                <td>{{ i.nbPlaces }}</td>
-                                <td>{{ i.description}}</td>
-                                <td>{{ i.type}}</td>
-                                <td> <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Flocalhost.dev%2F2a7_php5%2Fview%2Fafficher_wishlist.php&layout=button_count&size=small&width=83&height=20&appId" width="83" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe></td>
+    <div class="content">
+        <div class="breadcumb-area bg-img bg-overlay2"
+             style="background-image: url({{ asset('assets/img/bg-img/breadcumb3.jpg') }}">
+            <div class="bradcumbContent">
+                <h2>Events</h2>
+            </div>
+        </div>
+        <div class="container-fluid upcoming-shows-area section-padding-100">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="container ">
 
 
-                            </tr>
+                            <!-- ##### Featured Shows Area Start ##### -->
+                            <div class="featured-shows-area section-padding-100">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="section-heading dark">
+                                                <h2 class="text-white">Upcoming Events</h2>
+                                                <h6>Get your ticket Now!</h6>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="featured-shows-slides owl-carousel">
+                                                {% for i in t %}
+                                                    <!-- Single Featured Shows -->
+                                                    <div class="single-featured-shows">
+                                                        <img src="/assets/img/bg-img/fs4.jpg" alt="">
+                                                        <!-- Content -->
+                                                        <div class="featured-shows-content">
+                                                            <div class="shows-text">
+                                                                <h4>{{ i.title }}</h4>
+                                                                <p>{{ i.startDate|date("d/m/Y") }}</p>
+                                                                <p>>{{ i.location }}</p>
+                                                                <p>{{ i.nbPlaces }}</p>
+                                                                <p>{{ i.description }}</p>
+                                                                <p>>{{ i.type }}</p>
+                                                                <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Flocalhost.dev%2F2a7_php5%2Fview%2Fafficher_wishlist.php&layout=button_count&size=small&width=83&height=20&appId"
+                                                                        width="83" height="20" style="border:none;overflow:hidden"
+                                                                        scrolling="no" frameborder="0" allowTransparency="true"
+                                                                        allow="encrypted-media"></iframe>
+                                                                <a href="#" class="buy-tickets-btn">Buy Tickets</a>
+                                                            </div>
+                                                            <div class="bg-gradients"></div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ##### Featured Shows Area End ##### -->
 
-
-                    <h2 style="text-align:center; color: white">Search an event !!</h2>
-                    <div class="sidebar-search">
-                        <div class="input-group custom-search-form">
-                            <input type="text" id="search" class="form-control" placeholder="Search here">
-                        </div>
-                        <!-- /input-group -->
                     </div>
-                    <ul class="nav" id="side-menu">
-                        <li>
-                            <ul class="nav nav-second-level" id="entitiesNav">
-                            </ul>
-                        </li>
-                    </ul><br><br><br><br>
-
-                    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-                    <script type="text/javascript">
-                        jQuery(document).ready(function() {
-                            var searchRequest = null;
-                            $("#search").keyup(function() {
-                                var minlength = 1;
-                                var that = this;
-                                var value = $(this).val();
-                                var entitySelector = $("#entitiesNav").html('');
-                                if (value.length >= minlength ) {
-                                    if (searchRequest != null)
-                                        searchRequest.abort();
-                                    searchRequest = $.ajax({
-                                        type: "GET",
-                                        url: "{{ path('search') }}",
-                                        data: {
-                                            'q' : value
-                                        },
-                                        dataType: "text",
-                                        success: function(msg){
-                                            //we need to check if the value is the same
-                                            if (value===$(that).val()) {
-                                                var result = JSON.parse(msg);
-                                                $.each(result, function(key, arr) {
-                                                    $.each(arr, function(id, value) {
-                                                        if (key === 'event') {
-                                                            if (id !== 'error') {
-                                                                console.log(value[1]);
-                                                                entitySelector.append('<li><b>'+value[1]+'</b><a href="/show_events/'+id+'">'+'<img src="/assets/img/shop-img/'+value[0]+'" style="width: 50px; height: 50px"/>'+'</a></li>');
-                                                            } else {
-                                                                entitySelector.append('<li class="errorLi">'+value+'</li>');
-                                                            }
-                                                        }
-                                                    });
-                                                });
-                                            }
-                                        },
-                                    });
-                                }
-                            });
-                        });
-                    </script>
-
                 </div>
             </div>
         </div>
     </div>
-           </div>
-       </div>
-   </div>
+
 
 {% endblock %}

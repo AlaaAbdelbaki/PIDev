@@ -7,7 +7,7 @@
 
             <div class="card-header card-header-primary">
                   <h4 class="card-title ">BLOG   </h4>
-                <a href="{{ path('blog_homepage') }}"></a>
+                <a class="btn btn-success" href="{{ path('blog_homepage') }}">Add new Blog</a>
             </div>
 
             <div class="card-body">
@@ -43,8 +43,8 @@
                                 {{a.content}}
                             </td>
                             <td>
-                                <a href="{{ path('blog_delete',{'id':a.id}) }}">Delete</a>
-                                <a href="{{ path('blog_edit',{'id':a.id}) }}">Edit</a>
+                                <a class="btn btn-danger mr-3" href="{{ path('blog_delete',{'id':a.id}) }}">Delete</a>
+                                <a class="btn btn-warning" href="{{ path('blog_edit',{'id':a.id}) }}">Edit</a>
                             </td>
 
                         </tr>

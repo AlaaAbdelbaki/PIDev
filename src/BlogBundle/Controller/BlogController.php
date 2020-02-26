@@ -20,6 +20,10 @@ class BlogController extends Controller
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
         if ($form->isSubmitted()) {
+            $file = $article->getImg();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('photos_directory'), $fileName);
+            $article->setImg($fileName);
             $em->persist($article);
             $em->flush();
             return $this->redirectToRoute('afficher_blog_admin');
