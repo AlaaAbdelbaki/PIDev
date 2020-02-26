@@ -121,7 +121,7 @@ class TalentController extends Controller
             $subcount = $this->getDoctrine()->getManager()->getRepository(subscription::class)->getSubscribersCount($id);
             $subscribedto = $this->getDoctrine()->getManager()->getRepository(subscription::class)->getSubscribtionCount($user->getId());
             //        var_dump($id);
-            $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findBy(["user" => $id]);
+            $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findBy(["owner" => $id]);
             return $this->render("@Talent/Main/profile.html.twig", ["users" => $users, "videos" => $video, "subcount" => $subcount, "subbedto" => $subscribedto, "subscribtion" => $state]);
         } else {
             return $this->render("@Talent/Default/error.html.twig");
