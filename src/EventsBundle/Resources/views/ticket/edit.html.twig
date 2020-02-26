@@ -1,0 +1,44 @@
+{% extends 'admin_base.html.twig' %}
+{% block admin_content %}
+    {{ form_start(f) }}
+    <div class="content">
+    <div class="col-md-12">
+    <div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title ">Simple Table</h4>
+        <p class="card-category"> Here is a subtitle for this table</p>
+    </div>
+    <div class="card-body">
+    <div class="table-responsive">
+    <table class="table">
+        <thead class=" text-primary">
+        <tr>
+            <th>
+                price:
+            </th>
+            <th>
+                {{ form_widget(f.price) }}
+            </th>
+        </tr>
+        <tr>
+            <th>
+                event_date:
+            </th>
+            <th>
+             {{ form_widget(f.event) }}
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+
+        </tr>
+        </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    {{ form_end(f) }}
+{% endblock %}

@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert ;
 
 /**
  * competition
@@ -45,6 +46,7 @@ class competition
     public function __construct()
     {
         $this->competition_participant = new ArrayCollection();
+        $this->competitionDate=new \DateTime();
     }
 
 
@@ -58,15 +60,15 @@ class competition
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="competition_date", type="date")
+     * @Assert\GreaterThan("now")
+     * @ORM\Column(name="competition_date", type="datetime")
      */
     private $competitionDate;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="competition_end_date", type="date")
+     *@Assert\GreaterThan(propertyPath="competition_date")
+     * @ORM\Column(name="competition_end_date", type="datetime")
      */
     private $competitionEndDate;
 
@@ -151,6 +153,23 @@ class competition
     public function getCompetitionEndDate()
     {
         return $this->competitionEndDate;
+    }
+    private $winner;
+
+    /**
+     * @return mixed
+     */
+    public function getWinner()
+    {
+        return $this->winner;
+    }
+
+    /**
+     * @param mixed $winner
+     */
+    public function setWinner($winner)
+    {
+        $this->winner = $winner;
     }
 }
 

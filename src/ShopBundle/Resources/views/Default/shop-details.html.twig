@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({{ asset('assets/img/bg-img/breadcumb.jpg') }});">
+        <div class="bradcumbContent">
+            <h2>Shop Details</h2>
+        </div>
+    </div>
+    <!-- bg gradients -->
+    <div class="bg-gradients"></div>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <!-- details area Start ##### -->
+    <div class="products-details section-padding before-after bg-white">
+        <div class="products-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="products-slider">
+                            <div class="products-image">
+                                <img  class="img-fluid" src="{{ asset('assets/img/shop-img/' ~ product.img) }}" alt="Image">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h1>Stock: <span>Only {{ product.stock }} Left</span></h1>
+                        <h2>{{product.productName}}</h2>
+                        <h3>${{ product.price }}</h3>
+
+                        <form class="cart" method="post">
+
+                            <div class="quantity" data-trigger="spinner">
+                                <h3>Quantity:</h3>
+                                <input type="number" name="quantity" value="1" title="quantity" class="input-text" min="1" max="{{ product.stock }}">
+
+                            </div>
+
+                            <div class="add-buttons">
+                                <a href="{{ path('panier_ajouter',{'id': product.id,}) }}" class="cart-button button"><i class="fa fa-shopping-cart"></i>
+                                    Add To Cart</a>
+                            </div>
+                        </form>
+
+                    </div>
+                </div><!-- row -->
+
+            </div><!-- container -->
+        </div><!-- products content -->
+    </div><!-- products details -->
+
+
+    <!-- details area End ##### -->
+{% endblock %}

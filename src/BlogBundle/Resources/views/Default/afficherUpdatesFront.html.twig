@@ -1,0 +1,153 @@
+{%  extends 'base.html.twig' %}
+{% block content %}
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <h4 class="card-title "></h4>
+                <a href="{{ path('affiche_update') }}">Updates List</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+
+
+                        <div class="upcoming-shows-area ">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="section-heading">
+                                            <h2>UPDATES</h2>
+                                            <h6>Everything you need to know.</h6>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <!-- Upcoming Shows Content -->
+                                                    <div class="upcoming-shows-content">
+
+                                                        <!-- Single Upcoming Shows -->
+                                                        <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
+
+                                                            <div class="shows-desc d-flex align-items-center">
+                                                                <div class="shows-img">
+                                                                    <img src="assets/img/bg-img/s1.jpg" alt="">
+                                                                </div>
+                                                                <div class="shows-name">
+                                                                    <h6>Electric castle Festival</h6>
+                                                                    <p>Cluj, Romania</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="shows-location">
+                                                                <p>At the Castle</p>
+                                                            </div>
+                                                            <div class="shows-time">
+                                                                <p>20:30</p>
+                                                            </div>
+                                                            <div class="buy-tickets">
+                                                                <a href="#" class="btn musica-btn">Buy Tikets</a>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Single Upcoming Shows -->
+                                                        <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
+                                                            <div class="shows-date">
+                                                                <h2>23 <span>July</span></h2>
+                                                            </div>
+                                                            <div class="shows-desc d-flex align-items-center">
+                                                                <div class="shows-img">
+                                                                    <img src="assets/img/bg-img/s2.jpg" alt="">
+                                                                </div>
+                                                                <div class="shows-name">
+                                                                    <h6>Electric Festival</h6>
+                                                                    <p>Manhathan, NY, USA</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="shows-location">
+                                                                <p>Main Stadium</p>
+                                                            </div>
+                                                            <div class="shows-time">
+                                                                <p>21:30</p>
+                                                            </div>
+                                                            <div class="buy-tickets">
+                                                                <a href="#" class="btn musica-btn">Buy Tikets</a>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Single Upcoming Shows -->
+                                                        <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
+                                                            <div class="shows-date">
+                                                                <h2>25 <span>July</span></h2>
+                                                            </div>
+                                                            <div class="shows-desc d-flex align-items-center">
+                                                                <div class="shows-img">
+                                                                    <img src="assets/img/bg-img/s3.jpg" alt="">
+                                                                </div>
+                                                                <div class="shows-name">
+                                                                    <h6>Sunflower festival</h6>
+                                                                    <p>Paris, France</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="shows-location">
+                                                                <p>Sunflower Arena</p>
+                                                            </div>
+                                                            <div class="shows-time">
+                                                                <p>20:30</p>
+                                                            </div>
+                                                            <div class="buy-tickets">
+                                                                <a href="#" class="btn musica-btn">Buy Tikets</a>
+                                                            </div>
+                                                        </div>
+
+                                                        
+                        <th>
+                            Title
+                        </th>
+                        <th>
+                            Image
+                        </th>
+                        <th>
+                            Content
+                        </th>
+                        <th>
+                            categorie
+                        </th>
+                        <th>
+                            Publish_date
+                        </th>
+
+                        </thead>
+                        <tbody>
+                        {% for a in updatess %}
+                            <tr>
+
+                                <td>
+                                    {{a.title}}
+                                </td>
+                                <td>
+                                    <img src="{{ asset('/fack.png') }}" width="200px" height="300px"/>
+                                </td>
+                                <td>
+                                    {{a.content}}
+                                </td>
+                                <td>
+                                    {{a.category}}
+                                </td>
+                                <td>
+                                    {{a.publishDate|date("Y/m/d")}}
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

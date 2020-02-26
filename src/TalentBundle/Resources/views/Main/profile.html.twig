@@ -5,8 +5,10 @@
     {% for user in users %}
 
     <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({{ asset('assets/img/bg-img/bg-1.jpg') }});">
-        <div class="bradcumbContent">
-            <h2> Profil de {{ user.username }}</h2>
+        <img src="{{ asset('assets/uploads/' ~ user.profilePic) }}"   style="margin-top: 250px;width: 370px; margin-left: 50px;  border: 3px solid #cc1573;border-radius: 50%" >
+        <div class="bradcumbContent ">
+
+            <h2 > {{ user.username }}'s Profile</h2>
         </div>
     </div>
     <!-- bg gradients -->
@@ -14,20 +16,20 @@
     <!-- ##### Breadcumb Area End ##### -->
 
     <!-- ##### Elements Area Start ##### -->
-    <section class="elements-area mt-30 section-padding-100-0 ">
+    <section class="upcoming-shows-area  section-padding-100-0 " style="padding-top: 200px">
 {#        Contenu de la page#}
         <div class="container">
             <div id="search_bar" style="text-align: center">
-                <div id="cacher" class="btn musica-btn m-2">Chercher un utilisateur</div>
+                <div id="cacher" class="btn musica-btn m-2">Search a User</div>
                 {#            Search Bar#}
-                <div id="search_input">
-                    <h2 class="text-primary">Chercher un utilisateur</h2>
+                <div id="search_input" >
+                    <h2 class="text-white">Search a User</h2>
 
-                    <div class="sidebar-search">
+                    <div class="sidebar-search m-auto" style="width: 500px">
 
-                        <div class="input-group custom-search-form">
+                        <div class="input-group custom-search-form " >
 
-                            <input autocomplete="off" type="text" id="search" class="form-control" placeholder="John Doe">
+                            <input autocomplete="off" type="text" id="search" class="form-control"  placeholder="John Doe">
                         </div>
                         <!-- /input-group -->
                     </div>
@@ -45,8 +47,8 @@
 {#            Profile#}
             <div class="row">
 {#                Profile picture and basic info#}
-                <div class="col-md-4">
-                    <img src="{{ asset('assets/img/pics/' ~ user.profilePic) }}" style="width:250px; height: auto;clip-path: circle(120px at center);">
+                <div class="col-md-4 " style="border-right: 1px solid white">
+
                     <br>
                     <br>
                     {% if user.username != app.user.username %}
@@ -57,12 +59,13 @@
                         {% endif %}
                     {% endif %}
                     <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;">Nom:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.Name }}</span></div>
+                    <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold;">Nom:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.Name }}</span></div>
                     <br>
-                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold">Prénom:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.firstName }}</span></div>
+                    <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold">Prénom:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.firstName }}</span></div>
                     <br>
-                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;">Date de naissance:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.birthday|date("d M Y") }}</span></div>
+                    <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold;">Date de naissance:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.birthday|date("d M Y") }}</span></div>
                     <br>
-                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;">Bio: <br> <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.bio }}</span></div>
+                    <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold;">Bio: <br> <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.bio }}</span></div>
                     <br>
                     {% for sub in subcount %}
                         <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;">Abonnés <br> <span class="text-secondary" style="font-size: medium;font-weight: normal">{{sub|join(', ')}}</span></div>
@@ -73,7 +76,7 @@
                     {% endfor %}
                     {% if app.user.username == user.username%}
                     <br>
-                    <div style="margin-left: 30px;"><a class="btn musica-btn m-2" href="{{ path('update_profile',{id:app.user.id}) }}">Modifier vos informations</a></div>
+                    <div style="margin-left: 30px;"><a class="btn musica-btn m-2" href="{{ path('update_profile') }}">Modifier vos informations</a></div>
                     <br>
                     <div style="margin-left: 30px;"><a class="btn musica-btn m-2" href="{{ path('add_video') }}">Ajouter une video</a></div>
                     {% endif %}
@@ -82,13 +85,16 @@
 {#                Profile feed#}
                 <div class="col-md-8">
                     <div>
-                        <h1 class="text-primary">Vidéos ajoutés par {{ user.username }}</h1>
+                        <h1 class="text-white"> {{ user.username }}'s Posts :</h1>
                         <br>
                         <br>
                         {% for video in videos %}
-                            <h3 class="text-primary">{{ video.title }}</h3>
+                            <h3 class="text-white">{{ video.title }}</h3>
                             <iframe src="{{ video.url }}" width="854" height="480" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                            <h2 class="text-secondary" style="margin-left: 600px;">Rating: {{ video.id }} </h2>
+                          <h2>  <i
+                                    class="fa fa-thumbs-o-up text-white big-text col  "> <span
+                                        class="num text-white big-text ">{{ video.votes.count }}</span>
+                                Votes</i></h2>
                             <br>
                             <br>
                             <br>

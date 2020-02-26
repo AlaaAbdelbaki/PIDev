@@ -16,7 +16,7 @@
 
             {% for video in videos %}
                 {% for user in users %}
-                    {% if video.user == user.id %}
+                    {% if video.owner.id == user.id %}
                         <h1 class="text-primary">{{ video.title }}</h1>
                         <iframe width="854" height="480" src="{{video.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <h2 class="text-secondary">Uploaded by: {{ user.username }}</h2>

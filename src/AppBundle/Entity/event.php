@@ -4,6 +4,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * event
@@ -44,7 +46,7 @@ class event
     private $endDate;
     /**
      * @var string
-     *
+     * @Assert\File(maxSize="500k", mimeTypes={"image/jpeg", "image/jpg", "image/png", "image/GIF"})
      * @ORM\Column(name="img", type="string", length=500)
      */
     private $img;

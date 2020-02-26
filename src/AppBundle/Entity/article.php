@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * article
@@ -30,7 +31,7 @@ class article
     private $title;
     /**
      * @var string
-     *
+     * @Assert\Image()
      * @ORM\Column(name="img", type="string", length=500)
      */
     private $img;

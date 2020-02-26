@@ -1,0 +1,66 @@
+{% extends 'admin_base.html.twig' %}
+{% block admin_content %}
+    <div class="content">
+    <div class="container-fluid">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">Orders List</h4>
+                <p class="card-category">Here you can find all orders: </p>
+
+
+                <a  class="btn btn-success mr-3" href="{{ path('shop_adminorderajouter') }}">Add Order  </a>
+                <a class="btn btn-warning" href="{{ path('shop_admin') }}">Product Manager</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+
+                        <th>
+                            Order ID
+                        </th>
+                        <th>
+                            Order Date
+                        </th>
+                        <th>
+                            Total
+                        </th>
+                        <th>
+                            Address
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+
+                        </thead>
+                        <tbody>
+                        {% for p in orders %}
+                        <tr>
+
+                            <td>
+                                {{ p.id }}
+                            </td>
+                            <td>
+                                {{ p.orderDate|date("Y/m/d") }}
+                            </td>
+                            <td>
+                                {{ p.total }}
+                            </td>
+                            <td class="text-primary">
+                                {{ p.address }}
+                            </td>
+                            <td>
+                                <a  class="btn btn-danger mr-3" href="{{ path('shop_adminorderdel',{'id':p.id}) }}">Delete</a>
+                                <a  class="btn btn-warning"href="{{ path('shop_adminorderupdate',{'id':p.id}) }}">Update</a>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div></div></div>
+{% endblock %}

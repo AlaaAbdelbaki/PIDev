@@ -1,0 +1,34 @@
+blog_homepage:
+    path:     admin/blog/add
+    defaults: { _controller: BlogBundle:Blog:add }
+afficher_blog_admin:
+    path:     admin/blog/afficher
+    defaults: { _controller: BlogBundle:Blog:afficher }
+afficher_blog:
+    path:     blog/afficher
+    defaults: { _controller: BlogBundle:Blog:afficherfront }
+blog_edit:
+    path:     admin/blog/edit/{id}
+    defaults: { _controller: BlogBundle:Blog:edit }
+blog_delete:
+    path: admin/blog/delete/{id}
+    defaults: { _controller: BlogBundle:Blog:delete }
+updates_ajouter:
+    path: update/admin/ajouter
+    defaults: { _controller: BlogBundle:Updates:ajouter }
+afficher_update_admin:
+    path: admin/update/affiche
+    defaults: { _controller: BlogBundle:Updates:affiche }
+affiche_update:
+    path: update/affiche
+    defaults: { _controller: BlogBundle:Updates:affichefront }
+modifier:
+    path:     admin/update/modifier/{id}
+    defaults: { _controller: BlogBundle:Updates:modifier }
+supprimer:
+    path: admin/update/supprimer/{id}
+    defaults: { _controller: BlogBundle:Updates:supprimer }
+
+tri:
+    path: /sort
+    defaults: {_controller:BlogBundle:Blog:affichetri }

@@ -21,12 +21,42 @@
         {% block stylesheets %}
             <link rel="stylesheet" href="{{asset('assets/style.css')}}">
             <link rel="stylesheet" href="{{asset('assets/beat.css')}}">
-        {% endblock %}
+
             <link rel="icon" type="image/png" href="{{asset('assets/img/icon.png')}}">
             <link href="{{ asset('assets/css/pp.css') }}" type="text/css" rel="stylesheet" />
+
+
+
+        <script>
+            function myFunction() {
+                // Declare variables
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("myTable");
+                tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        </script>
+
+       {% endblock %}
+        <link rel="icon" type="image/png" href="{{asset('assets/img/icon.png')}}">
+
     </head>
     <body>
-        {% block body %}
+        {% block header %}
             <!-- ##### Preloader ##### -->
             <div class="preloader d-flex align-items-center justify-content-center">
                 <div class="circle-preloader">
@@ -91,7 +121,9 @@
                                                             <span class="bar bar-9"></span>
                                                             <span class="bar bar-10"></span>
                                                         </div></a></li>
-                                                <li><a href="" class="show">Competitions
+                                                <li><a href="{{ path('competition_index') }}" class="show">Competitions
+                                                
+                                               
                                                         <div class="equalizer">
                                                             <span class="bar bar-1"></span>
                                                             <span class="bar bar-2"></span>
@@ -104,7 +136,7 @@
                                                             <span class="bar bar-9"></span>
                                                             <span class="bar bar-10"></span>
                                                         </div></a></li>
-                                                <li><a href="" class="show">Shop
+                                                <li><a href="{{ path('shop_homepage') }}" class="show">Shop
                                                         <div class="equalizer">
                                                             <span class="bar bar-1"></span>
                                                             <span class="bar bar-2"></span>
@@ -118,7 +150,7 @@
                                                             <span class="bar bar-10"></span>
                                                         </div></a></li>
                                             {% endif %}
-                                            <li><a href="" class="show">Events
+                                            <li><a href="{{ path('show_events') }}" class="show">Events
                                                     <div class="equalizer">
                                                         <span class="bar bar-1"></span>
                                                         <span class="bar bar-2"></span>
@@ -131,7 +163,7 @@
                                                         <span class="bar bar-9"></span>
                                                         <span class="bar bar-10"></span>
                                                     </div></a></li>
-                                            <li><a href="#" class="show">News
+                                            <li><a href="{{ path('affiche_update') }}" class="show">News
                                                     <div class="equalizer">
                                                         <span class="bar bar-1"></span>
                                                         <span class="bar bar-2"></span>
@@ -146,7 +178,7 @@
                                                     </div></a>
 
                                             </li>
-                                            <li><a href="#" class="show">Blog
+                                            <li><a href="{{ path('afficher_blog') }}" class="show">Blog
                                                     <div class="equalizer">
                                                         <span class="bar bar-1"></span>
                                                         <span class="bar bar-2"></span>
@@ -161,7 +193,7 @@
                                                     </div></a>
 
                                             </li>
-                                            <li><a href="" class="show">Gallery
+                                            <li><a href="#" class="show">Gallery
                                                     <div class="equalizer">
                                                         <span class="bar bar-1"></span>
                                                         <span class="bar bar-2"></span>
@@ -218,9 +250,15 @@
             <!-- ##### Header Area End ##### -->
 
 
-                    {% block content %}
-                        <!-- ##### content Area  ##### -->
-                    {% endblock %}
+
+        {% endblock %}
+        <section >
+{% block content %}
+
+    <!-- ##### content Area  ##### -->
+{% endblock %}
+        </section>
+        {% block footer %}
             <!-- ##### Footer Area Start ##### -->
             <footer class="footer-area section-padding-100-0">
                 <div class="container-fluid">
@@ -286,13 +324,14 @@
             <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog form-dark" role="document">
-                    <div class="modal-content card card-image" style="background-image: url({{asset('assets/img/bg-img/log.jpg')}}">
+                    <div class="modal-content card card-image" style="background-color: rgba(0,0,0,0.3); margin-top:10vh">
 
                     </div>
 
 
                 </div>
             </div>
+
             <!-- ##### Footer Area Start ##### -->
 
             <!-- ##### All Javascript Script ##### -->
