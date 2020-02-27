@@ -30,9 +30,10 @@
                                         <div class="col-12">
                                             <div class="featured-shows-slides owl-carousel">
                                                 {% for i in t %}
+                                                    {% if not i.ticket.isempty %}
                                                     <!-- Single Featured Shows -->
                                                     <div class="single-featured-shows">
-                                                        <img src="/assets/img/bg-img/fs4.jpg" alt="">
+                                                        <img src="{{ asset('assets/img/shop-img/' ~ i.img) }}" style=" height:600px">
                                                         <!-- Content -->
                                                         <div class="featured-shows-content">
                                                             <div class="shows-text">
@@ -46,11 +47,16 @@
                                                                         width="83" height="20" style="border:none;overflow:hidden"
                                                                         scrolling="no" frameborder="0" allowTransparency="true"
                                                                         allow="encrypted-media"></iframe>
-                                                                <a href="#" class="buy-tickets-btn">Buy Tickets</a>
+                                                                {% if i.nbPlaces is same as (0) %}
+                                                                <h3>Event Full</h3>
+                                                                {% else %}
+                                                                <a target="_blank" href="{{ path('buy_ticket',{'id':i.id}) }}" class="buy-tickets-btn">Get Ticket</a>
+                                                                    {% endif %}
                                                             </div>
                                                             <div class="bg-gradients"></div>
                                                         </div>
                                                     </div>
+                                                    {% endif %}
                                                 {% endfor %}
                                             </div>
                                         </div>

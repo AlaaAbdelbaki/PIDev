@@ -19,6 +19,8 @@
                                 <th>Email</th>
                                 <th>Numero de téléphone</th>
                                 <th>Sexe</th>
+                                <th>Type de Profil</th>
+                            <th>Action</th>
                             </thead>
                             <tbody>
                             {% for user in users %}
@@ -35,9 +37,15 @@
                                         {% else %}
                                         <td>Femme</td>
                                     {% endif %}
-{#                                    <td><button class="btn btn-primary btn-block" onclick="window.location.href=' {{ path('update_user',{id:user.id}) }}'">Modifier</button> </td>#}
-                                    <td><button class="btn btn-primary btn-block" onclick="window.location.href=' {{ path('delete_user',{id:user.id}) }}'">Supprimer</button> </td>
-                                    <td><button class="btn btn-primary btn-block" onclick="window.location.href=' {{ path('list_video') }}'">Gérer les vidéos</button> </td>
+                                    {% if user.hasRole('ROLE_TALENTED') %}
+                                    <td class="btn btn-success disabled btn-block mt-3" > Talented Account  <i class="fa fa-check-circle" aria-hidden="true"></i></td>
+                                   {% elseif user.hasRole('ROLE_ADMIN')%}
+                                    <td class="btn btn-danger disabled btn-block mt-3" >Admin Account <i class="fa fa-stop-circle-o" aria-hidden="true"></i></td>
+                                  {% else %}
+                                    <td class="btn btn-warning disabled btn-block mt-3" > Normal Account  </td>
+                                    {% endif %}
+                                    <td><button class="btn btn-primary btn-block mr-33" onclick="window.location.href=' {{ path('delete_user',{id:user.id}) }}'">Supprimer</button>
+                                    <td><button class="btn btn-primary btn-block" onclick="window.location.href=' {{ path('list_video' ,{'id': user.id}) }}'">Gérer les vidéos</button> </td>
                                 </tr>
                             {% endfor %}
                             </tbody>

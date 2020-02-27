@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\video;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,7 +14,13 @@ class DefaultController extends Controller
      * @Route("/", name="homepage")
      */
     public function indexAction(Request $request)
-    {
+    {  if ($this->getUser()){
+        $posts=$this->getDoctrine()->getRepository(video::class)->findBy(array(),array('publishDate' => 'DESC'));
+
+        return $this->render('default/feed.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,'posts'=>$posts
+        ]);
+    }
         // replace this example code with whatever you need
         return $this->render('default/home.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,

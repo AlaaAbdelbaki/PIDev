@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block content %}
     <div class="content">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
         <div class="breadcumb-area bg-img bg-overlay2"
              style="background-image: url({{ asset('assets/img/bg-img/breadcumb5.jpg') }}">
             <div class="bradcumbContent">
@@ -16,8 +19,9 @@
                             <div class="contact-form-area">
                                 {{ form_start(form) }}
                                 <label ><h3 class=" font-weight-bold text-white">Rating</h3></label>
-                                <div class="form-group" >
-                                    {{ form_widget(form.rating,{attr: {'class':'form-control'}}) }}
+                                <div class="form-group " >
+                                    {{ form_widget(form.rating)}}
+
                                 </div>
                                 <div class="form-group" >
                                     <label ><h3 class=" font-weight-bold text-white " >Category</h3></label>

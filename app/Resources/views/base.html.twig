@@ -107,8 +107,8 @@
                                                         <span class="bar bar-10"></span>
                                                     </div></a></li>
                                             {% if  app.user %}
-{#                                                <li><a href="{{ path('user_profile',{username:app.user.username,id:app.user.id}) }}" class="show">Profile#}
-                                                <li><a href="{{ path('user_profile',{username:app.user.username}) }}" class="show">Profile
+
+                                                <li><a href="{{ path('user_profile',{'id':app.user.id}) }}" class="show">Profile
                                                         <div class="equalizer">
                                                             <span class="bar bar-1"></span>
                                                             <span class="bar bar-2"></span>

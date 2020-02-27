@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    {% for user in users %}
+
 
     <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({{ asset('assets/img/bg-img/bg-1.jpg') }});">
         <img src="{{ asset('assets/uploads/' ~ user.profilePic) }}"   style="margin-top: 250px;width: 370px; margin-left: 50px;  border: 3px solid #cc1573;border-radius: 50%" >
@@ -16,8 +16,14 @@
     <!-- ##### Breadcumb Area End ##### -->
 
     <!-- ##### Elements Area Start ##### -->
-    <section class="upcoming-shows-area  section-padding-100-0 " style="padding-top: 200px">
-{#        Contenu de la page#}
+    {% if user.hasRole('ROLE_TALENTED')%}
+    <section class="upcoming-shows-area  section-padding-100-0 " style="padding-top: 200px; background-image:url({{ asset('assets/img/bg-img/bg-2.jpg') }});background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;">
+{% else %}
+    <section class="upcoming-shows-area  section-padding-100-0 " style="padding-top: 200px;)">
+{% endif %}
+    {#        Contenu de la page#}
         <div class="container">
             <div id="search_bar" style="text-align: center">
                 <div id="cacher" class="btn musica-btn m-2">Search a User</div>
@@ -69,9 +75,10 @@
                                                     $.each(arr, function(id, value) {
                                                         if (key === 'user') {
                                                             if (id !== 'error') {
-                                                                console.log(value[1]);
-                                                                // console.log(value);
-                                                                entitySelector.append('<p class="text-black-50 bg-white" style="width: 500px">'+value[1]+'<a href="/profile/'+value[1]+'" class="col-1"><img style="width: 50px; height: 50px" src="/assets/uploads/'+value[0]+'"></a></p>');
+                                                                let x = value[1];
+                                                                let url = '{{ path("found_profile", {'username': 'user'}) }}';
+                                                                url = url.replace("user", x);
+                                                                entitySelector.append('<p class="text-black-50 bg-white" style="width: 500px">'+value[1]+'<a href='+url+' class="col-1"><img style="width: 50px; height: 50px" src="/assets/uploads/'+value[0]+'"></a></p>');
                                                             } else {
                                                                 entitySelector.append('<li class="text-secondary">'+value+'</li>');
                                                             }
@@ -91,7 +98,14 @@
             <div class="row">
 {#                Profile picture and basic info#}
                 <div class="col-md-4 " style="border-right: 1px solid white">
+                    {% if user.hasRole('ROLE_TALENTED')%}
+                        <div class="btn btn-outline-success " > Talented Account  <i class="fa fa-check-circle" aria-hidden="true"></i></div>
+                 {% elseif user.hasRole('ROLE_ADMIN')%}
+                    <div class="btn btn-outline-danger" >Admin Account <i class="fa fa-check-circle" aria-hidden="true"></i></div>
+{% else %}
+                    <div class="btn btn-outline-warning" > Normal Account  <i class="fa fa-check-circle" aria-hidden="true"></i></div>
 
+{% endif %}
                     <br>
                     <br>
                     <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold;">Nom:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.Name }}</span></div>
@@ -107,15 +121,18 @@
                     <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold;">Abonnements <br> <span class="text-secondary" style="font-size: medium;font-weight: normal">420</span></div>
                     {% if app.user.username == user.username%}
                     <br>
-                    <div style="margin-left: 30px;"><a class="btn musica-btn m-2" href="{{ path('update_profile') }}">Modifier vos informations</a></div>
+                    <div style="margin-left: 30px;"><a class="btn musica-btn m-2" href="{{ path('update_profile') }}">Edit Profile</a></div>
                     <br>
-                    <div style="margin-left: 30px;"><a class="btn musica-btn m-2" href="{{ path('add_video') }}">Ajouter une video</a></div>
+                    {% if user.hasRole('ROLE_TALENTED')%}
+                    <div style="margin-left: 30px;"><a class="btn musica-btn m-2" href="{{ path('add_video') }}">Post a new Video</a></div>
+                        {% endif %}
                     {% endif %}
 
             </div>
 {#                Profile feed#}
                 <div class="col-md-8">
                     <div>
+                        {% if user.hasRole('ROLE_TALENTED')%}
                         <h1 class="text-white"> {{ user.username }}'s Posts :</h1>
                         <br>
                         <br>
@@ -126,16 +143,23 @@
                                     class="fa fa-thumbs-o-up text-white big-text col  "> <span
                                         class="num text-white big-text ">{{ video.votes.count }}</span>
                                 Votes</i></h2>
+                            {% if video.owner is same as (app.user) %}
+                                <a class="btn musica-btn m-2" href="{{ path('delete_video',{'id' : video.id }) }}">Delete Video</a>
+                            {% endif %}
                             <br>
                             <br>
                             <br>
                         {% endfor %}
+                        {% else %}
+                        <h1 class="text-white"> {{ user.username }} has not yet won a Competition </h1>
+
+{% endif %}
                     </div>
                 </div>
         </div>
         </div>
     </section>
-    {% endfor %}
+
     <script type="text/javascript">
         $("document").ready(function(){
             $("#search_input").hide();

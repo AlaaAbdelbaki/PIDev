@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <div class="breadcumb-area bg-img bg-overlay2"
+         style="background-image: url({{ asset('assets/img/bg-img/breadcumb4.jpg') }}">
+        <div class="bradcumbContent">
+            <h2>Feed</h2>
+        </div>
+    </div>
+    <div class="bg-gradients"></div>
+    <div class=" upcoming-shows-area section-padding-100 row">
+        <div class="col"  style="margin-top: 20%"> <img src="{{ asset('assets/img/bg-img/man.png') }}"> </div>
+        <div class="container "  >
+
+            {% set i = 0 %}
+            {% for post in posts %}
+                {% if post.owner.hasRole('ROLE_TALENTED') %}
+                <div style="border-radius:7%; border-bottom: 3px solid #cc1573; " class="m-5 p-5">
+            <div class="row  " >
+                <div class="col-2">
+                    <img src="{{ asset('assets/uploads/'~ post.owner.profilePic) }}"
+                         style="width:70%  " class=" img-thumbnail rounded-circle mb-3 align-self-center">
+                </div>
+                <div class="col align-self-center">
+                    <h4 class="text-white ">{{ post.owner.username }}</h4>
+                    <h6 class="text-white"
+                        style="opacity: 50%"> {{ post.publishDate | date() }}</h6>
+                    <h4 class="text-white">{{ post.title }}</h4>
+                </div>
+
+            </div>
+
+            <div class="row justify-content-center ">
+
+                <!-- Album Thumbnail -->
+                <div class="album-thumbnail  ">
+                    <iframe width="700" height="400" id={{ i }} allowfullscreen frameborder="0"
+                            src="{{ post.url }}">
+                    </iframe>
+                </div>
+            </div>
+            <!-- Album Songs -->
+
+
+            <!-- Album Info -->
+            <div class="row justify-content-center mt-3">
+                <div class="album-buy-now">
+                    <a href="{{ path('user_profile', {'id' : post.owner.id}) }}" class="btn musica-btn">Visit Profile</a>
+                </div>
+                {% if app.user in post.votes %}
+                    <a class="btn musica-btn unvote ml-3"
+                       href="#"><span
+                                class="fa fa-heart">  Down Vote</span></a>
+                    <a class="btn musica-btn btn-3 vote ml-3" style="display: none"
+                       href="#"><span
+                                class="fa fa-heart-o">  Up Vote</span></a>
+
+                {% else %}
+                    <a class="btn musica-btn unvote ml-3" style="display: none"
+                       href="#"><span
+                                class="fa fa-heart">  Down Vote</span></a>
+
+                    <a class="btn musica-btn btn-3 vote ml-3"
+                       href="#"><span
+                                class="fa fa-heart-o">  Up Vote</span></a>
+                {% endif %}
+
+
+                <h4><i
+                            class="fa fa-thumbs-o-up text-white big-text col  "> <span
+                                class="num text-white big-text ">{{ post.votes.count }}</span>
+                        Votes</i></h4>
+            </div>
+
+        <script>
+
+            function getId(url) {
+                const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+                const match = url.match(regExp);
+
+                return (match && match[2].length === 11)
+                    ? match[2]
+                    : null;
+            }
+
+            $iy = '#' + {{ i }};
+
+            (function () {
+
+
+                let str = '//www.youtube.com/embed/'
+                    + getId("{{- post.url -}}");
+
+                let $iframe = $($iy);
+                if ($iframe.length) {
+                    $iframe.attr('src', str);
+                    return false;
+                }
+                return true;
+
+            })();
+
+
+        </script>
+
+        {% set i =i+1 %}
+                </div>
+                {% endif %}
+        {% endfor %}
+        </div>
+        <div class="col" > <img src="{{ asset('assets/img/bg-img/microphone.png') }}"> </div></div>
+{% endblock %}
+

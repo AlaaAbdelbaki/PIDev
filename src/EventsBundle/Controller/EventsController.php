@@ -36,7 +36,7 @@ class EventsController extends Controller
          ->add('Submit', SubmitType::class)
          ->getForm();
      $form->handleRequest($request);
-     dump($event);
+
      if($form->isSubmitted() && $form->isValid())
      {
          $file = $event->getImg();
@@ -103,7 +103,7 @@ class EventsController extends Controller
             return $this->redirect($this->generateUrl('show_events_admin'));
         }
 
-        return $this->render('@EventsBundle\Resources\views\event\modifier.html.twig',['event'=>$event,'f'=>$form->createView()]);
+        return $this->render('@Events/event/modifier.html.twig',['event'=>$event,'f'=>$form->createView()]);
 
     }
 

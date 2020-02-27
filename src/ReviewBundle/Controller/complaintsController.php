@@ -79,7 +79,7 @@ class complaintsController extends Controller
         $msg = new Message();
         $form = $this->createFormBuilder($msg)
              ->add ('contenu', TextAreaType::class)
-            ->add ('send', SubmitType::class)
+
 
         ->getForm();
 
@@ -103,6 +103,10 @@ class complaintsController extends Controller
             ;
 
             $this->get('mailer')->send($message);
+            $reclam = $em->getRepository(complaint::class)->find($id);
+            $em->remove($reclam);
+            $em->flush();
+            $this->redirectToRoute("affiche_reclam");
 
         }
         return $this->render("@Review/Default/form.html.twig",array('r'=> $complaint ,'form' => $form->createView() ));
