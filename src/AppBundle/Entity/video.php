@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping\JoinTable;
 use Doctrine\ORM\Mapping\ManyToMany;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Symfony\Component\Validator\Constraints as Assert ;
+use FOS\CommentBundle\Entity\Thread as BaseThread;
+
 
 /**
  * video
@@ -20,18 +22,18 @@ class video
 {
 
     /**
-     * @var int
+     * @var int $id
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
     /**
      * @ManyToMany(targetEntity="User")
      * @JoinTable(name="votes",
-     *      joinColumns={@JoinColumn(name="video_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="user_id", referencedColumnName="id")}
+     *      joinColumns={@JoinColumn(name="video_id", referencedColumnName="id",onDelete="cascade")},
+     *      inverseJoinColumns={@JoinColumn(name="user_id", referencedColumnName="id",onDelete="cascade")}
      *      )
      */
     private $votes;
@@ -41,6 +43,7 @@ class video
      * @JoinColumn(name="owner", referencedColumnName="id")
      */
     private $owner;
+
 
     /**
      * @return mixed

@@ -1,4 +1,5 @@
 security:
+
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
@@ -29,6 +30,10 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/events/, role: ROLE_USER }
+        - { path: ^/blog/, role: ROLE_USER }
+        - { path: ^/rate/, role: ROLE_USER }
+        - { path: ^/complaint/, role: ROLE_USER }
 
         - { path: ^/admin, role: ROLE_ADMIN }
     access_denied_url: /

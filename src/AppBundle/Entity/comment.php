@@ -29,8 +29,9 @@ class comment extends BaseComment implements SignedCommentInterface
     /**
      * Thread of this comment
      *
-     * @var Thread
+     *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thread")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     protected $thread;
     /**

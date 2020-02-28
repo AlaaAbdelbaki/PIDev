@@ -26,14 +26,14 @@ ticket_edit:
     path:     admin/ticket/edit/{id}
     defaults: { _controller: EventsBundle:ticket:edit }
 show_events:
-    path:     /show_events
+    path:     /events/list
     defaults: { _controller: EventsBundle:Default:affiche }
 search:
     path:     /search
     defaults: { _controller: EventsBundle:Events:search }
-affichetri:
-    path:     /affichetri
-    defaults: { _controller: EventsBundle:Events:affichetri }
+filter_category:
+    path:     /event/filter
+    defaults: { _controller: EventsBundle:Events:filter }
 triEndD:
     path:     /triEndD
     defaults: { _controller: EventsBundle:Events:triEndD }

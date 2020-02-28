@@ -12,7 +12,14 @@
     <div class=" upcoming-shows-area section-padding-100 row">
         <div class="col"  style="margin-top: 20%"> <img src="{{ asset('assets/img/bg-img/man.png') }}"> </div>
         <div class="container "  >
+            <div id="ranking" class="row">
+                {{ render(controller(
+                    'AppBundle:Default:updateRanks'
 
+
+
+                )) }}
+            </div>
             {% set i = 0 %}
             {% for post in posts %}
                 {% if post.owner.hasRole('ROLE_TALENTED') %}
@@ -39,6 +46,8 @@
                             src="{{ post.url }}">
                     </iframe>
                 </div>
+
+
             </div>
             <!-- Album Songs -->
 
@@ -46,23 +55,24 @@
             <!-- Album Info -->
             <div class="row justify-content-center mt-3">
                 <div class="album-buy-now">
+                    <a href="{{ path('post', {'id' : post.id}) }}" class="btn musica-btn btn-3 mr-3">View Details</a>
                     <a href="{{ path('user_profile', {'id' : post.owner.id}) }}" class="btn musica-btn">Visit Profile</a>
                 </div>
                 {% if app.user in post.votes %}
                     <a class="btn musica-btn unvote ml-3"
-                       href="#"><span
+                       href="{{ path('competition_downVote', {'id':post.id}) }}"><span
                                 class="fa fa-heart">  Down Vote</span></a>
                     <a class="btn musica-btn btn-3 vote ml-3" style="display: none"
-                       href="#"><span
+                       href="{{ path('competition_vote', {'id':post.id}) }}"><span
                                 class="fa fa-heart-o">  Up Vote</span></a>
 
                 {% else %}
                     <a class="btn musica-btn unvote ml-3" style="display: none"
-                       href="#"><span
+                       href="{{ path('competition_downVote', {'id':post.id}) }}"><span
                                 class="fa fa-heart">  Down Vote</span></a>
 
                     <a class="btn musica-btn btn-3 vote ml-3"
-                       href="#"><span
+                       href="{{ path('competition_vote', {'id':post.id}) }}"><span
                                 class="fa fa-heart-o">  Up Vote</span></a>
                 {% endif %}
 
@@ -108,7 +118,71 @@
                 </div>
                 {% endif %}
         {% endfor %}
+            <div class="row justify-content-center mt-5">  {{ knp_pagination_render(posts) }}</div>
         </div>
         <div class="col" > <img src="{{ asset('assets/img/bg-img/microphone.png') }}"> </div></div>
+    <script>
+        $('.vote').click(function (e) {
+            e.preventDefault();
+            let $t = $(this);
+            let $n = parseInt($t.closest('.row').find('.num').html());
+
+            $.ajax({
+                url: $(this).attr('href'),
+
+                success: function () {
+
+                    $t.hide();
+                    $t.prev().show();
+                    $t.closest('.row').find('.num').text($n + 1)
+
+
+                }
+
+            });
+            $.ajax({
+                url: '{{ path('ranks_feed')|format }}',
+
+                success: function (objResponse) {
+
+
+                    $("#ranking").html(objResponse)
+                }
+
+            });
+
+            return false;
+
+        });
+        $('.unvote').click(function (e) {
+            e.preventDefault();
+            let $t = $(this);
+            let $n = parseInt($t.closest('.row').find('.num').html());
+            $.ajax({
+                url: $(this).attr('href'),
+
+                success: function () {
+
+                    $t.hide();
+                    $t.next().show();
+                    $t.closest('.row').find('.num').text($n - 1)
+                }
+            });
+            $.ajax({
+                url: '{{ path('ranks_feed')|format }}',
+
+                success: function (objResponse) {
+
+
+                    $("#ranking").html(objResponse)
+                }
+
+            });
+
+            return false;
+
+        });
+    </script>
+    <div class="bg-gradients"></div>
 {% endblock %}
 

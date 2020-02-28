@@ -40,3 +40,9 @@ user_search:
 found_profile:
     path: /search/{username}
     defaults: {_controller: TalentBundle:Talent:found}
+subscribe:
+    path: /subscribe/{id}
+    defaults: {_controller: TalentBundle:Talent:subscribe}
+unsubscribe:
+    path: /unsubscribe/{id}
+    defaults: {_controller: TalentBundle:Talent:unsubscribe}

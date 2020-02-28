@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+
+<div class="breadcumb-area bg-img bg-overlay2"
+     style="background-image: url({{ asset('assets/img/bg-img/breadcumb4.jpg') }}">
+    <div class="bradcumbContent">
+        <h2>Post Details</h2>
+    </div>
+</div>
+<div class="bg-gradients"></div>
+
+<div class=" upcoming-shows-area section-padding-100 row">
+
+    <div class="container ">
+        <div style="border-radius:7%; border-bottom: 3px solid #cc1573; " class="m-5 p-5">
+            <div class="row  ">
+                <div class="col-2">
+                    <img src="{{ asset('assets/uploads/'~ post.owner.profilePic) }}"
+                         style="width:70%  " class=" img-thumbnail rounded-circle mb-3 align-self-center">
+                </div>
+                <div class="col align-self-center">
+                    <h4 class="text-white ">{{ post.owner.username }}</h4>
+                    <h6 class="text-white"
+                        style="opacity: 50%"> {{ post.publishDate | date() }}</h6>
+                    <h4 class="text-white">{{ post.title }}</h4>
+                </div>
+
+            </div>
+
+            <div class="row justify-content-center ">
+
+                <!-- Album Thumbnail -->
+                <div class="album-thumbnail  ">
+                    <iframe width="700" height="400" id={{ post.id }} allowfullscreen frameborder="0"
+                            src="{{ post.url }}">
+                    </iframe>
+
+                    <!-- Album Songs -->
+                    {% include '@FOSComment/Thread/async.html.twig' with {'id': post.id} %}
+
+                    <!-- Album Info -->
+                    <div class="row justify-content-center mt-3">
+                        <div class="album-buy-now">
+                            <a href="{{ path('user_profile', {'id' : post.owner.id}) }}" class="btn musica-btn">Visit
+                                Profile</a>
+                        </div>
+
+
+
+                    </div>
+
+                    <script>
+
+                        function getId(url) {
+                            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+                            const match = url.match(regExp);
+
+                            return (match && match[2].length === 11)
+                                ? match[2]
+                                : null;
+                        }
+
+                        $iy = '#' + {{ post.id }};
+
+                        (function () {
+
+
+                            let str = '//www.youtube.com/embed/'
+                                + getId("{{- post.url -}}");
+
+                            let $iframe = $($iy);
+                            if ($iframe.length) {
+                                $iframe.attr('src', str);
+                                return false;
+                            }
+                            return true;
+
+                        })();
+
+
+                    </script>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div></div>
+
+
+{% endblock %}

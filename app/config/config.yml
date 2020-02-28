@@ -16,7 +16,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    image_directory: '%kernel.root_dir%/../web/assets/img/pics/'
+    image_directory: '%kernel.root_dir%/../web/assets/uploads/'
 
     photos_directory: '%kernel.root_dir%/../web/assets/img/shop-img/'
     photo_directory: '%kernel.root_dir%/../web/assets/img/fich_img/'
@@ -100,7 +100,9 @@ fos_comment:
     class:
         model:
             comment: AppBundle\Entity\comment
-            thread: AppBundle\Entity\Thread
+            thread : AppBundle\Entity\Thread
+
+
 
 assetic:
 

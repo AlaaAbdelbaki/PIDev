@@ -5,7 +5,7 @@
 
 
     <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({{ asset('assets/img/bg-img/bg-1.jpg') }});">
-        <img src="{{ asset('assets/uploads/' ~ user.profilePic) }}"   style="margin-top: 250px;width: 370px; margin-left: 50px;  border: 3px solid #cc1573;border-radius: 50%" >
+        <img src="{{ asset('assets/uploads/' ~ user.profilePic) }}"   style="margin-top: 250px;width: 370px; height: 370px; margin-left: 50px;  border: 3px solid #cc1573;border-radius: 50%" >
         <div class="bradcumbContent ">
 
             <h2 > {{ user.username }}'s Profile</h2>
@@ -39,10 +39,10 @@
                         </div>
                         <!-- /input-group -->
                     </div>
-                    <ul class="nav" id="side-menu">
+                    <ul class="nav sidebar-search m-auto "  style="width: 500px" id="side-menu">
                         <li>
                             {#                    <a href="#">Entities<span class="fa arrow"></span></a>#}
-                            <ul class="nav nav-second-level" id="entitiesNav">
+                            <ul class="nav nav-second-level align-content-center" id="entitiesNav" style="text-align: left">
                             </ul>
                         </li>
                     </ul><br><br><br><br>
@@ -78,7 +78,9 @@
                                                                 let x = value[1];
                                                                 let url = '{{ path("found_profile", {'username': 'user'}) }}';
                                                                 url = url.replace("user", x);
-                                                                entitySelector.append('<p class="text-black-50 bg-white" style="width: 500px">'+value[1]+'<a href='+url+' class="col-1"><img style="width: 50px; height: 50px" src="/assets/uploads/'+value[0]+'"></a></p>');
+                                                                entitySelector.append('<a class="text-black bg-white " style="width: 500px; border: 1px solid #cc1573;border-radius: 5%"  href='+url+' ><span class="ml-5" style="font-family: Arial, Helvetica, sans-serif">' +
+                                                                    ''+value[1]+'' +
+                                                                    '</span><img  style="width: 50px; height: 50px;float: right" src="/assets/uploads/'+value[0]+'"></a>');
                                                             } else {
                                                                 entitySelector.append('<li class="text-secondary">'+value+'</li>');
                                                             }
@@ -116,16 +118,24 @@
                     <br>
                     <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold;">Bio: <br> <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.bio }}</span></div>
                     <br>
-                    <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold;">Abonnés <br> <span class="text-secondary" style="font-size: medium;font-weight: normal">69</span></div>
+                    <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold;">  Abonnés <br> <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ subcount[1] }}</span></div>
                     <br>
-                    <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold;">Abonnements <br> <span class="text-secondary" style="font-size: medium;font-weight: normal">420</span></div>
-                    {% if app.user.username == user.username%}
+                    <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold;"> Abonnements <br> <span class="text-white" style="font-size: medium;font-weight: normal">{{ subbedto[1] }}</span></div>
+                    {% if user.username != app.user.username %}
+                        {% if subscribtion == true %}
+                            <div id="subscribe" style="margin-left: 50px;" class="btn musica-btn m-2 text-white"><a class="text-white" href="{{ path('unsubscribe',{id: user.id }) }}"> Désabonner  </a></div>
+                        {% else %}
+                            <div id="unsubscribe" style="margin-left: 50px;" class="btn musica-btn m-2 text-white"><a class="text-white" href="{{ path('subscribe',{id: user.id }) }}"> S'abonner  </a></div>
+                        {% endif %}
+{% endif %}
                     <br>
-                    <div style="margin-left: 30px;"><a class="btn musica-btn m-2" href="{{ path('update_profile') }}">Edit Profile</a></div>
+                    {% if user.username is same as (app.user.username) %}
+                    <div ><a class="btn musica-btn m-2" href="{{ path('update_profile') }}">Edit Profile</a></div>
                     <br>
                     {% if user.hasRole('ROLE_TALENTED')%}
-                    <div style="margin-left: 30px;"><a class="btn musica-btn m-2" href="{{ path('add_video') }}">Post a new Video</a></div>
+                    <div ><a class="btn musica-btn m-2" href="{{ path('add_video') }}">Post a new Video</a></div>
                         {% endif %}
+
                     {% endif %}
 
             </div>
@@ -150,6 +160,8 @@
                             <br>
                             <br>
                         {% endfor %}
+                            <div class="row justify-content-center mt-5">  {{ knp_pagination_render(videos) }}</div>
+
                         {% else %}
                         <h1 class="text-white"> {{ user.username }} has not yet won a Competition </h1>
 
@@ -159,7 +171,7 @@
         </div>
         </div>
     </section>
-
+    <div class="bg-gradients"></div>
     <script type="text/javascript">
         $("document").ready(function(){
             $("#search_input").hide();

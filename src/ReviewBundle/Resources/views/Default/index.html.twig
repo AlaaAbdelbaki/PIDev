@@ -9,10 +9,20 @@
             <div class="card-header card-header-primary">
                 <h4 class="card-title text-center ">Rating</h4>
                 <p class="card-category"> </p>
-                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for category.." title="Type in Rating">
+                <form action="{{ path('filter_Rating') }}" id="carform">
+                    <label for="categorie" class="text-white mt-4">Filter By:</label>
+                    <select id="cars" name="Type"  class="form-control" onchange="this.form.submit()" >
+                        <option value="" class=" disabled">-----Filter By Category--------</option>
+                        <option value="Orders">Orders</option>
+                        <option value="Articles">Articles</option>
+                        <option value="Events">Events</option>
+                        <option value="Competition">Competition</option>
+
+                    </select>
+                </form>
             </div>
             <div class="card-body">
-                <p><button onclick="sortTable()">Sort</button></p>
+
                 <div class="table-responsive">
                     <table class="table"  id="myTable" >
                         <thead class="text-primary">
@@ -42,8 +52,9 @@
                             {% set sum = sum + s.rating %}
                             {% set i = i+1 %}
                         {% endfor %}
+                        {% if sum is not same as (0) %}
                         {% set sum = sum/i %}
-
+{% endif %}
                         </tbody>
                     </table>
 

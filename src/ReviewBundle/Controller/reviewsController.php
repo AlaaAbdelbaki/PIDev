@@ -77,5 +77,14 @@ class reviewsController extends Controller
         return $this->render("@Review/Default/edit.html.twig", ["f" => $form->createView()]);
     }
 
+    public function filterAction(Request $request)
+    {
+        $requestString = $request->get('Type');
+
+        $rev =  $this->getDoctrine()->getRepository('AppBundle:review')->findByCategory(['Type'=>$requestString]);
+        ;
+        return $this->render("@Review/Default/index.html.twig",["formulaire"=>$rev]);
+    }
+
 
 }

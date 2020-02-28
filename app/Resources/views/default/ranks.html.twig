@@ -1,0 +1,23 @@
+{% set j = 0 %}
+    {% for rank in res  %}
+        {% if rank[0].owner.hasRole('ROLE_TALENTED') %}
+        {% set j =j+1 %}
+        <div class="col text-center rank" >
+                <h4 class="text-white"> Rank {{ j }}
+                    {% if j is same as (1) %}
+
+                        <i class="fa fa-trophy " style="color: gold"></i>
+                    {% elseif j is same as (2) %}
+                        <i class="fa fa-trophy " style="color: silver"></i>
+                    {% else %}
+                        <i class="fa fa-trophy " style="color:#cd7f32"></i>
+                    {% endif %} </h4>
+                <img src="{{ asset('assets/uploads/'~ rank[0].owner.profilePic) }}" style="width:50%" class="img-thumbnail  rounded-circle">
+                <h1 class="text-white"> {{ rank[0].owner.username }}</h1>
+                <h5 class="text-white"> Numbre of Votes: {{ rank[0].votes.count }}</h5></div>
+
+
+
+        <hr style="border: 1px solid  " class="mx-5">
+        {% endif %}
+    {% endfor %}

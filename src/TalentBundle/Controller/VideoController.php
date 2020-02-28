@@ -32,6 +32,8 @@ class VideoController extends Controller
             $url = $video->getUrl();
             $link = $link.substr($url,-11);
             $video->setUrl($link);
+            $video->setPermalink('http://127.0.0.1:8000/');
+            $video->setCommentable(true);
             $video->setPublishDate($date);
             $video->setOwner($user);
             $em->persist($video);

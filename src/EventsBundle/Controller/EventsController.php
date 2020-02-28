@@ -126,10 +126,15 @@ class EventsController extends Controller
         }
         return $realEntities;
     }
-    public function affichetriAction()
+    public function filterAction(Request $request)
     {
-        $tab=$this->getDoctrine()->getRepository(event::class)->orderStartD();
-        return $this->render('@Events/default/affichetri.html.twig',array('t'=>$tab));
+        $requestString = $request->get('Type');
+        dump($request->get('type'));
+        $events =  $this->getDoctrine()->getRepository('AppBundle:event')->findByType(['Type'=>$requestString]);
+        dump($events);
+        return $this->render("@Events/default/affiche.html.twig",["t"=>$events]);
+
+
     }
     public function triEndDAction()
     {

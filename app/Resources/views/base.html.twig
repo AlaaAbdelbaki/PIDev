@@ -8,6 +8,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <script src="{{ asset('assets/js/jquery/jquery-2.2.4.min.js') }}"></script>
+        <script src="{{ asset('bundles/foscomment/js/comments.js') }}"></script>
 
 
         <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -20,6 +21,8 @@
         <!-- Core Stylesheet -->
         {% block stylesheets %}
             <link rel="stylesheet" href="{{asset('assets/style.css')}}">
+            <link rel="stylesheet" href="{{asset('bundles/foscomment/css/comments.css')}}">
+
             <link rel="stylesheet" href="{{asset('assets/beat.css')}}">
 
             <link rel="icon" type="image/png" href="{{asset('assets/img/icon.png')}}">
@@ -93,7 +96,7 @@
                                     <div class="classynav">
 
                                         <ul>
-                                            <li><a href="{{ path('homepage') }}" class="show">Home
+                                            <li><a href="{{ path('homepage') }}" class="">Home
                                                     <div class="equalizer">
                                                         <span class="bar bar-1"></span>
                                                         <span class="bar bar-2"></span>
@@ -163,7 +166,7 @@
                                                         <span class="bar bar-9"></span>
                                                         <span class="bar bar-10"></span>
                                                     </div></a></li>
-                                            <li><a href="{{ path('affiche_update') }}" class="show">News
+                                            <li><a href="{{ path('affiche_update') }}" class="">News
                                                     <div class="equalizer">
                                                         <span class="bar bar-1"></span>
                                                         <span class="bar bar-2"></span>
@@ -357,16 +360,25 @@
 
 
 
+            <script>
+                $('.log').on('click', function(e){
+                    e.preventDefault();
+                    $('#darkModalForm').modal('show').find('.modal-content').load($(this).attr('href'));
+                });
 
+                $('.show').on('click', function (e) {
+                    let     x=  {{ app.user|json_encode() }};
+                    if ( x == null) {
+                        e.preventDefault();
+                        $('#darkModalForm').modal('show').find('.modal-content').load($(this).attr('href'));
+                    }
+
+
+                });</script>
 
         {% endblock %}
-        {% block javascripts %}{% endblock %}
-        <script>
-            $('.log').on('click', function(e){
-                e.preventDefault();
-                $('#darkModalForm').modal('show').find('.modal-content').load($(this).attr('href'));
-            });
-        </script>
+        {% block javascripts %}
 
+        {% endblock %}
     </body>
 </html>

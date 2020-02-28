@@ -16,6 +16,7 @@
     "require": {
         "php": ">=5.5.9",
         "ext-json": "*",
+        "blackknight467/star-rating-bundle": "2.*",
         "cmen/google-charts-bundle": "^3.2",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
@@ -24,7 +25,6 @@
         "gregwar/captcha-bundle": "^2.0",
         "incenteev/composer-parameter-handler": "^2.0",
         "knplabs/knp-paginator-bundle": "^3.0",
-
         "knplabs/knp-snappy-bundle": "^1.5",
         "mgilet/notification-bundle": "^3.1",
         "ob/highcharts-bundle": "^1.6",
@@ -33,11 +33,11 @@
         "symfony/assetic-bundle": "^2.8",
         "symfony/monolog-bundle": "^3.1.0",
         "symfony/polyfill-apcu": "^1.0",
+        "symfony/security-acl": "^3.0",
         "symfony/swiftmailer-bundle": "^3.0",
         "symfony/symfony": "3.4.*",
         "twig/twig": "^1.0||^2.0",
-        "webeweb/highcharts-bundle": "^1.8",
-        "blackknight467/star-rating-bundle": "2.*"
+        "webeweb/highcharts-bundle": "^1.8"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

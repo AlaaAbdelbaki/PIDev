@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert ;
 
 /**
  * updates
@@ -58,8 +59,8 @@ class updates
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="publish_date", type="date")
+     *@Assert\GreaterThan("now")
+     * @ORM\Column(name="publish_date", type="datetime")
      */
     private $publishDate;
 
@@ -175,6 +176,11 @@ class updates
     public function getContent()
     {
         return $this->content;
+    }
+    public function __construct()
+    {
+
+        $this->publishDate=new \DateTime();
     }
 }
 

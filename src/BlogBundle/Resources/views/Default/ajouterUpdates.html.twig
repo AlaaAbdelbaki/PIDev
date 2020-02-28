@@ -24,15 +24,16 @@
                         </tr>
                         <tr>
                             <td>Content: </td>
-                            <td>{{ form_widget(f.content) }}</td>
+                            <td>{{ form_widget(f.content,{attr: {'class':'form-control'}}) }}</td>
                         </tr>
                         <tr>
                             <td>Category: </td>
-                            <td>{{ form_widget(f.category) }}</td>
+                            <td>{{ form_widget(f.category,{attr: {'class':'form-control'}}) }}</td>
                         </tr>
                         <tr>
                             <td>Publish_date: </td>
-                            <td>{{ form_widget(f.publish_date) }}</td>
+                            <td>{{ form_widget(f.publish_date.date,{'attr': {'class': 'form-control'} }) }}
+                                {{ form_widget(f.publish_date.time,{'attr': {'class': 'form-control'} }) }}</td>
                         </tr>
                         <tr>
                             <td></td>
