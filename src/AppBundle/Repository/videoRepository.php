@@ -13,7 +13,7 @@ class videoRepository extends \Doctrine\ORM\EntityRepository
     public function findVideo($id)
     {
         $qb = $this->getEntityManager()
-            ->createQuery('SELECT v FROM AppBundle:video v WHERE v.user =:id ')->setParameter('id',$id);
+            ->createQuery('SELECT v FROM AppBundle:video v WHERE v.owner =:id ')->setParameter('id',$id);
         return $query = $qb->getResult();
     }
 }

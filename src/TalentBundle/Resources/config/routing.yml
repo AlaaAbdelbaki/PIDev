@@ -25,6 +25,9 @@ delete_user:
 view_videos:
     path: /videos
     defaults: {_controller: TalentBundle:Video:View}
+video_details:
+    path: /videos/{id}
+    defaults: {_controller: TalentBundle:Video:videoDetails}
 add_user:
     path: /admin/add_user
     defaults: {_controller: TalentBundle:Talent:add}

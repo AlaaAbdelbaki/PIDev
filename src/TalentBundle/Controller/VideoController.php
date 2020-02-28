@@ -90,4 +90,12 @@ class VideoController extends Controller
         $user = $this->getDoctrine()->getManager()->getRepository(User::class)->findAll();
         return $this->render("@Talent/Main/videos.html.twig",["videos"=>$video,"users"=>$user]);
     }
+
+
+    public function videoDetailsAction($id)
+    {
+        $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findOneBy(["id"=>$id]);
+//        var_dump($video);
+        return $this->render("@Talent/Main/video_details.html.twig",["videos"=>$video]);
+    }
 }

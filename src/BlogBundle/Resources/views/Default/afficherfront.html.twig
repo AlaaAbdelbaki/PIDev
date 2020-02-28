@@ -26,7 +26,7 @@
                                     <img src="{{ asset('assets/img/shop-img/' ~ article.img) }}" alt="">
                                 </div>
                                 <!-- Post Title -->
-                                <a href="#" class="post-title">{{article.title}}</a>
+                                <a href="#" class="post-title">{{article.title}} {{ article.id }}</a>
                                 <!-- Post Meta -->
                                 <div class="post-meta d-flex justify-content-between">
                                     <div class="post-date">
@@ -44,6 +44,7 @@
                                 <!-- Read More -->
 
                             </div>
+                            {% include '@FOSComment/Thread/async.html.twig' with {'id': '54'} %}
                         {% endfor %}
                         <!-- Pagination -->
                         <div class="musica-pagination-area wow fadeInUp" data-wow-delay="700ms" style="visibility: hidden; animation-delay: 700ms; animation-name: none;">

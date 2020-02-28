@@ -37,6 +37,11 @@ class article
     private $img;
 
     /**
+     * @ORM\OneToMany(targetEntity="comment", mappedBy="author" , orphanRemoval=true)
+     */
+    private $comments;
+
+    /**
      * @return string
      */
     public function getImg()
@@ -47,6 +52,7 @@ class article
     /**
      * @param string $img
      */
+
     public function setImg($img)
     {
         $this->img = $img;
@@ -75,11 +81,6 @@ class article
     }
 
 
-
-    /**
-     * @ORM\OneToMany(targetEntity="comment", mappedBy="article" , orphanRemoval=true)
-     */
-    private $comments;
 
     public function __construct()
     {

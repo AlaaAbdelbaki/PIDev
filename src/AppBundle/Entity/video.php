@@ -96,18 +96,24 @@ class video
      */
     private $title;
 
+
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="publish_date", type="datetime")
      */
     private $publishDate;
-
+//    /**
+//     * @ORM\OneToMany(targetEntity="comment", mappedBy="author" , orphanRemoval=true)
+//     */
+//    private $comments;
     /**
      * Get id
      *
      * @return int
      */
+
     public function getId()
     {
         return $this->id;
