@@ -2,8 +2,10 @@
 
 namespace TalentBundle\Controller;
 
+use AppBundle\Entity\subscription;
 use AppBundle\Entity\User;
 use AppBundle\Entity\video;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -22,9 +24,9 @@ class TalentController extends Controller
     {
         return $this->render("@Talent/Main/profile_details.html.twig");
     }
-    public function updateProfileAction(Request $request,$id)
+    public function updateProfileAction(Request $request)
     {
-        $user = $this->getDoctrine()->getManager()->getRepository(User::class)->find($id);
+        $user = $this->getUser();
         $pp=$user->getProfilePic();
         $form = $this->createFormBuilder($user)
             ->add("email",EmailType::class)
@@ -55,7 +57,7 @@ class TalentController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            return $this->redirectToRoute('view_profile');
+            return $this->redirectToRoute('user_profile',['id'=>$this->getUser()->getId()]);
         }
         return $this->render('@Talent/Main/edit_profile.html.twig',["f"=>$form->createView()]);
     }
@@ -73,6 +75,20 @@ class TalentController extends Controller
         $em->remove($user);
         $em->flush();
         return $this->redirectToRoute('list_profile');
+    }
+
+    public function foundAction($username)
+    {
+        $user = $this->getDoctrine()->getManager()->getRepository(User::class)->findByUsername($username);
+
+        if($user != null){
+            $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findByOwner($user[0]->getId());
+            return $this->redirectToRoute("user_profile",['id'=> $user[0]->getId()]);
+        }
+        else
+        {
+            return $this->render("@Talent/Default/error.html.twig");
+        }
     }
 
     public function addAction(Request $request)
@@ -109,17 +125,27 @@ class TalentController extends Controller
     }
 
 
-    public function userProfileAction($username)
+    public function userProfileAction(Request $request,$id)
     {
-        $user = $this->getDoctrine()->getManager()->getRepository(User::class)->findOneBy(["username"=>$username]);
-        $users = $this->getDoctrine()->getManager()->getRepository(User::class)->findBy(["username"=>$username]);
+        $user = $this->getDoctrine()->getManager()->getRepository(User::class)->find($id);
+
         if($user != null)
         {
-            $id = $user->getId();
-    //        echo $id;
-    //        var_dump($id);
-            $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findBy(["user"=>$id]);
-            return $this->render("@Talent/Main/profile.html.twig",["users"=>$users,"videos"=>$video]);
+            $subscription = $this->getDoctrine()->getRepository(subscription::class)->exist($user->getId(), $this->getUser()->getId());
+            if ($subscription == null) {
+                $state = false;
+            } else {
+                $state = true;
+            }
+
+            $subcount = $this->getDoctrine()->getManager()->getRepository(subscription::class)->getSubscribersCount($id);
+            $subscribedto = $this->getDoctrine()->getManager()->getRepository(subscription::class)->getSubscribtionCount($user->getId());
+
+
+            $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findByOwner(["user"=>$id]);
+            $paginator = $this->get(PaginatorInterface::class);
+            $pagination = $paginator->paginate($video, $request->query->getInt('page', 1), 3);
+            return $this->render("@Talent/Main/profile.html.twig",["user"=>$user,"videos"=>$pagination, "subcount" => $subcount[0], "subbedto" => $subscribedto[0], "subscribtion" => $state]);
         }
         else
         {
@@ -151,6 +177,35 @@ class TalentController extends Controller
 
 
 
+    public function subscribeAction(Request $request, $id)
+    {
+        $url = $request->headers->get('referer');
+        $user = $this->getUser();
+        $sub = new subscription();
+        $date = new \DateTime();
+        $sub->setSub($user);
+        $sub->setSubedto($this->getDoctrine()->getRepository(User::class)->find($id));
+        $sub->setSubscriptionDate($date);
+        $subscription = $this->getDoctrine()->getRepository(subscription::class)->exist($id, $user->getId());
+        if ($user->getId() != $id && $subscription == null) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($sub);
+            $em->flush();
+        }
 
+        return $this->redirect($url);
+    }
+
+    public function unsubscribeAction(Request $request,$id)
+    {
+        $url = $request->headers->get('referer');
+        $user = $this->getUser()->getId();
+        $sub = $this->getDoctrine()->getManager()->getRepository(subscription::class);
+        if($sub->exist($id,$user) != null)
+        {
+            $sub->unsub($id,$user);
+        }
+        return $this->redirect($url);
+    }
 
 }

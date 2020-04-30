@@ -17,14 +17,14 @@
 {% endif %}
 
 {% block fos_comment_comment_form_holder %}
-    <div class="fos_comment_comment_form_holder">
+    <div class="fos_comment_comment_form_holder " style="color: white">
         {% block fos_comment_form_title %}
             {% if first %}
-                <h3>{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_headline_first{% endtrans %}</h3>
+                <h1 class="text-white" >{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_headline_first{% endtrans %}</h1>
             {% elseif parent is not null %}
-                <h3>{% trans with {"%name%": parent.authorName } from 'FOSCommentBundle' %}fos_comment_comment_reply_reply_to{% endtrans %}</h3>
+                <h1 class="text-white">{% trans with {"%name%": parent.authorName } from 'FOSCommentBundle' %}fos_comment_comment_reply_reply_to{% endtrans %}</h1>
             {% else %}
-                <h3>{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_headline{% endtrans %}</h3>
+                <h1 class="text-white">{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_headline{% endtrans %}</h1>
             {% endif %}
         {% endblock %}
 
@@ -32,22 +32,23 @@
             <form class="fos_comment_comment_new_form" action="{{ url('fos_comment_post_thread_comments', url_parameters) }}" data-parent="{{ parent.id|default() }}" method="POST">
 
                 {% block fos_comment_form_fields %}
-                    <div class="fos_comment_form_errors">
+                    <div class="fos_comment_form_errors form">
                     {{ form_errors(form) }}
                     {{ form_errors(form.body) }}
                     </div>
-                    {{ form_widget(form.body) }}
+                    {{ form_widget(form.body,{'attr': {'class': 'form-control'} })  }}
 
                     {{ form_rest(form) }}
                 {% endblock %}
 
-                <div class="fos_comment_submit">
+                <div class="fos_comment_submit ">
                     {% block fos_comment_form_submit %}
                         {% if parent is not null %}
                             <input type="button" value="{% trans from 'FOSCommentBundle' %}fos_comment_comment_reply_cancel{% endtrans %}" class="fos_comment_comment_reply_cancel" />
                         {% endif %}
-                        <input type="submit" value="{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_submit{% endtrans %}" />
+                        <input type="submit" class="btn btn-success mt-3" value="{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_submit{% endtrans %}" />
                     {% endblock %}
+
                 </div>
 
             </form>

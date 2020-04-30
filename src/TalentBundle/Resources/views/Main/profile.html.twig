@@ -2,11 +2,13 @@
 
 {% block content %}
 
-    {% for user in users %}
+
 
     <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({{ asset('assets/img/bg-img/bg-1.jpg') }});">
-        <div class="bradcumbContent">
-            <h2> Profil de {{ user.username }}</h2>
+        <img src="{{ asset('assets/uploads/' ~ user.profilePic) }}"   style="margin-top: 250px;width: 370px; height: 370px; margin-left: 50px;  border: 3px solid #cc1573;border-radius: 50%" >
+        <div class="bradcumbContent ">
+
+            <h2 > {{ user.username }}'s Profile</h2>
         </div>
     </div>
     <!-- bg gradients -->
@@ -14,27 +16,33 @@
     <!-- ##### Breadcumb Area End ##### -->
 
     <!-- ##### Elements Area Start ##### -->
-    <section class="elements-area mt-30 section-padding-100-0 ">
-{#        Contenu de la page#}
+    {% if user.hasRole('ROLE_TALENTED')%}
+    <section class="upcoming-shows-area  section-padding-100-0 " style="padding-top: 200px; background-image:url({{ asset('assets/img/bg-img/bg-2.jpg') }});background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;">
+{% else %}
+    <section class="upcoming-shows-area  section-padding-100-0 " style="padding-top: 200px;)">
+{% endif %}
+    {#        Contenu de la page#}
         <div class="container">
             <div id="search_bar" style="text-align: center">
-                <div id="cacher" class="btn musica-btn m-2">Chercher un utilisateur</div>
+                <div id="cacher" class="btn musica-btn m-2">Search a User</div>
                 {#            Search Bar#}
-                <div id="search_input">
-                    <h2 class="text-primary">Chercher un utilisateur</h2>
+                <div id="search_input" >
+                    <h2 class="text-white">Search a User</h2>
 
-                    <div class="sidebar-search">
+                    <div class="sidebar-search m-auto" style="width: 500px">
 
-                        <div class="input-group custom-search-form">
+                        <div class="input-group custom-search-form " >
 
-                            <input autocomplete="off" type="text" id="search" class="form-control" placeholder="John Doe">
+                            <input autocomplete="off" type="text" id="search" class="form-control"  placeholder="John Doe">
                         </div>
                         <!-- /input-group -->
                     </div>
-                    <ul class="nav" id="side-menu">
+                    <ul class="nav sidebar-search m-auto "  style="width: 500px" id="side-menu">
                         <li>
                             {#                    <a href="#">Entities<span class="fa arrow"></span></a>#}
-                            <ul class="nav nav-second-level" id="entitiesNav">
+                            <ul class="nav nav-second-level align-content-center" id="entitiesNav" style="text-align: left">
                             </ul>
                         </li>
                     </ul><br><br><br><br>
@@ -67,9 +75,12 @@
                                                     $.each(arr, function(id, value) {
                                                         if (key === 'user') {
                                                             if (id !== 'error') {
-                                                                console.log(value[1]);
-                                                                // console.log(value);
-                                                                entitySelector.append('<p class"text-secondary">'+value[1]+'<a href="/profile/'+value[1]+'"><img style="width: 50px; height: 50px" src="/assets/img/pics/'+value[0]+'"></a></p>');
+                                                                let x = value[1];
+                                                                let url = '{{ path("found_profile", {'username': 'user'}) }}';
+                                                                url = url.replace("user", x);
+                                                                entitySelector.append('<a class="text-black bg-white " style="width: 500px; border: 1px solid #cc1573;border-radius: 5%"  href='+url+' ><span class="ml-5" style="font-family: Arial, Helvetica, sans-serif">' +
+                                                                    ''+value[1]+'' +
+                                                                    '</span><img  style="width: 50px; height: 50px;float: right" src="/assets/uploads/'+value[0]+'"></a>');
                                                             } else {
                                                                 entitySelector.append('<li class="text-secondary">'+value+'</li>');
                                                             }
@@ -88,49 +99,79 @@
 {#            Profile#}
             <div class="row">
 {#                Profile picture and basic info#}
-                <div class="col-md-4">
-                    <img src="{{ asset('assets/img/pics/' ~ user.profilePic) }}" style="width:250px; height: auto;clip-path: circle(120px at center);">
+                <div class="col-md-4 " style="border-right: 1px solid white">
+                    {% if user.hasRole('ROLE_TALENTED')%}
+                        <div class="btn btn-outline-success " > Talented Account  <i class="fa fa-check-circle" aria-hidden="true"></i></div>
+                 {% elseif user.hasRole('ROLE_ADMIN')%}
+                    <div class="btn btn-outline-danger" >Admin Account <i class="fa fa-check-circle" aria-hidden="true"></i></div>
+{% else %}
+                    <div class="btn btn-outline-warning" > Normal Account  <i class="fa fa-check-circle" aria-hidden="true"></i></div>
+
+{% endif %}
                     <br>
                     <br>
-                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;">Nom:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.Name }}</span></div>
+                    <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold;">Nom:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.Name }}</span></div>
                     <br>
-                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold">Prénom:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.firstName }}</span></div>
+                    <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold">Prénom:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.firstName }}</span></div>
                     <br>
-                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;">Date de naissance:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.birthday|date("d M Y") }}</span></div>
+                    <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold;">Date de naissance:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.birthday|date("d M Y") }}</span></div>
                     <br>
-                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;">Bio: <br> <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.bio }}</span></div>
+                    <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold;">Bio: <br> <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.bio }}</span></div>
                     <br>
-                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;">Abonnés <br> <span class="text-secondary" style="font-size: medium;font-weight: normal">69</span></div>
+                    <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold;">  Abonnés <br> <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ subcount[1] }}</span></div>
                     <br>
-                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;">Abonnements <br> <span class="text-secondary" style="font-size: medium;font-weight: normal">420</span></div>
-                    {% if app.user.username == user.username%}
+                    <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold;"> Abonnements <br> <span class="text-white" style="font-size: medium;font-weight: normal">{{ subbedto[1] }}</span></div>
+                    {% if user.username != app.user.username %}
+                        {% if subscribtion == true %}
+                            <div id="subscribe" style="margin-left: 50px;" class="btn musica-btn m-2 text-white"><a class="text-white" href="{{ path('unsubscribe',{id: user.id }) }}"> Désabonner  </a></div>
+                        {% else %}
+                            <div id="unsubscribe" style="margin-left: 50px;" class="btn musica-btn m-2 text-white"><a class="text-white" href="{{ path('subscribe',{id: user.id }) }}"> S'abonner  </a></div>
+                        {% endif %}
+{% endif %}
                     <br>
-                    <div style="margin-left: 30px;"><a class="btn musica-btn m-2" href="{{ path('update_profile',{id:app.user.id}) }}">Modifier vos informations</a></div>
+                    {% if user.username is same as (app.user.username) %}
+                    <div ><a class="btn musica-btn m-2" href="{{ path('update_profile') }}">Edit Profile</a></div>
                     <br>
-                    <div style="margin-left: 30px;"><a class="btn musica-btn m-2" href="{{ path('add_video') }}">Ajouter une video</a></div>
+                    {% if user.hasRole('ROLE_TALENTED')%}
+                    <div ><a class="btn musica-btn m-2" href="{{ path('add_video') }}">Post a new Video</a></div>
+                        {% endif %}
+
                     {% endif %}
 
             </div>
 {#                Profile feed#}
                 <div class="col-md-8">
                     <div>
-                        <h1 class="text-primary">Vidéos ajoutés par {{ user.username }}</h1>
+                        {% if user.hasRole('ROLE_TALENTED')%}
+                        <h1 class="text-white"> {{ user.username }}'s Posts :</h1>
                         <br>
                         <br>
                         {% for video in videos %}
-                            <h3 class="text-primary">{{ video.title }}</h3>
+                            <h3 class="text-white">{{ video.title }}</h3>
                             <iframe src="{{ video.url }}" width="854" height="480" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                            <h2 class="text-secondary" style="margin-left: 600px;">Rating: {{ video.id }} </h2>
+                          <h2>  <i
+                                    class="fa fa-thumbs-o-up text-white big-text col  "> <span
+                                        class="num text-white big-text ">{{ video.votes.count }}</span>
+                                Votes</i></h2>
+                            {% if video.owner is same as (app.user) %}
+                                <a class="btn musica-btn m-2" href="{{ path('delete_video',{'id' : video.id }) }}">Delete Video</a>
+                            {% endif %}
                             <br>
                             <br>
                             <br>
                         {% endfor %}
+                            <div class="row justify-content-center mt-5">  {{ knp_pagination_render(videos) }}</div>
+
+                        {% else %}
+                        <h1 class="text-white"> {{ user.username }} has not yet won a Competition </h1>
+
+{% endif %}
                     </div>
                 </div>
         </div>
         </div>
     </section>
-    {% endfor %}
+    <div class="bg-gradients"></div>
     <script type="text/javascript">
         $("document").ready(function(){
             $("#search_input").hide();

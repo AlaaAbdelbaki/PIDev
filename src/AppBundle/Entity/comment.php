@@ -29,14 +29,15 @@ class comment extends BaseComment implements SignedCommentInterface
     /**
      * Thread of this comment
      *
-     * @var Thread
+     *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thread")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     protected $thread;
     /**
      * Author of the comment
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User" ,inversedBy="comments")
      * @var User
      */
     protected $author;

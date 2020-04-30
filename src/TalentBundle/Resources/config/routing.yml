@@ -2,22 +2,22 @@ talent_homepage:
     path:     /home
     defaults: { _controller: TalentBundle:Default:index }
 list_video:
-    path: /admin/list_video
+    path: /admin/list_video/{id}
     defaults: {_controller: TalentBundle:Video:viewVideo}
 add_video:
     path: /profile/add_video
     defaults: {_controller: TalentBundle:Video:addVideo}
 delete_video:
-    path: /admin/delete/{id}
+    path: /video/delete/{id}
     defaults : { _controller: TalentBundle:Video:delete}
 update_video:
-    path: /admin/update/{id}
+    path: /video/update/{id}
     defaults: { _controller: TalentBundle:Video:update}
 profile_details:
     path: /profile_details
     defaults: { _controller: TalentBundle:Talent:viewProfileDetails}
 update_profile:
-    path: /profile_details/edit{id}
+    path: /profile_details/edit
     defaults: {_controller: TalentBundle:Talent:updateProfile}
 list_profile:
     path: /admin/list_profiles
@@ -32,8 +32,17 @@ add_user:
     path: /admin/add_user
     defaults: {_controller: TalentBundle:Talent:add}
 user_profile:
-    path: /profile/{username}
+    path: /profile/{id}
     defaults: {_controller: TalentBundle:Talent:userProfile}
 user_search:
     path: /search
     defaults: {_controller: TalentBundle:Talent:search}
+found_profile:
+    path: /search/{username}
+    defaults: {_controller: TalentBundle:Talent:found}
+subscribe:
+    path: /subscribe/{id}
+    defaults: {_controller: TalentBundle:Talent:subscribe}
+unsubscribe:
+    path: /unsubscribe/{id}
+    defaults: {_controller: TalentBundle:Talent:unsubscribe}

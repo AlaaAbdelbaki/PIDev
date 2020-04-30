@@ -16,7 +16,7 @@ class VideoController extends Controller
     public function addVideoAction(Request $request)
     {
         $link = "https://www.youtube.com/embed/";
-        $user = $this->getUser()->getId();
+        $user = $this->getUser();
         $date = new \DateTime();
         $video = new video();
         $form = $this->createFormBuilder($video)
@@ -32,19 +32,21 @@ class VideoController extends Controller
             $url = $video->getUrl();
             $link = $link.substr($url,-11);
             $video->setUrl($link);
+            $video->setPermalink('http://127.0.0.1:8000/');
+            $video->setCommentable(true);
             $video->setPublishDate($date);
-            $video->setUser($user);
+            $video->setOwner($user);
             $em->persist($video);
             $em->flush();
-            return $this->redirectToRoute('view_videos');
+            return $this->redirectToRoute('homepage');
         }
         return $this->render("@Talent/Main/add_video.html.twig",["f"=>$form->createView()]);
     }
 
 
-    public function viewVideoAction()
+    public function viewVideoAction($id)
     {
-        $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findAll();
+        $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findByOwner($id);
         return $this->render("@Talent/Dashboard/list_videos.html.twig",["videos"=>$video]);
     }
     public function deleteAction($id)
@@ -53,7 +55,7 @@ class VideoController extends Controller
         $video =$em->getRepository(video::class)->find($id);
         $em->remove($video);
         $em->flush();
-        return $this->redirectToRoute('list_video');
+        return $this->redirectToRoute('user_profile',['id' =>$this->getUser()->getId()]);
     }
 
 

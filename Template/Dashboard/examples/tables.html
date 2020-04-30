@@ -731,23 +731,7 @@
 
 
 
-    /**
-     * Finds and displays a competition entity.
-     *
-     * @Route("/{id}", name="competition_show")
-     * @Method("GET")
-     * @param competition $competition
-     * @return Response
-     */
-    public function showAction(competition $competition)
-    {
-        $deleteForm = $this->createDeleteForm($competition);
-
-        return $this->render('CompetitionsBundle:Default:show.html.twig', array(
-            'competition' => $competition,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
+    
 
     /**
      * Displays a form to edit an existing competition entity.

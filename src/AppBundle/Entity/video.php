@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping\JoinTable;
 use Doctrine\ORM\Mapping\ManyToMany;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Symfony\Component\Validator\Constraints as Assert ;
+use FOS\CommentBundle\Entity\Thread as BaseThread;
+
 
 /**
  * video
@@ -20,18 +22,18 @@ class video
 {
 
     /**
-     * @var int
+     * @var int $id
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
     /**
      * @ManyToMany(targetEntity="User")
      * @JoinTable(name="votes",
-     *      joinColumns={@JoinColumn(name="video_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="user_id", referencedColumnName="id")}
+     *      joinColumns={@JoinColumn(name="video_id", referencedColumnName="id",onDelete="cascade")},
+     *      inverseJoinColumns={@JoinColumn(name="user_id", referencedColumnName="id",onDelete="cascade")}
      *      )
      */
     private $votes;
@@ -41,6 +43,7 @@ class video
      * @JoinColumn(name="owner", referencedColumnName="id")
      */
     private $owner;
+
 
     /**
      * @return mixed
@@ -102,33 +105,7 @@ class video
      * @ORM\Column(name="publish_date", type="datetime")
      */
     private $publishDate;
-//delete from here
-    /**
-     * @var integer
-     *
-     * @ORM\column(name="user",type="integer")
-     *
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="video")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
-    private $user;
 
-    /**
-     * @return int
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * @param int $user
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-    }
-//stop here
     /**
      * Get id
      *

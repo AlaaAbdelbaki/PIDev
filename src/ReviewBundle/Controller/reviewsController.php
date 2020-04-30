@@ -36,7 +36,7 @@ class reviewsController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($review);
             $em->flush();
-            return $this->redirectToRoute('affiche');
+            return $this->redirectToRoute('review_show');
         }
         return $this->render("@Review/Default/ajout_review.html.twig",array('form'=>$form->createView()));
     }
@@ -52,7 +52,7 @@ class reviewsController extends Controller
         $review=$em->getRepository(review::class)->find($id);
         $em->remove($review);
         $em->flush();
-        return $this->redirectToRoute('affiche');
+        return $this->redirectToRoute('review_show');
     }
     public function editAction(Request $request, $id)
     {
@@ -72,9 +72,18 @@ class reviewsController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($c);
             $em->flush();
-            return $this->redirectToRoute('affiche');
+            return $this->redirectToRoute('review_show');
         }
         return $this->render("@Review/Default/edit.html.twig", ["f" => $form->createView()]);
+    }
+
+    public function filterAction(Request $request)
+    {
+        $requestString = $request->get('Type');
+
+        $rev =  $this->getDoctrine()->getRepository('AppBundle:review')->findByCategory(['Type'=>$requestString]);
+        ;
+        return $this->render("@Review/Default/index.html.twig",["formulaire"=>$rev]);
     }
 
 

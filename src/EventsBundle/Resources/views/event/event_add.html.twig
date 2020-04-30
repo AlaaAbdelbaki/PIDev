@@ -1,93 +1,90 @@
 {% extends 'admin_base.html.twig' %}
 {% block admin_content %}
-    {{ form_start(f) }}
-    <div class="col-md-12">
-    <div class="card">
-    <div class="card-header card-header-primary">
-        <h4 class="card-title ">Simple Table</h4>
-        <p class="card-category"> Here is a subtitle for this table</p>
-    </div>
-    <div class="card-body">
-    <div class="table-responsive">
-    <table class="table">
-        <thead class=" text-primary">
-<tr>
-        <th>
-            title:
-        </th>
-        <th>
-            {{ form_widget(f.title) }}
-        </th>
-</tr>
-<tr>
-        <th>
-            start_date:
-        </th>
-        <th>
-            {{ form_widget(f.startDate) }}
-        </th>
-</tr>
-<tr>
-        <th>
-          end_date
-        </th>
-        <th>
-            {{ form_widget(f.endDate) }}
-        </th>
-</tr>
-<tr>
-        <th>
-            image
-        </th>
-        <th>
-            {{ form_widget(f.img) }}
-        </th>
-</tr>
-<tr>
-    <th>
-        location:
-    </th>
-    <th>
-        {{ form_widget(f.location) }}
-    </th>
-</tr>
-<tr>
-    <th>
-        nb_places:
-    </th>
-    <th>
-        {{ form_widget(f.nb_places) }}
-    </th>
-</tr>
-<tr>
-    <th>
-        description:
-    </th>
-    <th>
-        {{ form_widget(f.description) }}
-    </th>
-</tr>
-<tr>
-    <th>
-        type:
-    </th>
-    <th>
-        {{ form_widget(f.type) }}
-    </th>
-</tr>
-<tr>
-    <th>
-    </th>
-    <th>
-        {{ form_widget(f.Submit,{attr:{'class':'btn btn-primary btn-block'}}) }}
-    </th>
-</tr>
-        </thead>
-        <tbody>
-        <tr>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">Add New Event</h4>
+                        <p class="card-category"></p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            {{ form_start(f) }}
+                            <table class="table">
 
-        </tr>
-        </tbody>
-    </table>
-    {{ form_end(f) }}
+                                <tr>
+
+                                        title:
+
+                                        {{ form_widget(f.title) }}
+
+                                </tr>
+                                <tr>
+
+                                        start_date:
+
+                                        {{ form_widget(f.startDate) }}
+
+                                </tr>
+                                <tr>
+
+                                        end_date
+
+                                        {{ form_widget(f.endDate) }}
+
+                                </tr>
+                                <tr>
+
+                                        image
+
+                                        {{ form_widget(f.img) }}
+
+                                </tr>
+                                <tr>
+
+                                        location:
+
+
+                                        {{ form_widget(f.location) }}
+
+                                </tr>
+                                <tr>
+
+                                        nb_places:
+
+                                        {{ form_widget(f.nb_places) }}
+
+                                </tr>
+                                <tr>
+
+                                        description:
+
+                                        {{ form_widget(f.description) }}
+
+                                </tr>
+                                <tr>
+
+                                        type:
+
+                                        {{ form_widget(f.type) }}
+
+                                </tr>
+                                <tr>
+
+                                        {{ form_widget(f.Submit,{attr:{'class':'btn btn-primary btn-block'}}) }}
+
+                                </tr>
+
+
+
+                            </table>
+                            {{ form_end(f) }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
