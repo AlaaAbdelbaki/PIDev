@@ -1,47 +1,56 @@
 {% extends 'base.html.twig' %}
 {% block content %}
-    <footer class="footer-area section-padding-100-0">
-    <div class="container-fluid">
-    <div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header card-header-primary">
-                <h4 class="card-title ">Reviews</h4>
-                <p class="card-category"> Here is a subtitle for this table</p>
+    <div class="content">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+        <div class="breadcumb-area bg-img bg-overlay2"
+             style="background-image: url({{ asset('assets/img/bg-img/breadcumb5.jpg') }}">
+            <div class="bradcumbContent">
+                <h2>Rate US !</h2>
             </div>
-            <div class="card-body">
-                {{ form_start(form) }}
-                <div class="table-responsive">
-                    <table class="table">
-                        <tr>
-                            <td>Rating </td>
-                            <td>{{ form_widget(form.rating,{attr: {'class':'form-control'}}) }}</td>
-                        </tr>
-                        <tr>
-                            <td>Category </td>
-                            <td>{{ form_widget(form.category,{attr: {'class':'form-control'}}) }}</td>
-                        </tr>
-                        <tr>
-                            <td>Title </td>
-                            <td>{{ form_widget(form.title,{attr: {'class':'form-control'}}) }} </td>
-                        </tr>
-                        <tr>
-                            <td>Content </td>
-                            <td>{{ form_widget(form.content,{attr: {'class':'form-control'}}) }}</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>{{ form_widget(form.submit,{attr: {'class':'btn btn-primary btn-block'}}) }}</td>
-                        </tr>
-                    </table>
+        </div>
+        <div class="bg-gradients "></div>
+        <div class="container-fluid upcoming-shows-area section-padding-100">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="container ">
+                        <div class="contact-content mb-100">
+                            <!-- Contact Form Area -->
+                            <div class="contact-form-area">
+                                {{ form_start(form) }}
+                                <label ><h3 class=" font-weight-bold text-white">Rating</h3></label>
+                                <div class="form-group " >
+                                    {{ form_widget(form.rating)}}
+
+                                </div>
+                                <div class="form-group" >
+                                    <label ><h3 class=" font-weight-bold text-white " >Category</h3></label>
+                                    {{ form_widget(form.category,{attr: {'class':'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    <label ><h3 class=" font-weight-bold text-white" >Title</h3></label>
+                                    {{ form_widget(form.title,{attr: {'class':'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    <label ><h3 class=" font-weight-bold text-white" >Content</h3></label>
+                                    {{ form_widget(form.content,{attr: {'class':'form-control'}}) }}
+                                </div>
+
+                                {{ form_widget(form.submit,{attr: {'class':'btn musica-btn btn-block '}}) }}
+                                {{ form_end(form) }}
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    </div>
-    </footer>
-    </div>
-    {{ form_end(form) }}
+
+    <div class="bg-gradients "></div>
 
 {% endblock %}

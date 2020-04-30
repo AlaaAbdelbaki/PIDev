@@ -1,56 +1,79 @@
 {% extends 'admin_base.html.twig' %}
 {% block admin_content %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title> Events list </title>
-</head>
-<body>
-<div class="col-md-12">
-    <div class="card">
-        <div class="card-header card-header-primary">
-            <h4 class="card-title ">Events list</h4>
-            <p class="card-category"> events :p </p>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table">
-                    <thead class=" text-primary">
-                    <th>ID</th>
-                    <th>title</th>
-                    <th>start_date</th>
-                    <th>end_date</th>
-                    <th>location</th>
-                    <th>nbr_places</th>
-                    <th>description</th>
-                    <th>type</th>
-                    <th>img</th>
-                    </thead>
-                    <tbody>
-                    {% for i in t %}
-                        <tr>
-                            <td>{{ i.id }}</td>
-                            <td>{{ i.title }}</td>
-                            <td>{{ i.startDate|date("d/m/Y")}}</td>
-                            <td>{{ i.endDate|date("d/m/Y") }}</td>
-                            <td>{{ i.location}}</td>
-                            <td>{{ i.nbPlaces }}</td>
-                            <td>{{ i.description}}</td>
-                            <td>{{ i.type}}</td>
-                            <td><img src="{{ asset('assets/img/shop-img/' ~ i.img) }}" height="50px" width="50px"></td>
-                            <td><a href="{{path('delete',{'id': i.id })}}"> <button class="btn btn-primary btn-block">delete</button></a> <br></td>
-                            <td><a href="{{path('modifier',{'id': i.id })}}"> <button class="btn btn-primary btn-block">edit</button></a> <br></td>
 
-                        </tr>
+    <div class="content">
+        <div class="container-fluid">
 
-                    {% endfor %}
-                    </tbody>
-                </table>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">Events list</h4>
+                        <p class="card-category float-right"><a href="{{ path('ticket_list') }}">
+                                <button class="btn btn-success ">See All tickets</button>
+                            </a>
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                <th>ID</th>
+                                <th>title</th>
+                                <th>start_date</th>
+                                <th>end_date</th>
+                                <th>location</th>
+                                <th>nbr_places</th>
+                                <th>description</th>
+                                <th>type</th>
+                                <th>img</th>
+                                </thead>
+                                <tbody>
+                                {% for i in t %}
+                                    <tr>
+                                        <td>{{ i.id }}</td>
+                                        <td>{{ i.title }}</td>
+                                        <td>{{ i.startDate|date("d/m/Y") }}</td>
+                                        <td>{{ i.endDate|date("d/m/Y") }}</td>
+                                        <td>{{ i.location }}</td>
+                                        <td>{{ i.nbPlaces }}</td>
+                                        <td>{{ i.description }}</td>
+                                        <td>{{ i.type }}</td>
+                                        <td><img src="{{ asset('assets/img/shop-img/' ~ i.img) }}" height="50px"
+                                                 width="50px"></td>
+                                        <td><a href="{{ path('event_delete',{'id': i.id }) }}">
+                                                <button class="btn btn-primary btn-block">delete</button>
+                                            </a> <br></td>
+                                        <td><a href="{{ path('event_modifier',{'id': i.id }) }}">
+                                                <button class="btn btn-primary btn-block">edit</button>
+                                            </a> <br></td>
+                                        {% if  i.nbPlaces is same as (0) %}
+                                            <td class="text-white">Event Full</td>
+                                        {% elseif not i.ticket.isempty %}
+                                            <td>Ticket Added</td>
+                                        {% else %}
+                                            <td><a href="{{ path('ticket_ajout',{'id': i.id }) }}">
+                                                    <button class="btn btn-success btn-block">Add ticket</button>
+                                                </a> <br></td>
+                                        {% endif %}
+                                    </tr>
+
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <a href="{{ path('event_add') }}">
+                    <button class=" btn btn-primary btn-block">Add New Event</button>
+                </a>
+                <a href="{{ path('statsUser') }}">
+                    <button class=" btn btn-primary btn-block">show event distribution</button>
+                </a> <br>
             </div>
         </div>
     </div>
-</div>
 
-</body>
-</html>
 {% endblock %}

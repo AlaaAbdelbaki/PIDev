@@ -10,4 +10,31 @@ namespace AppBundle\Repository;
  */
 class subscriptionRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getSubscribersCount($id)
+    {
+        $qb = $this->getEntityManager()
+            ->createQuery('select count(s) from AppBundle:subscription s where s.subedto =:id')->setParameter('id',$id);
+        return $query = $qb->getResult();
+    }
+
+    public function getSubscribtionCount($id)
+    {
+        $qb = $this->getEntityManager()
+            ->createQuery('select count(s) from AppBundle:subscription s where s.sub =:id')->setParameter('id',$id);
+        return $query = $qb->getResult();
+    }
+
+    public function exist($subedto,$sub)
+    {
+        $qb = $this->getEntityManager()
+            ->createQuery('select s from AppBundle:subscription s where s.subedto =:subedto and s.sub =:sub')->setParameters(['subedto'=>$subedto,'sub'=>$sub]);
+        return $query = $qb->getResult();
+    }
+
+    public function unsub($id,$user)
+    {
+        $qb = $this->getEntityManager()
+            ->createQuery('delete from AppBundle:subscription s where s.subedto =:subedto and s.sub =:sub')->setParameters(['subedto'=>$id,'sub'=>$user]);
+        return $query = $qb->getResult();
+    }
 }

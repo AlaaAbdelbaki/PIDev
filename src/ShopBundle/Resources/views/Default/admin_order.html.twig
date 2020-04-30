@@ -1,14 +1,16 @@
 {% extends 'admin_base.html.twig' %}
 {% block admin_content %}
+    <div class="content">
+    <div class="container-fluid">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-primary">
-                <h4 class="card-title ">Products List</h4>
-                <p class="card-category">Here you can find all products</p>
+                <h4 class="card-title ">Orders List</h4>
+                <p class="card-category">Here you can find all orders: </p>
 
-                <a href="{{ path('shop_adminorder') }}">Orders Manager || </a>
-                <a href="{{ path('shop_adminorderajouter') }}">Add Order || </a>
-                <a href="{{ path('shop_admin') }}">Product Manager</a>
+
+
+                <a class="btn btn-warning" href="{{ path('shop_admin') }}">Product Manager</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -49,8 +51,8 @@
                                 {{ p.address }}
                             </td>
                             <td>
-                                <a href="{{ path('shop_adminorderdel',{'id':p.id}) }}">Delete</a>
-                                <a href="{{ path('shop_adminorderupdate',{'id':p.id}) }}">Update</a>
+                                <a  class="btn btn-danger mr-3" href="{{ path('shop_adminorderdel',{'id':p.id}) }}">Delete</a>
+                                <a  class="btn btn-warning"href="{{ path('shop_adminorderupdate',{'id':p.id}) }}">Update</a>
 
                             </td>
                         </tr>
@@ -60,5 +62,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div></div></div>
 {% endblock %}

@@ -91,7 +91,9 @@
                                     <tbody>
                                     {% for competition in competitions %}
                                         {% if competition.competitionEndDate |date <  "now"|date %}
-                                            {% if not competition.winner.hasRole('ROLE_TALENTED')%}
+                                            {% if competition.winner is not null   %}
+                                                {% if not competition.winner.hasRole('ROLE_ADMIN')  %}
+                                            {% if not competition.winner.hasRole('ROLE_TALENTED') %}
                                         <tr>
                                             <td>
                                                 {{ competition.subject }}
@@ -112,6 +114,8 @@
                                         </tr>
                                                 {% endif %}
                                         {% endif %}
+                                        {% endif %}
+                                        {% endif %}
                                     {% endfor %}
 
                                     </tbody>
@@ -124,7 +128,7 @@
         </div>
     </div>
     <script src="{{asset('assets/js/jquery/jquery-2.2.4.min.js')}}"></script>
-    <script>
+   {# <script>
         $('.promote').click(function (e)
         {e.preventDefault();
             let  $t=$(this);
@@ -142,6 +146,6 @@
             return false;
 
         });
-    </script>
+    </script>#}
 {% endblock %}
 

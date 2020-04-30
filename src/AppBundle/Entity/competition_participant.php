@@ -21,7 +21,7 @@ class competition_participant
     }
     /**
      * @ORM\ManyToOne(targetEntity="video")
-     * @ORM\JoinColumn(name="video_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="video_id", referencedColumnName="id" ,onDelete="CASCADE")
      */
     private $video;
 

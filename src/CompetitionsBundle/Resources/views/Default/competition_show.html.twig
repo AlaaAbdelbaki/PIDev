@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div>
-
+        <div class="bg-gradients"></div>
         <div class="row ">
             <div class="col second-img " style=" background-image: linear-gradient(to right, #5722a9,#0c0527) ">
                 <p class="text-center" style=" font-size: 100px ;color: #ffffff; font-family: Allura,cursive">
@@ -96,7 +96,7 @@
                                         <h4>{{ participation.video.title }}</h4>
                                     </div>
                                     <div class="album-buy-now">
-                                        <a href="#" class="btn musica-btn">Visit Profile</a>
+                                        <a href="{{ path('user_profile',{'id':participation.user.id}) }}" class="btn musica-btn">Visit Profile</a>
                                     </div>
                                 </div>
 
@@ -174,12 +174,13 @@
 
                 </div>
             </div>
-
+            <div class="bg-gradients"></div>
         </div>
         <div class="row justify-content-center mt-5">  {{ knp_pagination_render(participations) }}</div>
+
     </div>
 
-    <div></div>
+
 
     <script>
         $('.vote').click(function (e) {

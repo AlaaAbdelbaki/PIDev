@@ -1,12 +1,13 @@
 {%  extends 'admin_base.html.twig' %}
 {% block admin_content %}
+    <div class="content">
+    <div class="container-fluid">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-primary">
-                <br>
-                <br>
-                <h4 class="card-title ">Updates</h4>
-                <a href="{{ path('blog_homepage') }}"></a>
+
+                <h2 class="card-title text-center">Updates</h2>
+                <a class="btn btn-success mt-3" href="{{ path('updates_ajouter') }}">Publish News</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -41,7 +42,7 @@
                                     {{a.title}}
                                 </td>
                                 <td>
-                                    <img src="{{ asset('/fack.png') }}" width="200px" height="300px"/>
+                                    <img src="{{ asset('assets/img/shop-img/' ~ a.img) }}" width="200px" height="300px"/>
                                 </td>
                                 <td>
                                     {{a.content}}
@@ -55,8 +56,8 @@
 
 
                                 <td>
-                                    <a href="{{ path('supprimer',{'id':a.id}) }}">Supprimer</a>
-                                    <a href="{{ path('modifier',{'id':a.id}) }}">Modifier</a>
+                                    <a class="btn btn-danger mt-3" href="{{ path('supprimer',{'id':a.id}) }}">Supprimer</a>
+                                    <a class="btn btn-warning mt-3" href="{{ path('modifier',{'id':a.id}) }}">Modifier</a>
                                 </td>
 
                             </tr>
@@ -67,4 +68,5 @@
             </div>
         </div>
     </div>
+    </div></div>
 {% endblock %}

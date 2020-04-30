@@ -21,4 +21,5 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('str', '%' . $str . '%')
             ->getResult();
     }
+
 }

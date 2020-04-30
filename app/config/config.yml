@@ -16,7 +16,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    image_directory: '%kernel.root_dir%/../web/assets/img/pics/'
+    image_directory: '%kernel.root_dir%/../web/assets/uploads/'
 
     photos_directory: '%kernel.root_dir%/../web/assets/img/shop-img/'
     photo_directory: '%kernel.root_dir%/../web/assets/img/fich_img/'
@@ -100,10 +100,12 @@ fos_comment:
     class:
         model:
             comment: AppBundle\Entity\comment
-            thread: AppBundle\Entity\Thread
+            thread : AppBundle\Entity\Thread
+
+
 
 assetic:
-    bundles: [ "FOSCommentBundle" ]
+
     bundles: [ "FOSCommentBundle" ]
 knp_paginator:
     template:
@@ -115,14 +117,14 @@ knp_snappy:
         # If you have wkhtmltopdf as an environment variable you don't need to provide the
         # full path to the executable, use it in the same way as you use in the console
         #binary:  "wkhtmltopdf"
-        binary:     "\"D:\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
+        binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
         options:
             no-outline: true
             page-size: LETTER
             encoding: UTF-8
     image:
         enabled:    true
-        binary:     "\"D:\\wkhtmltopdf\bin\\wkhtmltoimage.exe\""
-        options:    []
+        binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\""
+
         options:    []
 gregwar_captcha: ~

@@ -1,15 +1,28 @@
 {% extends 'admin_base.html.twig' %}
 {% block admin_content %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
     <div class="content">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-primary">
-                <h4 class="card-title ">Reviews</h4>
-                <p class="card-category"> Here is a subtitle for this table</p>
-                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for category.." title="Type in Rating">
+                <h4 class="card-title text-center ">Rating</h4>
+                <p class="card-category"> </p>
+                <form action="{{ path('filter_Rating') }}" id="carform">
+                    <label for="categorie" class="text-white mt-4">Filter By:</label>
+                    <select id="cars" name="Type"  class="form-control" onchange="this.form.submit()" >
+                        <option value="" class=" disabled">-----Filter By Category--------</option>
+                        <option value="Orders">Orders</option>
+                        <option value="Articles">Articles</option>
+                        <option value="Events">Events</option>
+                        <option value="Competition">Competition</option>
+
+                    </select>
+                </form>
             </div>
             <div class="card-body">
-                <p><button onclick="sortTable()">Sort</button></p>
+
                 <div class="table-responsive">
                     <table class="table"  id="myTable" >
                         <thead class="text-primary">
@@ -19,36 +32,33 @@
                         <th >Title </th>
                         <th>Content</th>
                         <th>Actions</th>
+
                         </thead>
-                        {% for s in formulaire %}
+
                         <tbody>
+                        {% set sum = 0 %}
+                        {% set i = 0 %}
+                        {% for s in formulaire %}
 
                         <tr>
-
-
-                            <td>  {{ s.rating }}</td>
+                            <td>  {{ s.rating| rating(5) }}</td>
                             <td>{{ s.User.username }}</td>
-
                             <td>{{ s.category }}</td>
-
-
-
-
-
                             <td>{{ s.title }}</td>
-
-
-
                             <td>{{ s.content }}</td>
-                            <td> <a href="{{ path('edit',{'id':s.id}) }}'"> Edit</a></td>
-                            <td><a href="{{ path('delete',{'id':s.id}) }}'">Delete</a></td>
-                        </tr>
 
-                        </tbody>
+                            <td><a class="btn btn-danger" href="{{ path('review_delete',{'id':s.id}) }}">Delete</a></td>
+                        </tr>
+                            {% set sum = sum + s.rating %}
+                            {% set i = i+1 %}
                         {% endfor %}
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
+                        {% if sum is not same as (0) %}
+                        {% set sum = sum/i %}
+{% endif %}
+                        </tbody>
+                    </table>
+
+                    <div class="card-header card-header-success text-center mt-3" ><h2 class="text-center text-white"> Average</h2>{{ sum | rating(5) }} </div>
+                </div></div></div></div></div>
+
 {% endblock %}

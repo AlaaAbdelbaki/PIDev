@@ -1,39 +1,99 @@
 {% extends 'base.html.twig' %}
 {% block content %}
+    <div class="content">
+        <div class="breadcumb-area bg-img bg-overlay2"
+             style="background-image: url({{ asset('assets/img/bg-img/breadcumb3.jpg') }}">
+            <div class="bradcumbContent">
+                <h2>Contact US !</h2>
+            </div>
+        </div>
+        <div class="bg-gradients "></div>
+        <div class="container-fluid upcoming-shows-area section-padding-100">
+            <div class="row">
+                <div class="col">
+                    <div class="container ">
+                        <div class="contact-content mb-100">
+                            <!-- Contact Form Area -->
+                            <div class="contact-form-area">
+                                {{ form_start(f) }}
+                                <label ><h3 class=" font-weight-bold text-white">Subject</h3></label>
+                                <div class="form-group" >
+                                    {{ form_widget(f.subject,{attr: {'class':'form-control'}}) }}
+                                </div>
+                                <div class="form-group" >
+                                    <label ><h3 class=" font-weight-bold text-white " >Content</h3></label>
+                                    {{ form_widget(f.content,{attr: {'class':'form-control'}}) }}
+                                </div>
 
-        <footer class="footer-area section-padding-100-0">
-            <div class="container-fluid">
-                <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header card-header-primary">
-                    <h4 class="card-title ">Complaints</h4>
-                    <p class="card-category"> Here is a subtitle for this table</p>
+
+                                {{ form_widget(f.submit,{attr: {'class':'btn musica-btn btn-block '}}) }}
+                                {{ form_end(f) }}
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
                 </div>
-                <div class="card-body">
-                    {{ form_start(f) }}
-                    <div class="table-responsive">
-                        <table class="table">
-                            <tr>
-                                <td>Subject: </td>
-                                <td>{{ form_widget(f.subject,{attr: {'class':'form-control'}}) }}</td>
-                            </tr>
-                            <tr>
-                                <td>Content: </td>
-                                <td>{{ form_widget(f.content,{attr: {'class':'form-control'}}) }}</td>
-                            </tr>
-                            <tr>
+                <div class="col ">
+                    <div class="contact-content mb-100 ">
+                        <a href="#"><img src="assets/img/core-img/logo3.png" alt=""></a>
+                        <p class="copywrite-text text-white"><a href="#" style="color: white">
+                                Copyright ©<script>document.write(new Date().getFullYear());</script>2020 All rights reserved | This Website is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by </a><a href="#" target="_blank">KingPins</a>
 
-                                <td>{{ form_widget(f.submit,{attr: {'class':'btn btn-primary btn-block'}}) }}</td>
-                            </tr>
-                        </table>
+                        </p>
+
+                        <!-- Contact Social Info -->
+                        <div class="contact-social-info mt-50 " >
+                            <a style="color: white" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                            <a style="color: white" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a  style="color: white" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a style="color: white" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                            <a  style="color: white" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Behance"><i class="fa fa-behance" aria-hidden="true"></i></a>
+                            <a style="color: white" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </div>
+
+                        <p class="mb-30 text-white">leifend mat tortor, suscipit non elit ut, imperdiet ornare erat.</p>
+
+                        <!-- Single Contact Info -->
+                        <div class="single-contact-info d-flex align-items-center">
+                            <div class="icon">
+                                <img src="/assets/img/core-img/placeholder.png" alt="">
+                            </div>
+                            <h6 class="text-white">Address Esprit</h6>
+                        </div>
+
+                        <!-- Single Contact Info -->
+                        <div class="single-contact-info d-flex align-items-center ">
+                            <div class="icon">
+                                <img src="/assets/img/core-img/message.png" alt="">
+                            </div>
+                            <h6 class="text-white">53779876</h6>
+                        </div>
+
+                        <!-- Single Contact Info -->
+                        <div class="single-contact-info d-flex align-items-center text-white">
+                            <div class="icon">
+                                <img src="/assets/img/core-img/smartphone.png" alt="">
+                            </div>
+                            <h6 class="text-white">anis@gmail.com</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="map-area mb-100">
+                <div class="container" style="border: 3px solid #cc1573">
+                    <div class="row" >
+                        <div class="col-12 my-3 " >
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102229.45818003094!2d10.059674619557873!3d36.802448199321326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e2cb75abef9f39%3A0xb7b85ec579f3acb!2sESPRIT!5e0!3m2!1sen!2stn!4v1582677486408!5m2!1sen!2stn" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
-    </div>
-    </footer>
-    </div>
-    {{ form_end(f) }}
+
+    <div class="bg-gradients "></div>
+
 {% endblock %}
