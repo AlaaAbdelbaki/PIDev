@@ -142,7 +142,7 @@ class TalentController extends Controller
     }
 
 
-    function getRealEntities($user)
+    public function getRealEntities($user)
     {
         foreach ($user as $user) {
             $realEntities[$user->getId()] = [$user->getProfilePic(), $user->getUsername()];
@@ -182,7 +182,9 @@ class TalentController extends Controller
         return $this->redirect($url);
     }
 
+    public function changePasswordAction($token){
 
+    }
 
 
 }
