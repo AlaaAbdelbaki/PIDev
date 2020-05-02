@@ -1,37 +1,41 @@
 <?php
 
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\CommentBundle\Entity\Thread as BaseThread;
 
-
 /**
- * Thread
- *
- * @ORM\Table(name="thread")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ThreadRepository")
+ * @ORM\Entity
+ * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  */
 class Thread extends BaseThread
 {
     /**
-     * @var int
+     * @var string $id
      *
-     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="string")
      */
     protected $id;
 
 
     /**
-     * Get id
-     *
-     * @return int
+     * @return string
      */
     public function getId()
     {
         return $this->id;
     }
-}
 
+    /**
+     * @param string $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+
+}

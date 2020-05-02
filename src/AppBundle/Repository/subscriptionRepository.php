@@ -24,7 +24,7 @@ class subscriptionRepository extends \Doctrine\ORM\EntityRepository
         return $query = $qb->getResult();
     }
 
-    public function exists($subedto,$sub)
+    public function exist($subedto,$sub)
     {
         $qb = $this->getEntityManager()
             ->createQuery('select s from AppBundle:subscription s where s.subedto =:subedto and s.sub =:sub')->setParameters(['subedto'=>$subedto,'sub'=>$sub]);
@@ -37,5 +37,4 @@ class subscriptionRepository extends \Doctrine\ORM\EntityRepository
             ->createQuery('delete from AppBundle:subscription s where s.subedto =:subedto and s.sub =:sub')->setParameters(['subedto'=>$id,'sub'=>$user]);
         return $query = $qb->getResult();
     }
-
 }

@@ -101,7 +101,9 @@ fos_comment:
     class:
         model:
             comment: AppBundle\Entity\comment
-            thread: AppBundle\Entity\Thread
+            thread : AppBundle\Entity\Thread
+
+
 
 assetic:
 

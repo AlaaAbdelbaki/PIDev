@@ -5,7 +5,7 @@ afficher_blog_admin:
     path:     admin/blog/afficher
     defaults: { _controller: BlogBundle:Blog:afficher }
 afficher_blog:
-    path:     blog/afficher
+    path:     /blog/show/
     defaults: { _controller: BlogBundle:Blog:afficherfront }
 blog_edit:
     path:     admin/blog/edit/{id}
@@ -32,3 +32,9 @@ supprimer:
 tri:
     path: /sort
     defaults: {_controller:BlogBundle:Blog:affichetri }
+filter_news_category:
+    path:     /update/filter
+    defaults: { _controller: BlogBundle:Updates:filter }
+blog_details:
+    path:     /blog/details/{id}
+    defaults: { _controller: BlogBundle:Blog:blogDetail }

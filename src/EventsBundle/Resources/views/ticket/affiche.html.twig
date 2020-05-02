@@ -1,24 +1,20 @@
 {% extends 'admin_base.html.twig' %}
 {% block admin_content %}
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title> tickets list </title>
-    </head>
-    <body>
+    <div class="content">
+    <div class="container-fluid">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-primary">
                 <h4 class="card-title ">tickets list</h4>
-                <p class="card-category"> events :p </p>
+
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table">
                         <thead class=" text-primary">
                         <th>ID</th>
-                        <th>price</th>
-                        <th>event_id</th>
+                        <th>Price</th>
+                        <th>Event</th>
 
                         </thead>
                         <tbody>
@@ -28,8 +24,8 @@
                                 <td>{{ t.price }}</td>
                                 <td>{{ t.event.title}}</td>
 
-                               <td><a href="{{path('supp',{'id': t.id })}}"> <button class="btn btn-primary btn-block">delete</button></a> <br></td>
-                                <td><a href="{{path('edit',{'id': t.id })}}"> <button class="btn btn-primary btn-block">edit</button></a> <br></td>
+                               <td><a href="{{path('ticket_edit',{'id': t.id })}}"> <button class="btn btn-warning btn-block">Edit</button></a> <br></td>
+                                <td><a href="{{path('ticket_supp',{'id': t.id })}}"> <button class="btn btn-danger btn-block">Delete</button></a> <br></td>
 
                             </tr>
 
@@ -40,7 +36,5 @@
             </div>
         </div>
     </div>
-
-    </body>
-    </html>
+    </div></div>
 {% endblock %}

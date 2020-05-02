@@ -36,13 +36,13 @@
 
 
 
-            <td> <a href="{{ path('edit_reclam',{'id':r.id}) }}'"> Edit</a></td>
-            <td><a href="{{ path('delete_reclam',{'id':r.id}) }}'">Delete</a></td>
-            <td><a href="{{ path('Mail',{'id':r.id}) }}'">Respond</a></td>
+            <td><a  class="btn btn-danger" href="{{ path('delete_reclam',{'id':r.id}) }}">Delete</a></td>
+            <td><a class="btn btn-success" href="{{ path('Mail',{'id':r.id}) }}">Respond</a></td>
         </tr>
 
         </tbody>
                             {% endfor %}
+                        </table>
                     </div>
                 </div>
             </div>

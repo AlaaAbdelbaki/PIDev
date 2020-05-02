@@ -6,6 +6,7 @@ namespace BlogBundle\Form;
 use Doctrine\ORM\EntityRepository;
 
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -25,8 +26,11 @@ class UpdatesType extends AbstractType
             ->add('title')
             ->add('content', TextareaType::class)
             ->add('category', ChoiceType::class,array('choices'=>array( ''=>'',
-            'sport'=>'sport', 'entraitement'=>'entraitement')))
-            ->add('publish_date', DateType::class)
+            'sport'=>'sport', 'entertainment'=>'entertainment')))
+            ->add('publish_date', DateTimeType::class,array(
+                'date_widget' => 'single_text',
+                'time_widget' => 'single_text',
+                'disabled'=>'disabled'))
             ->add('img', FileType::class, array('data_class'=>null, 'required'=>false))
             ->add('Submit', SubmitType::class);
     }/**

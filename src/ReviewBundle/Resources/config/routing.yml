@@ -34,3 +34,6 @@ Mail:
 affichetri:
     path:     /affichetri
     defaults: { _controller: ReviewBundle:reviews:tri }
+filter_Rating:
+    path:     /Rating/filter
+    defaults: { _controller: ReviewBundle:reviews:filter }

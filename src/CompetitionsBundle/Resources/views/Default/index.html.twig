@@ -8,6 +8,7 @@
                 <h2>Competitions</h2>
             </div>
         </div>
+        <div class="bg-gradients"></div>
         <div class="upcoming-shows-area section-padding-100">
             <div class="container">
                 <div class="row">
@@ -53,17 +54,24 @@
                                     </div>
 
                                     <div class="buy-tickets ">
-                                        {% if is_granted('ROLE_TALENTED') %} <h6 class="text-white"> Already A Talent
-                                            !</h6>
+                                        {% if date(competition.competitionEndDate) < date() %}
+                                            <h6 class="text-white"> Competition Over
+                                                !</h6>
                                         {% else %}
-                                            {% if competition in c %}
-
-                                                <h6 class="text-white"> Already participated !</h6>
+                                            {% if is_granted('ROLE_TALENTED') %} <h6 class="text-white"> Already A
+                                                Talent
+                                                !</h6>
                                             {% else %}
+                                                {% if competition in c %}
 
-                                                <a href="{{ path('competition_participate', {'id': competition.id}) }}"
-                                                   class="btn musica-btn">Participate</a>
-                                            {% endif %}{% endif %}
+                                                    <h6 class="text-white"> Already participated !</h6>
+                                                {% else %}
+
+                                                    <a href="{{ path('competition_participate', {'id': competition.id}) }}"
+                                                       class="btn musica-btn">Participate</a>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endif %}
                                     </div>
                                 </div>
                             {% endfor %}
@@ -77,7 +85,7 @@
 
         </div>
     </div>
-
+    <div class="bg-gradients"></div>
 {% endblock %}
 
 

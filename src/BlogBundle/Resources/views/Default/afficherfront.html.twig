@@ -6,14 +6,14 @@
     <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({{ asset('assets/img/bg-img/breadcumb2.jpg') }})">
         <div class="bradcumbContent">
             <h2>Blog</h2>
-            <div>  <a href="{{path('tri')}}" class="text-white">Sort</a></div>
+
         </div>
     </div>
-
+    <div class="bg-gradients "></div>
     <div class="blog-area  section-padding-100 " style="background-color: #0c0527">
         <div class="container">
-            <div class="row justify-content-center">
-                <input  class="my-3" type="text" value=""     id="myInput" onkeyup="myFunction()"  placeholder="Search...">
+            <div class="row align-content-center">
+
 
                 <div class="col-12">
 
@@ -26,7 +26,7 @@
                                     <img src="{{ asset('assets/img/shop-img/' ~ article.img) }}" alt="">
                                 </div>
                                 <!-- Post Title -->
-                                <a href="#" class="post-title">{{article.title}} {{ article.id }}</a>
+                                <a href="#" class="post-title text-white">{{article.title}}</a>
                                 <!-- Post Meta -->
                                 <div class="post-meta d-flex justify-content-between">
                                     <div class="post-date">
@@ -42,26 +42,19 @@
                                 <!-- Post Excerpt -->
                                 <p>{{article.content}}</p>
                                 <!-- Read More -->
-
+<a href="{{ path('blog_details', {'id' : article.id}) }}" class="btn musica-btn btn-3"> View Details...</a>
                             </div>
                             {% include '@FOSComment/Thread/async.html.twig' with {'id': '54'} %}
                         {% endfor %}
                         <!-- Pagination -->
-                        <div class="musica-pagination-area wow fadeInUp" data-wow-delay="700ms" style="visibility: hidden; animation-delay: 700ms; animation-name: none;">
-                            <nav>
-                                <ul class="pagination">
-                                    <li class="page-item active"><a class="page-link" href="#">01.</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">02.</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">03.</a></li>
-                                </ul>
-                            </nav>
-                        </div>
+                            <div class="row justify-content-center mt-5">  {{ knp_pagination_render(articles) }}</div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
+    <div class="bg-gradients "></div>
 
 {% endblock %}

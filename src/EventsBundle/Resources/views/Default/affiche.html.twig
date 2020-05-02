@@ -8,6 +8,7 @@
                 <h2>Events</h2>
             </div>
         </div>
+        <div class="bg-gradients "></div>
         <div class="container-fluid upcoming-shows-area section-padding-100">
             <div class="row">
                 <div class="col-md-12">
@@ -22,6 +23,17 @@
                                             <div class="section-heading dark">
                                                 <h2 class="text-white">Upcoming Events</h2>
                                                 <h6>Get your ticket Now!</h6>
+                                                <form action="{{ path('filter_category') }}" id="carform">
+                                                <label for="categorie" class="text-white mt-4">Filter By:</label>
+                                                <select id="cars" name="Type"  class="form-control" onchange="this.form.submit()" >
+                                                    <option value="" class=" disabled">-----Filter By Category--------</option>
+                                                    <option value="Casting">casting</option>
+                                                    <option value="concert">concert</option>
+                                                    <option value="offre emploi">offre emploi</option>
+                                                    <option value="audition">audition</option>
+
+                                                </select>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -30,9 +42,10 @@
                                         <div class="col-12">
                                             <div class="featured-shows-slides owl-carousel">
                                                 {% for i in t %}
+                                                    {% if not i.ticket.isempty %}
                                                     <!-- Single Featured Shows -->
                                                     <div class="single-featured-shows">
-                                                        <img src="/assets/img/bg-img/fs4.jpg" alt="">
+                                                        <img src="{{ asset('assets/img/shop-img/' ~ i.img) }}" style=" height:600px">
                                                         <!-- Content -->
                                                         <div class="featured-shows-content">
                                                             <div class="shows-text">
@@ -46,11 +59,16 @@
                                                                         width="83" height="20" style="border:none;overflow:hidden"
                                                                         scrolling="no" frameborder="0" allowTransparency="true"
                                                                         allow="encrypted-media"></iframe>
-                                                                <a href="#" class="buy-tickets-btn">Buy Tickets</a>
+                                                                {% if i.nbPlaces is same as (0) %}
+                                                                <h3>Event Full</h3>
+                                                                {% else %}
+                                                                <a target="_blank" href="{{ path('buy_ticket',{'id':i.id}) }}" class="buy-tickets-btn">Get Ticket</a>
+                                                                    {% endif %}
                                                             </div>
                                                             <div class="bg-gradients"></div>
                                                         </div>
                                                     </div>
+                                                    {% endif %}
                                                 {% endfor %}
                                             </div>
                                         </div>
@@ -65,5 +83,5 @@
         </div>
     </div>
 
-
+    <div class="bg-gradients "></div>
 {% endblock %}

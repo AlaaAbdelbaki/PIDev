@@ -4,11 +4,14 @@ namespace CompetitionsBundle\Controller;
 
 use AppBundle\Entity\competition;
 use AppBundle\Entity\competition_participant;
+use AppBundle\Entity\Message;
 use AppBundle\Entity\User;
 use AppBundle\Entity\video;
 use AppBundle\Entity\vote;
 use Doctrine\Common\Collections\ArrayCollection;
 use Knp\Component\Pager\PaginatorInterface;
+use Swift_Attachment;
+use Swift_Image;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -348,11 +351,25 @@ class competitionController extends Controller
     {
 
         $talented = $this->getDoctrine()->getRepository(User::class)->find($id);
+        $message = (new \Swift_Message('Congratulations Email'))
+            ->setFrom('zribisarahzribi@gmail.com')
+            ->setTo($talented->getEmailCanonical());
+        $message->setBody(
+        '<html>' .
+        ' <body>' .
+        '  Congrats <img src="' .
+        $message->embed(Swift_Image::fromPath('D:\Projects\PIDev\web\assets\img\congrats.jpg')) .
+        '" alt="Image" />' .
+        '  You earned a Talented Account' .
+        ' </body>' .
+        '</html>',
+        'text/html');
+        $this->get('mailer')->send($message);
         $talented->setRoles(['ROLE_TALENTED']);
         $em = $this->getDoctrine()->getManager();
         $em->persist($talented);
         $em->flush();
-        return new Response();
+        return $this->redirectToRoute('admin_competition_index');
 
 
     }
