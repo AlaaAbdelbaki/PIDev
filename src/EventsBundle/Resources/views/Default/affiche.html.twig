@@ -42,7 +42,7 @@
                                         <div class="col-12">
                                             <div class="featured-shows-slides owl-carousel">
                                                 {% for i in t %}
-                                                    {% if not i.ticket.isempty %}
+{#                                                    {% if not i.ticket.isempty %}#}
                                                     <!-- Single Featured Shows -->
                                                     <div class="single-featured-shows">
                                                         <img src="{{ asset('assets/img/shop-img/' ~ i.img) }}" style=" height:600px">
@@ -68,7 +68,7 @@
                                                             <div class="bg-gradients"></div>
                                                         </div>
                                                     </div>
-                                                    {% endif %}
+{#                                                    {% endif %}#}
                                                 {% endfor %}
                                             </div>
                                         </div>

@@ -201,37 +201,37 @@ class TalentController extends Controller
         return $this->redirect($url);
     }
 
-    public function changePasswordAction($token){
+//    public function changePasswordAction($token){}
 
-    public function subscribeAction(Request $request, $id)
-    {
-        $url = $request->headers->get('referer');
-        $user = $this->getUser();
-        $sub = new subscription();
-        $date = new \DateTime();
-        $sub->setSub($user);
-        $sub->setSubedto($this->getDoctrine()->getRepository(User::class)->find($id));
-        $sub->setSubscriptionDate($date);
-        $subscription = $this->getDoctrine()->getRepository(subscription::class)->exist($id, $user->getId());
-        if ($user->getId() != $id && $subscription == null) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($sub);
-            $em->flush();
-        }
-
-        return $this->redirect($url);
-    }
-
-    public function unsubscribeAction(Request $request,$id)
-    {
-        $url = $request->headers->get('referer');
-        $user = $this->getUser()->getId();
-        $sub = $this->getDoctrine()->getManager()->getRepository(subscription::class);
-        if($sub->exist($id,$user) != null)
-        {
-            $sub->unsub($id,$user);
-        }
-        return $this->redirect($url);
-    }
+//    public function subscribeAction(Request $request, $id)
+//    {
+//        $url = $request->headers->get('referer');
+//        $user = $this->getUser();
+//        $sub = new subscription();
+//        $date = new \DateTime();
+//        $sub->setSub($user);
+//        $sub->setSubedto($this->getDoctrine()->getRepository(User::class)->find($id));
+//        $sub->setSubscriptionDate($date);
+//        $subscription = $this->getDoctrine()->getRepository(subscription::class)->exist($id, $user->getId());
+//        if ($user->getId() != $id && $subscription == null) {
+//            $em = $this->getDoctrine()->getManager();
+//            $em->persist($sub);
+//            $em->flush();
+//        }
+//
+//        return $this->redirect($url);
+//    }
+//
+//    public function unsubscribeAction(Request $request,$id)
+//    {
+//        $url = $request->headers->get('referer');
+//        $user = $this->getUser()->getId();
+//        $sub = $this->getDoctrine()->getManager()->getRepository(subscription::class);
+//        if($sub->exist($id,$user) != null)
+//        {
+//            $sub->unsub($id,$user);
+//        }
+//        return $this->redirect($url);
+//    }
 
 }

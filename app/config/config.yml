@@ -76,7 +76,7 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
-    encryption: "%mailer_encryption%"
+#    encryption: "%mailer_encryption%"
     port: 587
     auth_mode: login
     host: smtp.gmail.com
