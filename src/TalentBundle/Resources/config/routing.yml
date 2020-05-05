@@ -46,3 +46,12 @@ subscribe:
 unsubscribe:
     path: /unsubscribe/{id}
     defaults: {_controller: TalentBundle:Talent:unsubscribe}
+mobile_getVideos:
+    path: /api/videos/owner={owner}
+    defaults: {_controller: TalentBundle:VideoApi:getVideos }
+mobile_addVideo:
+    path: /api/videos/add
+    defaults: {_controller: TalentBundle:VideoApi:addVideo }
+mobile_deleteVideo:
+    path: /api/videos/delete={id}
+    defaults: {_controller: TalentBundle:VideoApi:deleteVideo}
