@@ -38,3 +38,6 @@ filter_news_category:
 blog_details:
     path:     /blog/details/{id}
     defaults: { _controller: BlogBundle:Blog:blogDetail }
+articlemobileshow:
+    path:   /api/article/show
+    defaults: { _controller: BlogBundle:BlogApi:showAllArticlesMobile }
