@@ -55,3 +55,15 @@ mobile_addVideo:
 mobile_deleteVideo:
     path: /api/videos/delete={id}
     defaults: {_controller: TalentBundle:VideoApi:deleteVideo}
+mobile_updateProfile:
+    path: /api/updateUser
+    defaults: {_controller: TalentBundle:TalentApi:updateProfile}
+mobile_getUser:
+    path: /api/getUser
+    defaults: {_controller: TalentBundle:TalentApi:returnUser}
+mobile_deleteUser:
+    path: /api/deleteUser
+    defaults: {_controller: TalentBundle:TalentApi:deleteUser}
+mobile_uploadImg:
+    path: /api/upload={id}
+    defaults: {_controller: TalentBundle:TalentApi:uploadImage}
