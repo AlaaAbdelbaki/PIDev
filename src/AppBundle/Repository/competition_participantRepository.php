@@ -38,4 +38,23 @@ class competition_participantRepository extends \Doctrine\ORM\EntityRepository
 
     }
 
+    public function findParticipation($user,$comp)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT  * 
+  FROM
+ competition_participant
+   WHERE competition_id = "'.$comp.'" AND user_id="'.$user.'"';
+   ;
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute();
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $stmt->fetchAll();
+
+
+    }
+
 }
