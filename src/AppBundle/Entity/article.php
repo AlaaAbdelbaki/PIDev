@@ -4,6 +4,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use FOS\CommentBundle\Entity\Thread as BaseThread;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * article
@@ -14,13 +16,13 @@ use Doctrine\ORM\Mapping as ORM;
 class article
 {
     /**
-     * @var int
+     * @var int $id
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -30,7 +32,7 @@ class article
     private $title;
     /**
      * @var string
-     *
+     * @Assert\Image()
      * @ORM\Column(name="img", type="string", length=500)
      */
     private $img;
@@ -56,35 +58,6 @@ class article
      * @ORM\Column(name="content", type="text")
      */
     private $content;
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getComments()
-    {
-        return $this->comments;
-    }
-
-    /**
-     * @param ArrayCollection $comments
-     */
-    public function setComments($comments)
-    {
-        $this->comments = $comments;
-    }
-
-
-
-    /**
-     * @ORM\OneToMany(targetEntity="comment", mappedBy="article" , orphanRemoval=true)
-     */
-    private $comments;
-
-    public function __construct()
-    {
-        $this->comments = new ArrayCollection();
-    }
-
 
     /**
      * Get id

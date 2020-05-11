@@ -1,0 +1,58 @@
+{%  extends 'admin_base.html.twig' %}
+{% block admin_content %}
+    <div class="content">
+    <div class="container-fluid">
+    <div class="col-md-12">
+        <div class="card">
+
+            <div class="card-header card-header-primary">
+                  <h4 class="card-title ">BLOG   </h4>
+                <a class="btn btn-success" href="{{ path('blog_homepage') }}">Add new Blog</a>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+
+                    <table class="table" id="myTable">
+
+
+
+                        <th >Title</th>
+                        <th>
+                            Image
+                        </th>
+                        <th>
+                            Content
+                        </th>
+                        <th>
+                            Action
+                        </th>
+
+
+                        <tbody>
+                        {% for a in articles %}
+                        <tr>
+
+                            <td>
+                                {{a.title}}
+                            </td>
+                            <td>
+                                <img src="{{ asset('assets/img/shop-img/' ~ a.img) }}" width="200px" height="300px"/>
+                            </td>
+                            <td>
+                                {{a.content}}
+                            </td>
+                            <td>
+                                <a class="btn btn-danger mr-3" href="{{ path('blog_delete',{'id':a.id}) }}">Delete</a>
+                                <a class="btn btn-warning" href="{{ path('blog_edit',{'id':a.id}) }}">Edit</a>
+                            </td>
+
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div></div></div>
+{% endblock %}

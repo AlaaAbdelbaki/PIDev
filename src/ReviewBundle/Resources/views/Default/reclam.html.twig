@@ -1,0 +1,52 @@
+{% extends 'admin_base.html.twig' %}
+{% block admin_content %}
+    <div class="content">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">Complaints</h4>
+                    <p class="card-category"> Here is a subtitle for this table</p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+
+    <thead class="text-primary">
+    <th>ID</th>
+    <th>User Name</th>
+    <th>Subject</th>
+    <th>Content</th>
+    <th>Actions</th>
+    </thead>
+                            {% for r in r %}
+        <tbody>
+
+        <tr>
+
+            <td> {{ r.id }}</td>
+
+            <td>{{ r.User.username }}</td>
+
+
+            <td>{{  r.subject }} </td>
+
+
+
+            <td>{{ r.content}}</td>
+
+
+
+            <td><a  class="btn btn-danger" href="{{ path('delete_reclam',{'id':r.id}) }}">Delete</a></td>
+            <td><a class="btn btn-success" href="{{ path('Mail',{'id':r.id}) }}">Respond</a></td>
+        </tr>
+
+        </tbody>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

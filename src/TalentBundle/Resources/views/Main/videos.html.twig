@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+
+    <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({{ asset('assets/img/bg-img/bg-1.jpg') }});">
+    <div class="bradcumbContent">
+        <h2>Vidéos</h2>
+    </div>
+    </div>
+    <!-- bg gradients -->
+    <div class="bg-gradients"></div>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <!-- ##### Elements Area Start ##### -->
+    <section class="elements-area mt-30 section-padding-100-0 ">
+        <div class="container">
+
+            {% for video in videos %}
+                {% for user in users %}
+                    {% if video.owner.id == user.id %}
+                        <h1 class="text-primary">{{ video.title }}</h1>
+                        <iframe width="854" height="480" src="{{video.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <h2 class="text-secondary">Uploaded by: {{ user.username }}</h2>
+{#                        Voting on video#}
+                        <div id="voting" class="row">
+                            <div class="col"></div>
+                            <div class="col"></div>
+{#                            Likes and dislikes#}
+                            <div class="col" style="user-select: none;">
+                                <i id="up{{ video.id }}" class="fa fa-thumbs-up fa-3x" style="height: 50px;width: 50px; color: #e2f3f5;cursor: pointer;" ></i>
+                                <i id="down{{ video.id }}" class="fa fa-thumbs-down fa-3x fa-flip-horizontal" style="color: #e2f3f5;cursor: pointer;"></i>
+                                <i hidden id="color_ref" class="fa fa-thumbs-down fa-3x fa-flip-horizontal" style="color: #e2f3f5;cursor: pointer;"></i>
+                            </div>
+                        </div>
+                        <div id="comments" class="row">
+                                {% include '@FOSComment/Thread/async.html.twig' with {'id': '31'} %}
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </section>
+    <script type="text/javascript">
+        $("document").ready(function () {
+            var like=$("[id^=up]");
+            var dislike=$("[id^=down]");
+            var white=$("#color_ref").css("color");
+
+            like.click(function () {
+                var id = $(this).attr("id").replace("up","");
+                console.log(id);
+                // console.log($('#up'+id).css("color"));
+                if($("#up"+id).css("color") === white)
+                {
+                    console.log("Like "+id+" toggled ON" );
+                    $("#up"+id).css("color","#2f89fc");
+                    $("#down"+id).css("color","#e2f3f5");
+                }
+                else
+                {
+                    console.log("Like "+id+" toggled OFF");
+                    $("#up"+id).css("color","#e2f3f5");
+                    $("#down"+id).css("color","#e2f3f5");
+                }
+            });
+            dislike.click(function () {
+                var id = $(this).attr("id").replace("down","");
+                console.log(id);
+                // console.log($('#up'+id).css("color"));
+                if($("#down"+id).css("color") === white)
+                {
+                    console.log("Dislike "+id+" toggled ON" );
+                    $("#down"+id).css("color","#d72323");
+                    $("#up"+id).css("color","#e2f3f5");
+                }
+                else
+                {
+                    console.log("Dislike "+id+" toggled OFF");
+                    $("#down"+id).css("color","#e2f3f5");
+                    $("#up"+id).css("color","#e2f3f5");
+                }
+            })
+        });
+    </script>
+{% endblock %}

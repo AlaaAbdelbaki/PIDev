@@ -1,0 +1,51 @@
+{% extends 'admin_base.html.twig' %}
+{% block admin_content %}
+    <div class="content">
+        <div class="container-fluid">
+            {{ form_start(f) }}
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title ">Edit Ticket </h4>
+                        <p class="card-category"></p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                <tr>
+                                    <th>
+                                        price:
+                                    </th>
+                                    <th>
+                                        {{ form_widget(f.price) }}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        event_date:
+                                    </th>
+                                    <th>
+                                        {{ form_widget(f.event) }}
+                                    </th>
+                                    <th>
+                                        {{ form_end(f) }}
+                                    </th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr>
+
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ form_end(f) }}
+    </div>
+{% endblock %}

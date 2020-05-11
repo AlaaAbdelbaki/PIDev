@@ -723,3 +723,79 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+    
+
+    /**
+     * Displays a form to edit an existing competition entity.
+     *
+     * @Route("/{id}/edit", name="competition_edit")
+     * @Method({"GET", "POST"})
+     * @param Request $request
+     * @param competition $competition
+     * @return RedirectResponse|Response
+     */
+    public function editAction(Request $request, competition $competition)
+    {
+        $deleteForm = $this->createDeleteForm($competition);
+        $editForm = $this->createForm('CompetitionsBundle\Form\competitionType', $competition);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('competition_edit', array('id' => $competition->getId()));
+        }
+
+        return $this->render('CompetitionsBundle:Default:edit.html.twig', array(
+            'competition' => $competition,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Deletes a competition entity.
+     *
+     * @Route("/{id}", name="competition_delete")
+     * @Method("DELETE")
+     * @param Request $request
+     * @param competition $competition
+     * @return RedirectResponse
+     */
+    public function deleteAction(Request $request, competition $competition)
+    {
+        $form = $this->createDeleteForm($competition);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($competition);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('competition_index');
+    }
+
+    /**
+     * Creates a form to delete a competition entity.
+     *
+     * @param competition $competition The competition entity
+     *
+     * @return FormInterface
+     */
+    private function createDeleteForm(competition $competition)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('competition_delete', array('id' => $competition->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+        ;
+    }

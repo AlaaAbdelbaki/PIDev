@@ -1,0 +1,45 @@
+events_homepage:
+    path:     /Events
+    defaults: { _controller: EventsBundle:Default:index }
+event_add:
+    path:     admin/event/add
+    defaults: { _controller: EventsBundle:Events:add }
+show_events_admin:
+    path:     admin/event/show
+    defaults: { _controller: EventsBundle:Events:affiche }
+event_delete:
+    path:     admin/event/delete/{id}
+    defaults: { _controller: EventsBundle:Events:delete }
+event_modifier:
+    path:     admin/event/modifier/{id}
+    defaults: { _controller: EventsBundle:Events:modifier }
+ticket_ajout:
+    path:     admin/ticket/new/{id}
+    defaults: { _controller: EventsBundle:ticket:ajout }
+ticket_list:
+    path:     admin/ticket/list
+    defaults: { _controller: EventsBundle:ticket:list }
+ticket_supp:
+    path:     admin/ticket/supp/{id}
+    defaults: { _controller: EventsBundle:ticket:supp }
+ticket_edit:
+    path:     admin/ticket/edit/{id}
+    defaults: { _controller: EventsBundle:ticket:edit }
+show_events:
+    path:     /events/list
+    defaults: { _controller: EventsBundle:Default:affiche }
+search:
+    path:     /search
+    defaults: { _controller: EventsBundle:Events:search }
+filter_category:
+    path:     /event/filter
+    defaults: { _controller: EventsBundle:Events:filter }
+triEndD:
+    path:     /triEndD
+    defaults: { _controller: EventsBundle:Events:triEndD }
+statsUser:
+    path:     /statsUser
+    defaults: { _controller: EventsBundle:Events:statsUser }
+buy_ticket:
+     path:     /event/reservation/{id}
+     defaults: { _controller: EventsBundle:ticket:buyticket }

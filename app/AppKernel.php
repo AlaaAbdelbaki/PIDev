@@ -4,11 +4,13 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
+
 class AppKernel extends Kernel
 {
     public function registerBundles()
     {
         $bundles = [
+            new WBW\Bundle\HighchartsBundle\HighchartsBundle(),
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
@@ -18,8 +20,24 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new CompetitionsBundle\CompetitionsBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new TalentBundle\TalentBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new FOS\CommentBundle\FOSCommentBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+
+            new EventsBundle\EventsBundle(),
             new ShopBundle\ShopBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+
+
+            new BlogBundle\BlogBundle(),
+            new ReviewBundle\ReviewBundle(),
+            new \Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
+            new blackknight467\StarRatingBundle\StarRatingBundle(),
+
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -1,0 +1,59 @@
+{%  extends 'base.html.twig' %}
+
+{% block content %}
+
+
+    <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url({{ asset('assets/img/bg-img/breadcumb2.jpg') }})">
+        <div class="bradcumbContent">
+            <h2>Blog</h2>
+
+        </div>
+    </div>
+    <div class="bg-gradients "></div>
+    <div class="blog-area  section-padding-100 " style="background-color: #0c0527">
+        <div class="container">
+            <div class="row align-content-center">
+
+
+                <div class="col-12">
+
+                    <div class="fitness-blog-posts">
+                        {% for article in articles %}
+                            <!-- Single Post Start -->
+                            <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: fadeInUp;">
+                                <!-- Post Thumb -->
+                                <div class="blog-post-thumb mb-30">
+                                    <img src="{{ asset('assets/img/shop-img/' ~ article.img) }}" alt="">
+                                </div>
+                                <!-- Post Title -->
+                                <a href="#" class="post-title text-white">{{article.title}}</a>
+                                <!-- Post Meta -->
+                                <div class="post-meta d-flex justify-content-between">
+                                    <div class="post-date">
+                                        <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Flocalhost.dev%2F2a7_php5%2Fview%2Fafficher_wishlist.php&layout=button_count&size=small&width=83&height=20&appId" width="83" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                                        <a href="https://twitter.com/share?ref_src=https://www.your-domain.com/your-page.html" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+                                    </div>
+                                    <!-- Comments -->
+
+                                </div>
+                                <!-- bg gradients -->
+                                <div class="bg-gradients mb-30 w-25"></div>
+                                <!-- Post Excerpt -->
+                                <p>{{article.content}}</p>
+                                <!-- Read More -->
+<a href="{{ path('blog_details', {'id' : article.id}) }}" class="btn musica-btn btn-3"> View Details...</a>
+                            </div>
+                        {% endfor %}
+                        <!-- Pagination -->
+                            <div class="row justify-content-center mt-5">  {{ knp_pagination_render(articles) }}</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-gradients "></div>
+
+{% endblock %}

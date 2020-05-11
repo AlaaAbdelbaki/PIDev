@@ -10,4 +10,10 @@ namespace AppBundle\Repository;
  */
 class articleRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function orderTitle()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM AppBundle:article p  ORDER BY p.title ASC')
+            ->getResult();
+    }
 }

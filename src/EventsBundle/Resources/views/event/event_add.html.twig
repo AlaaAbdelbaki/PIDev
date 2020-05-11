@@ -1,0 +1,90 @@
+{% extends 'admin_base.html.twig' %}
+{% block admin_content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">Add New Event</h4>
+                        <p class="card-category"></p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            {{ form_start(f) }}
+                            <table class="table">
+
+                                <tr>
+
+                                        title:
+
+                                        {{ form_widget(f.title) }}
+
+                                </tr>
+                                <tr>
+
+                                        start_date:
+
+                                        {{ form_widget(f.startDate) }}
+
+                                </tr>
+                                <tr>
+
+                                        end_date
+
+                                        {{ form_widget(f.endDate) }}
+
+                                </tr>
+                                <tr>
+
+                                        image
+
+                                        {{ form_widget(f.img) }}
+
+                                </tr>
+                                <tr>
+
+                                        location:
+
+
+                                        {{ form_widget(f.location) }}
+
+                                </tr>
+                                <tr>
+
+                                        nb_places:
+
+                                        {{ form_widget(f.nb_places) }}
+
+                                </tr>
+                                <tr>
+
+                                        description:
+
+                                        {{ form_widget(f.description) }}
+
+                                </tr>
+                                <tr>
+
+                                        type:
+
+                                        {{ form_widget(f.type) }}
+
+                                </tr>
+                                <tr>
+
+                                        {{ form_widget(f.Submit,{attr:{'class':'btn btn-primary btn-block'}}) }}
+
+                                </tr>
+
+
+
+                            </table>
+                            {{ form_end(f) }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

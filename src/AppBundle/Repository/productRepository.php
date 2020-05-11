@@ -38,4 +38,23 @@ class productRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('str', '%'.$str.'%')
             ->getResult();
     }
+
+    public function countquantity(){
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT IDENTITY(ol.product) as product_id,sum(ol.quantity) FROM AppBundle:order_line ol GROUP BY ol.product'
+            )
+            ->getResult();
+    }
+
+    public function findProductNameForOneProduct($id){
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p.productName
+            FROM AppBundle:product p
+            WHERE p.id=:id'
+            )
+            ->setParameter('id',$id)
+            ->getResult();
+    }
 }

@@ -1,0 +1,21 @@
+{%  extends 'admin_base.html.twig' %}
+
+{% block admin_content %}
+    <div class="content ">
+    <div class="col-md-8 ">
+    <div class="card " style="margin-left: 20%">
+        <div class="card-header card-header-success">
+            <h4 class="card-title">Answer Complaint</h4>
+            <p class="card-category"></p>
+        </div>
+        <div class="card-body">
+
+            {{ form_start(form) }}
+            <div class="form-group bmd-form-group">
+                {{ form_widget(form.contenu,{'attr': {'class': 'form-control'} }) }}
+            </div>
+            <button type="submit" class="btn btn-primary pull-right">Send E-mail</button>
+            {{ form_end(form) }}
+        </div>
+    </div></div></div>
+{% endblock %}

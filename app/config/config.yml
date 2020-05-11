@@ -2,15 +2,24 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: "@TalentBundle/Resources/config/services.yml" }
+    - { resource: "@EventsBundle/Resources/config/services.yml" }
     - { resource: "@ShopBundle/Resources/config/services.yml" }
     
 
+    - { resource: "@BlogBundle/Resources/config/services.yml" }
+
+
+    - { resource: "@ReviewBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    image_directory: '%kernel.root_dir%/../web/assets/uploads/'
+
     photos_directory: '%kernel.root_dir%/../web/assets/img/shop-img/'
+    photo_directory: '%kernel.root_dir%/../web/assets/img/fich_img/'
 
 framework:
     #esi: ~
@@ -67,6 +76,8 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: '%mailer_transport%'
+    encryption: ssl
+    auth_mode: login
     host: '%mailer_host%'
     username: '%mailer_user%'
     password: '%mailer_password%'
@@ -82,6 +93,23 @@ fos_user:
     from_email:
         address: "hello@aquanote.com"
         sender_name: "AquaNote Postman"
+
+
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: AppBundle\Entity\comment
+            thread : AppBundle\Entity\Thread
+
+
+
+assetic:
+
+    bundles: [ "FOSCommentBundle" ]
+knp_paginator:
+    template:
+        pagination: '@Competitions/Default/pagination.html.twig'
 # Windows configuration
 knp_snappy:
     pdf:
@@ -89,12 +117,14 @@ knp_snappy:
         # If you have wkhtmltopdf as an environment variable you don't need to provide the
         # full path to the executable, use it in the same way as you use in the console
         #binary:  "wkhtmltopdf"
-        binary:     "\"D:\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
+        binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
         options:
             no-outline: true
             page-size: LETTER
             encoding: UTF-8
     image:
         enabled:    true
-        binary:     "\"D:\\wkhtmltopdf\bin\\wkhtmltoimage.exe\""
+        binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\""
+
         options:    []
+gregwar_captcha: ~

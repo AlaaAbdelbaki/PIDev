@@ -1,0 +1,40 @@
+{% extends 'admin_base.html.twig' %}
+{% block admin_content %}
+    <div class="content">
+    <div class="container-fluid">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">tickets list</h4>
+
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                        <th>ID</th>
+                        <th>Price</th>
+                        <th>Event</th>
+
+                        </thead>
+                        <tbody>
+                        {% for t in t %}
+                            <tr>
+                                <td>{{ t.id }}</td>
+                                <td>{{ t.price }}</td>
+                                <td>{{ t.event.title}}</td>
+
+                               <td><a href="{{path('ticket_edit',{'id': t.id })}}"> <button class="btn btn-warning btn-block">Edit</button></a> <br></td>
+                                <td><a href="{{path('ticket_supp',{'id': t.id })}}"> <button class="btn btn-danger btn-block">Delete</button></a> <br></td>
+
+                            </tr>
+
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div></div>
+{% endblock %}

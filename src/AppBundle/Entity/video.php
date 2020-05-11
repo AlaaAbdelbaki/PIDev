@@ -4,6 +4,13 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\JoinTable;
+use Doctrine\ORM\Mapping\ManyToMany;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Symfony\Component\Validator\Constraints as Assert ;
+use FOS\CommentBundle\Entity\Thread as BaseThread;
+
 
 /**
  * video
@@ -13,6 +20,52 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class video
 {
+
+    /**
+     * @var int $id
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+    /**
+     * @ManyToMany(targetEntity="User")
+     * @JoinTable(name="votes",
+     *      joinColumns={@JoinColumn(name="video_id", referencedColumnName="id",onDelete="cascade")},
+     *      inverseJoinColumns={@JoinColumn(name="user_id", referencedColumnName="id",onDelete="cascade")}
+     *      )
+     */
+    private $votes;
+    /**
+     * Many features have one product. This is the owning side.
+     * @ManyToOne(targetEntity="User", inversedBy="videos")
+     * @JoinColumn(name="owner", referencedColumnName="id")
+     */
+    private $owner;
+
+
+    /**
+     * @return mixed
+     */
+    public function getOwner()
+    {
+        return $this->owner;
+    }
+
+    /**
+     * @param mixed $owner
+     */
+    public function setOwner($owner)
+    {
+        $this->owner = $owner;
+    }
+    public function __construct()
+    {$this->votes = new ArrayCollection();
+        $this->publishDate=new \DateTime();
+
+    }
+
     /**
      * @return ArrayCollection
      */
@@ -28,26 +81,13 @@ class video
     {
         $this->votes = $votes;
     }
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-    /**
-     * @ORM\OneToMany(targetEntity="vote", mappedBy="video" , orphanRemoval=true)
-     */
-    private $votes;
 
-    public function __construct()
-    {
-        $this->votes = new ArrayCollection();
-    }
+
+
+
     /**
      * @var string
-     *
+     *@Assert\Regex("/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*|/")
      * @ORM\Column(name="url", type="string", length=500)
      */
     private $url;
@@ -62,10 +102,9 @@ class video
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="publish_date", type="date")
+     * @ORM\Column(name="publish_date", type="datetime")
      */
     private $publishDate;
-
 
     /**
      * Get id

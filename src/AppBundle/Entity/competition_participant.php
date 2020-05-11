@@ -19,7 +19,27 @@ class competition_participant
     {
         return $this->competition;
     }
+    /**
+     * @ORM\ManyToOne(targetEntity="video")
+     * @ORM\JoinColumn(name="video_id", referencedColumnName="id" ,onDelete="CASCADE")
+     */
+    private $video;
 
+    /**
+     * @return mixed
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
+    /**
+     * @param mixed $video
+     */
+    public function setVideo($video)
+    {
+        $this->video = $video;
+    }
     /**
      * @param mixed $competition
      */
@@ -64,11 +84,14 @@ class competition_participant
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="participation_date", type="date")
+     * @ORM\Column(name="participation_date", type="datetime")
      */
-    private $participationDate;
+    private $participationDate ;
 
-
+    public function __construct()
+    {
+        $this->participationDate=new \DateTime();
+    }
     /**
      * Get id
      *
