@@ -37,3 +37,15 @@ affichetri:
 filter_Rating:
     path:     /Rating/filter
     defaults: { _controller: ReviewBundle:reviews:filter }
+allComplaint:
+    path:     /api/allComplaint
+    defaults: { _controller: ReviewBundle:ComplaintApi:allComplaint }
+AjouterCJson:
+    path:     /api/AjouterCJson
+    defaults: { _controller: ReviewBundle:ComplaintApi:AjouterCJson }
+allReview:
+    path:     /api/allReview
+    defaults: { _controller: ReviewBundle:ReviewApi:allReview }
+AjouterRJson:
+    path:     /api/AjouterRJson
+    defaults: { _controller: ReviewBundle:ReviewApi:AjouterRJson }
