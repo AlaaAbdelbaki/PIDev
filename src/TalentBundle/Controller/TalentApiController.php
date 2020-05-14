@@ -2,6 +2,7 @@
 
 namespace TalentBundle\Controller;
 
+use AppBundle\Entity\subscription;
 use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -125,4 +126,79 @@ class TalentApiController extends Controller
     }
 
 
+    public function getSubCountAction(Request $request)
+    {
+        $id = $request->get('id');
+        $subscriberscount = $this->getDoctrine()->getRepository(subscription::class)->getSubscribersCount($id)[0];
+        $subscribedToCount = $this->getDoctrine()->getRepository(subscription::class)->getSubscribtionCount($id)[0];
+
+        $subscribtion = ["subscriberscount"=>$subscriberscount,"subscribedToCount"=>$subscribedToCount];
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($subscribtion, null , [ ObjectNormalizer::ATTRIBUTES => ["subscriberscount","subscribedToCount"]]);
+        return new JsonResponse($formatted);
+    }
+
+
+    public function subscribeAction(Request $request)
+    {
+        $subscriber = $this->getDoctrine()->getRepository(User::class)->find($request->get('subscriberId'));
+        $subscribedTo = $this->getDoctrine()->getRepository(User::class)->find($request->get('subscribedToId'));
+
+
+        $subscribtion = new subscription();
+
+        $subscribtion->setSub($subscriber);
+        $subscribtion->setSubedto($subscribedTo);
+        $subscribtion->setSubscriptionDate(new \DateTime());
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($subscribtion);
+        $em->flush();
+
+        return new JsonResponse();
+
+    }
+
+    public function unsubscribeAction(Request $request)
+    {
+        $subscriber = $this->getDoctrine()->getRepository(User::class)->find($request->get('subscriberId'));
+        $subscribedTo = $this->getDoctrine()->getRepository(User::class)->find($request->get('subscribedToId'));
+
+
+        $subscribtion = $this->getDoctrine()->getRepository(subscription::class);
+        if($subscribtion->exist($subscribedTo,$subscriber)){
+            $subscribtion->unsub($subscribedTo,$subscriber);
+        }
+
+
+        return new JsonResponse();
+
+    }
+
+    public function isSubscribedAction(Request $request)
+    {
+        $subscriber = $this->getDoctrine()->getRepository(User::class)->find($request->get('subscriberId'));
+        $subscribedTo = $this->getDoctrine()->getRepository(User::class)->find($request->get('subscribedToId'));
+
+
+        $subscribtion = $this->getDoctrine()->getRepository(subscription::class);
+        $isSub = $subscribtion->exist($subscribedTo,$subscriber);
+        $state = ["state"=>$isSub != null];
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($state, null , [ ObjectNormalizer::ATTRIBUTES => ["state"]]);
+        return new JsonResponse($formatted);
+    }
+
+    public function getAllUsersAction()
+    {
+        $user = $this->getDoctrine()->getRepository(User::class)->findAll();
+        $normalizer = new ObjectNormalizer ();
+        $normalizer -> setCircularReferenceHandler ( function ( $user ) {
+            return $user -> getId ();
+        });
+        $serializer = new Serializer([ $normalizer ]);
+        $formatted = $serializer->normalize($user , null , [ ObjectNormalizer::ATTRIBUTES => ['id','username','email','roles','birthday','profilePic','sexe','telephoneNumber','adresse','name','firstName','bio']]);
+
+        return new JsonResponse($formatted);
+    }
 }

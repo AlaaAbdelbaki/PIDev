@@ -179,7 +179,7 @@ class TalentController extends Controller
         $sub->setSub($user);
         $sub->setSubedto($this->getDoctrine()->getRepository(User::class)->find($id));
         $sub->setSubscriptionDate($date);
-        $subscription = $this->getDoctrine()->getRepository(subscription::class)->exists($id, $user->getId());
+        $subscription = $this->getDoctrine()->getRepository(subscription::class)->exist($id, $user->getId());
         if ($user->getId() != $id && $subscription == null) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($sub);

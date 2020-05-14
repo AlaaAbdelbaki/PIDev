@@ -65,5 +65,20 @@ mobile_deleteUser:
     path: /api/deleteUser
     defaults: {_controller: TalentBundle:TalentApi:deleteUser}
 mobile_uploadImg:
-    path: /api/upload={id}
+    path: /api/uploadImage={id}
     defaults: {_controller: TalentBundle:TalentApi:uploadImage}
+mobile_subCount:
+    path: /api/subcount
+    defaults: {_controller: TalentBundle:TalentApi:getSubCount}
+mobile_subscribe:
+    path: /api/subscribe
+    defaults: {_controller: TalentBundle:TalentApi:subscribe}
+mobile_unsubscribe:
+    path: /api/unsubscribe
+    defaults: {_controller: TalentBundle:TalentApi:unsubscribe}
+mobile_isSub:
+    path: /api/isSubscribed
+    defaults: {_controller: TalentBundle:TalentApi:isSubscribed}
+mobile_getAllusers:
+    path: /api/getAllUsers
+    defaults: {_controller: TalentBundle:TalentApi:getAllUsers}
