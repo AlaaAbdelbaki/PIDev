@@ -97,6 +97,8 @@ public function ajoutAction(Request $request ,$id)
                 'Content-Disposition'   => 'inline; filename="'.$filename.'.pdf"'
             )
         );
+
+
     }
 
 }
