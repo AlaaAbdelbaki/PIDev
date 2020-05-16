@@ -19,7 +19,7 @@ class ShopApiController extends Controller
         $products=$rep->findAll();
 
         $normalizer = new ObjectNormalizer();
-        $normalizer->setCircularReferenceLimit(2);
+       // $normalizer->setCircularReferenceLimit(2);
 
         $normalizer->setCircularReferenceHandler(function ($object) {
             return $object->getId();
@@ -27,7 +27,7 @@ class ShopApiController extends Controller
 
 
         $serializer = new Serializer([$normalizer]);
-        $formatted = $serializer->normalize($products);
+        $formatted = $serializer->normalize($products,null);
         return new JsonResponse($formatted);
 
     }
