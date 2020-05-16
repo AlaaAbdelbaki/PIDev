@@ -50,3 +50,24 @@ panier_showpdf:
 cart_add:
     path: /shop/cart/add
     defaults: { _controller: ShopBundle:Cart:userAddCart }
+shop_api_product_show_all:
+    path:     /api/shop/product/all
+    defaults: { _controller: ShopBundle:ShopApi:showAllProductsMobile}
+shop_api_product_show_byid:
+    path:     /api/shop/product/all/{id}
+    defaults: { _controller: ShopBundle:ShopApi:showAllProductsMobile}
+shop_api_product_add_product:
+    path:     /api/shop/product/add
+    defaults: { _controller: ShopBundle:ShopApi:addproductMobile}
+shop_api_order_add_order:
+    path:     /api/shop/order/add
+    defaults: { _controller: ShopBundle:ShopApi:addOrder}
+shop_api_order_add_orderline:
+    path:     /api/shop/orderline/add
+    defaults: { _controller: ShopBundle:ShopApi:addOrderLine}
+shop_api_count_quantity:
+    path:     /api/shop/count
+    defaults: { _controller:ShopBundle:ShopApi:countquantity}
+shop_api_product_findnamebyid:
+    path: /api/product/name/{id}
+    defaults: { _controller:ShopBundle:ShopApi:showProductNameOne}
