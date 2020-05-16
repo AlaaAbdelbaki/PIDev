@@ -29,29 +29,25 @@ class TalentController extends Controller
         $user = $this->getUser();
         $pp=$user->getProfilePic();
         $form = $this->createFormBuilder($user)
-            ->add("email",EmailType::class)
-            ->add("birthday",BirthdayType::class)
-            ->add('profile_pic',FileType::class,['data_class'=>null,'required'=>false])
-            ->add("sexe",ChoiceType::class,["choices"=>["Homme"=>"male","Femme"=>"female"]])
-            ->add("telephoneNumber",NumberType::class)
-            ->add("adresse",TextType::class)
-            ->add("name",TextType::class)
-            ->add("first_name",TextType::class)
-            ->add("bio",TextareaType::class)
-            ->add("submit",SubmitType::class,["label"=>"Mettre à jour"])
+            ->add("email", EmailType::class)
+            ->add("birthday", BirthdayType::class)
+            ->add('profile_pic', FileType::class, ['data_class' => null, 'required' => false])
+            ->add("sexe", ChoiceType::class, ["choices" => ["Homme" => "male", "Femme" => "female"]])
+            ->add("telephoneNumber", NumberType::class)
+            ->add("adresse", TextType::class)
+            ->add("name", TextType::class)
+            ->add("first_name", TextType::class)
+            ->add("bio", TextareaType::class)
+            ->add("submit", SubmitType::class, ["label" => "Mettre à jour"])
             ->getForm();
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $file = $user->getProfilePic();
-            if($file != null)
-            {
-                $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            if ($file != null) {
+                $fileName = md5(uniqid()) . '.' . $file->guessExtension();
                 $file->move($this->getParameter('image_directory'), $fileName);
                 $user->setProfilePic($fileName);
-            }
-            else
-            {
+            } else {
                 $user->setProfilePic($pp);
             }
             $em = $this->getDoctrine()->getManager();
@@ -59,19 +55,19 @@ class TalentController extends Controller
             $em->flush();
             return $this->redirectToRoute('user_profile',['id'=>$this->getUser()->getId()]);
         }
-        return $this->render('@Talent/Main/edit_profile.html.twig',["f"=>$form->createView()]);
+        return $this->render('@Talent/Main/edit_profile.html.twig', ["f" => $form->createView()]);
     }
 
     public function listAction()
     {
         $user = $this->getDoctrine()->getManager()->getRepository(User::class)->findAll();
-        return $this->render('@Talent/Dashboard/list_users.html.twig',["users"=>$user]);
+        return $this->render('@Talent/Dashboard/list_users.html.twig', ["users" => $user]);
     }
 
     public function deleteAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $user =$em->getRepository(User::class)->find($id);
+        $user = $em->getRepository(User::class)->find($id);
         $em->remove($user);
         $em->flush();
         return $this->redirectToRoute('list_profile');
@@ -95,24 +91,22 @@ class TalentController extends Controller
     {
         $user = new User();
         $form = $this->createFormBuilder($user)
-            ->add("email",EmailType::class)
-            ->add("birthday",BirthdayType::class)
-            ->add('profile_pic',FileType::class,['data_class'=>null,'required'=>false])
-            ->add("sexe",ChoiceType::class,["choices"=>["Homme"=>"male","Femme"=>"female"]])
-            ->add("telephoneNumber",NumberType::class)
-            ->add("adresse",TextType::class)
-            ->add("name",TextType::class)
-            ->add("first_name",TextType::class)
-            ->add("bio",TextType::class)
-            ->add("submit",SubmitType::class,["label"=>"Ajouter un utilisateur"])
+            ->add("email", EmailType::class)
+            ->add("birthday", BirthdayType::class)
+            ->add('profile_pic', FileType::class, ['data_class' => null, 'required' => false])
+            ->add("sexe", ChoiceType::class, ["choices" => ["Homme" => "male", "Femme" => "female"]])
+            ->add("telephoneNumber", NumberType::class)
+            ->add("adresse", TextType::class)
+            ->add("name", TextType::class)
+            ->add("first_name", TextType::class)
+            ->add("bio", TextType::class)
+            ->add("submit", SubmitType::class, ["label" => "Ajouter un utilisateur"])
             ->getForm();
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $file = $user->getProfilePic();
-            if($file != null)
-            {
-                $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            if ($file != null) {
+                $fileName = md5(uniqid()) . '.' . $file->guessExtension();
                 $file->move($this->getParameter('image_directory'), $fileName);
                 $user->setProfilePic($fileName);
             }
@@ -121,7 +115,7 @@ class TalentController extends Controller
             $em->flush();
             return $this->redirectToRoute('list_profile');
         }
-        return $this->render('@Talent/Dashboard/add_user.html.twig',["f"=>$form->createView()]);
+        return $this->render('@Talent/Dashboard/add_user.html.twig', ["f" => $form->createView()]);
     }
 
 
@@ -152,12 +146,13 @@ class TalentController extends Controller
             return $this->render("@Talent/Default/error.html.twig");
         }
     }
+
     public function searchAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $requestString = $request->get('q');
-        $user =  $em->getRepository('AppBundle:User')->findEntitiesByString($requestString);
-        if(!$user) {
+        $user = $em->getRepository('AppBundle:User')->findEntitiesByString($requestString);
+        if (!$user) {
             $result['user']['error'] = "Utilisateur inexistant :( ";
         } else {
             $result['user'] = $this->getRealEntities($user);
@@ -166,16 +161,14 @@ class TalentController extends Controller
     }
 
 
-    function getRealEntities($user)
+    public function getRealEntities($user)
     {
-        foreach ($user as $user){
-            $realEntities[$user->getId()] = [$user->getProfilePic(),$user->getUsername()];
+        foreach ($user as $user) {
+            $realEntities[$user->getId()] = [$user->getProfilePic(), $user->getUsername()];
 
         }
         return $realEntities;
     }
-
-
 
     public function subscribeAction(Request $request, $id)
     {
@@ -201,11 +194,44 @@ class TalentController extends Controller
         $url = $request->headers->get('referer');
         $user = $this->getUser()->getId();
         $sub = $this->getDoctrine()->getManager()->getRepository(subscription::class);
-        if($sub->exist($id,$user) != null)
+        if($sub->exists($id,$user) != null)
         {
             $sub->unsub($id,$user);
         }
         return $this->redirect($url);
     }
+
+//    public function changePasswordAction($token){}
+
+//    public function subscribeAction(Request $request, $id)
+//    {
+//        $url = $request->headers->get('referer');
+//        $user = $this->getUser();
+//        $sub = new subscription();
+//        $date = new \DateTime();
+//        $sub->setSub($user);
+//        $sub->setSubedto($this->getDoctrine()->getRepository(User::class)->find($id));
+//        $sub->setSubscriptionDate($date);
+//        $subscription = $this->getDoctrine()->getRepository(subscription::class)->exist($id, $user->getId());
+//        if ($user->getId() != $id && $subscription == null) {
+//            $em = $this->getDoctrine()->getManager();
+//            $em->persist($sub);
+//            $em->flush();
+//        }
+//
+//        return $this->redirect($url);
+//    }
+//
+//    public function unsubscribeAction(Request $request,$id)
+//    {
+//        $url = $request->headers->get('referer');
+//        $user = $this->getUser()->getId();
+//        $sub = $this->getDoctrine()->getManager()->getRepository(subscription::class);
+//        if($sub->exist($id,$user) != null)
+//        {
+//            $sub->unsub($id,$user);
+//        }
+//        return $this->redirect($url);
+//    }
 
 }

@@ -17,7 +17,7 @@
             {% for video in videos %}
                 {% for user in users %}
                     {% if video.owner.id == user.id %}
-                        <h1 class="text-primary">{{ video.title }}</h1>
+                        <h1 class="text-primary"><a href="{{ path('video_details',{id: video.id}) }}" style="color: inherit; font-weight: inherit; font-size: inherit">{{ video.title }}</a></h1>
                         <iframe width="854" height="480" src="{{video.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <h2 class="text-secondary">Uploaded by: {{ user.username }}</h2>
 {#                        Voting on video#}
@@ -31,9 +31,7 @@
                                 <i hidden id="color_ref" class="fa fa-thumbs-down fa-3x fa-flip-horizontal" style="color: #e2f3f5;cursor: pointer;"></i>
                             </div>
                         </div>
-                        <div id="comments" class="row">
-                                {% include '@FOSComment/Thread/async.html.twig' with {'id': '31'} %}
-                        </div>
+
                         <br>
                         <br>
                         <br>

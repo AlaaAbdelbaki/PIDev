@@ -75,12 +75,13 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: '%mailer_transport%'
-    encryption: ssl
+    transport: "%mailer_transport%"
+#    encryption: "%mailer_encryption%"
+    port: 587
     auth_mode: login
-    host: '%mailer_host%'
-    username: '%mailer_user%'
-    password: '%mailer_password%'
+    host: smtp.gmail.com
+    username: "%mailer_user%"
+    password: "%mailer_password%"
     spool: { type: memory }
 
 sensio_framework_extra:
@@ -91,8 +92,8 @@ fos_user:
     firewall_name: main
     user_class: AppBundle\Entity\User
     from_email:
-        address: "hello@aquanote.com"
-        sender_name: "AquaNote Postman"
+        address: "%mailer_user%"
+        sender_name: "%mailer_user%"
 
 
 fos_comment:

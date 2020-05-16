@@ -49,6 +49,8 @@ class VideoController extends Controller
         $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findByOwner($id);
         return $this->render("@Talent/Dashboard/list_videos.html.twig",["videos"=>$video]);
     }
+
+
     public function deleteAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -89,5 +91,13 @@ class VideoController extends Controller
         $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findAll();
         $user = $this->getDoctrine()->getManager()->getRepository(User::class)->findAll();
         return $this->render("@Talent/Main/videos.html.twig",["videos"=>$video,"users"=>$user]);
+    }
+
+
+    public function videoDetailsAction($id)
+    {
+        $video = $this->getDoctrine()->getManager()->getRepository(video::class)->findOneBy(["id"=>$id]);
+//        var_dump($video);
+        return $this->render("@Talent/Main/video_details.html.twig",["videos"=>$video]);
     }
 }

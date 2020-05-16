@@ -44,6 +44,7 @@
                                 <!-- Read More -->
 <a href="{{ path('blog_details', {'id' : article.id}) }}" class="btn musica-btn btn-3"> View Details...</a>
                             </div>
+                            {% include '@FOSComment/Thread/async.html.twig' with {'id': '54'} %}
                         {% endfor %}
                         <!-- Pagination -->
                             <div class="row justify-content-center mt-5">  {{ knp_pagination_render(articles) }}</div>

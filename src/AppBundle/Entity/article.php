@@ -38,6 +38,11 @@ class article
     private $img;
 
     /**
+     * @ORM\OneToMany(targetEntity="comment", mappedBy="author" , orphanRemoval=true)
+     */
+    private $comments;
+
+    /**
      * @return string
      */
     public function getImg()
@@ -48,6 +53,7 @@ class article
     /**
      * @param string $img
      */
+
     public function setImg($img)
     {
         $this->img = $img;
