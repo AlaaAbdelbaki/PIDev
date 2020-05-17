@@ -43,3 +43,12 @@ statsUser:
 buy_ticket:
      path:     /event/reservation/{id}
      defaults: { _controller: EventsBundle:ticket:buyticket }
+afficheEventApi:
+    path:     /api/afficheEventApi
+    defaults: { _controller: EventsBundle:EventsApi:afficheEventApi }
+buyTicketApi:
+    path:     api/buyTicketApi/{id}
+    defaults: { _controller: EventsBundle:EventsApi:buyTicketApi }
+AfficheTicketApi:
+    path:     api/AfficheTicketApi
+    defaults: { _controller: EventsBundle:EventsApi:AfficheTicketApi }

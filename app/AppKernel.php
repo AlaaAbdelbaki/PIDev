@@ -38,7 +38,7 @@ class AppKernel extends Kernel
             new ReviewBundle\ReviewBundle(),
             new \Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
             new blackknight467\StarRatingBundle\StarRatingBundle(),
-
+            new EventsApiBundle\EventsApiBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

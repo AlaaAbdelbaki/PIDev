@@ -1,0 +1,9 @@
+events_api_homepage:
+    path:     /
+    defaults: { _controller: EventsApiBundle:Default:index }
+afficheEvent:
+    path:     /afficheEvent
+    defaults: { _controller: EventsApiBundle:evenement:afficheEvent }
+newEvent:
+    path:     /newEvent
+    defaults: { _controller: EventsApiBundle:evenement:newEvent }
