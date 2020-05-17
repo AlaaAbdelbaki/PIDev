@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
+use AppBundle\Entity\video;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -114,5 +116,59 @@ class AppApiController extends Controller
             Response::HTTP_OK,
             array('Content-type' => 'application/json')
         );
+    }
+
+    /**
+     * Lists all participation entities.
+     *
+     * @Route("/api/Homepage/", name="api_homepage")
+
+     * @return JsonResponse
+     */
+    public function showAction()
+    {
+
+        $videos = $this->getDoctrine()->getRepository(video::class)->findAll();
+
+        $normalizer = new ObjectNormalizer ();
+
+        $normalizer -> setCircularReferenceHandler ( function ( $video ) {
+            return $video -> getId ();
+        });
+
+        $serializer = new Serializer([$normalizer]);
+        $formatted = $serializer->normalize($videos , null , [ ObjectNormalizer::ATTRIBUTES => ['id','title','url','publishDate','owner'=>['id','username','email','roles','birthday','profilePic','sexe','telephoneNumber','adresse','name','firstName','bio'],
+                'votes'=>['id']]]);
+
+        return new JsonResponse($formatted);
+
+    }
+    /**
+     * @Route("/api/Homepage/ranks", name="ranks_feed_api")
+
+     * @return Response
+     */
+    public function updateRanksAction()
+    {
+        $ranks = $this->getDoctrine()->getRepository(video::class)->findRanks();
+
+        $res = array();
+        foreach ($ranks as $r) {
+            $vid = $this->getDoctrine()->getRepository(video::class)->findById($r['video_id']);
+
+            array_push($res,$vid[0]);
+
+        }
+
+        $normalizer = new ObjectNormalizer ();
+
+        $normalizer -> setCircularReferenceHandler ( function ( $rank ) {
+            return $rank -> getId ();
+        });
+        $serializer = new Serializer([$normalizer]);
+        $formatted = $serializer->normalize($res , null , [ ObjectNormalizer::ATTRIBUTES => ['id','title','url','publishDate','owner'=>['id','username','email','roles','birthday','profilePic','sexe','telephoneNumber','adresse','name','firstName','bio'],'votes'=>['id']]]);
+
+        return new JsonResponse($formatted);
+
     }
 }

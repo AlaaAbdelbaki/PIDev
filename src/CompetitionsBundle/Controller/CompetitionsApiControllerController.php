@@ -98,7 +98,7 @@ class CompetitionsApiControllerController extends Controller
             return $rank -> getId ();
         });
         $serializer = new Serializer([$normalizer]);
-        $formatted = $serializer->normalize($res , null , [ ObjectNormalizer::ATTRIBUTES => ['id','title','url','publishDate','owner'=>['id','username','email','roles','birthday','profilePic','sexe','telephoneNumber','adresse','name','firstName','bio']]]);
+        $formatted = $serializer->normalize($res , null , [ ObjectNormalizer::ATTRIBUTES => ['id','title','url','publishDate','owner'=>['id','username','email','roles','birthday','profilePic','sexe','telephoneNumber','adresse','name','firstName','bio'],'votes'=>['id']]]);
 
         return new JsonResponse($formatted);
 
