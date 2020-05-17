@@ -3,6 +3,7 @@
 namespace ReviewBundle\Controller;
 
 use AppBundle\Entity\review;
+use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,20 +30,12 @@ class ReviewApiController extends Controller
         $review->setCategory($request->get('category'));
         $review->setTitle($request->get('title'));
         $review->setContent($request->get('content'));
-        $review->setUser($this->getUser());
+        $review->setUser($this->getDoctrine()->getRepository(User::class)->find($request->query->get('user_id')));
         $em->persist($review);
         $em->flush();
 
-        $normalizer = new ObjectNormalizer();
-        $normalizer->setCircularReferenceLimit(2);
 
-        $normalizer->setCircularReferenceHandler(function ($object) {
-            return $object->getId();
-        });
-
-        $serializer = new Serializer([$normalizer]);
-        $formatted = $serializer->normalize($review);
-        return new JsonResponse($formatted);
+        return new JsonResponse();
     }
 }
 
