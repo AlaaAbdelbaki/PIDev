@@ -1,4 +1,0 @@
-services:
-#    events_api.example:
-#        class: EventsApiBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]

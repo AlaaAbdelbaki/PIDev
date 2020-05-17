@@ -16,32 +16,27 @@ class EventsApiController extends Controller
 {
     public function afficheEventApiAction()
     {
-        $tab = $this->getDoctrine()->getManager()
+        $events = $this->getDoctrine()->getManager()
             ->getRepository(event::class)
             ->findAll();
 
         $normalizer = new ObjectNormalizer();
-        $normalizer->setCircularReferenceLimit(2);
-
         $normalizer->setCircularReferenceHandler(function ($object) {
             return $object->getId();
         });
 
 
         $serializer = new Serializer([$normalizer]);
-        $formatted = $serializer->normalize($tab);
+        $formatted = $serializer->normalize($events,null ,[ ObjectNormalizer::ATTRIBUTES => ['id','title','startDate','endDate','img','location','nbPlaces','description','type']]);
+
         return new JsonResponse($formatted);
 
-
-       /* $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($tab);
-        return new JsonResponse($formatted);*/
     }
 
 
     public function buyTicketApiAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
+       /* $em = $this->getDoctrine()->getManager();
         $event = $em->getRepository(event::class)->find($id);
         $event->setnbPlaces($event->getnbPlaces() - 1);
         $em->persist($event);
@@ -49,7 +44,7 @@ class EventsApiController extends Controller
 
         $serializer = new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($event);
-        return new JsonResponse($formatted);
+        return new JsonResponse($formatted);*/
     }
 
 
