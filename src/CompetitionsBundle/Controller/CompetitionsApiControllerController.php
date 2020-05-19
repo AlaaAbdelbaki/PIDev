@@ -197,4 +197,64 @@ return new JsonResponse($v);
         return new JsonResponse();
 
     }
+
+    /**
+     * Deletes a competition entity.
+     *
+     * @Route("/api/Participation/Delete/", name="participation_api_delete")
+
+     * @param Request $request
+
+     * @return Response
+     */
+    public function participationDeleteAction(Request $request)
+    {
+
+        $participation = $this->getDoctrine()->getRepository(competition_participant::class)->find($request->query->get('participation'));
+        $video = $participation->getVideo();
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($participation);
+        $entityManager->remove($video);
+        $entityManager->flush();
+
+        $response = new JsonResponse();
+
+
+        return $response;
+    }
+    /**
+     * Deletes a competition entity.
+     *
+     * @Route("/api/Video/Delete/", name="video_api_delete")
+
+     * @param Request $request
+
+     * @return Response
+     */
+    public function videoDeleteAction(Request $request)
+    {
+$video= $this->getDoctrine()->getRepository(video::class)->find($request->query->get('video'));
+        $participation = $this->getDoctrine()->getRepository(competition_participant::class)->findByVideo($video);
+if($participation){
+
+        $video = $participation->getVideo();
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($participation);
+        $entityManager->remove($video);
+        $entityManager->flush();}
+else{
+    $entityManager = $this->getDoctrine()->getManager();
+
+    $entityManager->remove($video);
+    $entityManager->flush();
+
+
+}
+
+        $response = new JsonResponse();
+
+
+        return $response;
+    }
+
 }
