@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8d281307cd38c4192c35a3ae780c09df",
+    "content-hash": "4129e7d3001863903b20975e683bc06e",
     "packages": [
         {
             "name": "blackknight467/star-rating-bundle",

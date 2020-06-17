@@ -65,11 +65,11 @@ class DefaultController extends Controller
         $res = new ArrayCollection();
         foreach ($ranks as $r) {
             $vid = $this->getDoctrine()->getRepository(video::class)->findById($r['video_id']);
-        dump($vid);
+
             $res->add($vid);
 
         }
-dump($res);
+
         return ($this->render('default/ranks.html.twig', array('res' => $res))
         );
     }

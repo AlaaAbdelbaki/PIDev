@@ -58,7 +58,7 @@ class EventsController extends Controller
     public function afficheAction()
     {
         $tab=$this->getDoctrine()->getRepository(event::class)->findAll();
-
+//        var_dump($tab);
         return $this->render('@Events/event/affiche.html.twig',array('t'=>$tab));
     }
 

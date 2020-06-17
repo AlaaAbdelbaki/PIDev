@@ -81,8 +81,8 @@ public function ajoutAction(Request $request ,$id)
         $event->setnbPlaces($event->getnbPlaces()-1);
         $em->persist($event);
         $em->flush();
-        $snappy = $this->get('knp_snappy.pdf');
 
+        $snappy = $this->get('knp_snappy.pdf');
         $html = $this->renderView('@Events/ticket/ticket_pdf.html.twig', array(
             'event'=>$event
         ));
@@ -97,6 +97,8 @@ public function ajoutAction(Request $request ,$id)
                 'Content-Disposition'   => 'inline; filename="'.$filename.'.pdf"'
             )
         );
+
+
     }
 
 }
