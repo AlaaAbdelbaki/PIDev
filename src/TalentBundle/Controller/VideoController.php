@@ -5,6 +5,7 @@ namespace TalentBundle\Controller;
 
 use AppBundle\Entity\User;
 use AppBundle\Entity\video;
+use FOS\CommentBundle\Entity\Vote;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -32,8 +33,8 @@ class VideoController extends Controller
             $url = $video->getUrl();
             $link = $link.substr($url,-11);
             $video->setUrl($link);
-            $video->setPermalink('http://127.0.0.1:8000/');
-            $video->setCommentable(true);
+//            $video->setPermalink('http://127.0.0.1:8000/');
+//            $video->setCommentable(true);
             $video->setPublishDate($date);
             $video->setOwner($user);
             $em->persist($video);
@@ -55,6 +56,7 @@ class VideoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $video =$em->getRepository(video::class)->find($id);
+        $video->getVotes()->clear();
         $em->remove($video);
         $em->flush();
         return $this->redirectToRoute('user_profile',['id' =>$this->getUser()->getId()]);

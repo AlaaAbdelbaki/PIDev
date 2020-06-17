@@ -116,18 +116,17 @@
                             <div id="unsubscribe" style="margin-left: 40px;" class="btn musica-btn m-2"><a href="{{ path('subscribe',{id: user.id }) }}"> S'abonner  </a></div>
                         {% endif %}
                     {% endif %}
-                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;">Nom:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.Name }}</span></div>
-                    <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold;">Nom:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.Name }}</span></div>
+                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;">Nom:  <span class="text-white" style="font-size: medium;font-weight: normal">{{ user.Name }}</span></div>
                     <br>
-                    <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold">Prénom:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.firstName }}</span></div>
+                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold">Prénom:  <span class="text-white" style="font-size: medium;font-weight: normal">{{ user.firstName }}</span></div>
                     <br>
-                    <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold;">Date de naissance:  <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.birthday|date("d M Y") }}</span></div>
+                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;">Date de naissance:  <span class="text-white" style="font-size: medium;font-weight: normal">{{ user.birthday|date("d M Y") }}</span></div>
                     <br>
-                    <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold;">Bio: <br> <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ user.bio }}</span></div>
+                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;">Bio: <br> <span class="text-white" style="font-size: medium;font-weight: normal">{{ user.bio }}</span></div>
                     <br>
-                    <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold;">  Abonnés <br> <span class="text-secondary" style="font-size: medium;font-weight: normal">{{ subcount[1] }}</span></div>
+                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;">  Abonnés <br> <span class="text-white" style="font-size: medium;font-weight: normal">{{ subcount[1] }}</span></div>
                     <br>
-                    <div class="text-white" style="margin-left: 40px;font-size: large;font-weight: bold;"> Abonnements <br> <span class="text-white" style="font-size: medium;font-weight: normal">{{ subbedto[1] }}</span></div>
+                    <div class="text-primary" style="margin-left: 40px;font-size: large;font-weight: bold;"> Abonnements <br> <span class="text-white" style="font-size: medium;font-weight: normal">{{ subbedto[1] }}</span></div>
                     {% if user.username != app.user.username %}
                         {% if subscribtion == true %}
                             <div id="subscribe" style="margin-left: 50px;" class="btn musica-btn m-2 text-white"><a class="text-white" href="{{ path('unsubscribe',{id: user.id }) }}"> Désabonner  </a></div>
